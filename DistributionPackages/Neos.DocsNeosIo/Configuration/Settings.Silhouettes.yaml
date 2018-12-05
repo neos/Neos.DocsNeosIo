@@ -1,7 +1,7 @@
 Sitegeist:
    Silhouettes:
        properties:
-          codeq:
+          neos:
               text:
                   title:
                     type: string

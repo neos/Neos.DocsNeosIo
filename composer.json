@@ -1,15 +1,19 @@
 {
-    "name": "codeq/skeleton",
-    "description": "Best practice skeleton for Neos",
+    "name": "neos/docs-neos-io-distribution",
+    "description": "docs.neos.io website distribution",
+    "license": "GPL-3.0-or-later",
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "platform": {
+            "php": "7.2"
+        }
     },
     "require": {
-        "neos/docu-neos-io": "@dev"
-    },
-    "require-dev": {
-        "ttree/eelshell": "@dev"
+        "neos/docs-neos-io": "@dev",
+
+        "flownative/google-cloudstorage": "^4.0",
+        "rokka/imagine-vips": "^0.1"
     },
     "repositories": {
         "distribution": {

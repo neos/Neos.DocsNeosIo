@@ -2,11 +2,9 @@ prototype(Neos.DocsNeosIo:Component.Navigation) < prototype(Neos.DocsNeosIo:Comp
 	@context.startingPoint = ${this.startingPoint}
 	@context.node = ${this.startingPoint}
 
-	// overrides the 
+	// overrides the default level renderer without <ul> wrapping
 	renderer = afx`
-		<ul class="navigation">
-			{props.navigationItems}
-		</ul>
+        {props.navigationItems}
 	`
 
 	@cache {

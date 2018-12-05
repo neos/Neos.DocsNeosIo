@@ -1,0 +1,2 @@
+
+import './materialize-docs.js';

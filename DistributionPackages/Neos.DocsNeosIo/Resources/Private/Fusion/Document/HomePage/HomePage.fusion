@@ -5,8 +5,289 @@ prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Documen
 		}
 
 		renderer = afx`
+
+    <main>
+    <div class="section" id="index-banner">
+  <div class="container">
+    <div class="row" style="margin-bottom: 0;">
+      <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+        <h1 class="header">About</h1>
+        <h4 class="light">Learn about Material Design and our Project Team.</h4>
+      </div>
+      <div class="col s12 m3 xl3 offset-xl1">
+        <div class="buysellads-header center-on-small-only">
+          ADS HERE
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+      COMMENT:  Material Design
+      <div id="materialdesign" class="section scrollspy">
+        <h2 class="header">Material Design</h2>
+        <p class="caption">Created and designed by Google, Material Design is a design language that combines the classic principles of successful design
+          along with innovation and technology. Google's goal is to develop a system of design that allows for a unified user experience
+          across all their products on any platform.</p>
+        <div class="video-container">
+          <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="section">
+          <h3 class="header light">Principles</h3>
+          <div class="row">
+            <div class="col s12 l4">
+              <img class="promo" src="images/metaphor.png" />
+              <h4 class="center">Material is the metaphor</h4>
+              <p>The metaphor of material defines the relationship between space and motion. The idea is that the technology is inspired by paper and ink and is utilized to facilitate creativity and innovation. Surfaces and edges provide familiar visual cues that allow users to quickly understand the technology beyond the physical world.</p>
+              <br />
+            </div>
+
+            <div class="col s12 l4">
+              <img class="promo" src="images/bold.png" />
+              <h4 class="center">Bold, graphic, intentional</h4>
+              <p>Elements and components such as grids, typography, color, and imagery are not only visually pleasing, but also create a sense of hierarchy, meaning, and focus. Emphasis on different actions and components create a visual guide for users.</p>
+              <br />
+            </div>
+
+            <div class="col s12 l4">
+              <img class="promo" src="images/motion.png" />
+              <h4 class="center">Motion provides meaning</h4>
+              <p>Motion allows the user to draw a parallel between what they see on the screen and in real life. By providing both feedback and familiarity, this allows the user to fully immerse him or herself into unfamiliar technology. Motion contains consistency and continuity in addition to giving users additional subconscious information about objects and transformations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      COMMENT:  About the Tea
+      <div id="team" class="section scrollspy">
+        <h2 class="header">Meet the Team</h2>
+        <p class="caption">We are a team of students from Carnegie Mellon University.</p>
+        <div class="center">
+          <div class="image-container">
+            <img src="images/materialize_team.jpeg" style="width:100%;" />
+          </div>
+        </div>
+        <br />
+
+        <div class="row">
+          <div class="col s12 m3 center-on-small-only">
+            <div class="image-container">
+              <img src="images/alvin.png" />
+            </div>
+          </div>
+          <div class="col s12 m9">
+            <h4>Alvin Wang</h4>
+            <p>Alvin is an Information Systems and Human Computer Interaction Major. He worked as a Software Engineer at Fidelity Investments this past summer.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m3 center-on-small-only">
+            <div class="image-container">
+              <img src="images/Alan.png" />
+              </div>
+          </div>
+          <div class="col s12 m9">
+            <h4>Alan Chang</h4>
+            <p>Alan is an Information Systems major with a minor in computer science. He worked at as a Front End Developer at Shift Collaborative this past summer.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m3 center-on-small-only">
+            <div class="image-container">
+            <img src="images/alex.png" />
+              </div>
+          </div>
+          <div class="col s12 m9">
+            <h4>Alex Mark</h4>
+            <p>Alex is an Information Systems major with a minor in Human Computer Interaction. He worked as a software developer for Intuit this past summer.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m3 center-on-small-only">
+            <div class="image-container">
+            <img src="images/kevin.png" />
+              </div>
+          </div>
+          <div class="col s12 m9">
+            <h4>Kevin Louie</h4>
+            <p>Kevin is an Information Systems major with a minor in Human Computer Interaction. This past summer, he worked as a technology analyst at PPG Industries.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    COMMENT: Table of Contents
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+      <div class="toc-wrapper">
+        <div style="height: 1px;">
+          <ul class="section table-of-contents">
+            <li><a href="#materialdesign">Material Design</a></li>
+            <li><a href="#team">Meet the Team</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    </main>
+
+
+
+    <footer class="page-footer docs-footer">
+      <div class="container">
+        <div class="row" style="margin-bottom: 0;">
+          <div class="col s12 m10 offset-m1">
+            <div class="row">
+              <div class="col l4 s12">
+                <h5>Help Materialize Grow</h5>
+                <p class="grey-text text-darken-2">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+                <a class="btn waves-effect waves-light red lighten-2" href="/support-us.html">Support Us</a>
+
+              </div>
+              <div class="col l4 s12">
+                <h5>Join the Discussion</h5>
+                <p class="grey-text text-darken-2">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+                <a class="btn waves-effect waves-light red lighten-2" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
+              </div>
+              <div class="col l4 s12" style="overflow: hidden;">
+                <h5>Connect</h5>
+                <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
+                <br />
+                <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
+                <br />
+                <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <h5>Patreon Sponsors</h5>
+              </div>
+              <div class="col s12">
+                <div class="patreon-footer-ad">
+                  <a href="https://www.codefirst.co.uk/" target="_blank" rel="noopener">
+                    <img src="https://i.postimg.cc/CKsnHG6P/image001.png" alt="CodeFirst" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://icons8.com/material-icons" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/q0lliz153/icons8-logo-opencollective.png" alt="Icons8" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.customerly.io/en/customer-support-live-chat?utm_source=materializecss&utm_campaign=patreonmaterialize" target="_blank" rel="noopener">
+                    <img src="https://i.postimg.cc/mk2v8m81/customerly.png" alt="Customerly.io" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="http://lucidocean.com" target="_blank" rel="noopener">
+                    <img src="https://s8.postimg.cc/762csselh/logo_full_size.png" alt="Lucid Ocean" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.promocodewatch.com" target="_blank" rel="noopener">
+                    <img src="https://i.postimg.cc/1358DSGy/Promo-Code-Watch.png" alt="Promo Code Watch" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.stillio.com/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/hcpyykzbr/stillio-as-logo-1000-green.png" title="Capture and archive website screenshots automatically with Stillio" alt="Capture and archive website screenshots automatically with Stillio" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://typestack.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/6k0vwalev/typestack.png" alt="Open source fully loaded CMS in #2019" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://keymedium.com" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/m9c0wcpxz/2017-10-23-logo-refresh.png" alt="Philadelphia Web Design & SEO Agency" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.brandnewweb.nl" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/3pxqiuqyf/brandnewweb.png" alt="Brand New Web" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://webdock.io/en" target="_blank" rel="noopener">
+                    <img src="https://s15.postimg.cc/3k2228kcb/ezgif.com-gif-maker.png" alt="Webdock" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://hostpresto.com/?utm_source=materializecss" target="_blank" rel="noopener">
+                    <img src="https://s15.postimg.cc/4hhfhcyq3/hostpresto.png" alt="HostPresto" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.dontpayfull.com" target="_blank" rel="noopener">
+                    <img src="https://s15.postimg.cc/elkjc67zv/Banner_120x60-white.png" alt="Dont Pay Full" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptapi.io" target="_blank" rel="noopener">
+                    <img src="https://s15.postimg.cc/nmkoqq84r/white_bg.png" alt="CryptAPI" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://www.seareach.plc.uk/" target="_blank" rel="noopener">
+                    <img src="https://s15.postimg.cc/6cqo8j30r/Seareach_LOGO_4_COL.png" alt="Seareach" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://cryptoefx.com" target="_blank" rel="noopener">
+                    <img src="https://s14.postimg.cc/gs1o4wy29/crypto-_EFX.png" alt="crypto EFX" />
+                  </a>
+                </div>
+                <div class="patreon-footer-ad">
+                  <a href="https://gaggle.email/" target="_blank" rel="noopener">
+                    <img src="https://s13.postimg.cc/oqns3tzmf/gaggle-mail-logo.png" alt="Gaggle Mail" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer-copyright">
+              © 2014-<noscript>2018</noscript><script type="text/javascript">document.write(new Date().getFullYear());</script> Materialize, All rights reserved.
+              <a class="grey-text text-darken-1 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+
 			<main class="main">
 				{props.main}
+
+
+        <pre><code class="language-markup directory-markup">
+  MyWebsite/
+  |--css/
+  |  |--materialize.css &lt;-- compiled from scss/materialize.scss
+  |
+  |--js/
+  |  |--materialize.js
+  |
+  |--scss/
+  |  |--materialize.scss
+  |  |--components/
+  |
+  |--index.html
+        </code></pre>
 			</main>
 		`
 	}

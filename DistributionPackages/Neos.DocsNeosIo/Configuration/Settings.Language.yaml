@@ -13,11 +13,6 @@ Neos:
         # The default preset to use if no URI segment was given when resolving languages in the router
         defaultPreset: en
         presets:
-          # de:
-          #   label: Deutsch
-          #   values:
-          #     - de
-          #   uriSegment: 'de'
           en:
             label: English
             values:

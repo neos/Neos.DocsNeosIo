@@ -3,14 +3,14 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 	node = ${node}
 	itemTitle = ${q(node).property('title')}
 	itemClass = Neos.Fusion:RawArray {
-		base = 'navigation-item'
+		base = 'navigation-item bold'
 		level = ${'navigation-item--level-' + nodeDepth}
 		current = 'navigation-item--state-current'
 		current.@if.isCurrent = ${node == documentNode}
 		active = 'navigation-item--state-active'
 		active.@if.isActive = ${node == documentNode || (nodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
 	}
-	navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1)}
+	navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1) + ' collapsible collapsible-accordion'}
 	navigationItems = Neos.Fusion:Collection {
 		@if.notEmpty = ${this.collection.count() > 0}
 		collection = ${q(node).children('[instanceof Neos.Neos:Document][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
