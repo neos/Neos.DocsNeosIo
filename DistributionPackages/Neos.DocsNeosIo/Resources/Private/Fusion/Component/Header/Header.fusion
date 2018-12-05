@@ -1,0 +1,12 @@
+prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
+	homeLink = Neos.Neos:NodeUri {
+		node = ${site}
+	}
+
+	renderer = afx`
+		<header class="main-header">
+			<a class="logo" href={props.homeLink}>BRAND NAME</a>
+			<Neos.DocsNeosIo:Component.Navigation startingPoint={site} />
+		</header>
+	`
+}

@@ -1,0 +1,32 @@
+
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'Neos.Neos':
+          variables:
+            # We prefer URLs without the ".html" suffix
+            defaultUriSuffix: ''
+    error:
+      exceptionHandler:
+        renderingGroups:
+          notFoundExceptions:
+            options:
+              variables:
+                path: '404' # skip suffix in notfound as well
+  Neos:
+    eventLog:
+      enabled: true
+      navigateComponent:
+        nodeTree:
+          loadingDepth: 1
+        structureTree:
+          loadingDepth: 2
+    fusion:
+      autoInclude:
+        Neos.DocsNeosIo: true
+    # nodeTypes:
+    #   groups:
+    #     contentBlocks:
+    #       position: 110
+    #       label: 'Content Blocks'
