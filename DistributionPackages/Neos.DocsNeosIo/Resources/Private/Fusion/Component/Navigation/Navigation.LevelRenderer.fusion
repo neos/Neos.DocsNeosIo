@@ -20,7 +20,7 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 
 	renderer = afx`
 		<li class={props.itemClass} @if.hasNoItems={!props.navigationItems}>
-			<Carbon.Link:Link title={props.itemTitle} node={node} additionalClass="navigation-link" />
+			<Carbon.Link:Link title={props.itemTitle} node={node} additionalClass="navigation-link" backendLink={true} />
 			<ul class={props.navigationClass}>
 				{props.navigationItems}
 			</ul>
