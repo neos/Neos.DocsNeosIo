@@ -5,12 +5,12 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 	itemClass = Neos.Fusion:RawArray {
 		base = 'navigation-item bold'
 		level = ${'navigation-item--level-' + nodeDepth}
-		current = 'navigation-item--state-current'
+		current = 'current'
 		current.@if.isCurrent = ${node == documentNode}
-		active = 'navigation-item--state-active'
+		active = 'active'
 		active.@if.isActive = ${node == documentNode || (nodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
 	}
-	navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1) + ' collapsible collapsible-accordion'}
+	navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1)}
 	navigationItems = Neos.Fusion:Collection {
 		@if.notEmpty = ${this.collection.count() > 0}
 		collection = ${q(node).children('[instanceof Neos.Neos:Document][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
@@ -19,11 +19,19 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 	}
 
 	renderer = afx`
-		<li class={props.itemClass}>
+		<li class={props.itemClass} @if.hasNoItems={!props.navigationItems}>
 			<Carbon.Link:Link title={props.itemTitle} node={node} additionalClass="navigation-link" />
-			<ul @if.hasItems={props.navigationItems} class={props.navigationClass}>
+			<ul class={props.navigationClass}>
 				{props.navigationItems}
 			</ul>
+		</li>
+		<li class={props.itemClass} @if.hasItems={props.navigationItems}>
+			<a class="collapsible-header">{props.itemTitle}</a>
+			<div class="collapsible-body">
+				<ul class={props.navigationClass + ' collapsible collapsible-accordion'}>
+				    {props.navigationItems}
+                </ul>
+			</div>
 		</li>
 	`
 }

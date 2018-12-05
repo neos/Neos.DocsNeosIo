@@ -15,7 +15,8 @@ The frontend tooling is kept very lightweight. Steps to start local development:
 3. Run `npm start`
 4. Happy editing!
 
-`npm start` will automatically watch all files under `scss` and `js` for changes, and compile them to CSS and concatenate everything to just one single file (`app.css` and `app.js` respectively).
+`npm start` will automatically watch all files under `scss` and `js` for changes, and compile them to CSS and concatenate everything to just one single file (`app.css` and `app.js` respectively). 
+If you create a new `scss` or `js` file you need to restart the task for the watcher to work. 
 
 ### Compress CSS and JavaScript files
 

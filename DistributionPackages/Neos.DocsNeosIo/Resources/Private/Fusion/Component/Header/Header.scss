@@ -1,0 +1,145 @@
+.main-header {
+	#logo-container {
+		height: 57px;
+		margin-bottom: 32px;
+	}
+
+	#front-page-logo {
+		display: inline-block;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	// custom styled sidebar
+	ul.sidenav.sidenav-fixed {
+		overflow: hidden;
+		box-shadow: none;
+		border-right: 1px solid $border-color;
+
+		li.logo {
+			text-align: center;
+			margin-top: 32px;
+			margin-bottom: 136px;
+
+			&:hover,
+			#logo-container:hover {
+				background-color: transparent;
+			}
+		}
+
+		> li:last-child {
+			margin-bottom: 160px;
+		}
+
+		li {
+			line-height: 44px;
+
+			&.active {
+				background-color: rgba(50, 50, 50, 0.06);
+			}
+
+			a {
+				font-size: 13px;
+				line-height: 44px;
+				height: 44px;
+				padding: 0 30px;
+
+				.new.badge {
+					margin-top: calc(22px - 11px);
+				}
+			}
+		}
+
+		ul.collapsible-accordion {
+			background-color: #fff;
+
+			a.collapsible-header {
+				padding: 0 30px;
+			}
+
+			.collapsible-body li a {
+				font-weight: 400;
+				padding: 0 37.5px 0 45px;
+			}
+		}
+
+		// Only show scrollbar on hover
+		&:hover {
+			overflow-y: auto;
+		}
+
+
+		@media #{$small-and-down} {
+			border: 0;
+		}
+	}
+
+	// Search
+	#nav-mobile li.search {
+		&:hover {
+			background-color: #fff;
+		}
+
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 160px;
+		margin-top: 1px;
+		padding: 1px 0 0 0;
+		z-index: 2;
+
+		.search-wrapper {
+			&.focused .search-results:not(:empty) {
+				border-bottom: 1px solid $border-color;
+			}
+
+			color: #777;
+			margin-top: -1px;
+			border-top: 1px solid $border-color;
+			transition: margin 0.25s ease;
+
+			input#search {
+				&:focus {
+					outline: none;
+					box-shadow: none;
+				}
+
+				color: #777;
+				display: block;
+				font-size: 16px;
+				font-weight: 300;
+				width: 100%;
+				height: 62px;
+				margin: 0;
+				box-sizing: border-box;
+				padding: 0 45px 0 30px;
+				border: 0;
+			}
+
+			i.material-icons {
+				position: absolute;
+				top: 21px;
+				right: 10px;
+				cursor: pointer;
+			}
+		}
+
+		.search-results {
+			margin: 0;
+			border-top: 1px solid $border-color;
+			background-color: #fff;
+
+			a {
+				&:hover,
+				&.focused {
+					background-color: #eee;
+					outline: none;
+				}
+
+				font-size: 12px;
+				white-space: nowrap;
+				display: block;
+			}
+		}
+	}
+}
