@@ -123,18 +123,10 @@ prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Documen
       </div>
 
     </div>
-    COMMENT: Table of Contents
-    <div class="col hide-on-small-only m3 xl3 offset-xl1">
-      <div class="toc-wrapper">
-        <div style="height: 1px;">
-          <ul class="section table-of-contents">
-            <li><a href="#materialdesign">Material Design</a></li>
-            <li><a href="#team">Meet the Team</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
+    <div class="col hide-on-small-only m3 xl3 offset-xl1">
+        <Neos.DocsNeosIo:Component.LocalNavigation collection={q(node).find('main').children()}/>
+    </div>
   </div>
 </div>
 

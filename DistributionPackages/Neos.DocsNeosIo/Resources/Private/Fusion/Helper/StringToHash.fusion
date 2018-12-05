@@ -1,0 +1,4 @@
+prototype(Neos.DocsNeosIo:Helper.StringToHash) < prototype(Neos.Fusion:Value) {
+    value.@process.flatten = ${String.toLowerCase(String.trim(String.stripTags(value)))}
+    value.@process.convertChars = ${String.replace(String.replace(String.replace(String.replace(String.replace(String.replace(value, ' ', '-'), '&', '-'), 'ß', 'ss'), 'ä', 'ae'), 'ö', 'oe'), 'ü', 'ue')}
+}

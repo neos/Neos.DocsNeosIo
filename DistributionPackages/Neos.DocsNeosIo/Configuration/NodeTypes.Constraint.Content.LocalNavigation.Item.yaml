@@ -1,0 +1,14 @@
+##
+# If the node type inherits from this, it will be shown
+# in the pages local Navigation
+##
+'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item':
+  abstract: true
+  properties:
+    title:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter headline here...'
+      options:
+        silhouette: 'text.plain'
