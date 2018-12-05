@@ -6,21 +6,3 @@
   ui:
     label: i18n
     icon: icon-globe
-  properties:
-    footerInfo:
-      type: string
-      ui:
-        inlineEditable: true
-        aloha:
-          placeholder: i18n
-          link:
-            a: true
-    footerItems:
-      type: references
-      ui:
-        label: i18n
-        reloadIfChanged: true
-        inspector:
-          group: general
-          editorOptions:
-            nodeTypes: ['Neos.Neos:Document']
