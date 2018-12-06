@@ -1,11 +1,11 @@
 prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) {
     language = ${q(node).property('language')}
-    class = ${(this.language=='directory' ? 'language-markup ' : '') + 'line-numbers language-' + this.language}
+    class = ${'line-numbers language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fusion' ? 'php' : this.language))}
     code = ${String.htmlSpecialChars(q(node).property('code'))}
 
 	renderer = afx`
         <div class="code">
-            <pre class={props.class} data-label={props.language}>
+            <pre class={props.class} data-label={props.language=='none' ? false : props.language}>
                 <code>{props.code}</code>
             </pre>
         </div>

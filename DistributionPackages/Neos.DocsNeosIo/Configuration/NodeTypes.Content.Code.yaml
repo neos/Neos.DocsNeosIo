@@ -23,6 +23,8 @@
                 label: 'none'
               yaml:
                 label: 'YAML'
+              fusion:
+                label: 'Fusion'
               php:
                 label: 'PHP'
               bash:
