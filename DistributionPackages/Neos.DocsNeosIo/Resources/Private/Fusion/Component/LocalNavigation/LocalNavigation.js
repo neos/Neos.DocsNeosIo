@@ -4,19 +4,31 @@
 		return;
 	}
 
-	// Floating-Fixed table of contents
-	setTimeout(function() {
-		var tocHeight = localNav.find('.table-of-contents').length
-			? localNav.find('.table-of-contents').height()
-			: 0;
-		var footerOffset = $('body > footer').first().length
-			? $('body > footer')
-				.first()
-				.offset().top
-			: 0;
-		var bottomOffset = footerOffset - tocHeight;
+	function throttle(type, name, obj) {
+		obj = obj || window;
+		var running = false;
+		var func = function() {
+			if (running) { return; }
+			running = true;
+			requestAnimationFrame(function() {
+				obj.dispatchEvent(new CustomEvent(name));
+				running = false;
+			});
+		};
+		obj.addEventListener(type, func);
+	}
+	/* init - you can init any event */
+	throttle('resize', 'optimizedResize');
 
-		var top = 0;
+	// Floating-Fixed table of contents
+	const toc = localNav.find('.table-of-contents');
+	const footer = $('.main-footer');
+	function alignLocalNavigation() {
+		const tocHeight = toc.length ? toc.height() : 0;
+		const footerOffset = footer.length ? footer.offset().top : 0;
+		const bottomOffset = footerOffset - tocHeight;
+
+		let top = 0;
 		if ($('nav').length) {
 			top = $('nav').height();
 		} else if ($('#index-banner').length) {
@@ -26,5 +38,8 @@
 			top: top,
 			bottom: bottomOffset
 		});
-	}, 100);
+	}
+
+	requestAnimationFrame(alignLocalNavigation);
+	window.addEventListener('optimizedResize', alignLocalNavigation);
 })(jQuery);
