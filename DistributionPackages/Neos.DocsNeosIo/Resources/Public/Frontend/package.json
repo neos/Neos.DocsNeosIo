@@ -44,7 +44,7 @@
     "clean": "rm -Rf build && mkdir build",
     "css-deploy": "npm run css-build && npm run css-postcss",
     "css-build": "node-sass scss/app.scss build/app.css",
-    "css-postcss": "postcss --use autoprefixer --output css/app.css css/app.css",
+    "css-postcss": "postcss --use autoprefixer --output build/app.css build/app.css",
     "css-watch": "npm run css-build && npm run css-build -- --watch --recursive ../../../Private/Fusion --error-bell",
     "js-copy": "npm-run-all --parallel js-copy-materialize js-copy-prismjs",
     "js-copy-materialize": "cp node_modules/materialize-css/dist/js/materialize.js build/materialize.js",
