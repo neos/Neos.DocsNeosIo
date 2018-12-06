@@ -1,0 +1,39 @@
+
+#index-banner {
+	border-bottom: 1px solid $border-color;
+
+	.container {
+		position: relative;
+	}
+
+	h1 {
+		margin-top: 16px;
+	}
+
+	h4 {
+		margin-bottom: 40px;
+		line-height: 44px;
+		color: rgba(0, 0, 0, 0.7);
+	}
+
+	@media #{$medium-and-up} {
+		& > .container {
+			width: 100%;
+		}
+	}
+
+	@media #{$medium-and-down} {
+		h1 {
+			margin-top: 60px;
+		}
+		h4 {
+			margin-bottom: 15px;
+		}
+	}
+
+	@media #{$small-and-down} {
+		h4 {
+			margin-bottom: 0;
+		}
+	}
+}

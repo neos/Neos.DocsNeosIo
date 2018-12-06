@@ -147,9 +147,7 @@ a.sidenav-trigger.top-nav {
 @media #{$medium-and-up} {
 	main > .container,
 	body > .page-footer > .container,
-	.top-nav > .container,
-	#index-banner > .container,
-	.github-commit > .container {
+	.top-nav > .container {
 		width: 100%;
 	}
 }
@@ -158,42 +156,6 @@ a.sidenav-trigger.top-nav {
 	width: 80%;
 	display: block;
 	margin: 0 auto;
-}
-
-#index-banner {
-	border-bottom: 1px solid $border-color;
-
-	.container {
-		position: relative;
-	}
-	.header {
-		// color: #FFF;
-	}
-	h4 {
-		margin-bottom: 40px;
-		line-height: 44px;
-		color: rgba(0, 0, 0, 0.7);
-	}
-	h1 {
-		margin-top: 16px;
-	}
-}
-@media #{$medium-and-down} {
-	#index-banner {
-		h1 {
-			margin-top: 60px;
-		}
-		h4 {
-			margin-bottom: 15px;
-		}
-	}
-}
-@media #{$small-and-down} {
-	#index-banner {
-		h4 {
-			margin-bottom: 0;
-		}
-	}
 }
 
 

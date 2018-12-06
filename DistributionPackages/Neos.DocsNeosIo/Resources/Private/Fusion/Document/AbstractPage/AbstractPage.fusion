@@ -8,7 +8,14 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
 		}
 	}
 	body = Neos.DocsNeosIo:Component.DefaultLayout {
-		content = ''
+        title = Neos.Neos:Editable {
+            property = 'title'
+            block = false
+        }
+        subtitle = Neos.Neos:Editable {
+            property = 'subtitle'
+            block = false
+        }
 		@process.normalize = CodeQ.UnicodeNormalizer:Normalizer
 	}
 }

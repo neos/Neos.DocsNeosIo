@@ -33,3 +33,4 @@ Sitegeist:
         Fusion:
           options:
             excludedFileNames: ['Root.fusion', 'Shame.fusion', 'Override.fusion']
+            allowedFusionPrefixes: ['Content', 'Document', 'Helper', 'Component']

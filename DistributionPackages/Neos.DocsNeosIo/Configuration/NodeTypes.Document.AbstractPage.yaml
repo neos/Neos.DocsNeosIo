@@ -13,6 +13,13 @@
       'Neos.DocsNeosIo:Document.HomePage': false
       'Neos.DocsNeosIo:Constraint.Document.Restricted': false
   properties:
+    subtitle:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter subtitle here...'
+      options:
+        silhouette: 'text.plain'
     hideFromMainMenu:
       type: boolean
       ui:
