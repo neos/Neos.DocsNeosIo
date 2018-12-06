@@ -10,7 +10,7 @@
   properties:
     language:
       type: string
-      defaultValue: ''
+      defaultValue: 'none'
       reloadIfChanged: true
       ui:
         label: 'Language'
@@ -19,8 +19,8 @@
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
           editorOptions:
             values:
-              '':
-                label: '(Default)'
+              none:
+                label: 'none'
               yaml:
                 label: 'YAML'
               php:
