@@ -12,7 +12,8 @@
     "require": {
         "neos/docs-neos-io": "@dev",
 
-        "flownative/google-cloudstorage": "^4.0",
+        "flownative/google-cloudstorage": "4.*",
+        "flownative/beach-flow-companion": "1.*",
         "rokka/imagine-vips": "^0.1"
     },
     "repositories": {
