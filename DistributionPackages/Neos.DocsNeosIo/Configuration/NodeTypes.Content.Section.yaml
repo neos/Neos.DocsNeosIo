@@ -5,7 +5,7 @@
     'Neos.Neos:ContentCollection': true
     'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item': true
   ui:
-    label: 'Hierarchy Level'
+    label: 'Section'
     icon: icon-level-down
     position: 10
     inspector:
