@@ -2,14 +2,32 @@ html {
   font-family: $brand-font-family;
 }
 
-.btn,
-.btn:focus {
-  background-color: map-get($brand-colors, primary);
-  &:hover {
-    background-color: #22c3ff;
-  }
-}
-
 .header {
   color: map-get($brand-colors, secondary);
 }
+
+.btn {
+  background-color: map-get($brand-colors, primary);
+  border-radius: 0;
+  box-shadow: none;
+
+  &:focus {
+    background-color: map-get($brand-colors, primary);
+  }
+
+  &:hover {
+    box-shadow: none;
+    background-color: #22c3ff;
+  }
+
+  div {
+    color: white;
+  }
+}
+
+.btn__content {
+  -webkit-clip-path: polygon(var(--btn-clip-width) 0,0 var(--btn-clip-height),0 100%,calc(100% - var(--btn-clip-width)) 100%,100% calc(100% - var(--btn-clip-height)),100% 0);
+  clip-path: polygon(var(--btn-clip-width) 0,0 var(--btn-clip-height),0 100%,calc(100% - var(--btn-clip-width)) 100%,100% calc(100% - var(--btn-clip-height)),100% 0)
+}
+
+
