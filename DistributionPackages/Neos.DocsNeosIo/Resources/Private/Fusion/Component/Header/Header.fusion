@@ -5,7 +5,7 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
     logoUri = Neos.Fusion:ResourceUri {
         path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_primary.svg'
     }
-    siteRoot = ${q(node).property('navReference') || site}
+    siteRoot = ${q(site).property('navReference') || site}
 
 	renderer = afx`
         <header class="main-header">
