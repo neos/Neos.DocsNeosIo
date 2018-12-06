@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Content.HierarchyLevel) < prototype(Neos.Neos:ContentComponent) {
+prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponent) {
     id = Neos.DocsNeosIo:Helper.StringToHash {
         value = ${q(node).property('title') || node.identifier}
     }
@@ -14,7 +14,7 @@ prototype(Neos.DocsNeosIo:Content.HierarchyLevel) < prototype(Neos.Neos:ContentC
     }
 
     renderer = afx`
-        <div id={props.id} class="hierarchy-level section scrollspy">
+        <div id={props.id} class="docs-section section scrollspy">
             <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
             <div>{props.content}</div>
         </div>
