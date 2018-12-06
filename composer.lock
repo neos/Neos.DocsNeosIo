@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "f01df413c8370716218859bfcb51e430",
-    "content-hash": "da38f2d1611149c465d1d54aac638068",
+    "content-hash": "2da45fdb3d00530971ce9a85d23ef81f",
     "packages": [
         {
             "name": "aertmann/history",
@@ -51,7 +50,7 @@
                 "event-log",
                 "history"
             ],
-            "time": "2018-09-25 13:53:29"
+            "time": "2018-09-25T13:53:29+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -95,7 +94,7 @@
                 "slug",
                 "transliterator"
             ],
-            "time": "2017-04-04 11:38:05"
+            "time": "2017-04-04T11:38:05+00:00"
         },
         {
             "name": "carbon/compression",
@@ -147,7 +146,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-05-01 21:15:56"
+            "time": "2018-05-01T21:15:56+00:00"
         },
         {
             "name": "carbon/eel",
@@ -200,7 +199,7 @@
                 "eel",
                 "helper"
             ],
-            "time": "2018-09-06 05:55:14"
+            "time": "2018-09-06T05:55:14+00:00"
         },
         {
             "name": "carbon/hyphen",
@@ -252,7 +251,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-05-15 20:35:29"
+            "time": "2018-05-15T20:35:29+00:00"
         },
         {
             "name": "carbon/includeassets",
@@ -306,7 +305,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-10-30 16:36:13"
+            "time": "2018-10-30T16:36:13+00:00"
         },
         {
             "name": "carbon/link",
@@ -360,7 +359,7 @@
                 "helper",
                 "link"
             ],
-            "time": "2018-11-29 23:00:55"
+            "time": "2018-11-29T23:00:55+00:00"
         },
         {
             "name": "codeq/unicodenormalizer",
@@ -470,7 +469,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-06-26 09:39:36"
+            "time": "2018-06-26T09:39:36+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -538,7 +537,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-12-06 07:11:42"
+            "time": "2017-12-06T07:11:42+00:00"
         },
         {
             "name": "doctrine/cache",
@@ -613,7 +612,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2018-08-21 18:01:43"
+            "time": "2018-08-21T18:01:43+00:00"
         },
         {
             "name": "doctrine/collections",
@@ -680,7 +679,7 @@
                 "collections",
                 "iterator"
             ],
-            "time": "2017-07-22 10:37:32"
+            "time": "2017-07-22T10:37:32+00:00"
         },
         {
             "name": "doctrine/common",
@@ -753,7 +752,7 @@
                 "persistence",
                 "spl"
             ],
-            "time": "2017-07-22 08:35:12"
+            "time": "2017-07-22T08:35:12+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -828,7 +827,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2018-07-13 04:49:01"
+            "time": "2018-07-13T04:49:01+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -895,7 +894,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2018-01-09 20:05:19"
+            "time": "2018-01-09T20:05:19+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -949,7 +948,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-07-22 11:58:36"
+            "time": "2017-07-22T11:58:36+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1003,7 +1002,7 @@
                 "lexer",
                 "parser"
             ],
-            "time": "2014-09-09 13:34:57"
+            "time": "2014-09-09T13:34:57+00:00"
         },
         {
             "name": "doctrine/migrations",
@@ -1075,7 +1074,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2017-11-24 14:13:17"
+            "time": "2017-11-24T14:13:17+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -1157,7 +1156,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2018-11-20 23:46:46"
+            "time": "2018-11-20T23:46:46+00:00"
         },
         {
             "name": "firebase/php-jwt",
@@ -1203,7 +1202,7 @@
             ],
             "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
             "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27 22:17:23"
+            "time": "2017-06-27T22:17:23+00:00"
         },
         {
             "name": "flownative/google-cloudstorage",
@@ -1284,7 +1283,7 @@
                     "role": "Developer"
                 }
             ],
-            "time": "2018-10-22 15:46:54"
+            "time": "2018-10-22T15:46:54+00:00"
         },
         {
             "name": "flowpack/cachebuster",
@@ -1320,7 +1319,7 @@
                 }
             ],
             "description": "Cache buster for static resources in Neos",
-            "time": "2018-06-29 10:00:58"
+            "time": "2018-06-29T10:00:58+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1401,7 +1400,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2018-07-26 12:16:35"
+            "time": "2018-07-26T12:16:35+00:00"
         },
         {
             "name": "google/apiclient",
@@ -1460,7 +1459,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-06-20 15:52:20"
+            "time": "2018-06-20T15:52:20+00:00"
         },
         {
             "name": "google/apiclient-services",
@@ -1497,7 +1496,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-12-01 00:23:06"
+            "time": "2018-12-01T00:23:06+00:00"
         },
         {
             "name": "google/auth",
@@ -1544,7 +1543,7 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2018-09-17 20:29:21"
+            "time": "2018-09-17T20:29:21+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -1603,7 +1602,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2018-11-12 23:42:54"
+            "time": "2018-11-12T23:42:54+00:00"
         },
         {
             "name": "google/cloud-storage",
@@ -1644,7 +1643,7 @@
                 "Apache-2.0"
             ],
             "description": "Cloud Storage Client for PHP",
-            "time": "2017-09-18 15:09:56"
+            "time": "2017-09-18T15:09:56+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1709,7 +1708,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2018-04-22 15:46:56"
+            "time": "2018-04-22T15:46:56+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1760,7 +1759,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-12-20 10:07:11"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1827,7 +1826,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2018-12-04 20:46:45"
+            "time": "2018-12-04T20:46:45+00:00"
         },
         {
             "name": "imagine/imagine",
@@ -1885,7 +1884,64 @@
                 "image manipulation",
                 "image processing"
             ],
-            "time": "2017-05-16 10:31:22"
+            "time": "2017-05-16T10:31:22+00:00"
+        },
+        {
+            "name": "jcupitt/vips",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/libvips/php-vips.git",
+                "reference": "3678b8a4b1c301c9e6f6e136746f5894e85b9dbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/libvips/php-vips/zipball/3678b8a4b1c301c9e6f6e136746f5894e85b9dbe",
+                "reference": "3678b8a4b1c301c9e6f6e136746f5894e85b9dbe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-vips": ">=0.1.2",
+                "php": ">=7.0.11",
+                "psr/log": "^1.0.2"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "^1.0.0",
+                "phpdocumentor/phpdocumentor": "^2.9",
+                "phpunit/phpunit": "^6.5",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jcupitt\\Vips\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Cupitt",
+                    "email": "jcupitt@gmail.com",
+                    "homepage": "https://github.com/jcupitt",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A high-level interface to the libvips image processing library.",
+            "homepage": "https://github.com/libvips/php-vips",
+            "keywords": [
+                "image",
+                "libvips",
+                "processing"
+            ],
+            "time": "2018-10-04T15:25:12+00:00"
         },
         {
             "name": "jonnitto/sitemap",
@@ -2000,7 +2056,7 @@
                 }
             ],
             "description": "XML-Sitemap for Neos CMS with some improvements",
-            "time": "2018-04-29 21:27:10"
+            "time": "2018-04-29T21:27:10+00:00"
         },
         {
             "name": "moc/notfound",
@@ -2117,7 +2173,7 @@
                 "flow",
                 "not found"
             ],
-            "time": "2018-04-26 09:27:23"
+            "time": "2018-04-26T09:27:23+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2195,7 +2251,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2018-11-05 09:00:11"
+            "time": "2018-11-05T09:00:11+00:00"
         },
         {
             "name": "neos/cache",
@@ -2249,7 +2305,7 @@
             ],
             "description": "Neos Cache Framework",
             "homepage": "http://flow.neos.io",
-            "time": "2018-11-09 10:26:50"
+            "time": "2018-11-09T10:26:50+00:00"
         },
         {
             "name": "neos/composer-plugin",
@@ -2282,7 +2338,7 @@
                 "MIT"
             ],
             "description": "Flow Composer Plugin",
-            "time": "2016-05-05 07:03:52"
+            "time": "2016-05-05T07:03:52+00:00"
         },
         {
             "name": "neos/content-repository",
@@ -2409,7 +2465,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Content repository based on Flow, specifically made for Neos.",
-            "time": "2018-11-13 18:21:46"
+            "time": "2018-11-13T18:21:46+00:00"
         },
         {
             "name": "neos/diff",
@@ -2439,15 +2495,15 @@
                 "BSD-3-Clause"
             ],
             "description": "This is a comprehensive library for generating differences between two strings or arrays",
-            "time": "2016-11-23 15:06:35"
+            "time": "2016-11-23T15:06:35+00:00"
         },
         {
-            "name": "neos/docsneosio",
+            "name": "neos/docs-neos-io",
             "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "3eb61e8c3e71af285899bcfcb357b9da551d8dfe",
+                "reference": "77c18f1a97a6edc54ab3ee56b17e531aa5742328",
                 "shasum": null
             },
             "require": {
@@ -2589,7 +2645,7 @@
                 "MIT"
             ],
             "description": "The Embedded Expression Language (Eel) is a building block for creating Domain Specific Languages",
-            "time": "2018-08-22 15:15:31"
+            "time": "2018-08-22T15:15:31+00:00"
         },
         {
             "name": "neos/error-messages",
@@ -2623,7 +2679,7 @@
             ],
             "description": "Flow error messages",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:23"
+            "time": "2018-06-27T10:03:23+00:00"
         },
         {
             "name": "neos/flow",
@@ -2702,7 +2758,7 @@
             ],
             "description": "Flow Application Framework",
             "homepage": "http://flow.neos.io",
-            "time": "2018-11-21 14:22:46"
+            "time": "2018-11-21T14:22:46+00:00"
         },
         {
             "name": "neos/flow-log",
@@ -2746,7 +2802,7 @@
             ],
             "description": "Flow Framework Logger",
             "homepage": "http://flow.neos.io",
-            "time": "2018-08-22 14:00:10"
+            "time": "2018-08-22T14:00:10+00:00"
         },
         {
             "name": "neos/fluid-adaptor",
@@ -2781,7 +2837,7 @@
                 "MIT"
             ],
             "description": "Fluid Templating Framework Adaptor",
-            "time": "2018-11-09 10:26:50"
+            "time": "2018-11-09T10:26:50+00:00"
         },
         {
             "name": "neos/form",
@@ -2885,7 +2941,7 @@
                 "MIT"
             ],
             "description": "Extensible and flexible API for building web forms",
-            "time": "2018-10-23 14:41:21"
+            "time": "2018-10-23T14:41:21+00:00"
         },
         {
             "name": "neos/fusion",
@@ -3007,7 +3063,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Fusion is a hierarchical, prototype based processing language",
-            "time": "2018-08-29 08:47:04"
+            "time": "2018-08-29T08:47:04+00:00"
         },
         {
             "name": "neos/fusion-afx",
@@ -3049,7 +3105,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "JSX inspired compact syntax for Neos.Fusion",
-            "time": "2018-11-14 17:00:22"
+            "time": "2018-11-14T17:00:22+00:00"
         },
         {
             "name": "neos/googleanalytics",
@@ -3151,7 +3207,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Google Analytics integration for Neos CMS",
-            "time": "2018-10-29 22:11:40"
+            "time": "2018-10-29T22:11:40+00:00"
         },
         {
             "name": "neos/imagine",
@@ -3235,7 +3291,7 @@
             "license": [
                 "MIT"
             ],
-            "time": "2018-04-21 06:46:44"
+            "time": "2018-04-21T06:46:44+00:00"
         },
         {
             "name": "neos/media",
@@ -3359,7 +3415,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "The Media package",
-            "time": "2018-10-02 14:59:04"
+            "time": "2018-10-02T14:59:04+00:00"
         },
         {
             "name": "neos/media-browser",
@@ -3480,7 +3536,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "This module allows managing of media assets including pictures, videos, audio and documents.",
-            "time": "2018-11-09 11:32:54"
+            "time": "2018-11-09T11:32:54+00:00"
         },
         {
             "name": "neos/neos",
@@ -3617,7 +3673,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "An open source Content Application Platform based on Flow. A set of core Content Management features is resting within a larger context that allows you to build a perfectly customized experience for your users.",
-            "time": "2018-11-13 20:09:42"
+            "time": "2018-11-13T20:09:42+00:00"
         },
         {
             "name": "neos/neos-ui",
@@ -3726,7 +3782,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "NEOS CMS UI rewritten in React",
-            "time": "2018-10-29 08:39:58"
+            "time": "2018-10-29T08:39:58+00:00"
         },
         {
             "name": "neos/neos-ui-compiled",
@@ -3757,7 +3813,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-10-29 08:44:03"
+            "time": "2018-10-29T08:44:03+00:00"
         },
         {
             "name": "neos/nodetypes-basemixins",
@@ -3870,7 +3926,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Base mixins which are useful across projects.",
-            "time": "2018-11-09 11:31:32"
+            "time": "2018-11-09T11:31:32+00:00"
         },
         {
             "name": "neos/nodetypes-contentreferences",
@@ -3983,7 +4039,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "A simple content reference node type.",
-            "time": "2018-11-09 11:32:54"
+            "time": "2018-11-09T11:32:54+00:00"
         },
         {
             "name": "neos/party",
@@ -4062,7 +4118,7 @@
                 "MIT"
             ],
             "description": "A party package for PHP based on the OASIS Customer Information Quality (CIQ) XML Standard.",
-            "time": "2018-06-16 10:07:12"
+            "time": "2018-06-16T10:07:12+00:00"
         },
         {
             "name": "neos/redirecthandler",
@@ -4127,7 +4183,7 @@
                 "MIT"
             ],
             "description": "Basic API to handle HTTP redirects with the Flow Framework",
-            "time": "2018-04-25 19:39:51"
+            "time": "2018-04-25T19:39:51+00:00"
         },
         {
             "name": "neos/redirecthandler-databasestorage",
@@ -4191,7 +4247,7 @@
                 "MIT"
             ],
             "description": "A plugin for neos/redirecthandler to store redirects in the database",
-            "time": "2018-05-18 15:26:47"
+            "time": "2018-05-18T15:26:47+00:00"
         },
         {
             "name": "neos/redirecthandler-neosadapter",
@@ -4284,7 +4340,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos Redirect Handler",
-            "time": "2018-12-04 15:56:20"
+            "time": "2018-12-04T15:56:20+00:00"
         },
         {
             "name": "neos/seo",
@@ -4392,7 +4448,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "SEO configuration and tools for Neos",
-            "time": "2018-05-11 15:01:12"
+            "time": "2018-05-11T15:01:12+00:00"
         },
         {
             "name": "neos/setup",
@@ -4478,7 +4534,7 @@
                 "MIT"
             ],
             "description": "An extensible setup tool for Neos Flow based applications",
-            "time": "2018-09-03 09:03:46"
+            "time": "2018-09-03T09:03:46+00:00"
         },
         {
             "name": "neos/twitter-bootstrap",
@@ -4562,7 +4618,7 @@
                 "MIT"
             ],
             "description": "Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. Packaged for use with Neos Flow",
-            "time": "2018-08-30 09:31:58"
+            "time": "2018-08-30T09:31:58+00:00"
         },
         {
             "name": "neos/utility-arrays",
@@ -4603,7 +4659,7 @@
             ],
             "description": "Flow Array Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:23"
+            "time": "2018-06-27T10:03:23+00:00"
         },
         {
             "name": "neos/utility-files",
@@ -4644,7 +4700,7 @@
             ],
             "description": "Flow Files Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-08-22 13:58:18"
+            "time": "2018-08-22T13:58:18+00:00"
         },
         {
             "name": "neos/utility-lock",
@@ -4681,7 +4737,7 @@
             ],
             "description": "Flow Locking Implementation",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:23"
+            "time": "2018-06-27T10:03:23+00:00"
         },
         {
             "name": "neos/utility-mediatypes",
@@ -4722,7 +4778,7 @@
             ],
             "description": "Flow Media Types Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-08-29 08:23:00"
+            "time": "2018-08-29T08:23:00+00:00"
         },
         {
             "name": "neos/utility-objecthandling",
@@ -4763,7 +4819,7 @@
             ],
             "description": "Flow array/object property and type utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:23"
+            "time": "2018-06-27T10:03:23+00:00"
         },
         {
             "name": "neos/utility-opcodecache",
@@ -4799,7 +4855,7 @@
             ],
             "description": "Flow Opcode Cache Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2017-12-29 20:04:27"
+            "time": "2017-12-29T20:04:27+00:00"
         },
         {
             "name": "neos/utility-pdo",
@@ -4835,7 +4891,7 @@
             ],
             "description": "Flow PDO Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-04-17 12:43:53"
+            "time": "2018-04-17T12:43:53+00:00"
         },
         {
             "name": "neos/utility-schema",
@@ -4876,7 +4932,7 @@
             ],
             "description": "Flow Schema Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:08"
+            "time": "2018-06-27T10:03:08+00:00"
         },
         {
             "name": "neos/utility-unicode",
@@ -4912,7 +4968,7 @@
             ],
             "description": "Flow Unicode Utilities",
             "homepage": "http://flow.neos.io",
-            "time": "2018-06-27 10:03:23"
+            "time": "2018-06-27T10:03:23+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -4961,7 +5017,7 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2018-02-05 13:05:30"
+            "time": "2018-02-05T13:05:30+00:00"
         },
         {
             "name": "ocramius/proxy-manager",
@@ -5031,7 +5087,7 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "time": "2018-09-27 13:45:01"
+            "time": "2018-09-27T13:45:01+00:00"
         },
         {
             "name": "packagefactory/afx",
@@ -5067,7 +5123,7 @@
                 }
             ],
             "description": "An Afx parser for PHP",
-            "time": "2017-05-30 15:57:19"
+            "time": "2017-05-30T15:57:19+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -5112,7 +5168,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2018-07-02 15:55:56"
+            "time": "2018-07-02T15:55:56+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -5204,7 +5260,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2018-11-04 05:45:48"
+            "time": "2018-11-04T05:45:48+00:00"
         },
         {
             "name": "psr/cache",
@@ -5250,7 +5306,7 @@
                 "psr",
                 "psr-6"
             ],
-            "time": "2016-08-06 20:24:11"
+            "time": "2016-08-06T20:24:11+00:00"
         },
         {
             "name": "psr/container",
@@ -5299,7 +5355,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14 16:28:37"
+            "time": "2017-02-14T16:28:37+00:00"
         },
         {
             "name": "psr/http-message",
@@ -5349,7 +5405,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -5396,7 +5452,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20 15:27:04"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
             "name": "psr/simple-cache",
@@ -5444,7 +5500,7 @@
                 "psr-16",
                 "simple-cache"
             ],
-            "time": "2017-10-23 01:57:42"
+            "time": "2017-10-23T01:57:42+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -5484,7 +5540,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2016-02-11 07:05:27"
+            "time": "2016-02-11T07:05:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -5566,7 +5622,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2018-07-19 23:38:55"
+            "time": "2018-07-19T23:38:55+00:00"
         },
         {
             "name": "rize/uri-template",
@@ -5610,7 +5666,64 @@
                 "template",
                 "uri"
             ],
-            "time": "2017-06-14 03:57:53"
+            "time": "2017-06-14T03:57:53+00:00"
+        },
+        {
+            "name": "rokka/imagine-vips",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rokka-io/imagine-vips.git",
+                "reference": "9036993e18c218e6da83a430cf9aee26a55f5b56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rokka-io/imagine-vips/zipball/9036993e18c218e6da83a430cf9aee26a55f5b56",
+                "reference": "9036993e18c218e6da83a430cf9aee26a55f5b56",
+                "shasum": ""
+            },
+            "require": {
+                "ext-vips": "^1.0.8",
+                "imagine/imagine": "^0.7.1",
+                "jcupitt/vips": "^1.0.2",
+                "php": "~7.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.8"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation fallback for saving",
+                "ext-imagick": "to use the Imagick implementation fallback for saving"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rokka",
+                    "email": "contact@rokka.io",
+                    "homepage": "https://rokka.io"
+                }
+            ],
+            "description": "libvips adapter for imagine",
+            "homepage": "https://github.com/rokka-io/imagine-vips",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing",
+                "libvips",
+                "php-vips",
+                "vips"
+            ],
+            "time": "2017-12-06T09:48:21+00:00"
         },
         {
             "name": "sitegeist/neosguidelines",
@@ -5655,7 +5768,7 @@
                 }
             ],
             "description": "A package to validate projects against the sitegeist-project-guidelines.",
-            "time": "2018-11-08 10:25:02"
+            "time": "2018-11-08T10:25:02+00:00"
         },
         {
             "name": "sitegeist/silhouettes",
@@ -5692,7 +5805,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Preconfigure property-silhuettes that can be applied to various properties of multiple NodeTypes.",
-            "time": "2018-07-12 06:22:24"
+            "time": "2018-07-12T06:22:24+00:00"
         },
         {
             "name": "symfony/console",
@@ -5760,7 +5873,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26 11:22:46"
+            "time": "2018-07-26T11:22:46+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -5817,7 +5930,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26 11:00:39"
+            "time": "2018-07-26T11:00:39+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -5875,7 +5988,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -5934,7 +6047,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21 13:07:52"
+            "time": "2018-09-21T13:07:52+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -5993,7 +6106,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2018-07-26 11:22:46"
+            "time": "2018-07-26T11:22:46+00:00"
         },
         {
             "name": "typo3fluid/fluid",
@@ -6032,7 +6145,7 @@
                 "LGPL-3.0-or-later"
             ],
             "description": "The TYPO3 Fluid template rendering engine",
-            "time": "2018-07-09 12:55:32"
+            "time": "2018-07-09T12:55:32+00:00"
         },
         {
             "name": "webexcess/redirecthandler-backend",
@@ -6077,7 +6190,7 @@
                 }
             ],
             "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
-            "time": "2018-07-19 09:21:41"
+            "time": "2018-07-19T09:21:41+00:00"
         },
         {
             "name": "zendframework/zend-code",
@@ -6130,7 +6243,7 @@
                 "code",
                 "zf2"
             ],
-            "time": "2018-08-13 20:36:59"
+            "time": "2018-08-13T20:36:59+00:00"
         },
         {
             "name": "zendframework/zend-eventmanager",
@@ -6184,14 +6297,14 @@
                 "events",
                 "zf2"
             ],
-            "time": "2018-04-25 15:33:34"
+            "time": "2018-04-25T15:33:34+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "neos/docsneosio": 20
+        "neos/docs-neos-io": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
