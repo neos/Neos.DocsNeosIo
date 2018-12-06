@@ -2,7 +2,7 @@
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
   ui:
-    label: i18n
+    label: 'Documentation Page'
     help:
       message: 'Manuals to describe the principals, ideas and mechanics behind Neos '
     icon: icon-file-o
