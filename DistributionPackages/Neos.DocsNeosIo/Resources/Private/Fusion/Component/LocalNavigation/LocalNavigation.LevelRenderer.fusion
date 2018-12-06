@@ -1,0 +1,32 @@
+prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(Neos.Fusion:Component) {
+    attributes = Neos.Fusion:Attributes
+    collection = false
+
+    # rendering
+    @context.collection = ${this.collection && this.collection.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
+    items = Neos.Fusion:Collection {
+        collection = ${collection}
+        itemName = 'node'
+        itemRenderer = Neos.Fusion:Component {
+            id = Neos.DocsNeosIo:Helper.StringToHash {
+                value = ${q(node).property('title') || node.identifier}
+            }
+            title = ${q(node).property('title')}
+            children = ${q(node).children()}
+            renderer = afx`
+                <li>
+                    <a @if.has={props.title} href={'#' + props.id}>
+                        {props.title}
+                    </a>
+                    <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer collection={props.children} />
+                </li>
+            `
+            @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
+        }
+    }
+    renderer = afx`
+        <Neos.Fusion:Tag tagName="ul" attributes={props.attributes} @if.notEmpty={collection.count() > 0}>
+            {props.items}
+        </Neos.Fusion:Tag>
+	`
+}

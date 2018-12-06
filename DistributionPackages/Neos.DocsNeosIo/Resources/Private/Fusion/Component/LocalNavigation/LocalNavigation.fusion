@@ -1,29 +1,9 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Component) {
     collection = false
 
-    # rendering
-    @if.hasCollection = ${this.collection}
-    @context.collection = ${this.collection}
-    items = Neos.Fusion:Collection {
-        collection = ${collection.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
-        itemName = 'node'
-        itemRenderer = Neos.Fusion:Component {
-            id = Neos.DocsNeosIo:Helper.StringToHash {
-                value = ${q(node).property('title') || node.identifier}
-            }
-            title = ${q(node).property('title')}
-            renderer = afx`
-                <a @if.has={props.title} href={'#' + props.id}>
-                    {props.title}
-                </a>
-            `
-        }
-    }
     renderer = afx`
-        <div class="local-navigation" style="height: 1px;">
-            <ul class="section table-of-contents">
-                {props.items}
-            </ul>
+        <div class="local-navigation" style="height: 1px;" @if.has={props.collection}>
+            <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer collection={props.collection} attributes.class="section table-of-contents" />
             <div @if.inBackend={node.context.inBackend}>
                 <i>This navigation updates only after a reload.</i>
             </div>
