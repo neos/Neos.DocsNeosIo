@@ -9,7 +9,12 @@
   properties:
     text:
       ui:
-        aloha:
-          placeholder: '<p>Enter text here...</p>'
+        inline:
+          editorOptions:
+            placeholder: '<p>Enter text here...</p>'
+            formatting:
+              pre: true
+              strikethrough: true
+              table: true
       options:
         silhouette: 'text.free'
