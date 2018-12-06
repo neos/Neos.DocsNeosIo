@@ -5,10 +5,12 @@ prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent
     title = Neos.Neos:Editable {
         property = 'title'
         block = false
+        @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
     }
     text = Neos.Neos:Editable {
         property = 'text'
         block = false
+        @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
     }
 
     renderer = afx`

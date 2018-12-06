@@ -1,6 +1,7 @@
 prototype(Neos.DocsNeosIo:Content.Text) < prototype(Neos.Neos:ContentComponent) {
 	text = Neos.Neos:Editable {
 		property = 'text'
+        @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
 	}
 
 	renderer = afx`

@@ -5,10 +5,12 @@ prototype(Neos.DocsNeosIo:Content.HierarchyLevel) < prototype(Neos.Neos:ContentC
     title = Neos.Neos:Editable {
         property = 'title'
         block = false
+        @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
     }
     headlineSize = ${q(node).property('headlineSize')}
     content = Neos.Neos:ContentCollection {
         nodePath = '.'
+        @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
     }
 
     renderer = afx`
