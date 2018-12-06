@@ -1,0 +1,15 @@
+html {
+  font-family: $brand-font-family;
+}
+
+.btn,
+.btn:focus {
+  background-color: map-get($brand-colors, primary);
+  &:hover {
+    background-color: #22c3ff;
+  }
+}
+
+.header {
+  color: map-get($brand-colors, secondary);
+}

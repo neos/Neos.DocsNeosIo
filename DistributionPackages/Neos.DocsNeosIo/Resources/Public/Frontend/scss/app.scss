@@ -3,14 +3,8 @@
 @import "../node_modules/materialize-css/sass/materialize";
 @import "../node_modules/prismjs/themes/prism.css";
 
+@import "variables";
 @import "fonts";
 @import "materialize-docs";
-
-// Components
-@import "../../../Private/Fusion/Component/Header/Header";
-@import "../../../Private/Fusion/Component/DefaultLayout/DefaultLayout";
-@import "../../../Private/Fusion/Component/Footer/Footer";
-@import "../../../Private/Fusion/Component/LocalNavigation/LocalNavigation";
-
-// Content Node Types
-@import "../../../Private/Fusion/Content/HierarchyLevel/HierarchyLevel";
+@import "base";
+@import "layout";
