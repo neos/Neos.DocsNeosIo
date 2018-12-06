@@ -1,4 +1,9 @@
 .main-header {
+
+  a.sidenav-trigger.top-nav {
+    color: map-get($brand-colors, primary);
+  }
+
   #logo-container {
     height: 57px;
     margin-bottom: 32px;
