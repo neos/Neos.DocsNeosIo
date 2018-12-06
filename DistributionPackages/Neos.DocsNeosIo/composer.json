@@ -28,6 +28,11 @@
 
         "neos/nodetypes-contentreferences": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "Neos\\DocsNeosIo\\": "Classes"
+        }
+    },
     "extra": {
         "neos": {
             "package-key": "Neos.DocsNeosIo"

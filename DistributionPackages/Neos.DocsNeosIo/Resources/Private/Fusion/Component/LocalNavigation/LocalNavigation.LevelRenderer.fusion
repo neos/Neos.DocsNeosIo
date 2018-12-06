@@ -21,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(N
                     <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer collection={props.children} />
                 </li>
             `
-            @process.icons = Neos.DocsNeosIo:DocumentationContentIconProcessor
+            @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
         }
     }
     renderer = afx`
