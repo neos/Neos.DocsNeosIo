@@ -50,85 +50,6 @@
     }); // end of document ready
   })(jQuery); // end of jQuery name space
 
-  (function ($) {
-    let header = document.querySelector('.main-header');
-
-    if (!header) {
-      return;
-    } // Detect touch screen and enable scrollbar if necessary
-
-
-    function is_touch_device() {
-      try {
-        document.createEvent('TouchEvent');
-        return true;
-      } catch (e) {
-        return false;
-      }
-    }
-
-    if (is_touch_device()) {
-      $('.main-header #nav-mobile').css({
-        overflow: 'auto'
-      });
-    }
-  })(jQuery);
-
-  (function ($) {
-    let localNav = $('.local-navigation');
-
-    if (!localNav.length) {
-      return;
-    }
-
-    function throttle(type, name, obj) {
-      obj = obj || window;
-      var running = false;
-
-      var func = function () {
-        if (running) {
-          return;
-        }
-
-        running = true;
-        requestAnimationFrame(function () {
-          obj.dispatchEvent(new CustomEvent(name));
-          running = false;
-        });
-      };
-
-      obj.addEventListener(type, func);
-    }
-    /* init - you can init any event */
-
-
-    throttle('resize', 'optimizedResize'); // Floating-Fixed table of contents
-
-    const toc = localNav.find('.table-of-contents');
-    const footer = $('.main-footer');
-
-    function alignLocalNavigation() {
-      const tocHeight = toc.length ? toc.height() : 0;
-      const footerOffset = footer.length ? footer.offset().top : 0;
-      const bottomOffset = footerOffset - tocHeight;
-      let top = 0;
-
-      if ($('nav').length) {
-        top = $('nav').height();
-      } else if ($('#index-banner').length) {
-        top = $('#index-banner').height();
-      }
-
-      localNav.pushpin({
-        top: top,
-        bottom: bottomOffset
-      });
-    }
-
-    requestAnimationFrame(alignLocalNavigation);
-    window.addEventListener('optimizedResize', alignLocalNavigation);
-  })(jQuery);
-
   /* **********************************************
        Begin prism-core.js
   ********************************************** */
@@ -1648,9 +1569,330 @@
   Prism.languages.markdown['bold'].inside['italic'] = Prism.languages.markdown['italic'];
   Prism.languages.markdown['italic'].inside['bold'] = Prism.languages.markdown['bold'];
 
+  (function(){
+
+  if (
+  	typeof self !== 'undefined' && !self.Prism ||
+  	typeof global !== 'undefined' && !global.Prism
+  ) {
+  	return;
+  }
+
+  var url = /\b([a-z]{3,7}:\/\/|tel:)[\w\-+%~/.:=&]+(?:\?[\w\-+%~/.:#=?&!$'()*,;]*)?(?:#[\w\-+%~/.:#=?&!$'()*,;]*)?/,
+      email = /\b\S+@[\w.]+[a-z]{2}/,
+      linkMd = /\[([^\]]+)]\(([^)]+)\)/,
+      
+  	// Tokens that may contain URLs and emails
+      candidates = ['comment', 'url', 'attr-value', 'string'];
+
+  Prism.plugins.autolinker = {
+  	processGrammar: function (grammar) {
+  		// Abort if grammar has already been processed
+  		if (!grammar || grammar['url-link']) {
+  			return;
+  		}
+  		Prism.languages.DFS(grammar, function (key, def, type) {
+  			if (candidates.indexOf(type) > -1 && Prism.util.type(def) !== 'Array') {
+  				if (!def.pattern) {
+  					def = this[key] = {
+  						pattern: def
+  					};
+  				}
+
+  				def.inside = def.inside || {};
+
+  				if (type == 'comment') {
+  					def.inside['md-link'] = linkMd;
+  				}
+  				if (type == 'attr-value') {
+  					Prism.languages.insertBefore('inside', 'punctuation', { 'url-link': url }, def);
+  				}
+  				else {
+  					def.inside['url-link'] = url;
+  				}
+
+  				def.inside['email-link'] = email;
+  			}
+  		});
+  		grammar['url-link'] = url;
+  		grammar['email-link'] = email;
+  	}
+  };
+
+  Prism.hooks.add('before-highlight', function(env) {
+  	Prism.plugins.autolinker.processGrammar(env.grammar);
+  });
+
+  Prism.hooks.add('wrap', function(env) {
+  	if (/-link$/.test(env.type)) {
+  		env.tag = 'a';
+  		
+  		var href = env.content;
+  		
+  		if (env.type == 'email-link' && href.indexOf('mailto:') != 0) {
+  			href = 'mailto:' + href;
+  		}
+  		else if (env.type == 'md-link') {
+  			// Markdown
+  			var match = env.content.match(linkMd);
+  			
+  			href = match[2];
+  			env.content = match[1];
+  		}
+  		
+  		env.attributes.href = href;
+  	}
+
+  	// Silently catch any error thrown by decodeURIComponent (#1186)
+  	try {
+  		env.content = decodeURIComponent(env.content);
+  	} catch(e) {}
+  });
+
+  })();
+
+  (function () {
+
+  	if (typeof self === 'undefined' || !self.Prism || !self.document) {
+  		return;
+  	}
+
+  	/**
+  	 * Plugin name which is used as a class name for <pre> which is activating the plugin
+  	 * @type {String}
+  	 */
+  	var PLUGIN_NAME = 'line-numbers';
+  	
+  	/**
+  	 * Regular expression used for determining line breaks
+  	 * @type {RegExp}
+  	 */
+  	var NEW_LINE_EXP = /\n(?!$)/g;
+
+  	/**
+  	 * Resizes line numbers spans according to height of line of code
+  	 * @param {Element} element <pre> element
+  	 */
+  	var _resizeElement = function (element) {
+  		var codeStyles = getStyles(element);
+  		var whiteSpace = codeStyles['white-space'];
+
+  		if (whiteSpace === 'pre-wrap' || whiteSpace === 'pre-line') {
+  			var codeElement = element.querySelector('code');
+  			var lineNumbersWrapper = element.querySelector('.line-numbers-rows');
+  			var lineNumberSizer = element.querySelector('.line-numbers-sizer');
+  			var codeLines = codeElement.textContent.split(NEW_LINE_EXP);
+
+  			if (!lineNumberSizer) {
+  				lineNumberSizer = document.createElement('span');
+  				lineNumberSizer.className = 'line-numbers-sizer';
+
+  				codeElement.appendChild(lineNumberSizer);
+  			}
+
+  			lineNumberSizer.style.display = 'block';
+
+  			codeLines.forEach(function (line, lineNumber) {
+  				lineNumberSizer.textContent = line || '\n';
+  				var lineSize = lineNumberSizer.getBoundingClientRect().height;
+  				lineNumbersWrapper.children[lineNumber].style.height = lineSize + 'px';
+  			});
+
+  			lineNumberSizer.textContent = '';
+  			lineNumberSizer.style.display = 'none';
+  		}
+  	};
+
+  	/**
+  	 * Returns style declarations for the element
+  	 * @param {Element} element
+  	 */
+  	var getStyles = function (element) {
+  		if (!element) {
+  			return null;
+  		}
+
+  		return window.getComputedStyle ? getComputedStyle(element) : (element.currentStyle || null);
+  	};
+
+  	window.addEventListener('resize', function () {
+  		Array.prototype.forEach.call(document.querySelectorAll('pre.' + PLUGIN_NAME), _resizeElement);
+  	});
+
+  	Prism.hooks.add('complete', function (env) {
+  		if (!env.code) {
+  			return;
+  		}
+
+  		// works only for <code> wrapped inside <pre> (not inline)
+  		var pre = env.element.parentNode;
+  		var clsReg = /\s*\bline-numbers\b\s*/;
+  		if (
+  			!pre || !/pre/i.test(pre.nodeName) ||
+  			// Abort only if nor the <pre> nor the <code> have the class
+  			(!clsReg.test(pre.className) && !clsReg.test(env.element.className))
+  		) {
+  			return;
+  		}
+
+  		if (env.element.querySelector('.line-numbers-rows')) {
+  			// Abort if line numbers already exists
+  			return;
+  		}
+
+  		if (clsReg.test(env.element.className)) {
+  			// Remove the class 'line-numbers' from the <code>
+  			env.element.className = env.element.className.replace(clsReg, ' ');
+  		}
+  		if (!clsReg.test(pre.className)) {
+  			// Add the class 'line-numbers' to the <pre>
+  			pre.className += ' line-numbers';
+  		}
+
+  		var match = env.code.match(NEW_LINE_EXP);
+  		var linesNum = match ? match.length + 1 : 1;
+  		var lineNumbersWrapper;
+
+  		var lines = new Array(linesNum + 1);
+  		lines = lines.join('<span></span>');
+
+  		lineNumbersWrapper = document.createElement('span');
+  		lineNumbersWrapper.setAttribute('aria-hidden', 'true');
+  		lineNumbersWrapper.className = 'line-numbers-rows';
+  		lineNumbersWrapper.innerHTML = lines;
+
+  		if (pre.hasAttribute('data-start')) {
+  			pre.style.counterReset = 'linenumber ' + (parseInt(pre.getAttribute('data-start'), 10) - 1);
+  		}
+
+  		env.element.appendChild(lineNumbersWrapper);
+
+  		_resizeElement(pre);
+
+  		Prism.hooks.run('line-numbers', env);
+  	});
+
+  	Prism.hooks.add('line-numbers', function (env) {
+  		env.plugins = env.plugins || {};
+  		env.plugins.lineNumbers = true;
+  	});
+  	
+  	/**
+  	 * Global exports
+  	 */
+  	Prism.plugins.lineNumbers = {
+  		/**
+  		 * Get node for provided line number
+  		 * @param {Element} element pre element
+  		 * @param {Number} number line number
+  		 * @return {Element|undefined}
+  		 */
+  		getLine: function (element, number) {
+  			if (element.tagName !== 'PRE' || !element.classList.contains(PLUGIN_NAME)) {
+  				return;
+  			}
+
+  			var lineNumberRows = element.querySelector('.line-numbers-rows');
+  			var lineNumberStart = parseInt(element.getAttribute('data-start'), 10) || 1;
+  			var lineNumberEnd = lineNumberStart + (lineNumberRows.children.length - 1);
+
+  			if (number < lineNumberStart) {
+  				number = lineNumberStart;
+  			}
+  			if (number > lineNumberEnd) {
+  				number = lineNumberEnd;
+  			}
+
+  			var lineIndex = number - lineNumberStart;
+
+  			return lineNumberRows.children[lineIndex];
+  		}
+  	};
+
+  }());
+
+  (function ($) {
+    let header = document.querySelector('.main-header');
+
+    if (!header) {
+      return;
+    } // Detect touch screen and enable scrollbar if necessary
+
+
+    function is_touch_device() {
+      try {
+        document.createEvent('TouchEvent');
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    if (is_touch_device()) {
+      $('.main-header #nav-mobile').css({
+        overflow: 'auto'
+      });
+    }
+  })(jQuery);
+
+  (function ($) {
+    let localNav = $('.local-navigation');
+
+    if (!localNav.length) {
+      return;
+    }
+
+    function throttle(type, name, obj) {
+      obj = obj || window;
+      var running = false;
+
+      var func = function () {
+        if (running) {
+          return;
+        }
+
+        running = true;
+        requestAnimationFrame(function () {
+          obj.dispatchEvent(new CustomEvent(name));
+          running = false;
+        });
+      };
+
+      obj.addEventListener(type, func);
+    }
+    /* init - you can init any event */
+
+
+    throttle('resize', 'optimizedResize'); // Floating-Fixed table of contents
+
+    const toc = localNav.find('.table-of-contents');
+    const footer = $('.main-footer');
+
+    function alignLocalNavigation() {
+      const tocHeight = toc.length ? toc.height() : 0;
+      const footerOffset = footer.length ? footer.offset().top : 0;
+      const bottomOffset = footerOffset - tocHeight;
+      let top = 0;
+
+      if ($('nav').length) {
+        top = $('nav').height();
+      } else if ($('#index-banner').length) {
+        top = $('#index-banner').height();
+      }
+
+      localNav.pushpin({
+        top: top,
+        bottom: bottomOffset
+      });
+    }
+
+    requestAnimationFrame(alignLocalNavigation);
+    window.addEventListener('optimizedResize', alignLocalNavigation);
+  })(jQuery);
+
   (function () {
     function highlightElements() {
-      let codeBlocks = Array.from(document.querySelectorAll('.code code'));
+      let codeBlocks = Array.from(document.querySelectorAll('.code pre'));
       codeBlocks.forEach(element => Prism.highlightElement(element));
     }
 
