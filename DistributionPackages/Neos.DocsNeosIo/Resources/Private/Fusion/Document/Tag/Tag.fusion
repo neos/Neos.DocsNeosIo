@@ -1,0 +1,28 @@
+prototype(Neos.DocsNeosIo:Document.Tag) >
+prototype(Neos.DocsNeosIo:Document.Tag) < prototype(Neos.Fusion:Case) {
+    inBackend {
+        condition = ${node.context.inBackend}
+        renderer = Neos.DocsNeosIo:Document.AbstractPage {
+            body.subtitle = 'You can define a notice content below. This notice will be displayed on all tagged pages.'
+            body.content = Neos.DocsNeosIo:Component.Notice {
+                type = ${q(node).property('type')}
+                title = Neos.Neos:Editable {
+                    property = 'noticeTitle'
+                }
+                content = Neos.Neos:Editable {
+                    property = 'text'
+                }
+            }
+        }
+    }
+    default {
+        condition = ${true}
+        renderer = Neos.Fusion:Http.Message {
+            httpResponseHead.statusCode = 404
+            content = Neos.Fusion:Template {
+                templatePath = 'resource://MOC.NotFound/Private/Templates/404.html'
+                path = '404'
+            }
+        }
+    }
+}

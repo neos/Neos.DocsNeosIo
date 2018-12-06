@@ -1,0 +1,32 @@
+prototype(Neos.DocsNeosIo:Document.Tags) >
+prototype(Neos.DocsNeosIo:Document.Tags) < prototype(Neos.Fusion:Case) {
+    inBackend {
+        condition = ${node.context.inBackend}
+        renderer = Neos.DocsNeosIo:Document.AbstractPage {
+            body = Neos.Fusion:Component {
+                renderer = afx`
+                    <div class="section">
+                        <div class="container">
+                            <div class="row" style="margin-bottom: 0;">
+                                <div class="col s12 center-on-small-only">
+                                    <br /><br />
+                                    <h3 class="header">You can add additional tags here.</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        }
+    }
+    default {
+        condition = ${true}
+        renderer = Neos.Fusion:Http.Message {
+            httpResponseHead.statusCode = 404
+            content = Neos.Fusion:Template {
+                templatePath = 'resource://MOC.NotFound/Private/Templates/404.html'
+                path = '404'
+            }
+        }
+    }
+}

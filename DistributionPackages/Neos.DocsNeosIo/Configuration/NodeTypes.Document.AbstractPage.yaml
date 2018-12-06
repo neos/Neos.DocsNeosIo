@@ -20,6 +20,15 @@
             placeholder: 'Enter subtitle here...'
       options:
         silhouette: 'text.plain'
+    tags:
+      type: references
+      ui:
+        label: 'Tags'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+          editorOptions:
+            nodeTypes: ['Neos.DocsNeosIo:Document.Tag']
     hideFromMainMenu:
       type: boolean
       ui:

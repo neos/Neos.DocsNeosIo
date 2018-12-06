@@ -1,0 +1,13 @@
+prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentComponent) {
+    id = false
+    title = false
+    content = false
+    type = 'todo'
+
+    renderer = afx`
+        <div id={props.id} class="card-panel amber lighten-2">
+            <h4 @if.has={props.title || node.context.inBackend} class="header">{props.title}</h4>
+            <div>{props.content}</div>
+        </div>
+    `
+}

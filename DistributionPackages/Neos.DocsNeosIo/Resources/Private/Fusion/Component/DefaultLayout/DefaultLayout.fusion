@@ -4,6 +4,17 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
 	content = ''
     navCollection = false
 
+    tagNotices = Neos.Fusion:Collection {
+        collection = ${q(node).property('tags')}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Component.Notice {
+            @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}
+            type = ${q(node).property('type')}
+            title = ${q(node).property('noticeTitle')}
+            content = ${q(node).property('text')}
+        }
+    }
+
 	renderer = afx`
 		<Neos.DocsNeosIo:Component.Header />
         <main>
@@ -12,7 +23,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
                     <div class="row" style="margin-bottom: 0;">
                         <div class="col s12 m11 offset-m1 xl10 offset-xl1 center-on-small-only">
                             <h1 class="header">{props.title}</h1>
-                            <h4 class="light">{props.subtitle}</h4>
+                            <h4 class="light" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</h4>
                         </div>
                     </div>
                 </div>
@@ -20,6 +31,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
             <div class="container">
                 <div class="row">
                     <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+                        {props.tagNotices}
                         {props.content}
                     </div>
                     <div class="col hide-on-small-only m3 xl3 offset-xl1">

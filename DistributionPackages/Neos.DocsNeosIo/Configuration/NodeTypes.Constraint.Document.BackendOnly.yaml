@@ -1,0 +1,11 @@
+'Neos.DocsNeosIo:Constraint.Document.BackendOnly':
+  superTypes:
+    'Neos.DocsNeosIo:Mixin.HideSeo': true
+    'Neos.GoogleAnalytics:StatsTabMixin': false
+    'Jonnitto.Sitemap:RemoveFromSitemap': true
+  properties:
+    _hiddenInIndex:
+      defaultValue: true
+      ui:
+        inspector:
+          group: null

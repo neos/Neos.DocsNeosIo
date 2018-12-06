@@ -1,0 +1,13 @@
+'Neos.DocsNeosIo:Document.Tags':
+  superTypes:
+    'Neos.Neos:Document': true
+    'Neos.DocsNeosIo:Constraint.Document.BackendOnly': true
+  ui:
+    label: Tags
+    icon: icon-tags
+    position: 900
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Neos.DocsNeosIo:Document.Tag': true
+      'Neos.DocsNeosIo:Document.Tags': true
