@@ -26,6 +26,7 @@
         "sitegeist/neosguidelines": "^1.2",
         "sitegeist/silhouettes": "^1.0",
 
+        "jonnitto/prettyembedyoutube": "~5.0",
         "neos/nodetypes-contentreferences": "*"
     },
     "autoload": {

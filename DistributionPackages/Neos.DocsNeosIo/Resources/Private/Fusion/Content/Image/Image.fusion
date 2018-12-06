@@ -2,10 +2,14 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
 	alternativeText = ${node.properties.alternativeText}
 	src = Neos.DocsNeosIo:Component.ImageUri {
 		@context.asset = ${q(node).property('image')}
-		@context.maximumWidth = 900
+		@context.maximumWidth = 1920
 	}
 
 	renderer = afx`
-		<img src={props.src} alt={props.alternativeText} />
+        <div class="image center">
+            <div class="image-container">
+                <img src={props.src} alt={props.alternativeText} style="width:100%;" />
+            </div>
+        </div>
 	`
 }
