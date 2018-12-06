@@ -30,3 +30,9 @@ Neos:
     #     contentBlocks:
     #       position: 110
     #       label: 'Content Blocks'
+    
+    Ui:
+      frontendConfiguration:
+        defaultInlineEditor: 'ckeditor5'
+        #TODO: should we turn off the hotkeys? they fire even when inline-editing? (at least in ckeditor4)
+        #hotkeys: ~
