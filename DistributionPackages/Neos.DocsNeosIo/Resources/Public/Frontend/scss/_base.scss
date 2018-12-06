@@ -11,6 +11,7 @@ html {
   border-radius: 0;
   box-shadow: none;
 
+  &:active,
   &:focus {
     background-color: map-get($brand-colors, primary);
   }
