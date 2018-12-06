@@ -380,54 +380,6 @@ thead {
 }
 
 
-// Prism Styling
-code,
-pre {
-	position: relative;
-	font-size: 1.1rem;
-}
-
-.directory-markup {
-	font-size: 1rem;
-	line-height: 1.1rem !important;
-}
-:not(pre) > code[class*="language-"] {
-	padding: 0.1em 0.25em;
-	border: solid 1px rgba(51, 51, 51, 0.12);
-}
-
-// Styles code blocks
-pre[class*="language-"] {
-	&:before {
-		position: absolute;
-		padding: 1px 5px;
-		background: hsl(30, 10%, 90%);
-		top: 0;
-		left: 0;
-		font-family: $font-stack;
-		-webkit-font-smoothing: antialiased;
-		color: #555;
-		content: attr(class);
-		font-size: 0.9rem;
-		border: solid 1px rgba(51, 51, 51, 0.12);
-		border-top: none;
-		border-left: none;
-	}
-	padding: 25px 12px 7px 12px;
-	border: solid 1px rgba(51, 51, 51, 0.12);
-	background: rgba(246, 246, 246, 0.2);
-}
-
-pre[class*="language-"],
-code[class*="language-"] {
-	line-height: 1.3;
-}
-
-// Styles one-liners
-:not(pre) > code[class*="language-"] {
-	background: rgba(246, 246, 246, 0.3);
-}
-
 //About page styling
 .image-container {
 	width: 100%;

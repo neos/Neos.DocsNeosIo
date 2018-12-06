@@ -1,0 +1,58 @@
+'Neos.DocsNeosIo:Content.Code':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  ui:
+    label: Code
+    icon: icon-code
+    position: 300
+    inlineEditable: true
+  properties:
+    language:
+      type: string
+      defaultValue: ''
+      reloadIfChanged: true
+      ui:
+        label: 'Language'
+        inspector:
+          group: 'general'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              '':
+                label: '(Default)'
+              yaml:
+                label: 'YAML'
+              php:
+                label: 'PHP'
+              bash:
+                label: 'Bash'
+              directory:
+                label: 'Directory structure'
+              css:
+                label: 'CSS'
+              html:
+                label: 'HTML'
+              scss:
+                label: 'SCSS'
+              sass:
+                label: 'SASS'
+              javascript:
+                label: 'JavaScript'
+              typescript:
+                label: 'Typescript (JS)'
+              sql:
+                label: 'SQL'
+              markdown:
+                label: 'Markdown'
+    code:
+      type: string
+      defaultValue: 'Enter code here...'
+      ui:
+        label: 'Edit code'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Edit code'

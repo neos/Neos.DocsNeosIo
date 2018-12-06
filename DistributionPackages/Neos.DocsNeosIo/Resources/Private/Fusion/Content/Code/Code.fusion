@@ -1,0 +1,15 @@
+prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) {
+    language = ${'language-' + (q(node).property('language') || 'markup')}
+    language.@process.directory = ${value=='language-directory' ? 'language-markup language-directory' : value}
+    code = ${String.htmlSpecialChars(q(node).property('code'))}
+
+	renderer = afx`
+        <div class="code">
+            <pre class={props.language}>
+                <code class={props.language}>
+                    {props.code}
+                </code>
+            </pre>
+        </div>
+	`
+}

@@ -18,5 +18,4 @@ Carbon:
           Body:
             - https://code.jquery.com/jquery-3.2.1.min.js
             - materialize.js
-            - prism.js
-            - app.js
+            - app.js[data-manual]
