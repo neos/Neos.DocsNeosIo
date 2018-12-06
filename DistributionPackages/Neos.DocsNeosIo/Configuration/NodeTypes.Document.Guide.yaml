@@ -1,0 +1,9 @@
+'Neos.DocsNeosIo:Document.Guide':
+  superTypes:
+    'Neos.DocsNeosIo:Document.AbstractPage': true
+  ui:
+    label: Guide
+    help:
+      message: 'Learning-oriented explanation of a topic, might offer multiple solutions and is less opinionated'
+    icon: icon-hands-helping
+    position: 500
