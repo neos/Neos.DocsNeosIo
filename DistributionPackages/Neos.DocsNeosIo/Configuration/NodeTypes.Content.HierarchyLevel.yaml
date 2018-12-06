@@ -1,0 +1,38 @@
+'Neos.DocsNeosIo:Content.HierarchyLevel':
+  label: "${'H' + (q(node).parents('[instanceof Neos.DocsNeosIo:Content.HierarchyLevel]').count()+2) + ' ' + (String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('title') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...'))}"
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+    'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item': true
+  ui:
+    label: 'Hierarchy Level'
+    icon: icon-level-down
+    position: 10
+    inspector:
+      groups:
+        layout:
+          label: 'Format'
+          icon: 'icon-font'
+  constraints:
+    nodeTypes:
+      'Neos.DocsNeosIo:Constraint.Content.Restricted': false
+  properties:
+    headlineSize:
+      type: string
+      defaultValue: 'h2'
+      ui:
+        label: 'Visual headline size'
+        reloadIfChanged: true
+        inspector:
+          group: 'layout'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              h2:
+                label: 'h2'
+              h3:
+                label: 'h3'
+              h4:
+                label: 'h4'
+              h5:
+                label: 'h5'

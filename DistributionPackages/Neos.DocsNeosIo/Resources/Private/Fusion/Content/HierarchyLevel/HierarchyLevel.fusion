@@ -1,0 +1,20 @@
+prototype(Neos.DocsNeosIo:Content.HierarchyLevel) < prototype(Neos.Neos:ContentComponent) {
+    id = Neos.DocsNeosIo:Helper.StringToHash {
+        value = ${q(node).property('title') || node.identifier}
+    }
+    title = Neos.Neos:Editable {
+        property = 'title'
+        block = false
+    }
+    headlineSize = ${q(node).property('headlineSize')}
+    content = Neos.Neos:ContentCollection {
+        nodePath = '.'
+    }
+
+    renderer = afx`
+        <div id={props.id} class="hierarchy-level section scrollspy">
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
+            <div>{props.content}</div>
+        </div>
+    `
+}
