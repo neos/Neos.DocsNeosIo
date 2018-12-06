@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Document.Page) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+prototype(Neos.DocsNeosIo:Document.Cookbook) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
     body.navCollection = ${q(node).find('main').children()}
     body.content = Neos.Fusion:Component {
         main = Neos.Neos:ContentCollection {
