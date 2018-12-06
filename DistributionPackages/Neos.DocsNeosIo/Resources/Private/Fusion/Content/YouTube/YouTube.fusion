@@ -1,0 +1,3 @@
+prototype(Neos.DocsNeosIo:Content.YouTube) < prototype(Jonnitto.PrettyEmbedYoutube:YouTube) {
+    renderer.attributes.class.style = 'video-container'
+}

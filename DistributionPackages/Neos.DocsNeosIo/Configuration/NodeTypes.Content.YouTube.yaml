@@ -1,0 +1,3 @@
+'Neos.DocsNeosIo:Content.YouTube':
+  superTypes:
+    'Jonnitto.PrettyEmbedYoutube:YouTube': true

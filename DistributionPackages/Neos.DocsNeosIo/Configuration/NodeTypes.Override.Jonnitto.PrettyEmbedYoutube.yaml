@@ -1,0 +1,4 @@
+
+# We wrap it in our own node type
+'Jonnitto.PrettyEmbedYoutube:YouTube':
+  abstract: true
