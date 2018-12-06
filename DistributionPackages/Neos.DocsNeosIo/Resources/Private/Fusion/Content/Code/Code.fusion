@@ -7,6 +7,7 @@ prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) 
         <div class="code">
             <pre class={props.class} data-label={props.language}>
                 <code>{props.code}</code>
+            </pre>
         </div>
 	`
 }
