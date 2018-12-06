@@ -18,20 +18,14 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 		itemRenderer = Neos.DocsNeosIo:Component.Navigation.LevelRenderer
 	}
 
+	renderNextLevel = ${(node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0))) && this.navigationItems}
+
 	renderer = afx`
-		<li class={props.itemClass} @if.hasNoItems={!props.navigationItems}>
+		<li class={props.itemClass} >
 			<Carbon.Link:Link title={props.itemTitle} node={node} additionalClass="navigation-link" backendLink={true} />
-			<ul class={props.navigationClass}>
+			<ul @if.hasNextLevel={props.renderNextLevel} class={props.navigationClass}>
 				{props.navigationItems}
 			</ul>
-		</li>
-		<li class={props.itemClass} @if.hasItems={props.navigationItems}>
-			<a class="collapsible-header">{props.itemTitle}</a>
-			<div class="collapsible-body">
-				<ul class={props.navigationClass + ' collapsible collapsible-accordion'}>
-				    {props.navigationItems}
-                </ul>
-			</div>
 		</li>
 	`
 }

@@ -19,8 +19,8 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                         <object id="front-page-logo" type="image/svg+xml" data={props.logoUri}>Neos CMS Docs</object>
                     </a>
                 </li>
-                <li class="no-padding">
-                    <ul class="collapsible collapsible-accordion">
+                <li>
+                    <ul>
                         <Neos.DocsNeosIo:Component.Navigation startingPoint={site} />
                     </ul>
                 </li>
