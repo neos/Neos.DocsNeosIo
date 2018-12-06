@@ -6,3 +6,11 @@
   ui:
     label: i18n
     icon: icon-globe
+  properties:
+    navReference:
+      type: references
+      ui:
+        label: 'Alternative navigation root'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
