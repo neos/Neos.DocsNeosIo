@@ -1,7 +1,7 @@
 
 Carbon:
   IncludeAssets:
-    GoogleFonts: Material+Icons|Inconsolata
+    GoogleFonts: Material+Icons|Work+Sans:300,200,200italic,300italic,400,400italic
     Packages:
       aa_Theme:
         Path:
