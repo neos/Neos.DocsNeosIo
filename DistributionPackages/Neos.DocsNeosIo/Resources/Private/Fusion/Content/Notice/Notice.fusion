@@ -1,0 +1,20 @@
+prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent) {
+    id = Neos.DocsNeosIo:Helper.StringToHash {
+        value = ${q(node).property('title') || node.identifier}
+    }
+    title = Neos.Neos:Editable {
+        property = 'title'
+        block = false
+    }
+    text = Neos.Neos:Editable {
+        property = 'text'
+        block = false
+    }
+
+    renderer = afx`
+        <div id={props.id} class="card-panel amber lighten-2">
+            <h4 @if.has={props.title || node.context.inBackend} class="header">{props.title}</h4>
+            <div>{props.text}</div>
+        </div>
+    `
+}
