@@ -1,5 +1,5 @@
 prototype(Neos.DocsNeosIo:Document.CookbooksOverview) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    body.navCollection = false
+    body.fullwidth = true
     body.content = Neos.Fusion:Collection {
         @process.wrap = ${'<div class="row">' + value + '</div>'}
         collection = ${q(node).children()}
@@ -13,3 +13,4 @@ prototype(Neos.DocsNeosIo:Document.CookbooksOverview) < prototype(Neos.DocsNeosI
         }
     }
 }
+
