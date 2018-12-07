@@ -7240,6 +7240,7 @@ html {
     background: rgba(246, 246, 246, 0.2); }
 
 .docs-youtube {
-  margin: 16px 0;
-  padding-top: 56.25%;
-  padding-bottom: 0; }
+  margin: 16px 0; }
+  .docs-youtube.jonnitto-prettyembedyoutube--play {
+    padding-top: 56.25%;
+    padding-bottom: 0; }
