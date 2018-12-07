@@ -41,10 +41,14 @@
 .fullwidth-layout {
 	max-width: none;
 
-	.neos-contentcollection > *:not(.docs-youtube):not(.docs-section) {
+	.neos-contentcollection > *:not(.docs-youtube):not(.docs-section),
+	.authors,
+	.docs-section > *:first-child { // spacing for the headline
 		max-width: 960px;
-		margin-left: 1.5rem;
-		margin-right: 1.5rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
 	}
 
 	.docs-youtube {
@@ -58,13 +62,5 @@
 	.docs-section .docs-youtube {
 		margin-top: 16px;
 		margin-bottom: 16px;
-	}
-
-	.docs-section {
-		> *:first-child {
-			// spacing for the headline
-			margin-left: 1.5rem;
-			margin-right: 1.5rem;
-		}
 	}
 }
