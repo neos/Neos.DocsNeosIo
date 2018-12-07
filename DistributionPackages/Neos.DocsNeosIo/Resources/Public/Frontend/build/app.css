@@ -7147,6 +7147,10 @@ html {
 
 .fullwidth-layout {
   max-width: none; }
+  .fullwidth-layout .neos-contentcollection > *:not(.video-container) {
+    max-width: 960px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem; }
   .fullwidth-layout .video-container:first-child {
     margin-top: 0; }
   .fullwidth-layout .video-container:last-child {

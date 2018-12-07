@@ -41,6 +41,12 @@
 .fullwidth-layout {
 	max-width: none;
 
+	.neos-contentcollection > *:not(.video-container) {
+		max-width: 960px;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+	}
+
 	.video-container {
 		&:first-child {
 			margin-top: 0;
