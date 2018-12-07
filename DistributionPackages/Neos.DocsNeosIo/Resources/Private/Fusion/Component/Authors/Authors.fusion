@@ -21,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentCompon
             </div>
         </div>
         <div class="authors authors-single" @if.hasOne={props.authors && Array.length(props.authors) == 1}>
-            <div class="row">
+            <div class="row hide-on-small-only">
               <div class="col s12 m3 center-on-small-only profile-image-col">
                 <div class="image-container">
                   <img src={Array.first(props.authors).gravatar} class="profile-image round" />
