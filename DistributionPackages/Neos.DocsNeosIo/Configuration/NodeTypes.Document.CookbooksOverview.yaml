@@ -1,0 +1,15 @@
+'Neos.DocsNeosIo:Document.CookbooksOverview':
+  superTypes:
+    'Neos.DocsNeosIo:Document.AbstractPage': true
+  ui:
+    label: 'Cookbooks Overview'
+    help:
+      message: 'Task-oriented step-by-step description of a solution, can be opinionated'
+    icon: icon-book-open
+    position: 500
+  childNodes:
+    main: ~
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Neos.DocsNeosIo:Document.Cookbook': true

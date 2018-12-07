@@ -1,0 +1,15 @@
+prototype(Neos.DocsNeosIo:Document.CookbooksOverview) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    body.navCollection = false
+    body.content = Neos.Fusion:Collection {
+        @process.wrap = ${'<div class="row">' + value + '</div>'}
+        collection = ${q(node).children()}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Document.Cookbook.Short
+    }
+
+    @cache {
+        entryTags {
+            1 = ${Neos.Caching.nodeTypeTag('Neos.DocsNeosIo:Document.Cookbook', documentNode)}
+        }
+    }
+}

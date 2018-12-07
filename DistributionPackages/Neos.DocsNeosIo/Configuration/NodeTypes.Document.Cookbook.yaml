@@ -1,9 +1,29 @@
 'Neos.DocsNeosIo:Document.Cookbook':
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
+    'Neos.DocsNeosIo:Constraint.Document.Restricted': true
   ui:
     label: Cookbook
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
     icon: icon-book-open
     position: 500
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Neos.DocsNeosIo:Document.Cookbook': true
+  properties:
+    publishingDate:
+      type: DateTime
+      defaultValue: now
+      ui:
+        label: 'Publication Date'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+          position: 'after uriPathSegment'
+          editorOptions:
+            format: 'd.m.Y'
+      validation:
+        Neos.Neos/Validation/NotEmptyValidator: {  }
+        Neos.Neos/Validation/DateTimeValidator: {  }

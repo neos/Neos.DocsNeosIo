@@ -1,0 +1,32 @@
+prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Component) {
+    title = ${q(node).property('title')}
+    subtitle = ${q(node).property('subtitle')}
+    publishingDate = ${q(node).property('publishingDate')}
+    publishingDate.@process.format = ${value ? Date.format(value, 'd. F Y') : ''}
+    tags = Neos.Fusion:Collection {
+        collection = ${q(node).property('tags')}
+        itemName = 'node'
+        itemRenderer = Carbon.Link:Link {
+            @if.notInternal = ${!String.startsWith(q(node).property('title'), 'Needs')}
+            attributes.class = 'chip'
+            node = ${node}
+            content = ${q(node).property('title')}
+        }
+    }
+
+    renderer = afx`
+        <div class="col s12 m6 l4">
+            <div class="cookbook-short card">
+                <div class="card-content white-text">
+                    <span class="new badge" data-badge-caption="NEW"></span>
+                    <Carbon.Link:Link node={node} backendLink={true} additionalClass="card-title white-text">{props.title}</Carbon.Link:Link>
+                    {props.tags}<br />
+                    <i>{props.publishingDate}</i>
+                </div>
+                <Carbon.Link:Link node={node} backendLink={true} additionalClass="card-action white-text">
+                    {props.subtitle}
+                </Carbon.Link:Link>
+            </div>
+        </div>
+    `
+}

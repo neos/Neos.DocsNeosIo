@@ -1,0 +1,12 @@
+.cookbook-short {
+	margin: 16px 0;
+	background: map-get($brand-colors, secondary);
+
+	.card-content {
+		background: map-get($brand-colors, primary);
+	}
+
+	.card-action {
+		display: block;
+	}
+}
