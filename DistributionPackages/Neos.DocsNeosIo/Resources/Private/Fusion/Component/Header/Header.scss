@@ -26,6 +26,11 @@
       margin-top: 32px;
       margin-bottom: 136px;
 
+	  @media #{$medium-and-down} {
+		  margin-top: 60px;
+		  margin-bottom: 60px;
+	  }
+
       &:hover,
       #logo-container:hover {
         background-color: transparent;
