@@ -94,12 +94,6 @@ footer.example {
 	font-weight: bold;
 }
 
-@media #{$medium-and-down} {
-	footer.page-footer .container {
-		text-align: center;
-	}
-}
-
 nav.top-nav {
 	height: 110px;
 	box-shadow: none;

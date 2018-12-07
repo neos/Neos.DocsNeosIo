@@ -1,17 +1,23 @@
 .main-footer {
-  margin-top: 40px;
-  background-color: transparent;
-  border-top: 1px solid $border-color;
-  font-size: 0.9rem;
-  color: inherit;
+	margin-top: 40px;
+	background-color: transparent;
+	border-top: 1px solid $border-color;
+	font-size: 0.9rem;
+	color: inherit;
 
-  .footer-copyright {
-    color: inherit;
-    background-color: transparent;
-    font-style: italic;
-  }
+	.footer-copyright {
+	color: inherit;
+	background-color: transparent;
+	font-style: italic;
+	}
 
-  a {
-    @extend .grey-text.text-darken-2
-  }
+	a {
+		@extend .grey-text.text-darken-2
+	}
+
+	.container {
+		@media #{$medium-and-down} {
+			text-align: center;
+		}
+	}
 }
