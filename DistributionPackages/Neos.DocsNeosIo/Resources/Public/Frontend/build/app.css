@@ -7141,6 +7141,12 @@ html {
     #index-banner h4 {
       margin-bottom: 0; } }
 
+.fullwidth-layout .video-container:first-child {
+  margin-top: 0; }
+
+.fullwidth-layout .video-container:last-child {
+  margin-bottom: -40px; }
+
 .main-footer {
   margin-top: 40px;
   background-color: transparent;
@@ -7172,7 +7178,7 @@ html {
       padding-left: 10px; }
 
 .cookbook-short {
-  margin: 16px 0;
+  margin: 1.5rem 0;
   background: #26224C; }
   .cookbook-short .card-content {
     background: #00ADEE; }
