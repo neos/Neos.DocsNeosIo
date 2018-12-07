@@ -7,6 +7,7 @@
   "devDependencies": {
     "@babel/core": "^7.1.5",
     "@babel/preset-env": "^7.1.5",
+    "@fortawesome/fontawesome-free": "^5.5.0",
     "autoprefixer": "^7.1.5",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -42,6 +43,7 @@
   ],
   "scripts": {
     "clean": "rm -Rf build && mkdir build",
+    "css-copy": "cp -R node_modules/@fortawesome/fontawesome-free/webfonts build/fontawesome",
     "css-deploy": "npm run css-build && npm run css-postcss",
     "css-build": "node-sass scss/app.scss build/app.css",
     "css-postcss": "postcss --use autoprefixer --output build/app.css build/app.css",
@@ -50,7 +52,7 @@
     "js-copy-materialize": "cp node_modules/materialize-css/dist/js/materialize.js build/materialize.js",
     "js-build": "rollup --config",
     "js-watch": "npm run js-build -- --watch",
-    "start": "npm run clean && npm-run-all --parallel css-watch js-copy js-watch",
-    "deploy": "npm-run-all --parallel css-deploy js-copy js-build"
+    "start": "npm run clean && npm-run-all --parallel css-copy css-watch js-copy js-watch",
+    "deploy": "npm-run-all --parallel css-copy css-deploy js-copy js-build"
   }
 }

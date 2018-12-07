@@ -7,7 +7,7 @@ prototype(Neos.DocsNeosIo:Helper.IconProcessor) < prototype(Neos.Fusion:Value) {
     value = Neos.NeosIo:IconReplacer {
         haystack = ${value}
         tagName = 'i'
-        classStub = 'inline-icon fa fa-inverse fa-'
+        classStub = 'inline-icon fas fa-'
     }
 }
 

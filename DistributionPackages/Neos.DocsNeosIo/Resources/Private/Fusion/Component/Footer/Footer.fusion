@@ -26,10 +26,10 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                   <div class="col l4 s12" style="overflow: hidden;">
                     <h5>Connect</h5>
                     <ul>
-                        <li><a target="_blank" rel="noopener" href="https://github.com/neos"><i class="fa fa-fw fa-github"></i> GitHub</a></li>
-                        <li><a target="_blank" rel="noopener" href="https://twitter.com/NeosCMS"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
-                        <li><a target="_blank" rel="noopener" href="https://www.facebook.com/NeosCMS"><i class="fa fa-fw fa-facebook"></i> Facebook</a></li>
-                        <li><a target="_blank" rel="noopener" href="https://youtube.com/c/NeosCMS"><i class="fa fa-fw fa-youtube"></i> YouTube</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://github.com/neos"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://twitter.com/NeosCMS"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://www.facebook.com/NeosCMS"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://youtube.com/c/NeosCMS"><i class="fab fa-youtube"></i> YouTube</a></li>
                     </ul>
                   </div>
                 </div>

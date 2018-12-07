@@ -9,6 +9,12 @@
 @import "../node_modules/prismjs/plugins/line-numbers/prism-line-numbers";
 // @import "../node_modules/prismjs/plugins/toolbar/toolbar";
 
+// font awesome
+$fa-font-path: "../build/fontawesome";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
+
 // Neos design
 @import "variables";
 @import "fonts";
