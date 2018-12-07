@@ -7147,14 +7147,17 @@ html {
 
 .fullwidth-layout {
   max-width: none; }
-  .fullwidth-layout .neos-contentcollection > *:not(.video-container) {
+  .fullwidth-layout .neos-contentcollection > *:not(.docs-youtube) {
     max-width: 960px;
     padding-left: 0.75rem;
     padding-right: 0.75rem; }
-  .fullwidth-layout .video-container:first-child {
+  .fullwidth-layout .docs-youtube:first-child {
     margin-top: 0; }
-  .fullwidth-layout .video-container:last-child {
+  .fullwidth-layout .docs-youtube:last-child {
     margin-bottom: -40px; }
+  .fullwidth-layout .docs-section .docs-youtube {
+    margin-top: 16px;
+    margin-bottom: 16px; }
 
 .main-footer {
   margin-top: 40px;

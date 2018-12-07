@@ -41,18 +41,22 @@
 .fullwidth-layout {
 	max-width: none;
 
-	.neos-contentcollection > *:not(.video-container) {
+	.neos-contentcollection > *:not(.docs-youtube) {
 		max-width: 960px;
 		padding-left: 0.75rem;
 		padding-right: 0.75rem;
 	}
 
-	.video-container {
+	.docs-youtube {
 		&:first-child {
 			margin-top: 0;
 		}
 		&:last-child {
 			margin-bottom: -40px;
 		}
+	}
+	.docs-section .docs-youtube {
+		margin-top: 16px;
+		margin-bottom: 16px;
 	}
 }
