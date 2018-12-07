@@ -39,6 +39,8 @@
 }
 
 .fullwidth-layout {
+	max-width: none;
+
 	.video-container {
 		&:first-child {
 			margin-top: 0;
