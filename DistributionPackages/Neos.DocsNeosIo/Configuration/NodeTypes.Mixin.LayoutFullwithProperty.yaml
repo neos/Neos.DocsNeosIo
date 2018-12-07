@@ -1,0 +1,11 @@
+'Neos.DocsNeosIo:Mixin.LayoutFullwithProperty':
+  abstract: true
+  properties:
+    fullwidth:
+      type: boolean
+      ui:
+        label: 'Fullwidth layout'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+          position: 'after uriPathSegment'

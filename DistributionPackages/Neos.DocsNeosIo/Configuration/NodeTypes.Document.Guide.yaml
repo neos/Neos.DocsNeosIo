@@ -1,6 +1,7 @@
 'Neos.DocsNeosIo:Document.Guide':
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
+    'Neos.DocsNeosIo:Mixin.LayoutFullwithProperty': true
   ui:
     label: Guide
     help:

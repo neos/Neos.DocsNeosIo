@@ -1,6 +1,7 @@
 'Neos.DocsNeosIo:Document.Cookbook':
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
+    'Neos.DocsNeosIo:Mixin.LayoutFullwithProperty': true
     'Neos.DocsNeosIo:Constraint.Document.Restricted': true
   ui:
     label: Cookbook
@@ -13,14 +14,6 @@
       'Neos.Neos:Document': false
       'Neos.DocsNeosIo:Document.Cookbook': true
   properties:
-    fullwidth:
-      type: boolean
-      ui:
-        label: 'Fullwidth layout'
-        reloadIfChanged: true
-        inspector:
-          group: 'document'
-          position: 'after uriPathSegment'
     publishingDate:
       type: DateTime
       defaultValue: now
