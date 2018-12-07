@@ -45,8 +45,12 @@
       line-height: 1;
 
       &.active {
-        background-color: rgba(50, 50, 50, 0.06);
+        background-color: rgba(50, 50, 50, 0.03);
       }
+
+	  &.current > a {
+		  background-color: rgba(50, 50, 50, 0.06);
+	  }
 
       a {
         line-height: 1.5;
