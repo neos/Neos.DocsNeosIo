@@ -1,13 +1,16 @@
 prototype(Neos.DocsNeosIo:Document.Cookbook) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    body.navCollection = ${q(node).find('main').children()}
-    body.fullwidth = ${q(node).property('fullwidth')}
-    body.content = Neos.Fusion:Component {
-        main = Neos.Neos:ContentCollection {
-            nodePath = 'main'
-        }
+    body {
+        authors = ${q(node).property('authors') ? DocsNeosIo.UserData.getData(q(node).property('authors')) : ''}
+        navCollection = ${q(node).find('main').children()}
+        fullwidth = ${q(node).property('fullwidth')}
+        content = Neos.Fusion:Component {
+            main = Neos.Neos:ContentCollection {
+                nodePath = 'main'
+            }
 
-        renderer = afx`
-            {props.main}
-		`
+            renderer = afx`
+                {props.main}
+            `
+        }
     }
 }

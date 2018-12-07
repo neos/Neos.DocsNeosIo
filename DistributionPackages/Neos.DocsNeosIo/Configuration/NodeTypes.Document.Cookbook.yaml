@@ -28,3 +28,15 @@
       validation:
         Neos.Neos/Validation/NotEmptyValidator: {  }
         Neos.Neos/Validation/DateTimeValidator: {  }
+    authors:
+      type: array
+      ui:
+        label: 'Author(s)'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+          position: 'after createdAt'
+          editor: Neos.Neos/Inspector/Editors/SelectBoxEditor
+          editorOptions:
+            placeholder: Choose
+            dataSourceIdentifier: neos-docsneosio-editors

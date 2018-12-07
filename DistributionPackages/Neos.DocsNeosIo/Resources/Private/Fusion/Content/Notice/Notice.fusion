@@ -1,17 +1,21 @@
 prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent) {
-    renderer = Neos.DocsNeosIo:Component.Notice {
-        id = Neos.DocsNeosIo:Helper.StringToHash {
-            value = ${q(node).property('title') || node.identifier}
-        }
-        title = Neos.Neos:Editable {
-            property = 'title'
-            block = false
-            @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
-        }
-        content = Neos.Neos:Editable {
-            property = 'text'
-            block = false
-            @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+    renderer = Neos.Fusion:Tag {
+        attributes.class = 'docs-notice'
+        tagName = 'div'
+        content = Neos.DocsNeosIo:Component.Notice {
+            id = Neos.DocsNeosIo:Helper.StringToHash {
+                value = ${q(node).property('title') || node.identifier}
+            }
+            title = Neos.Neos:Editable {
+                property = 'title'
+                block = false
+                @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+            }
+            content = Neos.Neos:Editable {
+                property = 'text'
+                block = false
+                @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+            }
         }
     }
 }

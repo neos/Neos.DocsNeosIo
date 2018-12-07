@@ -1,0 +1,19 @@
+.authors {
+	margin-top: 30px;
+
+	h4 {
+		margin-top: 0;
+	}
+
+	.profile-image-col {
+		max-width: 200px;
+	}
+
+	.profile-image {
+		width: 100%;
+
+		&.round {
+			border-radius: 50%;
+		}
+	}
+}

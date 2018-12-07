@@ -1,4 +1,5 @@
 prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:ContentComponent) {
+    authors = false
     title = false
     subtitle = false
 	content = ''
@@ -21,10 +22,23 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
         <main>
             <div class="section" id="index-banner">
                 <div class="container">
-                    <div class="row" style="margin-bottom: 0;">
+                    <div class="row" style="margin-bottom: 0;" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) != 1}>
                         <div class="col s12 m11 offset-m1 xl10 offset-xl1 center-on-small-only">
                             <h1 class="header">{props.title}</h1>
                             <h4 class="light" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</h4>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 0;" @if.hasOneAuthor={props.authors && Array.length(props.authors) == 1}>
+                        <div class="col s12 m8 offset-m1 xl7 offset-xl1 center-on-small-only">
+                            <h1 class="header">{props.title}</h1>
+                            <h4 class="light" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</h4>
+                        </div>
+                        <div class="col s12 m3 center">
+                            <div class="image-container">
+                                <img src={Array.first(props.authors).gravatar} class="profile-image" style="margin-top: 16px;"/><br />
+                                <i>Written by</i><br/>
+                                {Array.first(props.authors).label}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -32,12 +46,14 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
             <div class="container fullwidth-layout" @if.is={props.fullwidth}>
                 {props.tagNotices}
                 {props.content}
+                <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
             </div>
             <div class="container" @if.isNot={!props.fullwidth}>
                 <div class="row">
                     <div class="col s12 center-on-small-only m8 offset-m1 xl7 offset-xl1">
                         {props.tagNotices}
                         {props.content}
+                        <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
                     </div>
                     <div @if.has={props.navCollection} class="col hide-on-small-only m3 xl3 offset-xl1">
                         <Neos.DocsNeosIo:Component.LocalNavigation collection={props.navCollection} />

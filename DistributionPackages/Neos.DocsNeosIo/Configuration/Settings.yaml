@@ -14,8 +14,9 @@ Neos:
             options:
               variables:
                 path: '404' # skip suffix in notfound as well
+  Fusion:
     defaultContext:
-      Gravatar: 'Neos\DocsNeosIo\Eel\Helper\GravatarHelper'
+      DocsNeosIo.UserData: 'Neos\DocsNeosIo\Eel\Helper\UserDataHelper'
   Neos:
     eventLog:
       enabled: true
