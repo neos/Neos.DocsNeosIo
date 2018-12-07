@@ -1,0 +1,18 @@
+prototype(Neos.DocsNeosIo:Document.GuidesOverview) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    body.fullwidth = true
+    body.content = Neos.Fusion:Collection {
+        @process.wrap = ${'<div class="guides-overview cards row">' + value + '</div>'}
+        collection = ${q(node).children()}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Document.Guide.Short {
+            @process.wrap = ${'<div class="col s12 m6 xl4">' + value + '</div>'}
+        }
+    }
+
+    @cache {
+        entryTags {
+            1 = ${Neos.Caching.nodeTypeTag('Neos.DocsNeosIo:Document.Guide', documentNode)}
+        }
+    }
+}
+

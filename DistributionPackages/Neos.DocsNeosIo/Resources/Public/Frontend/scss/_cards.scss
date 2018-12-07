@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+.cards {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+.card {
+	margin: 1.5rem 0;
+	background: map-get($brand-colors, secondary);
+	transition: all 0.2s;
+
+	&:active,
+	&:hover,
+	&:focus {
+		@extend .z-depth-4;
+		transform: translate(2px, -3px);
+	}
+
+	.card-content {
+		background: map-get($brand-colors, primary);
+	}
+
+	.tags {
+		margin-top: 20px;
+	}
+
+	.card-action {
+		display: block;
+	}
+}

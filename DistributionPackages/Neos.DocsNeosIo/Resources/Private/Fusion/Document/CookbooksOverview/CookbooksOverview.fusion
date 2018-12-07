@@ -1,10 +1,12 @@
 prototype(Neos.DocsNeosIo:Document.CookbooksOverview) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
     body.fullwidth = true
     body.content = Neos.Fusion:Collection {
-        @process.wrap = ${'<div class="row">' + value + '</div>'}
+        @process.wrap = ${'<div class="cookbooks-overview cards row">' + value + '</div>'}
         collection = ${q(node).children()}
         itemName = 'node'
-        itemRenderer = Neos.DocsNeosIo:Document.Cookbook.Short
+        itemRenderer = Neos.DocsNeosIo:Document.Cookbook.Short {
+            @process.wrap = ${'<div class="col s12 m6 xl4">' + value + '</div>'}
+        }
     }
 
     @cache {
