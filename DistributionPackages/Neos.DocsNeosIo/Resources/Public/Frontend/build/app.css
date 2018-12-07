@@ -6753,10 +6753,6 @@ footer.example {
 .bold > a {
   font-weight: bold; }
 
-@media only screen and (max-width: 992px) {
-  footer.page-footer .container {
-    text-align: center; } }
-
 nav.top-nav {
   height: 110px;
   box-shadow: none;
@@ -7168,8 +7164,6 @@ html {
   .fullwidth-layout .authors,
   .fullwidth-layout .docs-section > *:first-child {
     max-width: 960px;
-    margin-left: auto;
-    margin-right: auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem; }
   .fullwidth-layout .docs-youtube:first-child {
@@ -7190,6 +7184,9 @@ html {
     color: inherit;
     background-color: transparent;
     font-style: italic; }
+  @media only screen and (max-width: 992px) {
+    .main-footer .container {
+      text-align: center; } }
 
 .local-navigation {
   position: relative;
