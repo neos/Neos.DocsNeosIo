@@ -7064,12 +7064,16 @@ html {
     flex-direction: column; }
     .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-link {
       padding: 1rem 2rem; }
-    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-2 a {
-      padding-left: 3rem; }
-    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-3 a {
-      padding-left: 4rem; }
     .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-4 a {
+      padding-left: 2rem; }
+    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-5 a {
+      padding-left: 3rem; }
+    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-6 a {
+      padding-left: 4rem; }
+    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-7 a {
       padding-left: 5rem; }
+    .main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-8 a {
+      padding-left: 6rem; }
 
 .main-header #nav-mobile li.search {
   position: absolute;
@@ -7141,11 +7145,12 @@ html {
     #index-banner h4 {
       margin-bottom: 0; } }
 
-.fullwidth-layout .video-container:first-child {
-  margin-top: 0; }
-
-.fullwidth-layout .video-container:last-child {
-  margin-bottom: -40px; }
+.fullwidth-layout {
+  max-width: none; }
+  .fullwidth-layout .video-container:first-child {
+    margin-top: 0; }
+  .fullwidth-layout .video-container:last-child {
+    margin-bottom: -40px; }
 
 .main-footer {
   margin-top: 40px;
@@ -7234,5 +7239,6 @@ html {
     border: solid 1px rgba(51, 51, 51, 0.12);
     background: rgba(246, 246, 246, 0.2); }
 
-.video-container {
-  margin: 16px 0; }
+.docs-youtube {
+  margin: 16px 0;
+  padding-bottom: 0; }
