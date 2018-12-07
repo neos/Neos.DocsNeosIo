@@ -81,21 +81,33 @@
         padding: 1rem 2rem;
       }
 
-      .navigation-item--level-2 {
+      .navigation-item--level-4 {
+        a {
+          padding-left: 2rem;
+        }
+      }
+
+      .navigation-item--level-5 {
         a {
           padding-left: 3rem;
         }
       }
 
-      .navigation-item--level-3 {
+      .navigation-item--level-6 {
         a {
           padding-left: 4rem;
         }
       }
 
-      .navigation-item--level-4 {
+      .navigation-item--level-7 {
         a {
           padding-left: 5rem;
+        }
+      }
+
+      .navigation-item--level-8 {
+        a {
+          padding-left: 6rem;
         }
       }
     }
