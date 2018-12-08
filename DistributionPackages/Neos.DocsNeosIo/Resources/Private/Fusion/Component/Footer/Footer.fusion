@@ -23,7 +23,7 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                         </div>
                     </a>
                   </div>
-                  <div class="col l4 s12" style="overflow: hidden;">
+                  <div class="col l4 s12">
                     <h5>Connect</h5>
                     <ul>
                         <li><a target="_blank" rel="noopener" href="https://github.com/neos"><i class="fab fa-github"></i> GitHub</a></li>

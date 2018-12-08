@@ -6,13 +6,19 @@
 	color: inherit;
 
 	.footer-copyright {
-	color: inherit;
-	background-color: transparent;
-	font-style: italic;
+		color: inherit;
+		background-color: transparent;
+		font-style: italic;
 	}
 
 	a {
-		@extend .grey-text.text-darken-2
+		@extend .grey-text.text-darken-2;
+
+		&:active,
+		&:hover,
+		&:focus {
+			color: map-get($brand-colors, primary) !important;
+		}
 	}
 
 	.container {
