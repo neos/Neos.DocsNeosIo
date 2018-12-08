@@ -1,0 +1,27 @@
+prototype(Neos.DocsNeosIo:Document.TagList) < prototype(Neos.Fusion:Component) {
+    collection = false
+
+    @context.collection = ${this.collection}
+    tags = Neos.Fusion:Collection {
+        collection = ${collection}
+        itemName = 'node'
+        // itemRenderer = Carbon.Link:Link {
+        //     @if.notInternal = ${!String.startsWith(q(node).property('title'), 'Needs')}
+        //     attributes.class = 'chip'
+        //     node = ${node}
+        //     content = ${q(node).property('title')}
+        // }
+        itemRenderer = afx`
+            <div class="chip" @if.notInternal={!String.startsWith(q(node).property('title'), 'Needs')}>
+                {q(node).property('title')}
+            </div>
+        `
+    }
+    renderer = afx`
+        <div class="tags" @if.has={props.tags}>
+            <object type="owo/uwu">
+                {props.tags}
+            </object>
+        </div>
+    `
+}

@@ -1,32 +1,21 @@
 prototype(Neos.DocsNeosIo:Document.Guide.Short) < prototype(Neos.Fusion:Component) {
     title = ${q(node).property('title')}
     subtitle = ${q(node).property('subtitle')}
-    tags = Neos.Fusion:Collection {
-        collection = ${q(node).property('tags')}
-        itemName = 'node'
-        itemRenderer = Carbon.Link:Link {
-            @if.notInternal = ${!String.startsWith(q(node).property('title'), 'Needs')}
-            attributes.class = 'chip'
-            node = ${node}
-            content = ${q(node).property('title')}
-        }
-    }
+    tags = ${q(node).property('tags')}
 
     renderer = afx`
-        <div class="guide-short card">
+        <Carbon.Link:Link node={node} backendLink={true} additionalClass="guide-short card hoverable">
             <div class="card-content white-text">
                 <span class="new badge" data-badge-caption="NEW"></span>
-                <Carbon.Link:Link node={node} backendLink={true} additionalClass="card-title white-text">
-                    {props.title}
-                </Carbon.Link:Link>
-                <Carbon.Link:Link node={node} backendLink={true} additionalClass="card-text white-text">
+                <div class="card-title">{props.title}</div>
+                <div class="card-text">
                     <p>{props.subtitle}</p>
-                </Carbon.Link:Link>
-                <div class="tags" @if.has={props.tags}>{props.tags}</div>
+                </div>
+                <Neos.DocsNeosIo:Document.TagList collection={props.tags} />
             </div>
-            <Carbon.Link:Link node={node} backendLink={true} additionalClass="card-action white-text">
+            <div class="card-action white-text">
                 Learn more
-            </Carbon.Link:Link>
-        </div>
+            </div>
+        </Carbon.Link:Link>
     `
 }
