@@ -17,4 +17,4 @@
               strikethrough: true
               table: true
       options:
-        silhouette: 'text.free'
+        silhouette: 'neos.text.free'

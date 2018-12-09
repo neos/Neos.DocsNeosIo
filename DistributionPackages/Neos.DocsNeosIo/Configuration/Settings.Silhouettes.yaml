@@ -1,19 +1,39 @@
 Sitegeist:
-   Silhouettes:
-       properties:
-          neos:
-              text:
-                  title:
-                    type: string
-                    ui:
-                      inlineEditable: true
-                      inline:
-                        editorOptions:
-                          placeholder: '<h2>Enter headline here...</h2>'
-                          formatting:
-                            h1: true
-                            h2: true
-                            h3: true
-                            h4: true
-                            h5: true
-                            a: true
+  Silhouettes:
+    properties:
+      neos:
+        text:
+          plain:
+            type: string
+            defaultValue: ''
+            ui:
+              inlineEditable: true
+              inline:
+                editorOptions:
+                  placeholder: 'Enter headline here...'
+                  autoparagraph: false
+          free:
+            type: string
+            defaultValue: ''
+            ui:
+              inlineEditable: true
+              inline:
+                editorOptions:
+                  placeholder: '<p>Enter text here...</p>'
+                  autoparagraph: true
+                  formatting:
+                    strong: true
+                    sub: true
+                    sup: true
+                    p: true
+                    h1: true
+                    h2: true
+                    h3: true
+                    h4: true
+                    h5: true
+                    h6: true
+                    pre: true
+                    table: true
+                    ol: true
+                    ul: true
+                    a: true

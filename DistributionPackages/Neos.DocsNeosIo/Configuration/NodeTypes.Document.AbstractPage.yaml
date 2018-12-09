@@ -20,7 +20,7 @@
           editorOptions:
             placeholder: 'Enter subtitle here...'
       options:
-        silhouette: 'text.plain'
+        silhouette: 'neos.text.plain'
     tags:
       type: references
       ui:

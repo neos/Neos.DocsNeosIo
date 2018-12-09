@@ -12,11 +12,11 @@
           editorOptions:
             placeholder: 'Enter title here...'
       options:
-        silhouette: 'text.plain'
+        silhouette: 'neos.text.plain'
     text:
       ui:
         inline:
           editorOptions:
             placeholder: 'Enter content here...'
       options:
-        silhouette: 'text.free'
+        silhouette: 'neos.text.free'

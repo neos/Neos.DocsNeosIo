@@ -11,4 +11,4 @@
           editorOptions:
             placeholder: 'Enter headline here...'
       options:
-        silhouette: 'text.plain'
+        silhouette: 'neos.text.plain'
