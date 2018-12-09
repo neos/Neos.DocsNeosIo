@@ -1,8 +1,8 @@
-.link-list.collection {
+.collection {
 	margin-top: 16px;
 	margin-bottom: 16px;
 
-	.collection-item {
+	a.collection-item {
 		color: map-get($brand-colors, primary);
 
 		.inline-icon {
