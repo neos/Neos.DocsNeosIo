@@ -3656,7 +3656,7 @@ small {
       overflow: hidden;
       transition: color .28s ease, background-color .28s ease; }
       .tabs .tab a:focus, .tabs .tab a:focus.active {
-        background-color: rgba(60, 202, 255, 0.2);
+        background-color: rgba(85, 209, 255, 0.2);
         outline: none; }
       .tabs .tab a:hover, .tabs .tab a.active {
         background-color: transparent;
@@ -3669,7 +3669,7 @@ small {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background-color: #3ccaff;
+    background-color: #55d1ff;
     will-change: left, right; }
 
 @media only screen and (max-width: 992px) {
@@ -4509,7 +4509,7 @@ textarea.materialize-textarea {
   input[type=number]:not(.browser-default):focus.valid ~ label,
   input[type=search]:not(.browser-default):focus.valid ~ label,
   textarea.materialize-textarea:focus.valid ~ label {
-    color: color("green", "base"); }
+    color: #4caf50; }
   input:not([type]):focus.invalid ~ label,
   input[type=text]:not(.browser-default):focus.invalid ~ label,
   input[type=password]:not(.browser-default):focus.invalid ~ label,
@@ -4523,7 +4523,7 @@ textarea.materialize-textarea {
   input[type=number]:not(.browser-default):focus.invalid ~ label,
   input[type=search]:not(.browser-default):focus.invalid ~ label,
   textarea.materialize-textarea:focus.invalid ~ label {
-    color: color("red", "base"); }
+    color: #d50000; }
   input:not([type]).validate + label,
   input[type=text]:not(.browser-default).validate + label,
   input[type=password]:not(.browser-default).validate + label,
@@ -4565,8 +4565,8 @@ input.valid[type=search]:not(.browser-default),
 input.valid[type=search]:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
-  border-bottom: 1px solid color("green", "base");
-  box-shadow: 0 1px 0 0 color("green", "base"); }
+  border-bottom: 1px solid #4caf50;
+  box-shadow: 0 1px 0 0 #4caf50; }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
 input.invalid[type=text]:not(.browser-default),
@@ -4594,8 +4594,8 @@ input.invalid[type=search]:not(.browser-default):focus,
 textarea.materialize-textarea.invalid,
 textarea.materialize-textarea.invalid:focus, .select-wrapper.invalid > input.select-dropdown,
 .select-wrapper.invalid > input.select-dropdown:focus {
-  border-bottom: 1px solid color("red", "base");
-  box-shadow: 0 1px 0 0 color("red", "base"); }
+  border-bottom: 1px solid #d50000;
+  box-shadow: 0 1px 0 0 #d50000; }
 
 input:not([type]).valid ~ .helper-text[data-success],
 input:not([type]):focus.valid ~ .helper-text[data-success],
@@ -4681,7 +4681,7 @@ input[type=search]:not(.browser-default):focus.valid ~ .helper-text:after,
 textarea.materialize-textarea.valid ~ .helper-text:after,
 textarea.materialize-textarea:focus.valid ~ .helper-text:after, .select-wrapper.valid ~ .helper-text:after {
   content: attr(data-success);
-  color: color("green", "base"); }
+  color: #4caf50; }
 
 input:not([type]).invalid ~ .helper-text:after,
 input:not([type]):focus.invalid ~ .helper-text:after,
@@ -4710,7 +4710,7 @@ input[type=search]:not(.browser-default):focus.invalid ~ .helper-text:after,
 textarea.materialize-textarea.invalid ~ .helper-text:after,
 textarea.materialize-textarea:focus.invalid ~ .helper-text:after, .select-wrapper.invalid ~ .helper-text:after {
   content: attr(data-error);
-  color: color("red", "base"); }
+  color: #d50000; }
 
 input:not([type]) + label:after,
 input[type=text]:not(.browser-default) + label:after,
@@ -6361,7 +6361,7 @@ input[type=range]::-ms-thumb {
   padding: 0 1rem; }
 
 .datepicker-clear {
-  color: color("red", "base"); }
+  color: #d50000; }
 
 /* Media Queries */
 @media only screen and (min-width: 601px) {
@@ -6503,7 +6503,7 @@ input[type=range]::-ms-thumb {
   justify-content: space-between; }
 
 .timepicker-clear {
-  color: color("red", "base"); }
+  color: #d50000; }
 
 .timepicker-close {
   color: #26224C; }
@@ -11083,10 +11083,12 @@ html {
     margin-bottom: 160px; }
   .main-header ul.sidenav.sidenav-fixed li {
     line-height: 1; }
-    .main-header ul.sidenav.sidenav-fixed li.active {
+    .main-header ul.sidenav.sidenav-fixed li.active > a {
       background-color: rgba(50, 50, 50, 0.03); }
-    .main-header ul.sidenav.sidenav-fixed li.current > a {
-      background-color: rgba(50, 50, 50, 0.06); }
+    .main-header ul.sidenav.sidenav-fixed li.current {
+      background-color: rgba(50, 50, 50, 0.03); }
+      .main-header ul.sidenav.sidenav-fixed li.current > a {
+        background-color: rgba(50, 50, 50, 0.06); }
     .main-header ul.sidenav.sidenav-fixed li a {
       line-height: 1.5;
       height: unset;
@@ -11246,6 +11248,31 @@ html {
         border-left: 1px solid #00ADEE; }
     .local-navigation .table-of-contents ul {
       padding-left: 10px; }
+
+.notice {
+  margin-bottom: 32px; }
+  .notice.type-info {
+    background: #ffd54f; }
+  .notice.type-warning {
+    background: #ff6f00; }
+  .notice.type-danger {
+    background: #d50000; }
+  .notice.type-todo {
+    background: #26224C; }
+  .notice.type-tip {
+    background: #4caf50; }
+  .notice .header {
+    font-size: 2rem;
+    margin: 0; }
+  .notice .inline-icon {
+    margin-top: 0.3rem;
+    margin-right: 0.5rem;
+    font-size: 1.6rem; }
+  .notice.type-danger,
+  .notice.type-danger .header, .notice.type-todo,
+  .notice.type-todo .header, .notice.type-tip,
+  .notice.type-tip .header {
+    color: white; }
 
 .buttons {
   margin-top: 16px;
