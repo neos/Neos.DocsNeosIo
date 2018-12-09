@@ -30,6 +30,23 @@
           group: 'document'
           editorOptions:
             nodeTypes: ['Neos.DocsNeosIo:Document.Tag']
+    status:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Menu status flag'
+        reloadPageIfChanged: true
+        inspector:
+          group: 'document'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: true
+            placeholder: 'None'
+            values:
+              'new':
+                label: 'New'
+              'updated':
+                label: 'Updated'
     hideFromMainMenu:
       type: boolean
       ui:

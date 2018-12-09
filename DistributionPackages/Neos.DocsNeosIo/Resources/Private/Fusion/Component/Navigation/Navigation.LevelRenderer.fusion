@@ -3,6 +3,7 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 	node = ${node}
 	itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
     itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
+    itemStatus = ${q(node).property('status')}
 	itemClass = Neos.Fusion:RawArray {
 		base = 'navigation-item bold'
 		level = ${'navigation-item--level-' + nodeDepth}
@@ -23,7 +24,10 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 
 	renderer = afx`
 		<li class={props.itemClass} >
-			<Carbon.Link:Link title={props.itemTitle} content={props.itemTitle} node={node} additionalClass="navigation-link" backendLink={true} />
+			<Carbon.Link:Link title={props.itemTitle} node={node} additionalClass="navigation-link" backendLink={true}>
+                {props.itemTitle}
+                <span @if.has={props.itemStatus} data-badge-caption={props.itemStatus} class={'badge new status-' + props.itemStatus}></span>
+            </Carbon.Link:Link>
 			<ul @if.hasNextLevel={props.renderNextLevel} class={props.navigationClass}>
 				{props.navigationItems}
 			</ul>

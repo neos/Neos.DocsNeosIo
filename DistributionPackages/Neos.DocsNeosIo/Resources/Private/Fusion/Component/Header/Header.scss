@@ -57,6 +57,13 @@
         height: unset;
         padding: 0 30px;
       }
+
+	  .badge {
+		  margin-top: 0;
+		  background: map-get($brand-colors, primary);
+		  text-transform: uppercase;
+		  font-weight: 400;
+	  }
     }
 
     ul.collapsible-accordion {
