@@ -5,9 +5,12 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
 	content = ''
     navCollection = false
     fullwidth = false
+    tags = false
+    navigationRoot = false
 
+    @context.tags = ${this.tags}
     tagNotices = Neos.Fusion:Collection {
-        collection = ${q(node).property('tags')}
+        collection = ${tags}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Notice {
             @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}
@@ -18,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
     }
 
 	renderer = afx`
-		<Neos.DocsNeosIo:Component.Header />
+		<Neos.DocsNeosIo:Component.Header navigationRoot={props.navigationRoot} />
         <main>
             <div class="section" id="index-banner">
                 <div class="container">

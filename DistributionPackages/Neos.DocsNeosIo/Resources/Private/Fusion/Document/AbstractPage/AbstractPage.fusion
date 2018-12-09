@@ -16,6 +16,8 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             property = 'subtitle'
             block = false
         }
+        tags = ${q(node).property('tags')}
+        navigationRoot = ${q(site).property('navReference') || site}
 		@process.normalize = CodeQ.UnicodeNormalizer:Normalizer
 	}
 }

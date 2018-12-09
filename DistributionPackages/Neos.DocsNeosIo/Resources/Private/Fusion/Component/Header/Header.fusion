@@ -1,11 +1,11 @@
 prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
+    navigationRoot = false
 	homeLink = Neos.Neos:NodeUri {
 		node = ${site}
 	}
     logoUri = Neos.Fusion:ResourceUri {
         path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_primary.svg'
     }
-    siteRoot = ${q(site).property('navReference') || site}
 
 	renderer = afx`
         <header class="main-header">
@@ -22,7 +22,7 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                 </li>
                 <li>
                     <ul>
-                        <Neos.DocsNeosIo:Component.Navigation startingPoint={props.siteRoot} />
+                        <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} />
                     </ul>
                 </li>
 		    </ul>
