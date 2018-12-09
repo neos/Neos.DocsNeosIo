@@ -1,0 +1,12 @@
+.link-list.collection {
+	margin-top: 16px;
+	margin-bottom: 16px;
+
+	.collection-item {
+		color: map-get($brand-colors, primary);
+
+		.inline-icon {
+			margin-top: 0.2em;
+		}
+	}
+}

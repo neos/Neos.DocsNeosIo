@@ -1,0 +1,34 @@
+'Neos.DocsNeosIo:Content.LinkList.Item':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Constraint.Content.Restricted': true
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  ui:
+    label: 'Link'
+    icon: icon-link
+    position: 200
+  properties:
+    title:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter title here...'
+      options:
+        silhouette: 'neos.text.plain'
+    link:
+      type: string
+      ui:
+        label: Link
+        reloadIfChanged: false
+        inspector:
+          group: general
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
+    icon:
+      type: string
+      ui:
+        help:
+          message: '[FontAwesome Icons](https://fontawesome.com/icons)'
+        label: 'Font Awesome icon'
+        reloadIfChanged: true
+        inspector:
+          group: general
