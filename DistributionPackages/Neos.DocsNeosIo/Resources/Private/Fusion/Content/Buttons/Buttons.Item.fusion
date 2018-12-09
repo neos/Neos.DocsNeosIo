@@ -1,0 +1,28 @@
+prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentComponent) {
+    class = ${'btn' + ((!this.link && !node.context.inBackend) ? ' disabled' : '')}
+    title = Neos.Neos:Editable {
+		property = 'title'
+        block = false
+	}
+    link = ${q(node).property('link')}
+    icon = Neos.Fusion:Case {
+        isSet {
+            condition = ${q(node).property('icon')}
+            renderer = ${q(node).property('icon')}
+        }
+        fallbackToExternalLinkIfMatching {
+            condition = ${true}
+            renderer = Carbon.Link:Type {
+                link = ${q(node).property('link')}
+                @process.convert = ${value=='external' ? 'external-link-alt' : (value=='node' ? 'link' : false)}
+            }
+        }
+    }
+
+	renderer = afx`
+        <Carbon.Link:Link link={props.link} additionalClass={props.class} renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
+            {props.title}
+            <i aria-label={'Icon ' + props.icon} class={'right inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
+        </Carbon.Link:Link>
+	`
+}

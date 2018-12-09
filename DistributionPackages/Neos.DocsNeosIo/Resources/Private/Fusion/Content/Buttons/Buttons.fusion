@@ -1,0 +1,6 @@
+prototype(Neos.DocsNeosIo:Content.Buttons) < prototype(Neos.Neos:ContentComponent) {
+    renderer = Neos.Neos:ContentCollection {
+        attributes.class = 'buttons'
+        nodePath = ''
+    }
+}

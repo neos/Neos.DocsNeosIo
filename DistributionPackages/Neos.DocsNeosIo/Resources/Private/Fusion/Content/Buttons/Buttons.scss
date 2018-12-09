@@ -1,0 +1,22 @@
+.buttons {
+	margin-top: 16px;
+	margin-bottom: 16px;
+
+	.btn {
+		margin-bottom: 16px;
+		text-transform: none;
+
+		&:not(:last-child) {
+			margin-right: 16px;
+		}
+
+		.inline-icon {
+			font-size: 1em;
+		}
+	}
+
+	[data-neos-placeholder]:before {
+		color: white;
+		font-style: italic;
+	}
+}

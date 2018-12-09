@@ -1,0 +1,12 @@
+'Neos.DocsNeosIo:Content.Buttons':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Buttons'
+    icon: icon-external-link-square-alt
+    position: 400
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.DocsNeosIo:Content.Buttons.Item': true
