@@ -8,7 +8,7 @@
     icon: icon-globe
   properties:
     navReference:
-      type: references
+      type: reference
       ui:
         label: 'Alternative navigation root'
         reloadIfChanged: true
