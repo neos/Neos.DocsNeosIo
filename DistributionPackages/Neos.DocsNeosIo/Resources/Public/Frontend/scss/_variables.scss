@@ -3,3 +3,14 @@ $brand-colors: (
 	secondary: #26224C,
 	teritary: #34363C
 ) !default;
+
+// Override materialize.css variables
+$primary-color: map-get($brand-colors, primary);
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: map-get($brand-colors, secondary);
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: map-get($brand-colors, primary);
+

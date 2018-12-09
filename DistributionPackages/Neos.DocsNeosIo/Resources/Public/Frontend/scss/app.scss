@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 // basic design
+@import "variables";
 @import "../node_modules/materialize-css/sass/materialize";
 
 // prism code highlighting
@@ -16,7 +17,6 @@ $fa-font-path: "../build/fontawesome";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 // Neos design
-@import "variables";
 @import "fonts";
 @import "materialize-docs";
 @import "base";
