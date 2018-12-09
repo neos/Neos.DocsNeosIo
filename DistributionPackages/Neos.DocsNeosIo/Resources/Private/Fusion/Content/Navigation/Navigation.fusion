@@ -1,0 +1,25 @@
+prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentComponent) {
+    id = Neos.DocsNeosIo:Helper.StringToHash {
+        value = ${q(node).property('title') || node.identifier}
+    }
+    title = Neos.Neos:Editable {
+        property = 'title'
+        block = false
+        @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+    }
+    headlineSize = ${q(node).property('headlineSize')}
+
+    @context.navRoot = ${q(node).property('navReference') || documentNode}
+    navigation = Neos.DocsNeosIo:Component.Navigation {
+        startingPoint = ${navRoot}
+        itemClass.base = 'collection-item'
+        @cache.entryIdentifier.node = ${node}
+    }
+
+    renderer = afx`
+        <div id={props.id} class="docs-navigation section scrollspy">
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
+            <div class="collection">{props.navigation}</div>
+        </div>
+    `
+}

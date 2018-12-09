@@ -22,7 +22,7 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                 </li>
                 <li>
                     <ul>
-                        <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} />
+                        <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} renderCurrentPath={true} />
                     </ul>
                 </li>
 		    </ul>

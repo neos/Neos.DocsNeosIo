@@ -1,0 +1,28 @@
+'Neos.DocsNeosIo:Mixin.HeadlineSize':
+  abstract: true
+  ui:
+    inspector:
+      groups:
+        layout:
+          label: 'Format'
+          icon: 'icon-font'
+  properties:
+    headlineSize:
+      type: string
+      defaultValue: 'h2'
+      ui:
+        label: 'Visual headline size'
+        reloadIfChanged: true
+        inspector:
+          group: 'layout'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              h2:
+                label: 'h2'
+              h3:
+                label: 'h3'
+              h4:
+                label: 'h4'
+              h5:
+                label: 'h5'

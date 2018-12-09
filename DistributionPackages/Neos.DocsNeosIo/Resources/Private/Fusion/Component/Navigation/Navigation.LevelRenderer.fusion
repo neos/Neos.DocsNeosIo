@@ -5,7 +5,7 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
     itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
     itemStatus = ${q(node).property('status')}
 	itemClass = Neos.Fusion:RawArray {
-		base = 'navigation-item bold'
+		base = 'navigation-item'
 		level = ${'navigation-item--level-' + nodeDepth}
 		current = 'current'
 		current.@if.isCurrent = ${node == documentNode}
@@ -15,12 +15,12 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
 	navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1)}
 	navigationItems = Neos.Fusion:Collection {
 		@if.notEmpty = ${this.collection.count() > 0}
-		collection = ${q(node).children('[instanceof Neos.Neos:Document][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+		collection = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
 		itemName = 'node'
 		itemRenderer = Neos.DocsNeosIo:Component.Navigation.LevelRenderer
 	}
 
-	renderNextLevel = ${(node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0))) && this.navigationItems}
+	renderNextLevel = ${renderCurrentPath && (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0))) && this.navigationItems}
 
 	renderer = afx`
 		<li class={props.itemClass} >

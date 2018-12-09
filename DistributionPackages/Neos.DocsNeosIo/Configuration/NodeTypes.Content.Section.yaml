@@ -3,36 +3,12 @@
   superTypes:
     'Neos.Neos:Content': true
     'Neos.Neos:ContentCollection': true
+    'Neos.DocsNeosIo:Mixin.HeadlineSize': true
     'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item': true
   ui:
     label: 'Section'
     icon: icon-level-down
     position: 10
-    inspector:
-      groups:
-        layout:
-          label: 'Format'
-          icon: 'icon-font'
   constraints:
     nodeTypes:
       'Neos.DocsNeosIo:Constraint.Content.Restricted': false
-  properties:
-    headlineSize:
-      type: string
-      defaultValue: 'h2'
-      ui:
-        label: 'Visual headline size'
-        reloadIfChanged: true
-        inspector:
-          group: 'layout'
-          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
-          editorOptions:
-            values:
-              h2:
-                label: 'h2'
-              h3:
-                label: 'h3'
-              h4:
-                label: 'h4'
-              h5:
-                label: 'h5'

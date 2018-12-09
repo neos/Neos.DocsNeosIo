@@ -1,0 +1,18 @@
+'Neos.DocsNeosIo:Content.Navigation':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Mixin.HeadlineSize': true
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+    'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item': true
+  ui:
+    label: 'Navigation'
+    icon: icon-list
+    position: 700
+  properties:
+    navReference:
+      type: reference
+      ui:
+        label: 'Alternative navigation root'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
