@@ -22,7 +22,9 @@
     border-right: 1px solid $border-color;
 
 	.neos-top-navigation + & {
-		top: $top-navigation-height;
+		@media #{$medium-and-up} {
+			top: $top-navigation-height;
+		}
 	}
 
     li.logo {

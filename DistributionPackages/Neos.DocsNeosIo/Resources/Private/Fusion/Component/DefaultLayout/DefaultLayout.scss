@@ -2,6 +2,12 @@
 #index-banner {
 	border-bottom: 1px solid $border-color;
 
+	.neos-top-navigation ~ main & {
+		@media #{$medium-and-up} {
+			margin-top: $top-navigation-height;
+		}
+	}
+
 	.container {
 		position: relative;
 	}

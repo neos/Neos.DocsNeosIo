@@ -11068,8 +11068,9 @@ html {
   overflow: hidden;
   box-shadow: none;
   border-right: 1px solid rgba(0, 0, 0, 0.14); }
-  .neos-top-navigation + .main-header ul.sidenav.sidenav-fixed {
-    top: 30px; }
+  @media only screen and (min-width: 601px) {
+    .neos-top-navigation + .main-header ul.sidenav.sidenav-fixed {
+      top: 30px; } }
   .main-header ul.sidenav.sidenav-fixed li.logo {
     text-align: center;
     margin-top: 32px;
@@ -11174,6 +11175,9 @@ html {
 
 #index-banner {
   border-bottom: 1px solid rgba(0, 0, 0, 0.14); }
+  @media only screen and (min-width: 601px) {
+    .neos-top-navigation ~ main #index-banner {
+      margin-top: 30px; } }
   #index-banner .container {
     position: relative; }
   #index-banner h1,
@@ -11278,6 +11282,10 @@ html {
 
 .neos-top-navigation {
   position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
   background-color: #26224c;
   height: 30px;
   line-height: 30px;

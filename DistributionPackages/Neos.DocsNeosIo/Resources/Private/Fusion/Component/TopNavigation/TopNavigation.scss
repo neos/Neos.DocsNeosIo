@@ -1,5 +1,9 @@
 .neos-top-navigation {
 	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
 	background-color: map-get($brand-colors, secondary);
 	height: $top-navigation-height;
 	line-height: $top-navigation-height;
