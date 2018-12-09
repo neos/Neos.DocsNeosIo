@@ -4,7 +4,7 @@
   ui:
     label: Notice
     icon: icon-exclamation-circle
-    position: 70
+    position: 280
   properties:
     title:
       ui:
