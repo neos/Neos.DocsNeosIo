@@ -1,0 +1,7 @@
+##
+# Carbon.Hyphen allows to include optional word-breaks with || in the Backend, which is replaced by &shy; in the frontend.
+#
+# To make backend trees look good we also remove those || in the labels.
+##
+'Neos.Neos:Node':
+  label: "${String.cropAtWord(String.trim(String.stripTags(String.pregReplace(String.replace(q(node).property('title') || q(node).property('text') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '||', ''), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"

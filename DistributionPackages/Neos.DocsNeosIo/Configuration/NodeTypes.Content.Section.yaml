@@ -1,5 +1,5 @@
 'Neos.DocsNeosIo:Content.Section':
-  label: "${'H' + (q(node).parents('[instanceof Neos.DocsNeosIo:Content.Section]').count()+2) + ' ' + (String.cropAtWord(String.trim(String.stripTags(String.pregReplace(q(node).property('title') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...'))}"
+  label: "${'H' + (q(node).parents('[instanceof Neos.DocsNeosIo:Content.Section]').count()+2) + ' ' + (String.cropAtWord(String.trim(String.stripTags(String.pregReplace(String.replace(q(node).property('title') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '||', ''), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...'))}"
   superTypes:
     'Neos.Neos:Content': true
     'Neos.Neos:ContentCollection': true
