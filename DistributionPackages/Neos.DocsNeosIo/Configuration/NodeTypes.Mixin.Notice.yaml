@@ -1,5 +1,10 @@
 'Neos.DocsNeosIo:Mixin.Notice':
   abstract: true
+  ui:
+    inspector:
+      groups:
+        notice:
+          label: 'Notice'
   properties:
     noticeTitle:
       ui:
@@ -15,3 +20,30 @@
             placeholder: 'Enter content here...'
       options:
         silhouette: 'neos.text.free'
+    noticeType:
+      type: string
+      defaultValue: 'info'
+      ui:
+        label: 'Type'
+        reloadIfChanged: true
+        inspector:
+          group: 'notice'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: false
+            values:
+              'info':
+                label: 'Info'
+                icon: icon-info-square
+              'warning':
+                label: 'Warning'
+                icon: icon-exclamation-triangle
+              'danger':
+                label: 'Danger'
+                icon: icon-times-circle
+              'todo':
+                label: 'TODO'
+                icon: icon-code
+              'tip':
+                label: 'Tip'
+                icon: icon-lightbulb

@@ -4,18 +4,19 @@ prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent
         tagName = 'div'
         content = Neos.DocsNeosIo:Component.Notice {
             id = Neos.DocsNeosIo:Helper.StringToHash {
-                value = ${q(node).property('title') || node.identifier}
+                value = ${q(node).property('noticeTitle') || node.identifier}
             }
             title = Neos.Neos:Editable {
-                property = 'title'
+                property = 'noticeTitle'
                 block = false
                 @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
             }
             content = Neos.Neos:Editable {
-                property = 'text'
+                property = 'noticeText'
                 block = false
                 @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
             }
+            type = ${q(node).property('noticeType')}
         }
     }
 }

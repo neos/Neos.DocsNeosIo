@@ -4,9 +4,19 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
     content = false
     type = 'todo'
 
+    icon = ${this.type}
+    icon.@process {
+        info = ${value == 'info' ? 'info-circle' : value}
+        warning = ${value == 'warning' ? 'exclamation-circle' : value}
+        danger = ${value == 'danger' ? 'exclamation-triangle' : value}
+        tip = ${value == 'tip' ? 'lightbulb' : value}
+    }
     renderer = afx`
-        <div id={props.id} class="card-panel amber lighten-2">
-            <h4 @if.has={props.title || node.context.inBackend} class="header">{props.title}</h4>
+        <div id={props.id} class={'notice card-panel type-' + props.type}>
+            <h4 @if.has={props.title || node.context.inBackend} class="header">
+                <i aria-label={'Icon ' + props.type} class={'left inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
+                {props.title}
+            </h4>
             <div>{props.content}</div>
         </div>
     `

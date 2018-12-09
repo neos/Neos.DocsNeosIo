@@ -4,5 +4,5 @@
     'Neos.DocsNeosIo:Mixin.Notice': true
   ui:
     label: Notice
-    icon: icon-exclamation-circle
+    icon: icon-info-circle
     position: 280

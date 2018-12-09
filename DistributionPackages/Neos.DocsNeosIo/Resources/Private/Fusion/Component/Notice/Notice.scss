@@ -1,0 +1,39 @@
+.notice {
+	margin-bottom: 32px;
+
+	&.type-info {
+		background: #ffd54f;
+	}
+	&.type-warning {
+		background: #ff6f00;
+	}
+	&.type-danger {
+		background: $error-color;
+	}
+	&.type-todo {
+		background: $secondary-color;
+	}
+	&.type-tip {
+		background: $success-color;
+	}
+
+	.header {
+		font-size: 2rem;
+		margin: 0;
+	}
+
+	.inline-icon {
+		margin-top: 0.3rem;
+		margin-right: 0.5rem;
+		font-size: 1.6rem;
+	}
+
+	&.type-danger,
+	&.type-todo,
+	&.type-tip {
+		&,
+		.header {
+			color: white;
+		}
+	}
+}
