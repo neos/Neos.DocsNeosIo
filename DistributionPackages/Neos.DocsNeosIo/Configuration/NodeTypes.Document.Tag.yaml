@@ -4,16 +4,8 @@
     'Neos.DocsNeosIo:Constraint.Document.BackendOnly': true
     'Neos.DocsNeosIo:Constraint.Document.Restricted': true
     'Neos.DocsNeosIo:Constraint.Document.NoSubDocuments': true
-    'Neos.DocsNeosIo:Content.Notice': true
+    'Neos.DocsNeosIo:Mixin.Notice': true
   ui:
     label: Tag
     icon: icon-tag
     position: 900
-  properties:
-    noticeTitle:
-      ui:
-        inline:
-          editorOptions:
-            placeholder: 'Enter title here...'
-      options:
-        silhouette: 'neos.text.plain'

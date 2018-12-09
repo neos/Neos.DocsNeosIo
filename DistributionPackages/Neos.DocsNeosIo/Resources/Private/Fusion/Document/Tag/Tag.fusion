@@ -5,12 +5,12 @@ prototype(Neos.DocsNeosIo:Document.Tag) < prototype(Neos.Fusion:Case) {
         renderer = Neos.DocsNeosIo:Document.AbstractPage {
             body.subtitle = 'You can define a notice content below. This notice will be displayed on all tagged pages.'
             body.content = Neos.DocsNeosIo:Component.Notice {
-                type = ${q(node).property('type')}
+                type = ${q(node).property('noticeType')}
                 title = Neos.Neos:Editable {
                     property = 'noticeTitle'
                 }
                 content = Neos.Neos:Editable {
-                    property = 'text'
+                    property = 'noticeText'
                 }
             }
         }

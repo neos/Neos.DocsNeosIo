@@ -14,9 +14,9 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Notice {
             @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}
-            type = ${q(node).property('type')}
+            type = ${q(node).property('noticeType')}
             title = ${q(node).property('noticeTitle')}
-            content = ${q(node).property('text')}
+            content = ${q(node).property('noticeText')}
         }
     }
 

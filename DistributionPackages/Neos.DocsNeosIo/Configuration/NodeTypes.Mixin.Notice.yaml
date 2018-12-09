@@ -1,0 +1,17 @@
+'Neos.DocsNeosIo:Mixin.Notice':
+  abstract: true
+  properties:
+    noticeTitle:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter title here...'
+      options:
+        silhouette: 'neos.text.plain'
+    noticeText:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: 'Enter content here...'
+      options:
+        silhouette: 'neos.text.free'

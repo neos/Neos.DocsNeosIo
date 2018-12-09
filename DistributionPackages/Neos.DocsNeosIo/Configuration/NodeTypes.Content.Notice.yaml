@@ -1,22 +1,8 @@
 'Neos.DocsNeosIo:Content.Notice':
   superTypes:
     'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Mixin.Notice': true
   ui:
     label: Notice
     icon: icon-exclamation-circle
     position: 280
-  properties:
-    title:
-      ui:
-        inline:
-          editorOptions:
-            placeholder: 'Enter title here...'
-      options:
-        silhouette: 'neos.text.plain'
-    text:
-      ui:
-        inline:
-          editorOptions:
-            placeholder: 'Enter content here...'
-      options:
-        silhouette: 'neos.text.free'
