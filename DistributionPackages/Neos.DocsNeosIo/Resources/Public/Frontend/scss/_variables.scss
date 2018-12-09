@@ -1,8 +1,9 @@
 $brand-colors: (
-	primary: #00ADEE,
-	secondary: #26224C,
-	teritary: #34363C
-) !default;
+	primary: #00adee,
+	secondary: #26224c,
+	teritary: #34363c
+);
+$top-navigation-height: 30px;
 
 // Override materialize.css variables
 $primary-color: map-get($brand-colors, primary);

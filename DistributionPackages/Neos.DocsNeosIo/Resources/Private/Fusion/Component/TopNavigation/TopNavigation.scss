@@ -1,0 +1,28 @@
+.neos-top-navigation {
+	position: fixed;
+	background-color: map-get($brand-colors, secondary);
+	height: $top-navigation-height;
+	line-height: $top-navigation-height;
+	box-shadow: none;
+
+	@media #{$small-and-down} {
+		display: none;
+	}
+
+	li {
+		&.active {
+			background-color: inherit;
+
+			a {
+				color: map-get($brand-colors, primary);
+			}
+		}
+
+		a:active,
+		a:hover,
+		a:focus {
+			color: white;
+			background-color: map-get($brand-colors, primary);
+		}
+	}
+}

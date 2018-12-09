@@ -21,6 +21,10 @@
     box-shadow: none;
     border-right: 1px solid $border-color;
 
+	.neos-top-navigation + & {
+		top: $top-navigation-height;
+	}
+
     li.logo {
       text-align: center;
       margin-top: 32px;

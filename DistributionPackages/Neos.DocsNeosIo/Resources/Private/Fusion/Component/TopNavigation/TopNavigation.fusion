@@ -1,0 +1,25 @@
+prototype(Neos.DocsNeosIo:Component.TopNavigation) < prototype(Neos.Fusion:Component) {
+    navigationRoot = false
+	homeLink = Neos.Neos:NodeUri {
+		node = ${site}
+	}
+    logoUri = Neos.Fusion:ResourceUri {
+        path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_negative_dark.svg'
+    }
+
+	renderer = afx`
+        <nav class="neos-top-navigation">
+            <div class="nav-wrapper">
+                <ul class="left">
+                    <li class="active"><a href="https://www.neos.io/">Neos</a></li>
+                    <li><a href="https://neos.readthedocs.io/en/stable/">Documentation</a></li>
+                    <li><a href="https://neos.readthedocs.io/en/stable/References/index.html">API References</a></li>
+                    <li><a href="https://www.neos.io/docs-and-support/editor-documentation.html">Editor Docs</a></li>
+                    <li><a href="https://www.neos.io/download-and-extend/packages.html">Packages</a></li>
+                    <li><a href="https://discuss.neos.io/">Forum</a></li>
+                    <li><a href="https://www.neos.io/blog.html">Blog</a></li>
+                </ul>
+            </div>
+        </nav>
+	`
+}

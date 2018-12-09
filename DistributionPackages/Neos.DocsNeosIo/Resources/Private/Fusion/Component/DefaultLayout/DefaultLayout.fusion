@@ -21,6 +21,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
     }
 
 	renderer = afx`
+        <Neos.DocsNeosIo:Component.TopNavigation />
 		<Neos.DocsNeosIo:Component.Header navigationRoot={props.navigationRoot} />
         <main>
             <div class="section" id="index-banner">
