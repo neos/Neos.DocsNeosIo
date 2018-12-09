@@ -15,6 +15,11 @@
       'Neos.Neos:Document': false
       'Neos.DocsNeosIo:Document.Cookbook': true
   properties:
+    hideFromMainMenu:
+      defaultValue: true
+      ui:
+        inspector:
+          group: null
     publishingDate:
       type: DateTime
       defaultValue: now
