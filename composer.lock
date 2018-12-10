@@ -204,16 +204,16 @@
         },
         {
             "name": "carbon/hyphen",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Hyphen.git",
-                "reference": "9231e3b049ac77ef8d27ca1d1c0f4ad3867305db"
+                "reference": "f24f14e465b6287ee3936793311ee5795fcf528b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Hyphen/zipball/9231e3b049ac77ef8d27ca1d1c0f4ad3867305db",
-                "reference": "9231e3b049ac77ef8d27ca1d1c0f4ad3867305db",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Hyphen/zipball/f24f14e465b6287ee3936793311ee5795fcf528b",
+                "reference": "f24f14e465b6287ee3936793311ee5795fcf528b",
                 "shasum": ""
             },
             "require": {
