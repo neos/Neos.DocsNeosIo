@@ -1,0 +1,3 @@
+prototype(Neos.NeosIo:Helper.IconReplacer) {
+    @class = 'Neos\\DocsNeosIo\\Fusion\\IconReplacerImplementation'
+}

@@ -4,11 +4,10 @@
 prototype(Neos.DocsNeosIo:Helper.IconProcessor) < prototype(Neos.Fusion:Value) {
     @if.frontendOnly = ${!node.context.inBackend}
 
-    value = Neos.NeosIo:IconReplacer {
+    value = Neos.NeosIo:Helper.IconReplacer {
         haystack = ${value}
         tagName = 'i'
         classStub = 'inline-icon fas fa-'
     }
 }
 
-prototype(Neos.NeosIo:IconReplacer).@class = 'Neos\\DocsNeosIo\\Fusion\\IconReplacerImplementation'

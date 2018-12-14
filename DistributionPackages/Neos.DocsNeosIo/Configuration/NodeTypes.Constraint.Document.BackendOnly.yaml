@@ -1,4 +1,5 @@
 'Neos.DocsNeosIo:Constraint.Document.BackendOnly':
+  abstract: true
   superTypes:
     'Neos.DocsNeosIo:Mixin.HideSeo': true
     'Neos.GoogleAnalytics:StatsTabMixin': false
