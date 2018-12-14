@@ -36,6 +36,7 @@
 	});
 
 	searchInput.on('keyup', debounce(function (e) {
+		return; // AJAX search doesn't work yet
 		if(!this.dataset.ajaxTarget) {
 			return;
 		}
