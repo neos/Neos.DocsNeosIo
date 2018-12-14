@@ -5,6 +5,18 @@
 		margin: 16px 0;
 	}
 
+	a {
+		&:active,
+		&:hover,
+		&:focus {
+			text-decoration: underline;
+		}
+
+		&:visited {
+			color: $secondary-color;
+		}
+	}
+
 	ul {
 		padding-left: 40px;
 
