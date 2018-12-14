@@ -1,4 +1,7 @@
 prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent) {
+    text = Neos.Neos:Editable {
+        property = 'text'
+    }
 	alternativeText = ${node.properties.alternativeText}
 	src = Neos.DocsNeosIo:Component.ImageUri {
 		@context.asset = ${q(node).property('image')}
@@ -6,10 +9,9 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
 	}
 
 	renderer = afx`
-        <div class="image center">
-            <div class="image-container">
-                <img src={props.src} alt={props.alternativeText} style="width:100%;" />
-            </div>
-        </div>
+        <figure class="docs-image">
+            <img src={props.src} alt={props.alternativeText} />
+            <figcaption @if.has={props.text}>{props.text}</figcaption>
+        </figure>
 	`
 }

@@ -6,3 +6,13 @@
     label: Image
     icon: icon-picture
     position: 300
+  properties:
+    text:
+      ui:
+        inline:
+          editorOptions:
+            placeholder: '<p>Enter a caption here...</p>'
+      options:
+        silhouette: 'neos.text.free'
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'

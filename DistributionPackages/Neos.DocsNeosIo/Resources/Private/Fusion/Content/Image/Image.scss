@@ -1,0 +1,16 @@
+.docs-image {
+	margin-left: 0;
+	margin-right: 0;
+
+	img {
+		width:100%;
+	}
+
+	figcaption {
+		font-style: italic;
+
+		p:first-child {
+			margin-top: 0;
+		}
+	}
+}
