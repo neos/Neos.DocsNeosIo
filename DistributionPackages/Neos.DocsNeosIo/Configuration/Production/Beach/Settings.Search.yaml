@@ -1,0 +1,19 @@
+Neos:
+  ContentRepository:
+    Search:
+      indexAllWorkspaces: true
+      elasticSearch:
+        indexName: '%env:BEACH_ELASTICSEARCH_INDEX_NAME%'
+
+Flowpack:
+  ElasticSearch:
+    clients:
+      default:
+        - host: '%env:BEACH_ELASTICSEARCH_HOSTNAME%'
+          port: '%env:BEACH_ELASTICSEARCH_PORT%'
+          username: '%env:BEACH_ELASTICSEARCH_USERNAME%'
+          password: '%env:BEACH_ELASTICSEARCH_PASSWORD%'
+        - host: '%env:BEACH_ELASTICSEARCH_HOSTNAME%'
+          port: '%env:BEACH_ELASTICSEARCH_PORT%'
+          username: '%env:BEACH_ELASTICSEARCH_USERNAME%'
+          password: '%env:BEACH_ELASTICSEARCH_PASSWORD%'

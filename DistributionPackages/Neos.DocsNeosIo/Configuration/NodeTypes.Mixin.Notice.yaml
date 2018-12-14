@@ -13,6 +13,8 @@
             placeholder: 'Enter title here...'
       options:
         silhouette: 'neos.text.plain'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("h3", value)}'
     noticeText:
       ui:
         inline:
@@ -20,6 +22,8 @@
             placeholder: 'Enter content here...'
       options:
         silhouette: 'neos.text.free'
+      search:
+        fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
     noticeType:
       type: string
       defaultValue: 'info'

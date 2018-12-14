@@ -1,8 +1,11 @@
 'Neos.DocsNeosIo:Document.AbstractPage':
-  label: "${(q(q(node).property('tags')).is('[title=Todo],[title=Draft]') ? ('[' + (q(q(node).property('tags')).is('[title=Todo]') ? 'TODO' : '') + (q(q(node).property('tags')).is('[title=Draft]') ? 'DRAFT' : '') + '] ') : '') + String.cropAtWord(String.trim(String.stripTags(String.pregReplace(String.replace(q(node).property('title') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '||', ''), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"
+  label: "${(node.context.inBackend ? (q(q(node).property('tags')).is('[title=Todo],[title=Draft]') ? ('[' + (q(q(node).property('tags')).is('[title=Todo]') ? 'TODO' : '') + (q(q(node).property('tags')).is('[title=Draft]') ? 'DRAFT' : '') + '] ') : '') : '') + String.cropAtWord(String.trim(String.stripTags(String.pregReplace(String.replace(q(node).property('title') || ((I18n.translate(node.nodeType.label) || node.nodeType.name) + (node.autoCreated ? ' (' + node.name + ')' : '')), '||', ''), '/<br\\W*?\\/?>|\\x{00a0}|[[^:print:]]|\\s+/u', ' '))), 100, '...')}"
   abstract: true
   superTypes:
     'Neos.Neos:Document': true
+  search:
+    fulltext:
+      isRoot: true
   childNodes:
     main:
       type: 'Neos.Neos:ContentCollection'
@@ -21,6 +24,8 @@
             placeholder: 'Enter subtitle here...'
       options:
         silhouette: 'neos.text.plain'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("h2", value)}'
     tags:
       type: references
       ui:

@@ -11,3 +11,6 @@
 ## Setup & Installation
 
 Clone the repository, and setup Neos as always.
+
+For Elaticsearch you need to configure the default client, see [Settings.Search.yaml](https://github.com/neos/Neos.DocsNeosIo/blob/master/DistributionPackages/Neos.DocsNeosIo/Configuration/Development/Settings.Search.yaml#13).
+Then run `./flow nodeindex:build --workspace="live"`. On Flownative Beach this is done automatically.

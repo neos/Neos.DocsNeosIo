@@ -1,0 +1,99 @@
+
+.flowpack-searchplugin-search {
+	margin-top: 32px;
+	color: #777;
+
+	form {
+		display: flex;
+	}
+
+	.search-input {
+		flex: 1;
+		color: #777;
+		display: block;
+		font-size: 16px;
+		font-weight: 300;
+		width: 100%;
+		height: 62px;
+		margin: 0;
+		padding: 0 45px 0 30px;
+		border: 0;
+
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
+
+	.search-button {
+		width: 35px;
+		border: 0;
+
+		&:active,
+		&:hover,
+		&:focus {
+			background: none;
+			transform: scale(1.1);
+		}
+	}
+
+	.progress {
+		margin: 50px 30px;
+		width: auto;
+	}
+
+	.search-result {
+		padding-top: 15px;
+		padding-bottom: 15px;
+
+		&:hover,
+		&.focused {
+			background-color: #eee;
+			outline: none;
+		}
+
+		a:visited {
+			color: $secondary-color;
+		}
+
+		.title {
+			font-size: 1.5rem;
+			font-weight: 300;
+		}
+
+		p {
+			margin-top: 5px;
+			margin-bottom: 10px;
+		}
+
+		.breadcrumbs {
+			font-size: 0.9rem;
+			font-style: italic;
+		}
+
+		.breadcrumb {
+			font-size: 0.9rem;
+			color: $secondary-color;
+
+			&:before {
+				margin-left: 0;
+				margin-right: 0;
+				font-size: 0.9rem;
+				color: $secondary-color;
+			}
+		}
+	}
+
+	/* if the list not not rendered via ajax */
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+
+		li {
+			&:not(:last-child) {
+				border-bottom: 1px solid $collection-border-color;
+			}
+		}
+	}
+}

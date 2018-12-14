@@ -20,6 +20,12 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                         <object id="front-page-logo" type="image/svg+xml" data={props.logoUri}>Neos CMS Docs</object>
                     </a>
                 </li>
+                <li class="search">
+                    <div class="search-wrapper">
+                        <Neos.DocsNeosIo:Component.SearchForm ajaxTarget=".main-header .search-results" />
+                        <div class="search-results"></div>
+                    </div>
+                </li>
                 <li>
                     <ul>
                         <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} renderCurrentPath={true} />

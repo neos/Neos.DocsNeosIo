@@ -1,0 +1,27 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<div class="search-result collection-item">
+	<neos:link.node node="{node}" class="title">{title -> f:format.raw()}</neos:link.node>
+
+	<f:if condition="{highlight}">
+		<p class="highlight">
+			<f:for each="{highlight}" as="fragment" iteration="fragmentIterator">
+				<f:comment> Bug workaround for https://github.com/Flowpack/Flowpack.SearchPlugin/issues/48 </f:comment>
+				<f:if condition="{fragmentIterator.isLast}">
+					<f:else>
+						{f:if(condition: fragmentIterator.isFirst, else: '...')}
+						{fragment -> f:format.raw()}
+					</f:else>
+				</f:if>
+			</f:for>
+		</p>
+
+		<div class="breadcrumbs">
+			<span>{f:translate(id: 'path', package: 'Flowpack.SearchPlugin')}:</span>
+			<f:for each="{parents}" as="parent">
+				<neos:link.node node="{parent}" class="breadcrumb" />
+			</f:for>
+			<neos:link.node node="{node}" class="breadcrumb" />
+		</div>
+	</f:if>
+</div>

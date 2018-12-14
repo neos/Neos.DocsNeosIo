@@ -26,6 +26,9 @@
         "sitegeist/neosguidelines": "^1.2",
         "sitegeist/silhouettes": "^1.0",
 
+        "flowpack/searchplugin": "~4.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "~4.1",
+
         "jonnitto/prettyembedyoutube": "~5.0",
         "neos/nodetypes-contentreferences": "*"
     },

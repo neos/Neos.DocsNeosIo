@@ -1,0 +1,6 @@
+prototype(Flowpack.SearchPlugin:Search) {
+    templatePath = 'resource://Neos.DocsNeosIo/Private/Fusion/Override/Flowpack.Searchplugin/Search.html'
+    searchForm = Neos.DocsNeosIo:Component.SearchForm {
+        ajaxTarget = '.flowpack-searchplugin-search .search-results'
+    }
+}

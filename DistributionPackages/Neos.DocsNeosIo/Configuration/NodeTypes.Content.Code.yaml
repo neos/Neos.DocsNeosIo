@@ -58,3 +58,5 @@
           editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
           editorOptions:
             buttonLabel: 'Edit code'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("code", value)}'

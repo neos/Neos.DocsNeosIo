@@ -1,0 +1,18 @@
+
+Neos:
+  ContentRepository:
+    Search:
+      indexAllWorkspaces: true
+      elasticSearch:
+        indexName: 'docsneosio-production'
+
+Flowpack:
+  ElasticSearch:
+    ContentRepositoryAdaptor:
+      driver:
+        version: 2.x
+    # clients:
+    #   default:
+    #     -
+    #       host: es
+    #       port: 9200

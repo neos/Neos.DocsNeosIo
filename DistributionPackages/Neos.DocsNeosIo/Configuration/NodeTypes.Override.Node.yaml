@@ -1,0 +1,9 @@
+##
+# For search, disable switching nodetypes because it causes bugs on ES-enabled instances
+##
+'Neos.Neos:Node':
+  properties:
+    _nodeType:
+      ui:
+        inspector:
+          group: ~

@@ -1,0 +1,15 @@
+prototype(Neos.DocsNeosIo:Document.SearchResultsPage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    body {
+        fullwidth = false
+        content = Neos.Fusion:Component {
+            main = Neos.Neos:ContentCollection {
+                nodePath = 'main'
+            }
+
+            renderer = afx`
+                {props.main}
+            `
+        }
+    }
+
+}
