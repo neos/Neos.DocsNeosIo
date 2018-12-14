@@ -10,7 +10,7 @@
         "neos/googleanalytics": "^2.0",
         "neos/redirecthandler-neosadapter": "^2.0",
         "neos/redirecthandler-databasestorage": "^3.0",
-        "neos/seo": "^2.0",
+        "neos/seo": "^2.1",
 
         "aertmann/history": "~2.0",
         "webexcess/redirecthandler-backend": "^1.1",

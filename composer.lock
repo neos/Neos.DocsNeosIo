@@ -3231,7 +3231,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "2040756c656a7f9a26f5f5cac3583feeda51b7b4",
+                "reference": "177e20e79adb26a062e140fb61f601d792b02766",
                 "shasum": null
             },
             "require": {
@@ -3255,7 +3255,7 @@
                 "neos/nodetypes-contentreferences": "*",
                 "neos/redirecthandler-databasestorage": "^3.0",
                 "neos/redirecthandler-neosadapter": "^2.0",
-                "neos/seo": "^2.0",
+                "neos/seo": "^2.1",
                 "sitegeist/neosguidelines": "^1.2",
                 "sitegeist/silhouettes": "^1.0",
                 "webexcess/redirecthandler-backend": "^1.1"

@@ -1,3 +1,12 @@
 ###
 ## Add your overrides to 3rd party fusion code here
 ###
+
+# Enable Neos.SEO StructuredData outputs
+prototype(Neos.Seo:StructuredData.Container) {
+    breadcrumb.@if.enabled = true
+    website.@if.enabled = true
+}
+prototype(Neos.Seo:StructuredData.Website) {
+    searchAction.targetNode = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
+}
