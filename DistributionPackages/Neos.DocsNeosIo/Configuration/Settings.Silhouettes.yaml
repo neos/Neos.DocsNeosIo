@@ -25,6 +25,7 @@ Sitegeist:
                     strong: true
                     sub: true
                     sup: true
+                    em: true
                     p: true
                     h1: true
                     h2: true
