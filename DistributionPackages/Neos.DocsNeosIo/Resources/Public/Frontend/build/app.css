@@ -11166,7 +11166,8 @@ html {
       top: 21px;
       right: 10px;
       cursor: pointer;
-      border: 0; }
+      border: 0;
+      background: white; }
       .main-header #nav-mobile li.search .search-wrapper .search-button:active, .main-header #nav-mobile li.search .search-wrapper .search-button:hover, .main-header #nav-mobile li.search .search-wrapper .search-button:focus {
         background: none;
         transform: scale(1.1); }
@@ -11446,7 +11447,8 @@ html {
     width: 35px;
     border: 0;
     transition: transform 0.2s;
-    cursor: pointer; }
+    cursor: pointer;
+    background: white; }
     .flowpack-searchplugin-search .search-button:active, .flowpack-searchplugin-search .search-button:hover, .flowpack-searchplugin-search .search-button:focus {
       background: none;
       transform: scale(1.1); }
