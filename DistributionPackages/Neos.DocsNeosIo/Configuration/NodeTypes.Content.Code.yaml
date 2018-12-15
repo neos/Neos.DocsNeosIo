@@ -8,12 +8,19 @@
     position: 250
     inlineEditable: true
   properties:
+    title:
+      type: string
+      ui:
+        label: 'Filename or description'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
     language:
       type: string
       defaultValue: 'none'
-      reloadIfChanged: true
       ui:
         label: 'Language'
+        reloadIfChanged: true
         inspector:
           group: 'general'
           editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
@@ -25,10 +32,14 @@
                 label: 'YAML'
               fusion:
                 label: 'Fusion'
+              fluid:
+                label: 'Fluid'
               php:
                 label: 'PHP'
               bash:
                 label: 'Bash'
+              apacheconf:
+                label: 'Apache Configuration'
               directory:
                 label: 'Directory structure'
               css:
