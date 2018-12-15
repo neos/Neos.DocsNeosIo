@@ -1,0 +1,11 @@
+
+Neos:
+  GoogleAnalytics:
+    authentication:
+      applicationName: 'Neos'
+      clientId: '%env:GOOGLE_ANALYTICS_CLIENT_ID%'
+      clientSecret: '%env:GOOGLE_ANALYTICS_CLIENT_SECRET%'
+      developerKey: '%env:GOOGLE_ANALYTICS_CLIENT_DEVELOPER_KEY%'
+    sites:
+      site:
+        trackingId: '%env:GOOGLE_ANALYTICS_TRACKING_CODE%'
