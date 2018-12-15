@@ -1,0 +1,11 @@
+prototype(Neos.DocsNeosIo:Content.Tabs.Item) < prototype(Neos.Neos:ContentComponent) {
+    content = Neos.Neos:ContentCollection {
+        nodePath = '.'
+    }
+
+    renderer = afx`
+        <div id={node.identifier} class="tab-item">
+            {props.content}
+        </div>
+    `
+}

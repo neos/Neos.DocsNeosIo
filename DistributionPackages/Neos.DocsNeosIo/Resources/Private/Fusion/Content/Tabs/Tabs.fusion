@@ -1,0 +1,18 @@
+prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
+    renderer = afx`
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <Neos.Fusion:Collection collection={q(node).children()} iteratorName="iterator" itemName="item">
+                        <li @path="itemRenderer" class="tab col s3">
+                            <Carbon.Link:Link link={'#' + item.identifier} additionalClass={iterator.isFirst ? 'active' : ''} backendLink={true} >
+                                <Neos.Neos:Editable node={item} property="title" />
+                            </Carbon.Link:Link>
+                        </li>
+                    </Neos.Fusion:Collection>
+                </ul>
+            </div>
+            <Neos.Neos:ContentCollection nodePath="" attributes.class="tabs-content col s12" />
+        </div>
+    `
+}

@@ -1,0 +1,17 @@
+'Neos.DocsNeosIo:Content.Tabs':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.Neos:ContentCollection': true
+  ui:
+    label: 'Tabs'
+    icon: icon-layer-group
+    position: 400
+  constraints:
+    nodeTypes:
+      '*': false
+      'Neos.DocsNeosIo:Content.Tabs.Item': true
+  options:
+    template:
+      childNodes:
+        itemNode1:
+          type: 'Neos.DocsNeosIo:Content.Tabs.Item'
