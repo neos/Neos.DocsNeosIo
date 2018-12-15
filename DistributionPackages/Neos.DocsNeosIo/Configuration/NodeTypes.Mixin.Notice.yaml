@@ -38,7 +38,7 @@
             values:
               'info':
                 label: 'Info'
-                icon: icon-info-square
+                icon: icon-info-circle
               'warning':
                 label: 'Warning'
                 icon: icon-exclamation-triangle
@@ -51,3 +51,6 @@
               'tip':
                 label: 'Tip'
                 icon: icon-lightbulb
+              'backend':
+                label: 'Backend-only'
+                icon: icon-edit

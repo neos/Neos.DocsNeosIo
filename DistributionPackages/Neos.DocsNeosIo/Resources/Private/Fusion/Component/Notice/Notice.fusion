@@ -10,11 +10,13 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
         warning = ${value == 'warning' ? 'exclamation-circle' : value}
         danger = ${value == 'danger' ? 'exclamation-triangle' : value}
         tip = ${value == 'tip' ? 'lightbulb' : value}
+        backend = ${value == 'backend' ? 'edit' : value}
     }
     renderer = afx`
-        <div id={props.id} class={'notice card-panel type-' + props.type}>
+        <div id={props.id} class={'notice card-panel type-' + props.type} @if.isFrontendNotice={props.type != 'backend' || node.context.inBackend}>
             <h4 @if.has={props.title || node.context.inBackend} class="header">
                 <i aria-label={'Icon ' + props.type} class={'left inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
+                <span @if.backend={props.type == 'backend'}>Backend only: </span>
                 {props.title}
             </h4>
             <div>{props.content}</div>

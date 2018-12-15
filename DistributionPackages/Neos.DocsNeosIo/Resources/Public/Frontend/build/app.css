@@ -11280,7 +11280,7 @@ html {
   margin-bottom: 32px; }
   .notice.type-info {
     background: #ffd54f; }
-  .notice.type-warning {
+  .notice.type-warning, .notice.type-backend {
     background: #ff6f00; }
   .notice.type-danger {
     background: #d50000; }

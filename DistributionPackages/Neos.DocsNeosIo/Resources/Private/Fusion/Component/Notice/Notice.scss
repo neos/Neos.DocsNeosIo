@@ -4,7 +4,8 @@
 	&.type-info {
 		background: #ffd54f;
 	}
-	&.type-warning {
+	&.type-warning,
+	&.type-backend {
 		background: #ff6f00;
 	}
 	&.type-danger {
