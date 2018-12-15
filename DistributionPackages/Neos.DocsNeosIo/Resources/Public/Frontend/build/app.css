@@ -11444,7 +11444,9 @@ html {
       box-shadow: none; }
   .flowpack-searchplugin-search .search-button {
     width: 35px;
-    border: 0; }
+    border: 0;
+    transition: transform 0.2s;
+    cursor: pointer; }
     .flowpack-searchplugin-search .search-button:active, .flowpack-searchplugin-search .search-button:hover, .flowpack-searchplugin-search .search-button:focus {
       background: none;
       transform: scale(1.1); }
@@ -11482,3 +11484,14 @@ html {
     padding: 0; }
     .flowpack-searchplugin-search ol li:not(:last-child) {
       border-bottom: 1px solid #e0e0e0; }
+    .flowpack-searchplugin-search ol:empty::before {
+      display: block;
+      content: 'No results found.';
+      padding: 10px 20px;
+      font-style: italic; }
+  .flowpack-searchplugin-search .page-navigation {
+    border-top: 1px solid #e0e0e0;
+    padding-left: 17px; }
+    .flowpack-searchplugin-search .page-navigation li {
+      display: inline-block;
+      padding: 0 5px; }

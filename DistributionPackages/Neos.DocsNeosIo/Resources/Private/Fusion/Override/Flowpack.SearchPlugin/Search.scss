@@ -28,6 +28,8 @@
 	.search-button {
 		width: 35px;
 		border: 0;
+		transition: transform 0.2s;
+		cursor: pointer;
 
 		&:active,
 		&:hover,
@@ -94,6 +96,23 @@
 			&:not(:last-child) {
 				border-bottom: 1px solid $collection-border-color;
 			}
+		}
+
+		&:empty::before {
+			display: block;
+			content: 'No results found.';
+			padding: 10px 20px;
+			font-style: italic;
+		}
+	}
+
+	.page-navigation {
+		border-top: 1px solid $collection-border-color;
+		padding-left: 17px;
+
+		li {
+			display: inline-block;
+			padding: 0 5px;
 		}
 	}
 }
