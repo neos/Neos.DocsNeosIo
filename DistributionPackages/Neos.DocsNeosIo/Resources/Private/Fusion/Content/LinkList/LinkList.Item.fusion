@@ -2,6 +2,7 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
     title = Neos.Neos:Editable {
         property = 'title'
         block = false
+        @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
     }
     link = ${q(node).property('link')}
     icon = ${q(node).property('icon') || 'link'}

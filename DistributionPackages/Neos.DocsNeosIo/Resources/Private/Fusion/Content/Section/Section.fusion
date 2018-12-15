@@ -10,7 +10,6 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
     headlineSize = ${q(node).property('headlineSize')}
     content = Neos.Neos:ContentCollection {
         nodePath = '.'
-        @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
     }
     tags = ${q(node).property('tags')}
 
