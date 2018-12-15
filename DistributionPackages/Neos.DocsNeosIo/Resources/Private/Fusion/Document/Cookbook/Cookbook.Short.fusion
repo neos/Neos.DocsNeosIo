@@ -14,7 +14,7 @@ prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Compo
                     <p>{props.subtitle}</p>
                     <i>{props.publishingDate}</i>
                 </div>
-                <Neos.DocsNeosIo:Document.TagList collection={props.tags} />
+                <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
             </div>
             <div class="card-action white-text">
                 Let's do this!

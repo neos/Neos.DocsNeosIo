@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Document.TagList) < prototype(Neos.Fusion:Component) {
+prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) {
     collection = false
 
     @context.collection = ${this.collection}
