@@ -11046,6 +11046,27 @@ html {
   .progress .indeterminate {
     background-color: #00adee; }
 
+.backend-tags::before {
+  content: 'Backend info: '; }
+
+.backend-tags .chip.notice-type-info {
+  background: #ffd54f; }
+
+.backend-tags .chip.notice-type-warning {
+  background: #ff6f00; }
+
+.backend-tags .chip.notice-type-danger {
+  background: #d50000; }
+
+.backend-tags .chip.notice-type-todo {
+  background: #26224c; }
+
+.backend-tags .chip.notice-type-tip {
+  background: #4caf50; }
+
+.backend-tags .chip.notice-type-danger, .backend-tags .chip.notice-type-todo, .backend-tags .chip.notice-type-tip {
+  color: white; }
+
 .authors {
   margin-top: 60px; }
   .authors h4 {
@@ -11196,6 +11217,9 @@ html {
 
 #index-banner {
   border-bottom: 1px solid rgba(0, 0, 0, 0.14); }
+  @media only screen and (min-width: 993px) {
+    #index-banner {
+      min-height: 162px; } }
   @media only screen and (min-width: 601px) {
     .neos-top-navigation ~ main #index-banner {
       margin-top: 30px; } }
@@ -11384,6 +11408,12 @@ html {
 
 .docs-section {
   font-weight: 300; }
+
+.tab-item {
+  overflow: scroll;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: rgba(242, 242, 242, 0.5); }
 
 .text {
   font-weight: 300; }

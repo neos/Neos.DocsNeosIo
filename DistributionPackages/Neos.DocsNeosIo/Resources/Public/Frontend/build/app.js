@@ -21,7 +21,7 @@
       $('.modal').modal();
       $('.scrollspy').scrollSpy();
       $('.datepicker').datepicker();
-      $('.tabs').tabs();
+      $('.tabs:not(:empty)').tabs();
       $('.timepicker').timepicker();
       $('.tooltipped').tooltip();
       $('select').not('.disabled').formSelect();
