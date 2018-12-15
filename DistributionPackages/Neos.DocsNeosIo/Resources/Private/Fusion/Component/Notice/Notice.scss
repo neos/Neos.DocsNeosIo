@@ -33,8 +33,15 @@
 	&.type-todo,
 	&.type-tip {
 		&,
-		.header {
+		.header,
+		a {
 			color: white;
+		}
+
+		a:active,
+		a:hover,
+		a:focus {
+			text-decoration: underline;
 		}
 	}
 }

@@ -11320,10 +11320,21 @@ html {
     margin-right: 0.5rem;
     font-size: 1.6rem; }
   .notice.type-danger,
-  .notice.type-danger .header, .notice.type-todo,
-  .notice.type-todo .header, .notice.type-tip,
-  .notice.type-tip .header {
+  .notice.type-danger .header,
+  .notice.type-danger a, .notice.type-todo,
+  .notice.type-todo .header,
+  .notice.type-todo a, .notice.type-tip,
+  .notice.type-tip .header,
+  .notice.type-tip a {
     color: white; }
+  .notice.type-danger a:active,
+  .notice.type-danger a:hover,
+  .notice.type-danger a:focus, .notice.type-todo a:active,
+  .notice.type-todo a:hover,
+  .notice.type-todo a:focus, .notice.type-tip a:active,
+  .notice.type-tip a:hover,
+  .notice.type-tip a:focus {
+    text-decoration: underline; }
 
 .neos-top-navigation {
   position: fixed;
