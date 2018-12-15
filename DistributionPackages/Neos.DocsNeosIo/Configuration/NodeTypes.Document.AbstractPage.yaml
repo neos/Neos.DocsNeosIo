@@ -3,6 +3,7 @@
   abstract: true
   superTypes:
     'Neos.Neos:Document': true
+    'Neos.DocsNeosIo:Mixin.Taggable': true
   search:
     fulltext:
       isRoot: true
@@ -27,14 +28,9 @@
       search:
         fulltextExtractor: '${Indexing.extractInto("h2", value)}'
     tags:
-      type: references
       ui:
-        label: 'Tags'
-        reloadIfChanged: true
         inspector:
           group: 'document'
-          editorOptions:
-            nodeTypes: ['Neos.DocsNeosIo:Document.Tag']
     status:
       type: string
       defaultValue: ''

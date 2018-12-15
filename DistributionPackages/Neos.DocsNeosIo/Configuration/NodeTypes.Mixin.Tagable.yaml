@@ -1,0 +1,14 @@
+'Neos.DocsNeosIo:Mixin.Taggable':
+  abstract: true
+  superTypes:
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  properties:
+    tags:
+      type: references
+      ui:
+        label: 'Tags'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+          editorOptions:
+            nodeTypes: ['Neos.DocsNeosIo:Document.Tag']
