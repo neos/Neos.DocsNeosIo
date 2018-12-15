@@ -21,6 +21,7 @@
         "carbon/includeassets": "^3.5",
         "codeq/unicodenormalizer": "~2.1",
         "flowpack/cachebuster": "^1.0",
+        "flowpack/nodetemplates": "~1.0",
         "moc/notfound": "^3.1",
         "jonnitto/sitemap": "^3.2",
         "sitegeist/neosguidelines": "^1.2",

@@ -1756,6 +1756,36 @@
             "time": "2018-07-04 10:00:12"
         },
         {
+            "name": "flowpack/nodetemplates",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowpack/Flowpack.NodeTemplates.git",
+                "reference": "92d6870698ce1f533fd4e3a4a89261cff330d038"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.NodeTemplates/zipball/92d6870698ce1f533fd4e3a4a89261cff330d038",
+                "reference": "92d6870698ce1f533fd4e3a4a89261cff330d038",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos-ui": "*"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Flowpack\\NodeTemplates\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "description": "Neos package that allows to modify nodes on creation via templates.",
+            "time": "2018-04-12 14:08:24"
+        },
+        {
             "name": "flowpack/searchplugin",
             "version": "4.0.0",
             "source": {
@@ -3231,7 +3261,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "177e20e79adb26a062e140fb61f601d792b02766",
+                "reference": "fe8ddcdb061b3a967849f069a0a48f8fe36c1c02",
                 "shasum": null
             },
             "require": {
@@ -3243,6 +3273,7 @@
                 "codeq/unicodenormalizer": "~2.1",
                 "flowpack/cachebuster": "^1.0",
                 "flowpack/elasticsearch-contentrepositoryadaptor": "~4.1",
+                "flowpack/nodetemplates": "~1.0",
                 "flowpack/searchplugin": "~4.0",
                 "jonnitto/prettyembedyoutube": "~5.0",
                 "jonnitto/sitemap": "^3.2",

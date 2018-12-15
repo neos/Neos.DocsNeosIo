@@ -10,3 +10,10 @@
     nodeTypes:
       '*': false
       'Neos.DocsNeosIo:Content.LinkList.Item': true
+  options:
+    template:
+      childNodes:
+        itemNode1:
+          type: 'Neos.DocsNeosIo:Content.LinkList.Item'
+        itemNode2:
+          type: 'Neos.DocsNeosIo:Content.LinkList.Item'
