@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+.backend-tags {
+	&::before {
+		content: 'Backend info: '
+	}
+
+	.chip {
+		&.notice-type-info {
+			background: #ffd54f;
+		}
+
+		&.notice-type-warning {
+			background: #ff6f00;
+		}
+
+		&.notice-type-danger {
+			background: $error-color;
+		}
+
+		&.notice-type-todo {
+			background: $secondary-color;
+		}
+
+		&.notice-type-tip {
+			background: $success-color;
+		}
+
+		&.notice-type-danger,
+		&.notice-type-todo,
+		&.notice-type-tip {
+			color: white;
+		}
+	}
+}

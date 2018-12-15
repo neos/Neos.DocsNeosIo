@@ -30,6 +30,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
                         <div class="col s12 m11 offset-m1 xl8 offset-xl1 center-on-small-only">
                             <h1 class="header">{props.title}</h1>
                             <h4 class="light" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</h4>
+                            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 0;" @if.hasOneAuthor={props.authors && Array.length(props.authors) == 1}>

@@ -1,24 +1,26 @@
 prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) {
     collection = false
+    filter = '[title ^= "Neos"],[title $= "level"]'
+    # any fizzle expression to filter for (we do this here to abstract the default usage)
+    additionalClass = ''
 
-    @context.collection = ${this.collection}
+    @context.collection = ${q(this.collection).filter(this.filter)}
     tags = Neos.Fusion:Collection {
         collection = ${collection}
         itemName = 'node'
         // itemRenderer = Carbon.Link:Link {
-        //     @if.notInternal = ${!String.startsWith(q(node).property('title'), 'Needs')}
         //     attributes.class = 'chip'
         //     node = ${node}
         //     content = ${q(node).property('title')}
         // }
         itemRenderer = afx`
-            <div class="chip" @if.notInternal={!String.startsWith(q(node).property('title'), 'Needs')}>
+            <div class={'chip notice-type-' + q(node).property('noticeType')}>
                 {q(node).property('title')}
             </div>
         `
     }
     renderer = afx`
-        <div class="tags" @if.has={props.tags}>
+        <div class={'tags ' + props.additionalClass} @if.has={collection.count() > 0}>
             <object type="owo/uwu">
                 {props.tags}
             </object>
