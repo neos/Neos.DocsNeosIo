@@ -2,6 +2,11 @@
 #index-banner {
 	border-bottom: 1px solid $border-color;
 
+	@media #{$large-and-up} {
+		// align with the search top border
+		min-height: 162px;
+	}
+
 	.neos-top-navigation ~ main & {
 		@media #{$medium-and-up} {
 			margin-top: $top-navigation-height;
