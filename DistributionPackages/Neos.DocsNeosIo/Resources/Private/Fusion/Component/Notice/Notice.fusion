@@ -19,7 +19,7 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
                 <span @if.backend={props.type == 'backend'}>Backend only: </span>
                 {props.title}
             </h4>
-            <div>{props.content}</div>
+            <div class="styled-content">{props.content}</div>
         </div>
     `
 }
