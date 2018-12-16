@@ -13,3 +13,8 @@
   constraints:
     nodeTypes:
       'Neos.DocsNeosIo:Constraint.Content.Restricted': false
+  options:
+    template:
+      childNodes:
+        textNode:
+          type: 'Neos.DocsNeosIo:Content.Text'
