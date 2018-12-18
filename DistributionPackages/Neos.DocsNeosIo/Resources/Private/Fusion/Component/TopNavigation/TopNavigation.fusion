@@ -12,7 +12,7 @@ prototype(Neos.DocsNeosIo:Component.TopNavigation) < prototype(Neos.Fusion:Compo
             <div class="nav-wrapper">
                 <ul class="left">
                     <li class="active"><a href="https://www.neos.io/">Neos</a></li>
-                    <li><a href="https://neos.readthedocs.io/en/stable/">Documentation</a></li>
+                    <li><a href="https://docs.neos.io/">Documentation</a></li>
                     <li><a href="https://neos.readthedocs.io/en/stable/References/index.html">API References</a></li>
                     <li><a href="https://www.neos.io/docs-and-support/editor-documentation.html">Editor Docs</a></li>
                     <li><a href="https://www.neos.io/download-and-extend/packages.html">Packages</a></li>
