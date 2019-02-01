@@ -1,13 +1,5 @@
 prototype(Neos.DocsNeosIo:Component.TopNavigation) < prototype(Neos.Fusion:Component) {
-    navigationRoot = false
-	homeLink = Neos.Neos:NodeUri {
-		node = ${site}
-	}
-    logoUri = Neos.Fusion:ResourceUri {
-        path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_negative_dark.svg'
-    }
-
-	renderer = afx`
+    renderer = afx`
         <nav class="neos-top-navigation">
             <div class="nav-wrapper">
                 <ul class="left">
@@ -21,5 +13,5 @@ prototype(Neos.DocsNeosIo:Component.TopNavigation) < prototype(Neos.Fusion:Compo
                 </ul>
             </div>
         </nav>
-	`
+    `
 }
