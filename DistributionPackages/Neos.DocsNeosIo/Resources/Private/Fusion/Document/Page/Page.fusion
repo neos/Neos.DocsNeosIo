@@ -7,6 +7,6 @@ prototype(Neos.DocsNeosIo:Document.Page) < prototype(Neos.DocsNeosIo:Document.Ab
 
         renderer = afx`
             {props.main}
-		`
+        `
     }
 }

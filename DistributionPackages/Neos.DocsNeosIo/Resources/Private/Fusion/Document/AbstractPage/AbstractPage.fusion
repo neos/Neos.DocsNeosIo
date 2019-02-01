@@ -1,13 +1,13 @@
 prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
-	head {
-		headTags = Neos.Fusion:Component {
-			renderer = afx`
-				<meta http-equiv="x-ua-compatible" content="ie=edge" />
-				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-			`
-		}
-	}
-	body = Neos.DocsNeosIo:Component.DefaultLayout {
+    head {
+        headTags = Neos.Fusion:Component {
+            renderer = afx`
+                <meta http-equiv="x-ua-compatible" content="ie=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            `
+        }
+    }
+    body = Neos.DocsNeosIo:Component.DefaultLayout {
         title = Neos.Neos:Editable {
             property = 'title'
             block = false
@@ -18,6 +18,6 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         }
         tags = ${q(node).property('tags')}
         navigationRoot = ${q(site).property('navReference') || site}
-		@process.normalize = CodeQ.UnicodeNormalizer:Normalizer
-	}
+        @process.normalize = CodeQ.UnicodeNormalizer:Normalizer
+    }
 }

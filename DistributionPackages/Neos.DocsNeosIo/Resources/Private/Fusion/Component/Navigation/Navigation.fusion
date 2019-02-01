@@ -3,22 +3,22 @@ prototype(Neos.DocsNeosIo:Component.Navigation) < prototype(Neos.DocsNeosIo:Comp
     renderCurrentPath = false
 
     # rendering
-	@context {
+    @context {
         startingPoint = ${this.startingPoint}
         node = ${this.startingPoint}
         renderCurrentPath = ${this.renderCurrentPath}
     }
 
-	// overrides the default level renderer without <ul> wrapping
-	renderer = afx`
+    // overrides the default level renderer without <ul> wrapping
+    renderer = afx`
         {props.navigationItems}
-	`
+    `
 
-	@cache {
-		mode = 'cached'
-		entryIdentifier.node = ${documentNode}
-		entryTags {
-			1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
-		}
-	}
+    @cache {
+        mode = 'cached'
+        entryIdentifier.node = ${documentNode}
+        entryTags {
+            1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
+        }
+    }
 }

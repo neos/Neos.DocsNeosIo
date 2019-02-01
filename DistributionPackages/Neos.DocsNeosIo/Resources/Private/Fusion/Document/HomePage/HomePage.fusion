@@ -1,12 +1,12 @@
 prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-	body.navCollection = ${q(node).find('main').children()}
+    body.navCollection = ${q(node).find('main').children()}
     body.content = Neos.Fusion:Component {
-		main = Neos.Neos:ContentCollection {
-			nodePath = 'main'
-		}
+        main = Neos.Neos:ContentCollection {
+            nodePath = 'main'
+        }
 
-		renderer = afx`
+        renderer = afx`
             {props.main}
-		`
-	}
+        `
+    }
 }

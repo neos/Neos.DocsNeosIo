@@ -46,5 +46,5 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
             </div>
           </div>
         </footer>
-	`
+    `
 }

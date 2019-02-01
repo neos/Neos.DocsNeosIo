@@ -28,5 +28,5 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(N
         <Neos.Fusion:Tag tagName="ul" attributes={props.attributes} @if.notEmpty={collection.count() > 0}>
             {props.items}
         </Neos.Fusion:Tag>
-	`
+    `
 }

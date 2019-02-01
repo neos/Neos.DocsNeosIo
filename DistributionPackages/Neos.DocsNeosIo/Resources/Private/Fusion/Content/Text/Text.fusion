@@ -1,10 +1,10 @@
 prototype(Neos.DocsNeosIo:Content.Text) < prototype(Neos.Neos:ContentComponent) {
-	text = Neos.Neos:Editable {
-		property = 'text'
+    text = Neos.Neos:Editable {
+        property = 'text'
         @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
-	}
+    }
 
-	renderer = afx`
-		<div class="text styled-content">{props.text}</div>
-	`
+    renderer = afx`
+        <div class="text styled-content">{props.text}</div>
+    `
 }
