@@ -13,5 +13,5 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
             {props.title}
             <i aria-label={'Icon ' + props.icon} class={props.iconClass} @if.has={props.icon}></i>
         </Carbon.Link:Link>
-	`
+    `
 }

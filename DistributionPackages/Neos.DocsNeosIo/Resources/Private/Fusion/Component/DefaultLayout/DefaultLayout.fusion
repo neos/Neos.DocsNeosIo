@@ -2,7 +2,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
     authors = false
     title = false
     subtitle = false
-	content = ''
+    content = ''
     navCollection = false
     fullwidth = false
     tags = false
@@ -20,9 +20,9 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
         }
     }
 
-	renderer = afx`
+    renderer = afx`
         <Neos.DocsNeosIo:Component.TopNavigation />
-		<Neos.DocsNeosIo:Component.Header navigationRoot={props.navigationRoot} />
+        <Neos.DocsNeosIo:Component.Header navigationRoot={props.navigationRoot} />
         <main>
             <div class="section" id="index-banner">
                 <div class="container">
@@ -66,6 +66,6 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
                 </div>
             </div>
         </main>
-		<Neos.DocsNeosIo:Component.Footer />
-	`
+        <Neos.DocsNeosIo:Component.Footer />
+    `
 }

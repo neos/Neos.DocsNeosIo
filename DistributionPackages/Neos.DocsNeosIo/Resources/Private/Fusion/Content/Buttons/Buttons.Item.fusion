@@ -1,9 +1,9 @@
 prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentComponent) {
     class = ${'btn' + ((!this.link && !node.context.inBackend) ? ' disabled' : '')}
     title = Neos.Neos:Editable {
-		property = 'title'
+        property = 'title'
         block = false
-	}
+    }
     link = ${q(node).property('link')}
     icon = Neos.Fusion:Case {
         isSet {
@@ -19,10 +19,10 @@ prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentCom
         }
     }
 
-	renderer = afx`
+    renderer = afx`
         <Carbon.Link:Link link={props.link} additionalClass={props.class} renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
             {props.title}
             <i aria-label={'Icon ' + props.icon} class={'right inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
         </Carbon.Link:Link>
-	`
+    `
 }

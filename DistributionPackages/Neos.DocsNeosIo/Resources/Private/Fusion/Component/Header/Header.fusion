@@ -1,13 +1,13 @@
 prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
     navigationRoot = false
-	homeLink = Neos.Neos:NodeUri {
-		node = ${site}
-	}
+    homeLink = Neos.Neos:NodeUri {
+        node = ${site}
+    }
     logoUri = Neos.Fusion:ResourceUri {
         path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_primary.svg'
     }
 
-	renderer = afx`
+    renderer = afx`
         <header class="main-header">
             <div class="container">
                 <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger circle hide-on-large-only">
@@ -32,7 +32,7 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                         <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} renderCurrentPath={true} />
                     </ul>
                 </li>
-		    </ul>
+            </ul>
         </header>
-	`
+    `
 }
