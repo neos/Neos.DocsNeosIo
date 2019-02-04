@@ -23,6 +23,5 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
             <input class="search-input" type="search" name="search" placeholder="Search" value={props.searchWord} autocomplete="off" data-ajax-target={props.ajaxTarget} data-ajax-search-uri={props.ajaxSearchUri}/>
             <button class="search-button material-icons">search</button>
         </form>
-
     `
 }
