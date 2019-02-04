@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentCompon
             <strong><i>Written by</i></strong>
             <h4>
                 <Neos.Fusion:Collection collection={props.authors} itemName="author" iterationName="iteration" @children="itemRenderer">
-                    <span @if.notFirst={iteration.index != 0}>, </span>
+                    {iteration.isFirst ? '' : ', '}
                     <span itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{author.label}</span></span>
                 </Neos.Fusion:Collection>
             </h4>
