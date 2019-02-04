@@ -9,7 +9,7 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
         collection = ${collection}
         itemName = 'node'
         // itemRenderer = Carbon.Link:Link {
-        //     attributes.class = 'chip'
+        //     additionalClass = 'chip'
         //     node = ${node}
         //     content = ${q(node).property('title')}
         // }
@@ -20,8 +20,8 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
         `
     }
     renderer = afx`
-        <div class={'tags ' + props.additionalClass} @if.has={collection.count() > 0 && collection.get(0)}>
-            <object type="owo/uwu">
+        <div class={String.trim('tags ' + props.additionalClass)} @if.has={collection.count() > 0 && collection.get(0)}>
+            <object type='owo/uwu'>
                 {props.tags}
             </object>
         </div>
