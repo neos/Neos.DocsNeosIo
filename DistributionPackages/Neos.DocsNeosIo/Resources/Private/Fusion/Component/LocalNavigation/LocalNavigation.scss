@@ -16,7 +16,7 @@
 				border-left: 2px solid map-get($brand-colors, primary);
 			}
 
-			&:hover {
+			&:not(.active):hover {
 				border-left: 1px solid map-get($brand-colors, primary);
 			}
 			color: rgba(0, 0, 0, 0.55);
