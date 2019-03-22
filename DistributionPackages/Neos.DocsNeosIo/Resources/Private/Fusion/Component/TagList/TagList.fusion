@@ -21,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
     }
     renderer = afx`
         <div class={String.trim('tags ' + props.additionalClass)} @if.has={collection.count() > 0 && collection.get(0)}>
-            <object type='owo/uwu'>
+            <object type="owo/uwu">
                 {props.tags}
             </object>
         </div>

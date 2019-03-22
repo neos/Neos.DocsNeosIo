@@ -1,68 +1,50 @@
 prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
-    items = Neos.Fusion:DataStructure {
-        first = Neos.Fusion:DataStructure {
-            title = 'Help Neos Grow'
-            text = 'We hope you have enjoyed reading the Neos documentation. Do you want to help extending this documentation?'
-            link = 'mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards'
-            cta = 'Support Us'
-        }
-        second = Neos.Fusion:DataStructure {
-            title = 'Join the Discussion'
-            text = 'We have a very active Slack chat where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.'
-            link = 'https://slack.neos.io'
-            cta = 'Chat'
-        }
-    }
-
-    connect = afx`
-        <h5>Connect</h5>
-        <ul>
-            <li><a target='_blank' rel='noopener' href='https://github.com/neos'><i class='fab fa-github'></i> GitHub</a></li>
-            <li><a target='_blank' rel='noopener' href='https://twitter.com/NeosCMS'><i class='fab fa-twitter'></i> Twitter</a></li>
-            <li><a target='_blank' rel='noopener' href='https://www.facebook.com/NeosCMS'><i class='fab fa-facebook'></i> Facebook</a></li>
-            <li><a target='_blank' rel='noopener' href='https://youtube.com/c/NeosCMS'><i class='fab fa-youtube'></i> YouTube</a></li>
-        </ul>
-    `
-
-    copyright = afx`
-        <p>
-            Neos is free and open source software licensed under <a href='https://opensource.org/licenses/GPL-3.0' target='_blank' rel='noopener'>GPL v3</a> or later.<br />
-            Created with passion by over <span data-component='GitHubAPI' data-endpoint='repos/Neos/neos-development-collection/stats/contributors' data-property='length'>100</span> contributors around the world.<br />
-            Website hosted by <a href='https://www.flownative.com' target='_blank' rel='noopener'>Flownative</a>. <a target='_blank' rel='noopener' href='https://status.neos.io'>System status.</a><br />
-            <a href='https://www.neos.io/footer-content/imprint.html'>Imprint</a>
-        </p>
-    `
-
     renderer = afx`
-        <footer class='main-footer page-footer'>
-            <div class='container'>
-                <div class='row' style='margin-bottom: 0;'>
-                    <div class='col s12 m10 offset-m1'>
-                        <div class='row'>
-                            <Neos.Fusion:Loop items={props.items} @children='itemRenderer' >
-                                <div class='col l4 s12'>
-                                    <h5 @if.hasTitle={item.title}>{item.title}</h5>
-                                    <p @if.hasText={item.text} class='grey-text text-darken-2'>{item.text}</p>
-                                    <Carbon.Link:Link
-                                        @if.render={item.cta && item.link}
-                                        link={item.link}
-                                        additionalClass='btn btn--solidPrimary'>
-                                        <div class='btn__content'>
-                                            {item.cta}
-                                        </div>
-                                    </Carbon.Link:Link>
-                                </div>
-                            </Neos.Fusion:Loop>
-                            <div @if.hasConnect={props.connect} class='col l4 s12'>
-                                {props.connect}
-                            </div>
+        <footer class="main-footer page-footer">
+          <div class="container">
+            <div class="row" style="margin-bottom: 0;">
+              <div class="col s12 m10 offset-m1">
+                <div class="row">
+                  <div class="col l4 s12">
+                    <h5>Help Neos Grow</h5>
+                    <p class="grey-text text-darken-2">We hope you have enjoyed reading the Neos documentation. Do you want to help extending this documentation?</p>
+                    <a class="btn btn--solidPrimary" href="mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards">
+                        <div class="btn__content">
+                            Support Us
                         </div>
-                        <div @if.hasCopyright={props.copyright} class='footer-copyright'>
-                            {props.copyright}
+                    </a>
+                  </div>
+                  <div class="col l4 s12">
+                    <h5>Join the Discussion</h5>
+                    <p class="grey-text text-darken-2">We have a very active Slack chat where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
+                    <a class="btn btn--solidPrimary" target="_blank" href="https://slack.neos.io/">
+                        <div class="btn__content">
+                            Chat
                         </div>
-                    </div>
+                    </a>
+                  </div>
+                  <div class="col l4 s12">
+                    <h5>Connect</h5>
+                    <ul>
+                        <li><a target="_blank" rel="noopener" href="https://github.com/neos"><i class="fab fa-github"></i> GitHub</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://twitter.com/NeosCMS"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://www.facebook.com/NeosCMS"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://youtube.com/c/NeosCMS"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                  </div>
                 </div>
+
+                <div class="footer-copyright">
+                    <p>
+                        Neos is free and open source software licensed under <a href="https://opensource.org/licenses/GPL-3.0" target="_blank" rel="noopener">GPL v3</a> or later.<br />
+                        Created with passion by over <span data-component="GitHubAPI" data-endpoint="repos/Neos/neos-development-collection/stats/contributors" data-property="length">100</span> contributors around the world.<br />
+                        Website hosted by <a href="https://www.flownative.com" target="_blank" rel="noopener">Flownative</a>. <a target="_blank" rel="noopener" href="https://status.neos.io">System status.</a><br />
+                        <a href="https://www.neos.io/footer-content/imprint.html">Imprint</a>
+                    </p>
+                </div>
+              </div>
             </div>
+          </div>
         </footer>
     `
 }

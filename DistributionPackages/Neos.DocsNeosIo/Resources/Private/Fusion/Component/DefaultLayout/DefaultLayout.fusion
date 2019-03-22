@@ -7,7 +7,6 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
     fullwidth = false
     tags = false
     navigationRoot = false
-    writtenBy = 'Written by'
 
     @context.tags = ${this.tags}
     tagNotices = Neos.Fusion:Collection {
@@ -42,7 +41,7 @@ prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:Content
                         <div class="col s12 m3 center">
                             <div class="image-container">
                                 <img src={Array.first(props.authors).gravatar} class="profile-image" style="margin-top: 16px;"/><br />
-                                <i>{props.writtenBy}</i><br/>
+                                <i>Written by</i><br/>
                                 {Array.first(props.authors).label}
                             </div>
                         </div>

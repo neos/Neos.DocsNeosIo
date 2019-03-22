@@ -1,10 +1,9 @@
 prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentComponent) {
     authors = false
-    writtenBy = 'Written by'
 
     renderer = afx`
         <div class="authors authors-multiple" @if.hasMultiple={props.authors && Array.length(props.authors) > 1}>
-            <strong><i>{props.writtenBy}</i></strong>
+            <strong><i>Written by</i></strong>
             <h4>
                 <Neos.Fusion:Collection collection={props.authors} itemName="author" iterationName="iteration" @children="itemRenderer">
                     {iteration.isFirst ? '' : ', '}
@@ -29,7 +28,7 @@ prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentCompon
                 </div>
               </div>
               <div class="col s12 m9">
-                <strong><i>{props.writtenBy}</i></strong>
+                <strong><i>Written by</i></strong>
                 <h4><span itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{Array.first(props.authors).label}</span></span></h4>
               </div>
             </div>
