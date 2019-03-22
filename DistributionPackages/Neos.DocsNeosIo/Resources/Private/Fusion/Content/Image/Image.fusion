@@ -2,7 +2,7 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
     text = Neos.Neos:Editable {
         property = 'text'
     }
-    alternativeText = ${node.properties.alternativeText}
+    alternativeText = ${q(node).property('alternativeText')}
     src = Neos.DocsNeosIo:Component.ImageUri {
         @context.asset = ${q(node).property('image')}
         @context.maximumWidth = 1920
