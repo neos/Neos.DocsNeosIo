@@ -91,6 +91,7 @@
     // Only show scrollbar on hover
     &:hover {
       overflow-y: overlay;
+	  -ms-overflow-style: -ms-autohiding-scrollbar;
     }
 
 
