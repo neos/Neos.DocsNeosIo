@@ -18,7 +18,6 @@ prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
                 <li class="logo">
                     <a id="logo-container" href={props.homeLink} class="brand-logo">
                         <object id="front-page-logo" type="image/svg+xml" data={props.logoUri}>Neos CMS Docs</object>
-                        <div style="margin-left: 100px; text-align: left;">Docs Alpha Preview</div>
                     </a>
                 </li>
                 <li class="search">
