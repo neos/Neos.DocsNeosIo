@@ -17,6 +17,14 @@ Clone the repository, and setup Neos as always.
 For Elaticsearch you need to configure the default client, see [Settings.Search.yaml](https://github.com/neos/Neos.DocsNeosIo/blob/master/DistributionPackages/Neos.DocsNeosIo/Configuration/Development/Settings.Search.yaml#13).
 Then run `./flow nodeindex:build --workspace="live"`. On Flownative Beach this is done automatically.
 
+# Adopting the custom editors
+
+**Currently, the build only works with yarn and not with NPM install.**
+
+- (optional): Use [NVM](https://github.com/creationix/nvm) to ensure you're using the right node.js version: `nvm install` or `nvm use`
+- Install yarn globally `npm install -g yarn`
+- Go to `Resources/Private/CkEditor/CustomStylingFormats` and run `yarn`.
+
 ## Hosting
 
 This website is hosted on [Flownative Beach](https://beach.flownative.com) in the Neos organisation.

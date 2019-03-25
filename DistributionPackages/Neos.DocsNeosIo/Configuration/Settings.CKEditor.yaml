@@ -1,0 +1,8 @@
+
+Neos:
+  Neos:
+    Ui:
+      resources:
+        javascript:
+          'Neos.DocsNeosIo:CustomStylingForCkEditor':
+            resource: resource://Neos.DocsNeosIo/Public/CkEditor/CustomStylingFormats/Plugin.js
