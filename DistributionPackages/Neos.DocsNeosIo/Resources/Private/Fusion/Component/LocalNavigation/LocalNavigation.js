@@ -6,8 +6,8 @@
 
 	function throttle(type, name, obj) {
 		obj = obj || window;
-		var running = false;
-		var func = function() {
+		let running = false;
+		const func = function() {
 			if (running) { return; }
 			running = true;
 			requestAnimationFrame(function() {
@@ -21,21 +21,18 @@
 	throttle('resize', 'optimizedResize');
 
 	// Floating-Fixed table of contents
+	const indexBanner = $('#index-banner');
 	const toc = localNav.find('.table-of-contents');
 	const footer = $('.main-footer');
 	function alignLocalNavigation() {
+		const topOffset = indexBanner.length ? $('#index-banner').outerHeight(true) : 0;
 		const tocHeight = toc.length ? toc.height() : 0;
 		const footerOffset = footer.length ? footer.offset().top : 0;
 		const bottomOffset = footerOffset - tocHeight;
 
-		let top = 0;
-		if ($('nav').length) {
-			top = $('nav').height();
-		} else if ($('#index-banner').length) {
-			top = $('#index-banner').height();
-		}
+		console.info(topOffset);
 		localNav.pushpin({
-			top: top,
+			top: topOffset,
 			bottom: bottomOffset
 		});
 	}
