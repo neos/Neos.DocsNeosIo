@@ -29,6 +29,7 @@
         "flowpack/searchplugin": "~4.0",
         "flowpack/elasticsearch-contentrepositoryadaptor": "~4.1",
 
+        "codeq/htmlwidget" : "~1.2",
         "jonnitto/prettyembedyoutube": "~5.0",
         "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "~2.0"
