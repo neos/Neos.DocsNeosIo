@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) {
     language = ${q(node).property('language')}
     title = ${q(node).property('title') || (this.language=='none' ? false : this.language)}
-    class = ${'line-numbers language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fluid' ? 'markup' : (this.language=='fusion' ? 'php' : this.language)))}
+    class = ${'language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fluid' ? 'markup' : (this.language=='fusion' ? 'php' : this.language)))}
     code = ${String.htmlSpecialChars(q(node).property('code'))}
 
     renderer = afx`

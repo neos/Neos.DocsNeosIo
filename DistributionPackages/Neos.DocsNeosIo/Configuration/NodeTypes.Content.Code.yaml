@@ -58,6 +58,8 @@
                 label: 'SQL'
               markdown:
                 label: 'Markdown'
+              xml:
+                label: 'XML'
     code:
       type: string
       defaultValue: 'Enter code here...'
