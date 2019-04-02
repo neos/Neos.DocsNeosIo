@@ -1,3 +1,14 @@
 .docs-section {
 	font-weight: 300;
+
+	.docs-section-link {
+		font-size: 0.6em;
+		vertical-align: text-bottom;
+	}
+
+	.docs-section-header:not(:active):not(:hover):not(:focus) {
+		.docs-section-link {
+			visibility: hidden;
+		}
+	}
 }

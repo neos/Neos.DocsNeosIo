@@ -15,7 +15,7 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
 
     renderer = afx`
         <div id={props.id} class="docs-section section scrollspy">
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} attributes.class="docs-section-header">{props.title} <a href={'#' + props.id} class="docs-section-link"><i class="fa fa-solid fa-link"></i></a></Neos.Fusion:Tag>
             <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
             <div>{props.content}</div>
         </div>
