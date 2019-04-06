@@ -20,4 +20,12 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
         navigationRoot = ${q(site).property('navReference') || site}
         @process.normalize = CodeQ.UnicodeNormalizer:Normalizer
     }
+
+	@cache {
+		mode = 'cached'
+		entryTags {
+			1 = ${Neos.Caching.nodeTag(node)}
+			2 = ${Neos.Caching.nodeTypeTag('Neos.DocsNeosIo:Document.Tag', node)}
+		}
+	}
 }
