@@ -1808,16 +1808,16 @@
         },
         {
             "name": "flowpack/nodetemplates",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.NodeTemplates.git",
-                "reference": "92d6870698ce1f533fd4e3a4a89261cff330d038"
+                "reference": "a9bb6efdbbca4d8d1c7cda048c9a58bc9c4cb519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.NodeTemplates/zipball/92d6870698ce1f533fd4e3a4a89261cff330d038",
-                "reference": "92d6870698ce1f533fd4e3a4a89261cff330d038",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.NodeTemplates/zipball/a9bb6efdbbca4d8d1c7cda048c9a58bc9c4cb519",
+                "reference": "a9bb6efdbbca4d8d1c7cda048c9a58bc9c4cb519",
                 "shasum": ""
             },
             "require": {
@@ -1834,7 +1834,7 @@
                 "GPL-3.0+"
             ],
             "description": "Neos package that allows to modify nodes on creation via templates.",
-            "time": "2018-04-12T14:08:24+00:00"
+            "time": "2019-04-03T11:50:06+00:00"
         },
         {
             "name": "flowpack/searchplugin",
@@ -2090,16 +2090,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.91",
+            "version": "v0.92",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "16635a92f500f35276c1e106c29cba4b59a940a5"
+                "reference": "8d8f7faebe21e4cbf94921c97af6e02daca7cefb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/16635a92f500f35276c1e106c29cba4b59a940a5",
-                "reference": "16635a92f500f35276c1e106c29cba4b59a940a5",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/8d8f7faebe21e4cbf94921c97af6e02daca7cefb",
+                "reference": "8d8f7faebe21e4cbf94921c97af6e02daca7cefb",
                 "shasum": ""
             },
             "require": {
@@ -2123,7 +2123,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-03-23T00:22:53+00:00"
+            "time": "2019-03-31T00:23:05+00:00"
         },
         {
             "name": "google/auth",
@@ -3254,7 +3254,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "cf0821d4ab535c3c3c3eb03c2ec0b6475fbb9b56"
+                "reference": "168bf95a30ab7bb8f882b59882f7e5a877bb0c49"
             },
             "require": {
                 "aertmann/history": "~2.0",
@@ -3273,11 +3273,11 @@
                 "neos/fusion-afx": "~1.0",
                 "neos/googleanalytics": "^2.0",
                 "neos/neos": "~4.2",
-                "neos/neos-ui": "^1.4",
-                "neos/neos-ui-compiled": "^1.4",
+                "neos/neos-ui": "^3.1",
+                "neos/neos-ui-compiled": "^3.1",
                 "neos/nodetypes-contentreferences": "*",
                 "neos/redirecthandler-databasestorage": "^3.0",
-                "neos/redirecthandler-neosadapter": "^2.0",
+                "neos/redirecthandler-neosadapter": "^3.0",
                 "neos/seo": "^2.1",
                 "sandstorm/mxgraph": "~2.0",
                 "sitegeist/neosguidelines": "^1.2",
@@ -4438,21 +4438,21 @@
         },
         {
             "name": "neos/neos-ui",
-            "version": "1.4.1",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui.git",
-                "reference": "de54343039453bf11986140390158955ebab3368"
+                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui/zipball/de54343039453bf11986140390158955ebab3368",
-                "reference": "de54343039453bf11986140390158955ebab3368",
+                "url": "https://api.github.com/repos/neos/neos-ui/zipball/be5fa471ce078d47209e8645e2b79d924f18c612",
+                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612",
                 "shasum": ""
             },
             "require": {
-                "neos/neos": "^3.3 || ^4.0 || dev-master",
-                "neos/neos-ui-compiled": "1.4.1 || master"
+                "neos/neos": "^4.0 || dev-master",
+                "neos/neos-ui-compiled": "self.version"
             },
             "type": "neos-package",
             "extra": {
@@ -4542,21 +4542,21 @@
             "license": [
                 "GPL-3.0-or-later"
             ],
-            "description": "NEOS CMS UI rewritten in React",
-            "time": "2018-10-29T08:39:58+00:00"
+            "description": "Neos CMS UI written in React",
+            "time": "2019-04-01T12:05:28+00:00"
         },
         {
             "name": "neos/neos-ui-compiled",
-            "version": "1.4.1",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui-compiled.git",
-                "reference": "bdd2b4332cc8c90e14de64b590f2860246dc480e"
+                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/bdd2b4332cc8c90e14de64b590f2860246dc480e",
-                "reference": "bdd2b4332cc8c90e14de64b590f2860246dc480e",
+                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/ef0e912cc1702a4ff51adb95cab260880d0643a9",
+                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9",
                 "shasum": ""
             },
             "require": {
@@ -4574,7 +4574,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2018-10-29T08:44:03+00:00"
+            "time": "2019-04-01T12:11:20+00:00"
         },
         {
             "name": "neos/nodetypes-basemixins",
@@ -5012,16 +5012,16 @@
         },
         {
             "name": "neos/redirecthandler-neosadapter",
-            "version": "2.0.8",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/redirecthandler-neosadapter.git",
-                "reference": "1137fb3e701bbe3ea2decf740270ed1c69f9ccf3"
+                "reference": "c09268928758a05b83dd82a7a38545c84509d031"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/redirecthandler-neosadapter/zipball/1137fb3e701bbe3ea2decf740270ed1c69f9ccf3",
-                "reference": "1137fb3e701bbe3ea2decf740270ed1c69f9ccf3",
+                "url": "https://api.github.com/repos/neos/redirecthandler-neosadapter/zipball/c09268928758a05b83dd82a7a38545c84509d031",
+                "reference": "c09268928758a05b83dd82a7a38545c84509d031",
                 "shasum": ""
             },
             "require": {
@@ -5031,7 +5031,7 @@
             "type": "neos-package",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "3.0.x-dev"
                 },
                 "applied-flow-migrations": [
                     "TYPO3.FLOW3-201209201112",
@@ -5101,7 +5101,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos Redirect Handler",
-            "time": "2018-12-04T15:56:20+00:00"
+            "time": "2019-01-22T13:11:15+00:00"
         },
         {
             "name": "neos/seo",
