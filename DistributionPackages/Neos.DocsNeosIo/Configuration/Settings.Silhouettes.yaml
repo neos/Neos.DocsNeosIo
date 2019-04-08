@@ -38,3 +38,4 @@ Sitegeist:
                     ol: true
                     ul: true
                     a: true
+                    code: true
