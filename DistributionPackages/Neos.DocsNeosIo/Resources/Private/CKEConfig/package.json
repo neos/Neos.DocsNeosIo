@@ -11,5 +11,8 @@
   },
   "neos": {
     "buildTargetDirectory": "../../Public/JavaScript/CKEConfig"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^11.1.0"
   }
 }
