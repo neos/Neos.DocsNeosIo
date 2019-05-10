@@ -27,6 +27,13 @@
 		}
 	}
 
+    code {
+        border: solid 1px rgba(51, 51, 51, 0.12);
+        background: rgba(246, 246, 246, 0.2);
+        padding-left: 0.2em;
+        padding-right: 0.2em;
+    }
+
 	pre {
 		overflow-x: auto;
 		font-family: $font-stack;
