@@ -27,7 +27,7 @@
       type: string
       ui:
         help:
-          message: '[FontAwesome Icons](https://fontawesome.com/icons)'
+          message: 'We support all [FontAwesome Icons](https://fontawesome.com/icons), in the form `fab fa-neos`'
         label: 'Font Awesome icon'
         reloadIfChanged: true
         inspector:

@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
     }
     link = ${q(node).property('link')}
     icon = ${q(node).property('icon') || 'link'}
-    iconClass = ${'right inline-icon ' + (this.icon=='neos' ? 'fab fa-neos' : ('fas fa-' + this.icon))}
+    iconClass = ${'right inline-icon ' + (this.icon=='neos' ? 'fab fa-neos' : this.icon)}
 
     renderer = afx`
         <Carbon.Link:Link link={props.link} additionalClass="collection-item" renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
