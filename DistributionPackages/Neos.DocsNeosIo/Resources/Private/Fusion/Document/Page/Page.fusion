@@ -5,8 +5,9 @@ prototype(Neos.DocsNeosIo:Document.Page) < prototype(Neos.DocsNeosIo:Document.Ab
             nodePath = 'main'
         }
         prevNextNavigation = Neos.DocsNeosIo:Component.PrevNextNavigation {
-            prevNode = ${q(documentNode).prev('[instanceof Neos.Neos:Document]').get(0)}
-            nextNode = ${q(documentNode).next('[instanceof Neos.Neos:Document]').get(0)}
+            @if.showPrevNextNavigation = ${q(node).property('showPrevNextNavigation')}
+            prevNode = ${q(node).prev('[instanceof Neos.Neos:Document]').get(0)}
+            nextNode = ${q(node).next('[instanceof Neos.Neos:Document]').get(0)}
 
             @cache {
                 mode = 'cached'
