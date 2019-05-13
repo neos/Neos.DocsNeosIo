@@ -10,6 +10,7 @@
   properties:
     showPrevNextNavigation:
       type: boolean
+      defaultValue: true
       ui:
         label: 'Show prev-next navigation'
         reloadIfChanged: true

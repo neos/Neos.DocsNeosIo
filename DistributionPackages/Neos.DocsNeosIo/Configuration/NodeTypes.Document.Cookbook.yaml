@@ -34,3 +34,5 @@
       validation:
         Neos.Neos/Validation/NotEmptyValidator: {  }
         Neos.Neos/Validation/DateTimeValidator: {  }
+    showPrevNextNavigation:
+      defaultValue: false

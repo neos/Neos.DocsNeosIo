@@ -4,23 +4,9 @@ prototype(Neos.DocsNeosIo:Document.Page) < prototype(Neos.DocsNeosIo:Document.Ab
         main = Neos.Neos:ContentCollection {
             nodePath = 'main'
         }
-        prevNextNavigation = Neos.DocsNeosIo:Component.PrevNextNavigation {
-            @if.showPrevNextNavigation = ${q(node).property('showPrevNextNavigation')}
-            prevNode = ${q(node).prev('[instanceof Neos.Neos:Document]').get(0)}
-            nextNode = ${q(node).next('[instanceof Neos.Neos:Document]').get(0)}
-
-            @cache {
-                mode = 'cached'
-                entryIdentifier.node = ${documentNode}
-                entryTags {
-                    1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
-                }
-            }
-        }
 
         renderer = afx`
             {props.main}
-            {props.prevNextNavigation}
         `
     }
 }

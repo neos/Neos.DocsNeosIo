@@ -9,3 +9,6 @@
       message: 'Learning-oriented explanation of a topic, might offer multiple solutions and is less opinionated'
     icon: icon-hands-helping
     position: 500
+  properties:
+    showPrevNextNavigation:
+      defaultValue: false
