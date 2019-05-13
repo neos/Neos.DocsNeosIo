@@ -18,7 +18,7 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
         }
         linkIsGithub {
             condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com')}
-            renderer = ${'fas fa-github'}
+            renderer = ${'fab fa-github'}
         }
         linkIsDiscuss {
             condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io')}

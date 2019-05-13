@@ -23,9 +23,9 @@
               'fab fa-youtube':
                 label: 'YouTube'
                 icon: 'fab fa-youtube'
-              'fas fa-github':
+              'fab fa-github':
                 label: 'Github'
-                icon: 'fas fa-github'
+                icon: 'fab fa-github'
               'fas fa-comments':
                 label: 'Discuss'
                 icon: 'fas fa-comments'
