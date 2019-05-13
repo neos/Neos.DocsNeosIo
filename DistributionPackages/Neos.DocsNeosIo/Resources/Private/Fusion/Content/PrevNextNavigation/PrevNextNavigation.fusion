@@ -9,10 +9,10 @@ prototype(Neos.DocsNeosIo:Content.PrevNextNavigation) < prototype(Neos.Neos:Cont
         <div class="prev-next-navigation row buttons" @if.hasSibling={props.prevNode || props.nextNode}>
             <Carbon.Link:Link node={props.prevNode} additionalClass="btn" renderDefaultTagIfNoLink={false}>
                 <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" />
-                Previous
+                <Carbon.Link:Content />
             </Carbon.Link:Link>
             <Carbon.Link:Link node={props.nextNode} additionalClass="btn right" renderDefaultTagIfNoLink={false}>
-                Next
+                <Carbon.Link:Content />
                 <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" additionalClass="right inline-icon" />
             </Carbon.Link:Link>
         </div>
