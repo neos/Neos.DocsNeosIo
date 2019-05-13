@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Content.PrevNextNavigation) < prototype(Neos.Neos:Cont
         <Carbon.Notification:Backend @if.hasNoSibling={!props.prevNode && !props.nextNode}>
             This page currently has no sibling and therefore renders no sibling navigation.
         </Carbon.Notification:Backend>
-        <div class="prev-next-navigation buttons" @if.hasSibling={props.prevNode || props.nextNode}>
+        <div class="prev-next-navigation row buttons" @if.hasSibling={props.prevNode || props.nextNode}>
             <Carbon.Link:Link node={props.prevNode} additionalClass="btn" renderDefaultTagIfNoLink={false}>
                 <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" />
                 Previous
