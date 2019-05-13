@@ -1,0 +1,7 @@
+'Neos.DocsNeosIo:Content.PrevNextNavigation':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: 'Prev-Next Navigation'
+    icon: icon-map-signs
+    position: 750

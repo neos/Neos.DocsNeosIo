@@ -5,7 +5,7 @@
     'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
     'Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item': true
   ui:
-    label: 'Navigation'
+    label: 'Subpages Navigation'
     icon: icon-list
     position: 700
   properties:
