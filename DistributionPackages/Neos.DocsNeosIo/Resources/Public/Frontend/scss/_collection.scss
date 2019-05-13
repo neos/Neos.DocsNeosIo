@@ -10,5 +10,12 @@
 		.inline-icon {
 			margin-top: 0.2em;
 		}
+
+        // Clear floating icons
+        &:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 	}
 }
