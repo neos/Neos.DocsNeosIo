@@ -10,7 +10,7 @@ prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentCom
     renderer = afx`
         <Carbon.Link:Link link={props.link} additionalClass={props.class} renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
             {props.title}
-            <Neos.DocsNeosIo:Component.Icon iconClass={props.iconClass} fromLinkTypeUri={props.link} additionalClass="right inline-icon" />
+            <Neos.DocsNeosIo:Component.Icon iconClass={props.iconClass} fromLinkTypeUri={props.link} additionalClass={props.iconClass=='fas fa-arrow-left' ? 'left inline-icon' : 'right inline-icon'} />
         </Carbon.Link:Link>
     `
 }
