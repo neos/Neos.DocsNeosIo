@@ -12,9 +12,17 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
         fromLinkTypeUri = ${this.fromLinkTypeUri}
     }
     iconClassFinal = Neos.Fusion:Case {
-        isSet {
+        hasClass {
             condition = ${iconClass && iconClass != ''}
             renderer = ${iconClass}
+        }
+        linkIsGithub {
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com')}
+            renderer = ${'fas fa-github'}
+        }
+        linkIsDiscuss {
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io')}
+            renderer = ${'fas fa-comments'}
         }
         fallbackByLinkType {
             condition = ${fromLinkTypeUri}

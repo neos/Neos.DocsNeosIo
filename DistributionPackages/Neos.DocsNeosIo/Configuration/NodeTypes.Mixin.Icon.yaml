@@ -41,6 +41,12 @@
               'fas fa-exclamation-triangle':
                 label: 'Danger'
                 icon: 'fas fa-exclamation-triangle'
+              'fas fa-link':
+                label: 'Internal Link'
+                icon: 'fas fa-link'
+              'fas fa-external-link-alt':
+                label: 'External Link'
+                icon: 'fas fa-external-link-alt'
     iconCustom:
       type: string
       ui:
