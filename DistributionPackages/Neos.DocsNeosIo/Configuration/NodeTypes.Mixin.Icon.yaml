@@ -50,6 +50,9 @@
               'fas fa-book':
                 label: 'Documentation'
                 icon: 'fas fa-book'
+              'fa fa-puzzle-piece':
+                label: 'Package'
+                icon: 'fa fa-puzzle-piece'
     iconCustom:
       type: string
       ui:
