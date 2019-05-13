@@ -47,6 +47,9 @@
               'fas fa-external-link-alt':
                 label: 'External Link'
                 icon: 'fas fa-external-link-alt'
+              'fas fa-book':
+                label: 'Documentation'
+                icon: 'fas fa-book'
     iconCustom:
       type: string
       ui:
