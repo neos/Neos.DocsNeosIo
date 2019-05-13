@@ -2,6 +2,7 @@
   superTypes:
     'Neos.Neos:Content': true
     'Neos.DocsNeosIo:Constraint.Content.Restricted': true
+    'Neos.DocsNeosIo:Mixin.Icon': true
     'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
   ui:
     label: 'Button'
@@ -21,16 +22,8 @@
       type: string
       ui:
         label: Link
-        reloadIfChanged: false
-        inspector:
-          group: general
-          editor: Neos.Neos/Inspector/Editors/LinkEditor
-    icon:
-      type: string
-      ui:
-        help:
-          message: '[FontAwesome Icons](https://fontawesome.com/icons)'
-        label: 'Font Awesome icon'
         reloadIfChanged: true
         inspector:
           group: general
+          position: 100
+          editor: Neos.Neos/Inspector/Editors/LinkEditor

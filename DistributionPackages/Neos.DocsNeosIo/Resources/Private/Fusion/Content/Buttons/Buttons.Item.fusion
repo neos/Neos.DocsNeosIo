@@ -5,24 +5,12 @@ prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentCom
         block = false
     }
     link = ${q(node).property('link')}
-    icon = Neos.Fusion:Case {
-        isSet {
-            condition = ${q(node).property('icon')}
-            renderer = ${q(node).property('icon')}
-        }
-        fallbackToExternalLinkIfMatching {
-            condition = ${true}
-            renderer = Carbon.Link:Type {
-                link = ${q(node).property('link')}
-                @process.convert = ${value=='external' ? 'external-link-alt' : (value=='node' ? 'link' : false)}
-            }
-        }
-    }
+    iconClass = ${q(node).property('iconCustom') || q(node).property('icon')}
 
     renderer = afx`
         <Carbon.Link:Link link={props.link} additionalClass={props.class} renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
             {props.title}
-            <i aria-label={'Icon ' + props.icon} class={'right inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
+            <Neos.DocsNeosIo:Component.Icon iconClass={props.iconClass} fromLinkTypeUri={props.link} additionalClass="right inline-icon" />
         </Carbon.Link:Link>
     `
 }

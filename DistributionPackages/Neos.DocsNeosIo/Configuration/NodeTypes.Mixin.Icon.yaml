@@ -1,0 +1,54 @@
+'Neos.DocsNeosIo:Mixin.Icon':
+  abstract: true
+  superTypes:
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  properties:
+    icon:
+      type: string
+      ui:
+        label: 'Icon'
+        reloadIfChanged: true
+        inspector:
+          group: general
+          position: 500
+          hidden: 'ClientEval:node.properties.iconCustom ? true : false'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            values:
+              '':
+                label: 'Please select'
+              'fab fa-neos':
+                label: 'Neos'
+                icon: 'fab fa-neos'
+              'fab fa-youtube':
+                label: 'YouTube'
+                icon: 'fab fa-youtube'
+              'fas fa-arrow-left':
+                label: 'Left'
+                icon: 'fas fa-arrow-left'
+              'fas fa-arrow-right':
+                label: 'Right'
+                icon: 'fas fa-arrow-right'
+              'fas fa-lightbulb':
+                label: 'Lightbulb'
+                icon: 'fas fa-lightbulb'
+              'fas fa-info-circle':
+                label: 'Info'
+                icon: 'fas fa-info-circle'
+              'fas fa-exclamation-circle':
+                label: 'Warning'
+                icon: 'fas fa-exclamation-circle'
+              'fas fa-exclamation-triangle':
+                label: 'Danger'
+                icon: 'fas fa-exclamation-triangle'
+    iconCustom:
+      type: string
+      ui:
+        label: 'ClientEval:node.properties.iconCustom ? "Font Awesome icon" : "oder ein beliebiges Font Awesome icon"'
+        help:
+          message: 'We support all [FontAwesome Icons](https://fontawesome.com/icons), in the form `fab fa-neos`'
+        reloadIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.icon ? true : false'
+          group: general
+          position: 510

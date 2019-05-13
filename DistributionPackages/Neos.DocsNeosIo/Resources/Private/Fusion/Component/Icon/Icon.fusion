@@ -1,0 +1,32 @@
+prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
+    # api
+    iconClass = ''
+    iconName = false
+    additionalClass = ''
+    # If the link class is empty, we will detect the type from the given uri
+    fromLinkTypeUri = false
+
+    # rendering
+    @context {
+        iconClass = ${this.iconClass}
+        fromLinkTypeUri = ${this.fromLinkTypeUri}
+    }
+    iconClassFinal = Neos.Fusion:Case {
+        isSet {
+            condition = ${iconClass && iconClass != ''}
+            renderer = ${iconClass}
+        }
+        fallbackByLinkType {
+            condition = ${fromLinkTypeUri}
+            renderer = Carbon.Link:Type {
+                link = ${fromLinkTypeUri}
+                @process.convert = ${value=='external' ? 'fas fa-external-link-alt' : (value=='node' ? 'fas fa-link' : false)}
+            }
+        }
+    }
+    iconClassWithoutNamespace = ${String.replace(String.replace(String.replace(this.iconClass, 'fab ', ''), 'fas ', ''), 'fa ', '')}
+    iconNameFallback = ${String.firstLetterToUpperCase(String.replace(String.replace(this.iconClassWithoutNamespace, 'fa-', ''), '-', ' '))}
+    renderer = afx`
+        <i aria-label={props.iconName ? props.iconName : props.iconNameFallback} class={props.iconClassFinal + ' ' + props.additionalClass}></i>
+    `
+}

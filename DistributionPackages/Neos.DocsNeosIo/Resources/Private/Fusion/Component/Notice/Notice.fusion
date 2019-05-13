@@ -4,18 +4,18 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
     content = false
     type = 'todo'
 
-    icon = ${this.type}
-    icon.@process {
-        info = ${value == 'info' ? 'info-circle' : value}
-        warning = ${value == 'warning' ? 'exclamation-circle' : value}
-        danger = ${value == 'danger' ? 'exclamation-triangle' : value}
-        tip = ${value == 'tip' ? 'lightbulb' : value}
-        backend = ${value == 'backend' ? 'edit' : value}
+    iconClass = ${this.type}
+    iconClass.@process {
+        info = ${value == 'info' ? 'fas fa-info-circle' : value}
+        warning = ${value == 'warning' ? 'fas fa-exclamation-circle' : value}
+        danger = ${value == 'danger' ? 'fas fa-exclamation-triangle' : value}
+        tip = ${value == 'tip' ? 'fas fa-lightbulb' : value}
+        backend = ${value == 'backend' ? 'fas fa-edit' : value}
     }
     renderer = afx`
         <div id={props.id} class={'notice card-panel type-' + props.type} @if.isFrontendNotice={props.type != 'backend' || node.context.inBackend}>
             <h4 @if.has={props.title || node.context.inBackend} class="header">
-                <i aria-label={'Icon ' + props.type} class={'left inline-icon fas fa-' + props.icon} @if.has={props.icon}></i>
+                <Neos.DocsNeosIo:Component.Icon iconName={String.firstLetterToUpperCase(props.type)} iconClass={props.iconClass} additionalClass="left inline-icon" />
                 <span @if.backend={props.type == 'backend'}>Backend only: </span>
                 {props.title}
             </h4>
