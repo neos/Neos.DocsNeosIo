@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aertmann/history",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aertmann/history.git",
-                "reference": "0a50ed5888606efaf9f8891127b8a743790e9139"
+                "reference": "8d3e4d7a956ec60e98441a199ab277e7a332da3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aertmann/history/zipball/0a50ed5888606efaf9f8891127b8a743790e9139",
-                "reference": "0a50ed5888606efaf9f8891127b8a743790e9139",
+                "url": "https://api.github.com/repos/aertmann/history/zipball/8d3e4d7a956ec60e98441a199ab277e7a332da3e",
+                "reference": "8d3e4d7a956ec60e98441a199ab277e7a332da3e",
                 "shasum": ""
             },
             "require": {
@@ -27,7 +27,82 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
-                }
+                },
+                "applied-flow-migrations": [
+                    "TYPO3.FLOW3-201201261636",
+                    "TYPO3.Fluid-201205031303",
+                    "TYPO3.FLOW3-201205292145",
+                    "TYPO3.FLOW3-201206271128",
+                    "TYPO3.FLOW3-201209201112",
+                    "TYPO3.Flow-201209251426",
+                    "TYPO3.Flow-201211151101",
+                    "TYPO3.Flow-201212051340",
+                    "TYPO3.TypoScript-130516234520",
+                    "TYPO3.TypoScript-130516235550",
+                    "TYPO3.TYPO3CR-130523180140",
+                    "TYPO3.Neos.NodeTypes-201309111655",
+                    "TYPO3.Flow-201310031523",
+                    "TYPO3.Flow-201405111147",
+                    "TYPO3.Neos-201407061038",
+                    "TYPO3.Neos-201409071922",
+                    "TYPO3.TYPO3CR-140911160326",
+                    "TYPO3.Neos-201410010000",
+                    "TYPO3.TYPO3CR-141101082142",
+                    "TYPO3.Neos-20141113115300",
+                    "TYPO3.Fluid-20141113120800",
+                    "TYPO3.Flow-20141113121400",
+                    "TYPO3.Fluid-20141121091700",
+                    "TYPO3.Neos-20141218134700",
+                    "TYPO3.Fluid-20150214130800",
+                    "TYPO3.Neos-20150303231600",
+                    "TYPO3.TYPO3CR-20150510103823",
+                    "TYPO3.Flow-20151113161300",
+                    "TYPO3.Form-20160601101500",
+                    "TYPO3.Flow-20161115140400",
+                    "TYPO3.Flow-20161115140430",
+                    "Neos.Flow-20161124204700",
+                    "Neos.Flow-20161124204701",
+                    "Neos.Twitter.Bootstrap-20161124204912",
+                    "Neos.Form-20161124205254",
+                    "Neos.Flow-20161124224015",
+                    "Neos.Party-20161124225257",
+                    "Neos.Eel-20161124230101",
+                    "Neos.Setup-20161124230842",
+                    "Neos.Imagine-20161124231742",
+                    "Neos.Media-20161124233100",
+                    "Neos.NodeTypes-20161125002300",
+                    "Neos.Neos-20161125002322",
+                    "Neos.ContentRepository-20161125012000",
+                    "Neos.Fusion-20161125013710",
+                    "Neos.Setup-20161125014759",
+                    "Neos.Fusion-20161125104701",
+                    "Neos.NodeTypes-20161125104800",
+                    "Neos.Neos-20161125104802",
+                    "Neos.Neos-20161125122412",
+                    "Neos.Flow-20161125124112",
+                    "Neos.SwiftMailer-20161130105617",
+                    "TYPO3.FluidAdaptor-20161130112935",
+                    "Neos.Fusion-20161201202543",
+                    "Neos.Neos-20161201222211",
+                    "Neos.Fusion-20161202215034",
+                    "Neos.ContentRepository.Search-20161210231100",
+                    "Neos.Fusion-20161219092345",
+                    "Neos.ContentRepository-20161219093512",
+                    "Neos.Media-20161219094126",
+                    "Neos.Neos-20161219094403",
+                    "Neos.Neos-20161219122512",
+                    "Neos.Fusion-20161219130100",
+                    "Neos.Neos-20161220163741",
+                    "Neos.Neos-20170115114620",
+                    "Neos.Fusion-20170120013047",
+                    "Neos.Flow-20170125103800",
+                    "Neos.Seo-20170127154600",
+                    "Neos.Flow-20170127183102",
+                    "Neos.Fusion-20180211175500",
+                    "Neos.Fusion-20180211184832",
+                    "Neos.Flow-20180415105700",
+                    "Neos.Neos-20180907103800"
+                ]
             },
             "autoload": {
                 "psr-4": {
@@ -50,7 +125,7 @@
                 "event-log",
                 "history"
             ],
-            "time": "2018-09-25T13:53:29+00:00"
+            "time": "2019-05-06T12:17:50+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -150,16 +225,16 @@
         },
         {
             "name": "carbon/eel",
-            "version": "1.4.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Eel.git",
-                "reference": "e54d6a94c16c00f636bfc9f1284d967013cb11b2"
+                "reference": "3892b2023255ad2b21136286ba8168c8ea6bd870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Eel/zipball/e54d6a94c16c00f636bfc9f1284d967013cb11b2",
-                "reference": "e54d6a94c16c00f636bfc9f1284d967013cb11b2",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Eel/zipball/3892b2023255ad2b21136286ba8168c8ea6bd870",
+                "reference": "3892b2023255ad2b21136286ba8168c8ea6bd870",
                 "shasum": ""
             },
             "require": {
@@ -199,20 +274,20 @@
                 "eel",
                 "helper"
             ],
-            "time": "2019-03-11T12:18:43+00:00"
+            "time": "2019-04-30T13:14:39+00:00"
         },
         {
             "name": "carbon/hyphen",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Hyphen.git",
-                "reference": "f24f14e465b6287ee3936793311ee5795fcf528b"
+                "reference": "7e452669f47fab35262300dbb2b507ac491632f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Hyphen/zipball/f24f14e465b6287ee3936793311ee5795fcf528b",
-                "reference": "f24f14e465b6287ee3936793311ee5795fcf528b",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Hyphen/zipball/7e452669f47fab35262300dbb2b507ac491632f6",
+                "reference": "7e452669f47fab35262300dbb2b507ac491632f6",
                 "shasum": ""
             },
             "require": {
@@ -251,20 +326,20 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-12-09T20:09:44+00:00"
+            "time": "2019-04-23T07:17:36+00:00"
         },
         {
             "name": "carbon/image",
-            "version": "2.0.5",
+            "version": "2.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Image.git",
-                "reference": "f11cfcb4292729a992297238f358b4f7aca6c0af"
+                "reference": "3710b34589662f0b013b99156f4a1e4858f40a04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Image/zipball/f11cfcb4292729a992297238f358b4f7aca6c0af",
-                "reference": "f11cfcb4292729a992297238f358b4f7aca6c0af",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Image/zipball/3710b34589662f0b013b99156f4a1e4858f40a04",
+                "reference": "3710b34589662f0b013b99156f4a1e4858f40a04",
                 "shasum": ""
             },
             "require": {
@@ -305,7 +380,7 @@
                 "helper",
                 "image"
             ],
-            "time": "2019-03-20T16:09:35+00:00"
+            "time": "2019-04-10T15:21:08+00:00"
         },
         {
             "name": "carbon/includeassets",
@@ -417,16 +492,16 @@
         },
         {
             "name": "carbon/notification",
-            "version": "1.2.2",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Notification.git",
-                "reference": "6f9a3f0216696bde0d1fd4c0b59d47e013ced2c5"
+                "reference": "566c64924fc147d43b4e2359b21034c4c60bac1f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Notification/zipball/6f9a3f0216696bde0d1fd4c0b59d47e013ced2c5",
-                "reference": "6f9a3f0216696bde0d1fd4c0b59d47e013ced2c5",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Notification/zipball/566c64924fc147d43b4e2359b21034c4c60bac1f",
+                "reference": "566c64924fc147d43b4e2359b21034c4c60bac1f",
                 "shasum": ""
             },
             "require": {
@@ -465,7 +540,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2018-11-28T15:37:05+00:00"
+            "time": "2019-04-30T09:19:57+00:00"
         },
         {
             "name": "codeq/htmlwidget",
@@ -2090,16 +2165,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.92",
+            "version": "v0.98",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "8d8f7faebe21e4cbf94921c97af6e02daca7cefb"
+                "reference": "541fc4a4031fc762be4e0902e5dec6e99933c353"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/8d8f7faebe21e4cbf94921c97af6e02daca7cefb",
-                "reference": "8d8f7faebe21e4cbf94921c97af6e02daca7cefb",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/541fc4a4031fc762be4e0902e5dec6e99933c353",
+                "reference": "541fc4a4031fc762be4e0902e5dec6e99933c353",
                 "shasum": ""
             },
             "require": {
@@ -2123,20 +2198,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-03-31T00:23:05+00:00"
+            "time": "2019-05-11T00:23:08+00:00"
         },
         {
             "name": "google/auth",
-            "version": "v1.4.0",
+            "version": "v1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c"
+                "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/196237248e636a3554a7d9e4dfddeb97f450ab5c",
-                "reference": "196237248e636a3554a7d9e4dfddeb97f450ab5c",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0f75e20e7392e863f5550ed2c2d3d50af21710fb",
+                "reference": "0f75e20e7392e863f5550ed2c2d3d50af21710fb",
                 "shasum": ""
             },
             "require": {
@@ -2150,8 +2225,12 @@
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^1.11",
                 "guzzlehttp/promises": "0.1.1|^1.3",
+                "phpseclib/phpseclib": "^2",
                 "phpunit/phpunit": "^4.8.36|^5.7",
                 "sebastian/comparator": ">=1.2.3"
+            },
+            "suggest": {
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings. Please require version ^2."
             },
             "type": "library",
             "autoload": {
@@ -2170,24 +2249,24 @@
                 "google",
                 "oauth2"
             ],
-            "time": "2018-09-17T20:29:21+00:00"
+            "time": "2019-04-16T18:48:28+00:00"
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.27.0",
+            "version": "v1.28.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "549d2dd65a11ec6f7883fd2da3a82e204d53af57"
+                "reference": "d32db261499d28268f9ed97834e7aca829df5b53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/549d2dd65a11ec6f7883fd2da3a82e204d53af57",
-                "reference": "549d2dd65a11ec6f7883fd2da3a82e204d53af57",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/d32db261499d28268f9ed97834e7aca829df5b53",
+                "reference": "d32db261499d28268f9ed97834e7aca829df5b53",
                 "shasum": ""
             },
             "require": {
-                "google/auth": "^1.2",
+                "google/auth": "^1.5.1",
                 "guzzlehttp/guzzle": "^5.3|^6.0",
                 "guzzlehttp/promises": "^1.3",
                 "guzzlehttp/psr7": "^1.2",
@@ -2230,7 +2309,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2019-03-27T22:13:43+00:00"
+            "time": "2019-04-16T20:44:33+00:00"
         },
         {
             "name": "google/cloud-storage",
@@ -2573,17 +2652,74 @@
             "time": "2018-12-22T12:44:40+00:00"
         },
         {
-            "name": "jonnitto/prettyembedyoutube",
-            "version": "5.2.0",
+            "name": "jonnitto/prettyembedvimeo",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube.git",
-                "reference": "1ec648dd73b5ca2ffe9648660334289f29a6e6d4"
+                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo.git",
+                "reference": "3bf4c882b0faad8945264e7c5173644974082a17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedYoutube/zipball/1ec648dd73b5ca2ffe9648660334289f29a6e6d4",
-                "reference": "1ec648dd73b5ca2ffe9648660334289f29a6e6d4",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVimeo/zipball/3bf4c882b0faad8945264e7c5173644974082a17",
+                "reference": "3bf4c882b0faad8945264e7c5173644974082a17",
+                "shasum": ""
+            },
+            "require": {
+                "carbon/image": "^1.3 || ^2.0",
+                "carbon/includeassets": "^3.5",
+                "carbon/notification": "^1.2",
+                "neos/fusion-afx": "^1.0",
+                "neos/neos": "^3.3 || ^4.0"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "marketplace-account": "me@jonnitto.ch",
+                "installer-name": "Jonnitto.PrettyEmbedVimeo",
+                "neos": {
+                    "package-key": "Jonnitto.PrettyEmbedVimeo"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jonnitto\\PrettyEmbedVimeo\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "me@jonnitto.ch",
+                    "homepage": "https://twitter.com/jonnitto",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Prettier embeds for your Vimeo videos in Neos CMS - with nice options like high-res preview images and advanced customization of embed options. Embed and lightbox functions use Gator for event delegation.",
+            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo",
+            "keywords": [
+                "Neos",
+                "contentelement",
+                "flow",
+                "video",
+                "vimeo"
+            ],
+            "time": "2019-05-03T06:12:41+00:00"
+        },
+        {
+            "name": "jonnitto/prettyembedyoutube",
+            "version": "5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube.git",
+                "reference": "2df6d1ced7fce9fd1cea327bc6cb617a25e714d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedYoutube/zipball/2df6d1ced7fce9fd1cea327bc6cb617a25e714d0",
+                "reference": "2df6d1ced7fce9fd1cea327bc6cb617a25e714d0",
                 "shasum": ""
             },
             "require": {
@@ -2700,20 +2836,20 @@
                 "video",
                 "youtube"
             ],
-            "time": "2019-02-12T08:33:01+00:00"
+            "time": "2019-05-03T06:14:06+00:00"
         },
         {
             "name": "moc/notfound",
-            "version": "3.1.1",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mocdk/MOC.NotFound.git",
-                "reference": "12b9e865991f3d725a42fd2f80e1996cc8931ea4"
+                "reference": "126d02d6bf2d1c5f61bf5f286be478d6ce955283"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mocdk/MOC.NotFound/zipball/12b9e865991f3d725a42fd2f80e1996cc8931ea4",
-                "reference": "12b9e865991f3d725a42fd2f80e1996cc8931ea4",
+                "url": "https://api.github.com/repos/mocdk/MOC.NotFound/zipball/126d02d6bf2d1c5f61bf5f286be478d6ce955283",
+                "reference": "126d02d6bf2d1c5f61bf5f286be478d6ce955283",
                 "shasum": ""
             },
             "require": {
@@ -2817,7 +2953,7 @@
                 "flow",
                 "not found"
             ],
-            "time": "2018-04-26T09:27:23+00:00"
+            "time": "2019-05-08T08:58:24+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2986,16 +3122,16 @@
         },
         {
             "name": "neos/content-repository",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/typo3cr.git",
-                "reference": "a5555aa48f8693c3dd7debbb2fed61084ab7cf1e"
+                "reference": "c789123d3bc3e9c89c4ff6830c727314e84ce202"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/typo3cr/zipball/a5555aa48f8693c3dd7debbb2fed61084ab7cf1e",
-                "reference": "a5555aa48f8693c3dd7debbb2fed61084ab7cf1e",
+                "url": "https://api.github.com/repos/neos/typo3cr/zipball/c789123d3bc3e9c89c4ff6830c727314e84ce202",
+                "reference": "c789123d3bc3e9c89c4ff6830c727314e84ce202",
                 "shasum": ""
             },
             "require": {
@@ -3109,7 +3245,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Content repository based on Flow, specifically made for Neos.",
-            "time": "2019-01-29T17:18:37+00:00"
+            "time": "2019-04-26T07:07:55+00:00"
         },
         {
             "name": "neos/content-repository-search",
@@ -3220,7 +3356,7 @@
         },
         {
             "name": "neos/diff",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/diff.git",
@@ -3254,7 +3390,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "168bf95a30ab7bb8f882b59882f7e5a877bb0c49"
+                "reference": "13a1da0367aafca750d28f8a82e77858be388daa"
             },
             "require": {
                 "aertmann/history": "~2.0",
@@ -3268,6 +3404,7 @@
                 "flowpack/elasticsearch-contentrepositoryadaptor": "~4.1",
                 "flowpack/nodetemplates": "~1.0",
                 "flowpack/searchplugin": "~4.0",
+                "jonnitto/prettyembedvimeo": "~1.0",
                 "jonnitto/prettyembedyoutube": "~5.0",
                 "moc/notfound": "^3.1",
                 "neos/fusion-afx": "~1.0",
@@ -3706,16 +3843,16 @@
         },
         {
             "name": "neos/fusion",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/typoscript.git",
-                "reference": "e6199c6fb7675dfd6fc8a7c047f91aba55b04bc6"
+                "reference": "f2e1c76d3b780907a005b59ad69caaf9b9f744f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/typoscript/zipball/e6199c6fb7675dfd6fc8a7c047f91aba55b04bc6",
-                "reference": "e6199c6fb7675dfd6fc8a7c047f91aba55b04bc6",
+                "url": "https://api.github.com/repos/neos/typoscript/zipball/f2e1c76d3b780907a005b59ad69caaf9b9f744f4",
+                "reference": "f2e1c76d3b780907a005b59ad69caaf9b9f744f4",
                 "shasum": ""
             },
             "require": {
@@ -3824,7 +3961,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Fusion is a hierarchical, prototype based processing language",
-            "time": "2019-02-04T12:01:52+00:00"
+            "time": "2019-04-08T09:00:47+00:00"
         },
         {
             "name": "neos/fusion-afx",
@@ -4056,7 +4193,7 @@
         },
         {
             "name": "neos/media",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/media.git",
@@ -4180,16 +4317,16 @@
         },
         {
             "name": "neos/media-browser",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/media-browser.git",
-                "reference": "0b803a163d8ae9e764675012846b8e8cf7d429a7"
+                "reference": "13471860e4fbc6c366ccb56cd8c1fa9655dc093c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/media-browser/zipball/0b803a163d8ae9e764675012846b8e8cf7d429a7",
-                "reference": "0b803a163d8ae9e764675012846b8e8cf7d429a7",
+                "url": "https://api.github.com/repos/neos/media-browser/zipball/13471860e4fbc6c366ccb56cd8c1fa9655dc093c",
+                "reference": "13471860e4fbc6c366ccb56cd8c1fa9655dc093c",
                 "shasum": ""
             },
             "require": {
@@ -4297,20 +4434,20 @@
                 "GPL-3.0-or-later"
             ],
             "description": "This module allows managing of media assets including pictures, videos, audio and documents.",
-            "time": "2019-03-04T15:02:38+00:00"
+            "time": "2019-04-26T07:07:55+00:00"
         },
         {
             "name": "neos/neos",
-            "version": "4.2.9",
+            "version": "4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos.git",
-                "reference": "74d9810fa90239665fb11dd20eb80510594bf7fb"
+                "reference": "49046af68b6e926ac973855e0cd1f7c64eca8cef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos/zipball/74d9810fa90239665fb11dd20eb80510594bf7fb",
-                "reference": "74d9810fa90239665fb11dd20eb80510594bf7fb",
+                "url": "https://api.github.com/repos/neos/neos/zipball/49046af68b6e926ac973855e0cd1f7c64eca8cef",
+                "reference": "49046af68b6e926ac973855e0cd1f7c64eca8cef",
                 "shasum": ""
             },
             "require": {
@@ -4434,7 +4571,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "An open source Content Application Platform based on Flow. A set of core Content Management features is resting within a larger context that allows you to build a perfectly customized experience for your users.",
-            "time": "2019-03-05T08:39:14+00:00"
+            "time": "2019-05-06T10:23:22+00:00"
         },
         {
             "name": "neos/neos-ui",
@@ -4578,16 +4715,16 @@
         },
         {
             "name": "neos/nodetypes-basemixins",
-            "version": "4.2.9",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-basemixins.git",
-                "reference": "e4608351aa791a02796bb3663fbdbde162334c37"
+                "reference": "ebff13d636cb55b37e680e2fbc19807d5a1bfbdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-basemixins/zipball/e4608351aa791a02796bb3663fbdbde162334c37",
-                "reference": "e4608351aa791a02796bb3663fbdbde162334c37",
+                "url": "https://api.github.com/repos/neos/nodetypes-basemixins/zipball/ebff13d636cb55b37e680e2fbc19807d5a1bfbdf",
+                "reference": "ebff13d636cb55b37e680e2fbc19807d5a1bfbdf",
                 "shasum": ""
             },
             "require": {
@@ -4687,20 +4824,20 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Base mixins which are useful across projects.",
-            "time": "2019-03-04T15:00:19+00:00"
+            "time": "2019-04-26T07:52:13+00:00"
         },
         {
             "name": "neos/nodetypes-contentreferences",
-            "version": "4.2.9",
+            "version": "4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-contentreferences.git",
-                "reference": "168f8a85b304421e7934cf32c47be4fba8ebcb91"
+                "reference": "0b532177ec68fabfed20a849c683b8f22bd2b5f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-contentreferences/zipball/168f8a85b304421e7934cf32c47be4fba8ebcb91",
-                "reference": "168f8a85b304421e7934cf32c47be4fba8ebcb91",
+                "url": "https://api.github.com/repos/neos/nodetypes-contentreferences/zipball/0b532177ec68fabfed20a849c683b8f22bd2b5f8",
+                "reference": "0b532177ec68fabfed20a849c683b8f22bd2b5f8",
                 "shasum": ""
             },
             "require": {
@@ -4800,7 +4937,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "A simple content reference node type.",
-            "time": "2018-12-10T10:04:40+00:00"
+            "time": "2019-04-26T07:52:13+00:00"
         },
         {
             "name": "neos/party",
@@ -6678,7 +6815,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.1.11",
+            "version": "v4.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -6749,7 +6886,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v4.1.11",
+            "version": "v4.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -6849,7 +6986,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "backendtea@gmail.com"
+                    "email": "BackEndTea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
@@ -6923,7 +7060,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v4.1.11",
+            "version": "v4.1.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -6982,16 +7119,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "2.5.4",
+            "version": "2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/Fluid.git",
-                "reference": "bcd0ff44dd3c4f9d0f37097b0237db6319c2b181"
+                "reference": "e4ca051ad105a6bce02b2809172fb26d45fd06a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/bcd0ff44dd3c4f9d0f37097b0237db6319c2b181",
-                "reference": "bcd0ff44dd3c4f9d0f37097b0237db6319c2b181",
+                "url": "https://api.github.com/repos/TYPO3/Fluid/zipball/e4ca051ad105a6bce02b2809172fb26d45fd06a3",
+                "reference": "e4ca051ad105a6bce02b2809172fb26d45fd06a3",
                 "shasum": ""
             },
             "require": {
@@ -7017,7 +7154,7 @@
                 "LGPL-3.0-or-later"
             ],
             "description": "The TYPO3 Fluid template rendering engine",
-            "time": "2018-07-09T12:55:32+00:00"
+            "time": "2019-05-07T07:21:41+00:00"
         },
         {
             "name": "webexcess/redirecthandler-backend",
