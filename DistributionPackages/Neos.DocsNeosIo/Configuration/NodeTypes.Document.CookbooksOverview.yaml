@@ -2,7 +2,7 @@
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
   ui:
-    label: 'Cookbooks Overview'
+    label: 'Tutorials Overview'
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
     icon: icon-book-open

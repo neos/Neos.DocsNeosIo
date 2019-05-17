@@ -5,7 +5,7 @@
     'Neos.DocsNeosIo:Mixin.AuthorsProperty': true
     'Neos.DocsNeosIo:Constraint.Document.Restricted': true
   ui:
-    label: Cookbook
+    label: Tutorial
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
     icon: icon-book-open
