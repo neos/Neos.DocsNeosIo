@@ -1,0 +1,5 @@
+prototype(Neos.DocsNeosIo:Content.Spacer) < prototype(Neos.Neos:ContentComponent) {
+    renderer = afx`
+        <div class="spacer" style="margin-bottom: 5rem;"></div>
+    `
+}

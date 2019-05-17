@@ -1,0 +1,8 @@
+'Neos.DocsNeosIo:Content.Spacer':
+  superTypes:
+    'Neos.Neos:Content': true
+  ui:
+    label: Spaxcer
+    icon: icon-arrows-alt-v
+    position: 990
+    inlineEditable: true
