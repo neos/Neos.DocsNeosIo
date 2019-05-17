@@ -2,7 +2,7 @@
   superTypes:
     'Neos.Neos:Content': true
   ui:
-    label: Spaxcer
+    label: Spacer
     icon: icon-arrows-alt-v
     position: 990
     inlineEditable: true
