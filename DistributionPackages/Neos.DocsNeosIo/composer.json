@@ -13,7 +13,7 @@
         "neos/seo": "^2.1",
 
         "aertmann/history": "~2.0",
-        "webexcess/redirecthandler-backend": "^1.1",
+        "neos/redirecthandler-ui": "^1.1",
 
         "carbon/compression": "^1.1",
         "carbon/hyphen": "^1.1",

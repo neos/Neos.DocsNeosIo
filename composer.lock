@@ -330,16 +330,16 @@
         },
         {
             "name": "carbon/image",
-            "version": "2.0.6",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Image.git",
-                "reference": "3710b34589662f0b013b99156f4a1e4858f40a04"
+                "reference": "2446c3a7af16a27361ead4b100c8f685a3a1080b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Image/zipball/3710b34589662f0b013b99156f4a1e4858f40a04",
-                "reference": "3710b34589662f0b013b99156f4a1e4858f40a04",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Image/zipball/2446c3a7af16a27361ead4b100c8f685a3a1080b",
+                "reference": "2446c3a7af16a27361ead4b100c8f685a3a1080b",
                 "shasum": ""
             },
             "require": {
@@ -380,7 +380,7 @@
                 "helper",
                 "image"
             ],
-            "time": "2019-04-10T15:21:08+00:00"
+            "time": "2019-05-16T16:10:18+00:00"
         },
         {
             "name": "carbon/includeassets",
@@ -438,16 +438,16 @@
         },
         {
             "name": "carbon/link",
-            "version": "1.1.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Link.git",
-                "reference": "ea21e1b312e8e3aead3f5afc161373cc24760e0a"
+                "reference": "51366bf885770e783f493b0165640b6a211f321c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Link/zipball/ea21e1b312e8e3aead3f5afc161373cc24760e0a",
-                "reference": "ea21e1b312e8e3aead3f5afc161373cc24760e0a",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Link/zipball/51366bf885770e783f493b0165640b6a211f321c",
+                "reference": "51366bf885770e783f493b0165640b6a211f321c",
                 "shasum": ""
             },
             "require": {
@@ -488,20 +488,20 @@
                 "helper",
                 "link"
             ],
-            "time": "2019-01-07T08:21:03+00:00"
+            "time": "2019-06-06T13:26:03+00:00"
         },
         {
             "name": "carbon/notification",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.Notification.git",
-                "reference": "566c64924fc147d43b4e2359b21034c4c60bac1f"
+                "reference": "e74dcdb355e74ceab27da8dfb5e1c6f9a1633f00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Notification/zipball/566c64924fc147d43b4e2359b21034c4c60bac1f",
-                "reference": "566c64924fc147d43b4e2359b21034c4c60bac1f",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Notification/zipball/e74dcdb355e74ceab27da8dfb5e1c6f9a1633f00",
+                "reference": "e74dcdb355e74ceab27da8dfb5e1c6f9a1633f00",
                 "shasum": ""
             },
             "require": {
@@ -540,7 +540,7 @@
                 "flow",
                 "helper"
             ],
-            "time": "2019-04-30T09:19:57+00:00"
+            "time": "2019-06-07T11:24:36+00:00"
         },
         {
             "name": "codeq/htmlwidget",
@@ -1185,20 +1185,23 @@
         },
         {
             "name": "doctrine/lexer",
-            "version": "v1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/lexer.git",
-                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c"
+                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/lexer/zipball/83893c552fd2045dd78aef794c31e694c37c0b8c",
-                "reference": "83893c552fd2045dd78aef794c31e694c37c0b8c",
+                "url": "https://api.github.com/repos/doctrine/lexer/zipball/1febd6c3ef84253d7c815bed85fc622ad207a9f8",
+                "reference": "1febd6c3ef84253d7c815bed85fc622ad207a9f8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5"
             },
             "type": "library",
             "extra": {
@@ -1207,8 +1210,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Lexer\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\Common\\Lexer\\": "lib/Doctrine/Common/Lexer"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1229,13 +1232,16 @@
                     "email": "schmittjoh@gmail.com"
                 }
             ],
-            "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
-            "homepage": "http://www.doctrine-project.org",
+            "description": "PHP Doctrine Lexer parser library that can be used in Top-Down, Recursive Descent Parsers.",
+            "homepage": "https://www.doctrine-project.org/projects/lexer.html",
             "keywords": [
+                "annotations",
+                "docblock",
                 "lexer",
-                "parser"
+                "parser",
+                "php"
             ],
-            "time": "2014-09-09T13:34:57+00:00"
+            "time": "2019-06-08T11:03:04+00:00"
         },
         {
             "name": "doctrine/migrations",
@@ -1441,20 +1447,20 @@
         },
         {
             "name": "flownative/beach-flow-companion",
-            "version": "1.0.7",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flownative/beach-flow-companion.git",
-                "reference": "e45aa9a0cebb19ab363bcf822b413601684ee613"
+                "reference": "2a2304d98c5befb64f2842ee1ad72e98d630e125"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flownative/beach-flow-companion/zipball/e45aa9a0cebb19ab363bcf822b413601684ee613",
-                "reference": "e45aa9a0cebb19ab363bcf822b413601684ee613",
+                "url": "https://api.github.com/repos/flownative/beach-flow-companion/zipball/2a2304d98c5befb64f2842ee1ad72e98d630e125",
+                "reference": "2a2304d98c5befb64f2842ee1ad72e98d630e125",
                 "shasum": ""
             },
             "require": {
-                "neos/flow": "^4.0 || ^5.0 || dev-master"
+                "neos/flow": "4.* || 5.*"
             },
             "type": "neos-package",
             "extra": {
@@ -1552,7 +1558,7 @@
                 }
             ],
             "description": "Useful configuration and tools for Flownative Beach projects",
-            "time": "2019-03-01T08:57:54+00:00"
+            "time": "2019-05-22T12:04:23+00:00"
         },
         {
             "name": "flownative/google-cloudstorage",
@@ -2106,27 +2112,27 @@
         },
         {
             "name": "google/apiclient",
-            "version": "v2.2.2",
+            "version": "v2.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "4e0fd83510e579043e10e565528b323b7c2b3c81"
+                "reference": "4bfd3edc21cceaf45fc216a4196e1993cf7a89eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/4e0fd83510e579043e10e565528b323b7c2b3c81",
-                "reference": "4e0fd83510e579043e10e565528b323b7c2b3c81",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/4bfd3edc21cceaf45fc216a4196e1993cf7a89eb",
+                "reference": "4bfd3edc21cceaf45fc216a4196e1993cf7a89eb",
                 "shasum": ""
             },
             "require": {
-                "firebase/php-jwt": "~2.0|~3.0|~4.0|~5.0",
+                "firebase/php-jwt": "~2.0||~3.0||~4.0||~5.0",
                 "google/apiclient-services": "~0.13",
                 "google/auth": "^1.0",
-                "guzzlehttp/guzzle": "~5.3.1|~6.0",
+                "guzzlehttp/guzzle": "~5.3.1||~6.0",
                 "guzzlehttp/psr7": "^1.2",
                 "monolog/monolog": "^1.17",
                 "php": ">=5.4",
-                "phpseclib/phpseclib": "~0.3.10|~2.0"
+                "phpseclib/phpseclib": "~0.3.10||~2.0"
             },
             "require-dev": {
                 "cache/filesystem-adapter": "^0.3.2",
@@ -2161,20 +2167,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2018-06-20T15:52:20+00:00"
+            "time": "2019-05-21T18:06:55+00:00"
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.98",
+            "version": "v0.101",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "541fc4a4031fc762be4e0902e5dec6e99933c353"
+                "reference": "be4d5cb91965dd03e47f88186b5ae95a21050ce7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/541fc4a4031fc762be4e0902e5dec6e99933c353",
-                "reference": "541fc4a4031fc762be4e0902e5dec6e99933c353",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/be4d5cb91965dd03e47f88186b5ae95a21050ce7",
+                "reference": "be4d5cb91965dd03e47f88186b5ae95a21050ce7",
                 "shasum": ""
             },
             "require": {
@@ -2198,7 +2204,7 @@
             "keywords": [
                 "google"
             ],
-            "time": "2019-05-11T00:23:08+00:00"
+            "time": "2019-06-02T00:23:13+00:00"
         },
         {
             "name": "google/auth",
@@ -2253,16 +2259,16 @@
         },
         {
             "name": "google/cloud-core",
-            "version": "v1.28.0",
+            "version": "v1.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-core.git",
-                "reference": "d32db261499d28268f9ed97834e7aca829df5b53"
+                "reference": "1663b311f93f7b0421c3426e6f6bab68dd7738f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/d32db261499d28268f9ed97834e7aca829df5b53",
-                "reference": "d32db261499d28268f9ed97834e7aca829df5b53",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/1663b311f93f7b0421c3426e6f6bab68dd7738f9",
+                "reference": "1663b311f93f7b0421c3426e6f6bab68dd7738f9",
                 "shasum": ""
             },
             "require": {
@@ -2277,6 +2283,7 @@
             },
             "require-dev": {
                 "erusev/parsedown": "^1.6",
+                "google/common-protos": "^1.0",
                 "google/gax": "^1.0",
                 "opis/closure": "^3",
                 "phpdocumentor/reflection": "^3.0",
@@ -2309,7 +2316,7 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
-            "time": "2019-04-16T20:44:33+00:00"
+            "time": "2019-06-03T20:07:05+00:00"
         },
         {
             "name": "google/cloud-storage",
@@ -2653,16 +2660,16 @@
         },
         {
             "name": "jonnitto/prettyembedvimeo",
-            "version": "1.0.2",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo.git",
-                "reference": "3bf4c882b0faad8945264e7c5173644974082a17"
+                "reference": "ec9799518b19d11635ff7ceb73b0fba169443150"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVimeo/zipball/3bf4c882b0faad8945264e7c5173644974082a17",
-                "reference": "3bf4c882b0faad8945264e7c5173644974082a17",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVimeo/zipball/ec9799518b19d11635ff7ceb73b0fba169443150",
+                "reference": "ec9799518b19d11635ff7ceb73b0fba169443150",
                 "shasum": ""
             },
             "require": {
@@ -2706,20 +2713,20 @@
                 "video",
                 "vimeo"
             ],
-            "time": "2019-05-03T06:12:41+00:00"
+            "time": "2019-05-28T08:58:59+00:00"
         },
         {
             "name": "jonnitto/prettyembedyoutube",
-            "version": "5.2.1",
+            "version": "5.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube.git",
-                "reference": "2df6d1ced7fce9fd1cea327bc6cb617a25e714d0"
+                "reference": "129efd02c8368a5bb215d687a66af8931122eacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedYoutube/zipball/2df6d1ced7fce9fd1cea327bc6cb617a25e714d0",
-                "reference": "2df6d1ced7fce9fd1cea327bc6cb617a25e714d0",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedYoutube/zipball/129efd02c8368a5bb215d687a66af8931122eacf",
+                "reference": "129efd02c8368a5bb215d687a66af8931122eacf",
                 "shasum": ""
             },
             "require": {
@@ -2836,7 +2843,7 @@
                 "video",
                 "youtube"
             ],
-            "time": "2019-05-03T06:14:06+00:00"
+            "time": "2019-05-28T08:59:05+00:00"
         },
         {
             "name": "moc/notfound",
@@ -3390,7 +3397,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "13a1da0367aafca750d28f8a82e77858be388daa"
+                "reference": "3c5e515027e06772eec839f86af6958ae69dbd1b"
             },
             "require": {
                 "aertmann/history": "~2.0",
@@ -3415,11 +3422,11 @@
                 "neos/nodetypes-contentreferences": "*",
                 "neos/redirecthandler-databasestorage": "^3.0",
                 "neos/redirecthandler-neosadapter": "^3.0",
+                "neos/redirecthandler-ui": "^1.1",
                 "neos/seo": "^2.1",
                 "sandstorm/mxgraph": "~2.0",
                 "sitegeist/neosguidelines": "^1.2",
-                "sitegeist/silhouettes": "^1.0",
-                "webexcess/redirecthandler-backend": "^1.1"
+                "sitegeist/silhouettes": "^1.0"
             },
             "type": "neos-site",
             "extra": {
@@ -4007,16 +4014,16 @@
         },
         {
             "name": "neos/googleanalytics",
-            "version": "2.0.7",
+            "version": "2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-googleanalytics.git",
-                "reference": "b6eda6267c40924a6f159a13e9d677b1f2f6a2f6"
+                "reference": "3bd20ae28a6b8384c1b76e1c7705dba4f91081bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-googleanalytics/zipball/b6eda6267c40924a6f159a13e9d677b1f2f6a2f6",
-                "reference": "b6eda6267c40924a6f159a13e9d677b1f2f6a2f6",
+                "url": "https://api.github.com/repos/neos/neos-googleanalytics/zipball/3bd20ae28a6b8384c1b76e1c7705dba4f91081bd",
+                "reference": "3bd20ae28a6b8384c1b76e1c7705dba4f91081bd",
                 "shasum": ""
             },
             "require": {
@@ -4105,7 +4112,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Google Analytics integration for Neos CMS",
-            "time": "2018-10-29T22:11:40+00:00"
+            "time": "2019-06-08T11:00:37+00:00"
         },
         {
             "name": "neos/imagine",
@@ -4575,16 +4582,16 @@
         },
         {
             "name": "neos/neos-ui",
-            "version": "3.3.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui.git",
-                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612"
+                "reference": "4a93b10779e2306734d77f447b1e75a7125fe080"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui/zipball/be5fa471ce078d47209e8645e2b79d924f18c612",
-                "reference": "be5fa471ce078d47209e8645e2b79d924f18c612",
+                "url": "https://api.github.com/repos/neos/neos-ui/zipball/4a93b10779e2306734d77f447b1e75a7125fe080",
+                "reference": "4a93b10779e2306734d77f447b1e75a7125fe080",
                 "shasum": ""
             },
             "require": {
@@ -4680,20 +4687,20 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos CMS UI written in React",
-            "time": "2019-04-01T12:05:28+00:00"
+            "time": "2019-05-24T06:38:54+00:00"
         },
         {
             "name": "neos/neos-ui-compiled",
-            "version": "3.3.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui-compiled.git",
-                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9"
+                "reference": "d31d45c7c7279a1b5a8772c28056ad1da195e566"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/ef0e912cc1702a4ff51adb95cab260880d0643a9",
-                "reference": "ef0e912cc1702a4ff51adb95cab260880d0643a9",
+                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/d31d45c7c7279a1b5a8772c28056ad1da195e566",
+                "reference": "d31d45c7c7279a1b5a8772c28056ad1da195e566",
                 "shasum": ""
             },
             "require": {
@@ -4711,7 +4718,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2019-04-01T12:11:20+00:00"
+            "time": "2019-05-24T06:45:20+00:00"
         },
         {
             "name": "neos/nodetypes-basemixins",
@@ -5241,17 +5248,62 @@
             "time": "2019-01-22T13:11:15+00:00"
         },
         {
-            "name": "neos/seo",
-            "version": "2.1.1",
+            "name": "neos/redirecthandler-ui",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/neos/neos-seo.git",
-                "reference": "8e5f6be59123ccb9a562769c8358afecfc4ad055"
+                "url": "https://github.com/neos/redirecthandler-ui.git",
+                "reference": "93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-seo/zipball/8e5f6be59123ccb9a562769c8358afecfc4ad055",
-                "reference": "8e5f6be59123ccb9a562769c8358afecfc4ad055",
+                "url": "https://api.github.com/repos/neos/redirecthandler-ui/zipball/93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8",
+                "reference": "93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "~3.0 || ~4.0 || dev-master",
+                "neos/redirecthandler": "~2.0 || dev-master"
+            },
+            "type": "neos-package",
+            "extra": {
+                "installer-name": "WebExcess.RedirectHandler.Backend",
+                "neos": {
+                    "package-key": "WebExcess.RedirectHandler.Backend"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "WebExcess\\RedirectHandler\\Backend\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stefan Bruggmann",
+                    "email": "stefan.bruggmann@webexcess.ch",
+                    "homepage": "https://twitter.com/webexcess",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
+            "time": "2018-07-19T09:21:41+00:00"
+        },
+        {
+            "name": "neos/seo",
+            "version": "2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/neos-seo.git",
+                "reference": "2c5717d189e1c0227e6b692785d60a05b69e7f48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/neos-seo/zipball/2c5717d189e1c0227e6b692785d60a05b69e7f48",
+                "reference": "2c5717d189e1c0227e6b692785d60a05b69e7f48",
                 "shasum": ""
             },
             "require": {
@@ -5347,7 +5399,7 @@
                 "GPL-3.0-or-later"
             ],
             "description": "SEO configuration and tools for Neos",
-            "time": "2019-02-05T10:37:31+00:00"
+            "time": "2019-05-22T07:11:54+00:00"
         },
         {
             "name": "neos/setup",
@@ -6072,16 +6124,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.15",
+            "version": "2.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0"
+                "reference": "3ca5b88d582c69178c8d01fd9d02b94e15042bb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
-                "reference": "11cf67cf78dc4acb18dc9149a57be4aee5036ce0",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/3ca5b88d582c69178c8d01fd9d02b94e15042bb8",
+                "reference": "3ca5b88d582c69178c8d01fd9d02b94e15042bb8",
                 "shasum": ""
             },
             "require": {
@@ -6160,7 +6212,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2019-03-10T16:53:45+00:00"
+            "time": "2019-05-26T20:38:34+00:00"
         },
         {
             "name": "psr/cache",
@@ -6627,16 +6679,16 @@
         },
         {
             "name": "sandstorm/mxgraph",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sandstorm/MxGraph.git",
-                "reference": "c12495f40668c8e1c248a09fee5f1232ecc1c1b8"
+                "reference": "cc8496922de4e2a48fb1c95d75830378fd362908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sandstorm/MxGraph/zipball/c12495f40668c8e1c248a09fee5f1232ecc1c1b8",
-                "reference": "c12495f40668c8e1c248a09fee5f1232ecc1c1b8",
+                "url": "https://api.github.com/repos/sandstorm/MxGraph/zipball/cc8496922de4e2a48fb1c95d75830378fd362908",
+                "reference": "cc8496922de4e2a48fb1c95d75830378fd362908",
                 "shasum": ""
             },
             "require": {
@@ -6729,7 +6781,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Integrate MXGraph / Draw.io into Neos as Node Type for creating interactive diagrams and flowcharts",
-            "time": "2019-01-13T14:23:32+00:00"
+            "time": "2019-06-08T18:01:35+00:00"
         },
         {
             "name": "sitegeist/neosguidelines",
@@ -7155,51 +7207,6 @@
             ],
             "description": "The TYPO3 Fluid template rendering engine",
             "time": "2019-05-07T07:21:41+00:00"
-        },
-        {
-            "name": "webexcess/redirecthandler-backend",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/webexcess/redirecthandler-backend.git",
-                "reference": "93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/webexcess/redirecthandler-backend/zipball/93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8",
-                "reference": "93081d9ad21b9d72cca6e1c3aba8bd554b2dfcf8",
-                "shasum": ""
-            },
-            "require": {
-                "neos/neos": "~3.0 || ~4.0 || dev-master",
-                "neos/redirecthandler": "~2.0 || dev-master"
-            },
-            "type": "neos-package",
-            "extra": {
-                "installer-name": "WebExcess.RedirectHandler.Backend",
-                "neos": {
-                    "package-key": "WebExcess.RedirectHandler.Backend"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "WebExcess\\RedirectHandler\\Backend\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Stefan Bruggmann",
-                    "email": "stefan.bruggmann@webexcess.ch",
-                    "homepage": "https://twitter.com/webexcess",
-                    "role": "Developer"
-                }
-            ],
-            "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
-            "time": "2018-07-19T09:21:41+00:00"
         },
         {
             "name": "zendframework/zend-code",
