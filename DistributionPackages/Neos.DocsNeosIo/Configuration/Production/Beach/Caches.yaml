@@ -60,14 +60,5 @@ Neos_Media_ImageSize:
     database: 7
     defaultLifetime: 0
 
-Flow_Security_Cryptography_HashService:
-  backend: 'Neos\Cache\Backend\RedisBackend'
-  backendOptions:
-    hostname: '%env:BEACH_REDIS_HOST%'
-    password: '%env:BEACH_REDIS_PASSWORD%'
-    port: '6379'
-    database: 8
-    defaultLifetime: 0
-
 Neos_GoogleAnalytics_Tokens:
   backend: Flownative\BeachFlowCompanion\Cache\PdoBackend
