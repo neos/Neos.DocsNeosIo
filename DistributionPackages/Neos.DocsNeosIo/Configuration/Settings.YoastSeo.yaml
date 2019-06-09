@@ -1,6 +1,6 @@
 Neos:
   Neos:
-    UI:
+    Ui:
       frontendConfiguration:
         'Yoast.YoastSeoForNeos':
            contentSelector: 'main'
