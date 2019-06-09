@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21d9f2ed324da0c448bca9fe93f4d881",
+    "content-hash": "43826b9dc132c04647241b3a5889172f",
     "packages": [
         {
             "name": "aertmann/history",
@@ -3397,7 +3397,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "3c5e515027e06772eec839f86af6958ae69dbd1b"
+                "reference": "15dfdca9443c93977ab993191aca2e28ecef525c"
             },
             "require": {
                 "aertmann/history": "~2.0",
@@ -3426,7 +3426,8 @@
                 "neos/seo": "^2.1",
                 "sandstorm/mxgraph": "~2.0",
                 "sitegeist/neosguidelines": "^1.2",
-                "sitegeist/silhouettes": "^1.0"
+                "sitegeist/silhouettes": "^1.0",
+                "yoast/yoast-seo-for-neos": "1.0.0-beta"
             },
             "type": "neos-site",
             "extra": {
@@ -6039,7 +6040,7 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "time": "2018-09-27T13:45:01+00:00"
+            "time": "2019-06-03T16:41:32+00:00"
         },
         {
             "name": "packagefactory/afx",
@@ -7209,6 +7210,66 @@
             "time": "2019-05-07T07:21:41+00:00"
         },
         {
+            "name": "yoast/yoast-seo-for-neos",
+            "version": "1.0.0-beta",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Yoast/Yoast-SEO-for-Neos.git",
+                "reference": "fad3182a0281ec636eecaf122ddb91e7af57c9be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Yoast/Yoast-SEO-for-Neos/zipball/fad3182a0281ec636eecaf122ddb91e7af57c9be",
+                "reference": "fad3182a0281ec636eecaf122ddb91e7af57c9be",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "^3.0 || ^4.0 || dev-master",
+                "neos/neos-ui": "^2.0 || ^3.0 || dev-master",
+                "neos/seo": "^2.0 || ^3.0",
+                "php": "~7.0"
+            },
+            "replace": {
+                "shel/neos-yoast-seo": "self.version"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "neos": {
+                    "package-key": "Yoast.YoastSeoForNeos"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yoast\\YoastSeoForNeos\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Team Yoast",
+                    "email": "support@yoast.com",
+                    "homepage": "https://yoast.com"
+                },
+                {
+                    "name": "Sebastian Helzle",
+                    "email": "support@helzle.it",
+                    "homepage": "https://www.helzle.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Yoast SEO for Neos CMS",
+            "homepage": "https://yoast.com",
+            "keywords": [
+                "Neos CMS",
+                "seo",
+                "yoast"
+            ],
+            "time": "2019-04-29T13:49:38+00:00"
+        },
+        {
             "name": "zendframework/zend-code",
             "version": "3.3.1",
             "source": {
@@ -7320,7 +7381,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "neos/docs-neos-io": 20
+        "neos/docs-neos-io": 20,
+        "yoast/yoast-seo-for-neos": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,

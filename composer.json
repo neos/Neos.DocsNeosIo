@@ -14,7 +14,8 @@
 
         "flownative/google-cloudstorage": "4.*",
         "flownative/beach-flow-companion": "1.*",
-        "rokka/imagine-vips": "^0.1"
+        "rokka/imagine-vips": "^0.1",
+        "yoast/yoast-seo-for-neos": "1.0.0-beta"
     },
     "repositories": {
         "distribution": {
