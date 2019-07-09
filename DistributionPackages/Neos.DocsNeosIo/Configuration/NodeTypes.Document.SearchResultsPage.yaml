@@ -1,6 +1,7 @@
 'Neos.DocsNeosIo:Document.SearchResultsPage':
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
+    'Neos.DocsNeosIo:Constraint.Document.NoSubDocuments': true
   ui:
     label: 'Search Results Page'
     icon: icon-search

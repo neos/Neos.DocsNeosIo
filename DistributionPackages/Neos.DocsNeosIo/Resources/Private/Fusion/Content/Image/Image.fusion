@@ -3,9 +3,20 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
         property = 'text'
     }
     alternativeText = ${q(node).property('alternativeText')}
-    src = Neos.DocsNeosIo:Component.ImageUri {
-        @context.asset = ${q(node).property('image')}
-        @context.maximumWidth = 1920
+    src = Neos.Fusion:Case {
+        image {
+            condition = ${q(node).property('image') ? true : false}
+            renderer = Neos.Neos:ImageUri {
+                asset = ${q(node).property('image')}
+                maximumWidth = 1920
+            }
+        }
+        dummyImage {
+            condition = ${site.context.inBackend}
+            renderer = Neos.Fusion:ResourceUri {
+                path = 'resource://Neos.Neos/Public/Images/dummy-image.svg'
+            }
+        }
     }
 
     renderer = afx`
