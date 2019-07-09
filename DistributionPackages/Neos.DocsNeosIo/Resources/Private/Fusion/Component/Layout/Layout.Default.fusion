@@ -7,6 +7,7 @@ prototype(Neos.DocsNeosIo:Component.Layout.Default) < prototype(Neos.Neos:Conten
     fullwidth = false
     tags = false
     navigationRoot = false
+    showSupportCall2Action = true
 
     @context.tags = ${this.tags}
     tagNotices = Neos.Fusion:Collection {
@@ -69,7 +70,7 @@ prototype(Neos.DocsNeosIo:Component.Layout.Default) < prototype(Neos.Neos:Conten
             </div>
             <div class="container" @if.isNot={!props.fullwidth}>
                 <div class="row">
-                    <div class="support-call2action col s12">
+                    <div class="support-call2action col s12" @if.show={props.showSupportCall2Action}>
                         <h2>Support the documentation</h2>
                         <p>This documentation is developed by volunteers. Please help support our effort:</p>
                         <a class="btn" href="mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&amp;body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards"><div class="btn__content">Help us improve the documentation</div></a>
