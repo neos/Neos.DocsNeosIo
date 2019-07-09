@@ -82,12 +82,15 @@
 }
 
 .support-call2action {
+    overflow: hidden;
     background: #00adee;
     color: white;
     padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    margin-bottom: 2rem !important;
 
-    h2 {
-
+    @media #{$small-and-down} {
+        display: none;
     }
 
     .btn {
