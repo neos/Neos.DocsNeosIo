@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
               <div class="col s12 m10 offset-m1">
                 <div class="row">
                   <div class="col l4 s12">
-                    <h5>Help Neos Grow</h5>
+                    <h5>Improve the Documentation</h5>
                     <p class="grey-text text-darken-2">We hope you have enjoyed reading the Neos documentation. Do you want to help extending this documentation?</p>
                     <a class="btn btn--solidPrimary" href="mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards">
                         <div class="btn__content">

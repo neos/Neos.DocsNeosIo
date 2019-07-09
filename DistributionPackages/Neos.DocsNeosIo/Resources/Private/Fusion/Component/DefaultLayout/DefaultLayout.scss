@@ -80,3 +80,25 @@
 		margin-bottom: 16px;
 	}
 }
+
+.support-call2action {
+    background: #00adee;
+    color: white;
+    padding-left: 2rem !important;
+
+    h2 {
+
+    }
+
+    .btn {
+        padding: 0;
+        background-color: $primary-color-light;
+        margin-bottom: 2rem;
+    }
+
+    .btn__content {
+        color: $secondary-color;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
