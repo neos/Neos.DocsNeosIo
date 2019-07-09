@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Component.DefaultLayout) < prototype(Neos.Neos:ContentComponent) {
+prototype(Neos.DocsNeosIo:Component.Layout.Default) < prototype(Neos.Neos:ContentComponent) {
     authors = false
     title = false
     subtitle = false

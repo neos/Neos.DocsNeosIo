@@ -7,7 +7,7 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             `
         }
     }
-    body = Neos.DocsNeosIo:Component.DefaultLayout {
+    body = Neos.DocsNeosIo:Component.Layout.Default {
         title = Neos.Neos:Editable {
             property = 'title'
             block = false
