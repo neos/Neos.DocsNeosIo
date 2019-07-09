@@ -18,10 +18,11 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
             }
         }
     }
+    imgStyles = ${q(node).property('width') ? ('width:' + q(node).property('width')): ''}
 
     renderer = afx`
         <figure class="docs-image">
-            <img src={props.src} alt={props.alternativeText} />
+            <img src={props.src} alt={props.alternativeText} style={props.imgStyles} />
             <figcaption @if.has={props.text}>{props.text}</figcaption>
         </figure>
     `

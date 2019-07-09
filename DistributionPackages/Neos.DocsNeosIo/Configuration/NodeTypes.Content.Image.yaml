@@ -16,3 +16,12 @@
         silhouette: 'neos.text.free'
       search:
         fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
+    width:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Width (e.g. 200px oder 80%)'
+        reloadIfChanged: true
+        inspector:
+          group: 'image'
+          position: 200
