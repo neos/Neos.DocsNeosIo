@@ -8,15 +8,30 @@
 	}
 
 	a {
+        text-decoration: underline;
+        transition: color 0.3s;
+
+        &:visited {
+            color: $secondary-color;
+        }
+
 		&:active,
 		&:hover,
 		&:focus {
-			text-decoration: underline;
+			color: $primary-color;
 		}
 
-		&:visited {
-			color: $secondary-color;
-		}
+        // github icon
+        &[href^="http://github.com"],
+        &[href^="https://github.com"] {
+            &:after {
+                font-family: "Font Awesome 5 Brands";
+                content: "\f09b";
+                padding-left: 0.3rem;
+                text-decoration: none;
+                display: inline-block;
+            }
+        }
 	}
 
 	ul {

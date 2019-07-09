@@ -14,3 +14,11 @@ $secondary-color: map-get($brand-colors, secondary);
 $success-color: #4caf50;
 $error-color: #d50000;
 $link-color: map-get($brand-colors, primary);
+
+// Override materialize.css Header Styles
+$h1-fontsize: 4rem;
+$h2-fontsize: 3rem;
+$h3-fontsize: 2rem;
+$h4-fontsize: 1.8rem;
+$h5-fontsize: 1.64rem;
+$h6-fontsize: 1.15rem;
