@@ -36,6 +36,8 @@
                 label: 'Fluid'
               php:
                 label: 'PHP'
+              json:
+                label: 'JSON'
               bash:
                 label: 'Bash'
               apacheconf:

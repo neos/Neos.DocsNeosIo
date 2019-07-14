@@ -25,6 +25,10 @@ prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) 
             condition = ${q(node).property('language') == 'php'}
             renderer = 'PHP'
         }
+        json {
+            condition = ${q(node).property('language') == 'json'}
+            renderer = 'JSON'
+        }
         bash {
             condition = ${q(node).property('language') == 'bash'}
             renderer = 'Bash'
