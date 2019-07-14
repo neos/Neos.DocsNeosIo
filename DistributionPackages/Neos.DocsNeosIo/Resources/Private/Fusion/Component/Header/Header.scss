@@ -105,7 +105,10 @@
       flex-direction: column;
 
       .navigation-link {
-        padding: 1rem 2rem;
+        padding: 0.7rem 1.5rem;
+      }
+      &:first-child .navigation-link {
+        padding-top: 1rem;
       }
 
       .navigation-item--level-2 {
@@ -122,6 +125,8 @@
 
       .navigation-item--level-4 {
         a {
+          padding-top: 0.4rem;
+          padding-bottom: 0.4rem;
           padding-left: 5rem;
         }
       }

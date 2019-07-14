@@ -32,7 +32,6 @@
 		const footerOffset = footer.length ? footer.offset().top : 0;
 		const bottomOffset = footerOffset - tocHeight;
 
-		console.info(topOffset);
 		localNav.pushpin({
 			top: topOffset + supportCall2actionOffset,
 			bottom: bottomOffset
