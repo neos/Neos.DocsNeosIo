@@ -21,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
     renderer = afx`
         <form method="GET" action={props.searchResultUri} class="search-form">
             <input class="search-input" type="search" name="search" placeholder="Search" value={props.searchWord} autocomplete="off" data-ajax-target={props.ajaxTarget} data-ajax-search-uri={props.ajaxSearchUri}/>
-            <button class="search-button material-icons">search</button>
+            <button class="search-button material-icons" type="submit">search</button>
         </form>
     `
 }
