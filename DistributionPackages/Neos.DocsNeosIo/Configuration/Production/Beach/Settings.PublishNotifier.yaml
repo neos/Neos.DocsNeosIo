@@ -1,11 +1,25 @@
 
 CodeQ:
   PublishNotifier:
-    senderName: 'Neos Docs Administration'
-    senderAddress: 'content.clearing.neos@codeq.at'
-    notifyEmails:
-      - 'roland@neos.io'
-    subject: 'Neos Docs: %1$s has one recommended change'
-    body: |+
-      %1$s has published changes to the private workspace %2$s.
-      Please review the changes and publish to live: https://docs.neos.io%3$s
+    email:
+      enabled: true
+      senderName: 'Neos Docs'
+      senderAddress: 'content.clearing.neos@codeq.at'
+      notifyEmails:
+        - 'roland@neos.io'
+      subject: 'Neos Docs: %1$s has one recommended change'
+      body: |+
+        %1$s created documentation changes to be reviewed.
+        Please review the changes and publish to live: https://docs.neos.io%3$s
+    slack:
+      enabled: true
+      postTo:
+        ##
+        # This slack app was created by rolandschuetz in the Neos workspace
+        ##
+        neosDocsToGuildDocumentation:
+          webhookUrl: '%env:SLACK_NEOS_DOCUMENTATION_CHANNEL_WEBHOOK_URL%'
+          clientSettings: []
+      message: |+
+        %1$s created documentation changes to be reviewed.
+        Please review the changes and publish to live: https://docs.neos.io%3$s
