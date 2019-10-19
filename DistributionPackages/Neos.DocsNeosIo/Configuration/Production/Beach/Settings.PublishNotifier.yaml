@@ -2,15 +2,15 @@
 CodeQ:
   PublishNotifier:
     email:
-      enabled: true
-      senderName: 'Neos Docs'
-      senderAddress: 'content.clearing.neos@codeq.at'
-      notifyEmails:
-        - 'roland@neos.io'
-      subject: 'Neos Docs: %1$s has one recommended change'
-      body: |+
-        %1$s created documentation changes to be reviewed.
-        Please review the changes and publish to live: https://docs.neos.io%3$s
+      enabled: false
+      # senderName: 'Neos Docs'
+      # senderAddress: 'content.clearing.neos@codeq.at'
+      # notifyEmails:
+      #   - 'roland@neos.io'
+      # subject: 'Neos Docs: %1$s has one recommended change'
+      # body: |+
+      #   %1$s created documentation changes to be reviewed.
+      #   Please review the changes and publish to live: https://docs.neos.io%3$s
     slack:
       enabled: true
       postTo:
