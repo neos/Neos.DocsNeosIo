@@ -1,6 +1,6 @@
 
 # We wrap it in our own node type
-'Jonnitto.PrettyEmbedVimeo:Vimeo':
+'Jonnitto.PrettyEmbedVimeo:Content.Vimeo':
   abstract: true
   ui:
     position: 350
