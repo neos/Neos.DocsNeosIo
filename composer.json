@@ -14,7 +14,10 @@
 
         "flownative/google-cloudstorage": "5.1.*",
         "rokka/imagine-vips": "0.10.*",
-        "yoast/yoast-seo-for-neos": "1.1.*"
+        "yoast/yoast-seo-for-neos": "1.1.*",
+
+        "neos/contentrepository-development-collection": "dev-master",
+        "neos/content-repository-dimensionspace": "dev-master"
     },
     "repositories": {
         "distribution": {

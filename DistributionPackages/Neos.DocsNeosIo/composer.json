@@ -33,7 +33,9 @@
         "jonnitto/prettyembedyoutube": "~7.1",
         "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "~2.0",
-        "yoast/yoast-seo-for-neos": "~1.1"
+        "yoast/yoast-seo-for-neos": "~1.1",
+
+        "neos/event-sourced-content-repository": "*"
     },
     "autoload": {
         "psr-4": {
