@@ -12,9 +12,9 @@
     "require": {
         "neos/docs-neos-io": "@dev",
 
-        "flownative/google-cloudstorage": "4.*",
-        "rokka/imagine-vips": "^0.1",
-        "yoast/yoast-seo-for-neos": "1.0.0-beta"
+        "flownative/google-cloudstorage": "5.1.*",
+        "rokka/imagine-vips": "0.10.*",
+        "yoast/yoast-seo-for-neos": "1.1.*"
     },
     "repositories": {
         "distribution": {
