@@ -10,7 +10,7 @@
         "php": "^7.4",
         "neos/docs-neos-io": "@dev",
 
-        "flownative/google-cloudstorage": "^4.0",
+        "flownative/google-cloudstorage": "^5.0",
         "rokka/imagine-vips": "^0.13"
     },
     "repositories": {
