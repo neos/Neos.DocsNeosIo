@@ -1,5 +1,5 @@
 prototype(Neos.DocsNeosIo:Document.Page) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    body.navCollection = ${q(node).find('main').children()}
+    body.navCollection = ${q(node).children('main').children()}
     body.content = Neos.Fusion:Component {
         main = Neos.Neos:ContentCollection {
             nodePath = 'main'

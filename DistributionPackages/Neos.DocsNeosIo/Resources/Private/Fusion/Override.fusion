@@ -8,5 +8,5 @@ prototype(Neos.Seo:StructuredData.Container) {
     website.@if.enabled = true
 }
 prototype(Neos.Seo:StructuredData.Website) {
-    searchAction.targetNode = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
+    searchAction.targetNode = ${q(site).children('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
 }
