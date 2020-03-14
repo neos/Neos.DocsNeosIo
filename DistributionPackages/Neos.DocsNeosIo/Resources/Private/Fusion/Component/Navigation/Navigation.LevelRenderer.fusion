@@ -14,6 +14,10 @@ prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) < prototype(Neos.F
     }
     navigationClass = ${'navigation-level navigation-level--level-' + (nodeDepth + 1)}
     navigationItems = Neos.Fusion:Collection {
+        // NOTE: commenting-in this line prevents the totally-eager-rendering of the menu (which is not needed at all)...
+        // however the line does not fully work yet; the first menu level does not show up.
+        //@if.renderNextLevel = ${renderCurrentPath && (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0)))}
+
         @if.notEmpty = ${this.collection.count() > 0}
         collection = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
         itemName = 'node'
