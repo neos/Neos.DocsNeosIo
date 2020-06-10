@@ -14,7 +14,7 @@
         "neos/seo": "^2.1",
 
         "aertmann/history": "~2.0",
-        "codeq/publishnotifier": "~2.0",
+        "codeq/publishnotifier": "~2.2",
 
         "carbon/compression": "^1.1",
         "carbon/hyphen": "^1.1",
