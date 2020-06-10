@@ -6,13 +6,14 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
         "platform": {
-            "php": "7.4"
+            "php": "7.2"
         }
     },
     "require": {
         "neos/docs-neos-io": "@dev",
 
         "flownative/google-cloudstorage": "4.*",
+        "flownative/beach-flow-companion": "1.*",
         "rokka/imagine-vips": "^0.1",
         "yoast/yoast-seo-for-neos": "1.0.0-beta"
     },
