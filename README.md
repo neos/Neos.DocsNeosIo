@@ -10,13 +10,40 @@
 
 This code is based on the [Neos-Skeleton](https://github.com/code-q-web-factory/Neos-Skeleton) and the [Neos Best-Practices 1.0.0](https://www.neos.io/blog/neos-best-practices-1-0.html).
 
-## Local Setup & Installation
+## Local Setup & Installation (Event-Sourced)
 
-Clone the repository, and setup Neos as always.
+1. Clone the repository: `git clone https://github.com/neos/Neos.DocsNeosIo.git .`
+1. Checkout Git branch `git checkout event-sourced`
+1. Install composer dependencies: `composer install`
+1. Configure your DB credentials in `Configuration/Settings.yaml`
+1. Run doctrine migrations: `./flow doctrine:migrate`
+1. Import site (legacy import): `./flow site:import --package-key Neos.DocsNeosIo`
+1. Convert imported site to corresponding events: `./flow contentrepositorymigrate:run`
+1. Replay core projections so that they are up-to-date:
+   1. `./flow projection:replay change`
+   1. `./flow projection:replay nodehiddenstate`
+1. Start the development server: `./flow server:run`
 
-For Elaticsearch you need to configure the default client, see [Settings.Search.yaml](https://github.com/neos/Neos.DocsNeosIo/blob/master/DistributionPackages/Neos.DocsNeosIo/Configuration/Development/Settings.Search.yaml#13).
-Then run `./flow nodeindex:build --workspace="live"`. On Flownative Beach this is done automatically.
+Finally you need to use the latest version of the `neos-ui`:
 
-## Hosting
+```
+cd Packages/Application/Neos.Neos.Ui
+make setup
+```
 
-This website is hosted on [Flownative Beach](https://beach.flownative.com) in the Neos organisation.
+Don't forget to enable the `frontendDevelopmentMode` in `Settings.yaml`:
+
+```yaml
+Neos:
+  Neos:
+    Ui:
+      frontendDevelopmentMode: true
+```
+
+Now you should be able to navigate the frontend of the site at http://localhost:8081
+
+To get access to the backend, you can create a Neos user account via:
+
+```
+./flow user:create --roles Administrator admin password Firstname Lastname
+```
