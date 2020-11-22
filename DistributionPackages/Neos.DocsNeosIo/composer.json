@@ -19,7 +19,7 @@
         "carbon/compression": "^1.1",
         "carbon/hyphen": "^1.1",
         "carbon/link": "^1.0",
-        "carbon/includeassets": "^3.5 || ^4.0",
+        "carbon/includeassets": "^3.5 || ^4.0 || ^5.0",
         "codeq/unicodenormalizer": "~2.1",
         "flowpack/cachebuster": "^1.0",
         "flowpack/nodetemplates": "~1.0",
