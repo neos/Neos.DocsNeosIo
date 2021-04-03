@@ -19,6 +19,10 @@
         "neos/contentrepository-development-collection": "dev-master",
         "neos/content-repository-dimensionspace": "dev-master"
     },
+    "require-dev": {
+        "sandstorm/plumber": "dev-master",
+        "sandstorm/phpprofiler": "dev-master"
+    },
     "repositories": {
         "distribution": {
             "type": "path",
