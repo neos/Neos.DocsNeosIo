@@ -11,4 +11,5 @@
     position: 500
   properties:
     showPrevNextNavigation:
+      type: boolean
       defaultValue: false
