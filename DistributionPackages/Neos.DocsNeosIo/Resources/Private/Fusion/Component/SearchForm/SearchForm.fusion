@@ -15,7 +15,7 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
     }
 
     searchResultUri = Neos.Neos:NodeUri {
-        node = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
+        node = ${q(site).children('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
     }
 
     renderer = afx`

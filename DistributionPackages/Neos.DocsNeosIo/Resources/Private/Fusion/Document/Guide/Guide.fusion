@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Document.Guide) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
     body {
         authors = ${q(node).property('authors') ? DocsNeosIo.UserData.getData(q(node).property('authors')) : ''}
-        navCollection = ${q(node).find('main').children()}
+        navCollection = ${q(node).children('main').children()}
         fullwidth = ${q(node).property('fullwidth')}
         showSupportCall2Action = false
         content = Neos.Fusion:Component {
