@@ -12,6 +12,11 @@ Neos:
         password: '%env:BEACH_DATABASE_PASSWORD%'
         port: '%env:BEACH_DATABASE_PORT%'
 
+  ContentRepository:
+    Search:
+      elasticSearch:
+        indexName: 'docsneosio-local'
+
 Flowpack:
   ElasticSearch:
     clients:

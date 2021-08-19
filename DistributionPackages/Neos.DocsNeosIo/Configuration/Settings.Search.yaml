@@ -2,7 +2,8 @@ Flowpack:
   ElasticSearch:
     indexes:
       default:
-        'docsneosio-production':    # custom index name, NOTE THIS SHOULD NOT BE HARDCODED ON BEACH
+        # custom index name, NOTE THIS SHOULD NOT BE HARDCODED ON BEACH
+        'docsneosio-production': &indexSettings
           analysis:
             filter:
               autocompleteFilter:
@@ -15,6 +16,8 @@ Flowpack:
                 char_filter: [ 'html_strip' ]
                 type: 'custom'
                 tokenizer: 'standard'
+        'docsneosio-staging': *indexSettings
+        'docsneosio-local': *indexSettings
 
     ContentRepositoryAdaptor:
       driver:
