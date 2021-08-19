@@ -1,0 +1,22 @@
+#
+# Settings used for development in Local Beach
+#
+
+Neos:
+  Flow:
+    persistence:
+      backendOptions:
+        host: '%env:BEACH_DATABASE_HOST%'
+        dbname: '%env:BEACH_DATABASE_NAME%'
+        user: '%env:BEACH_DATABASE_USERNAME%'
+        password: '%env:BEACH_DATABASE_PASSWORD%'
+        port: '%env:BEACH_DATABASE_PORT%'
+
+Flowpack:
+  ElasticSearch:
+    clients:
+      default:
+        - host: '%env:ELASTICSEARCH_HOSTNAME%'
+          port: 9200
+          username: '%env:ELASTICSEARCH_USERNAME%'
+          password: '%env:ELASTICSEARCH_PASSWORD%'
