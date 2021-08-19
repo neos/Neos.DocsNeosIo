@@ -125,6 +125,10 @@
                 "event-log",
                 "history"
             ],
+            "support": {
+                "issues": "https://github.com/aertmann/history/issues",
+                "source": "https://github.com/aertmann/history/tree/2.0.9"
+            },
             "time": "2021-02-02T15:55:50+00:00"
         },
         {
@@ -170,6 +174,10 @@
                 "slug",
                 "transliterator"
             ],
+            "support": {
+                "issues": "https://github.com/Behat/Transliterator/issues",
+                "source": "https://github.com/Behat/Transliterator/tree/v1.3.0"
+            },
             "time": "2020-01-14T16:39:13+00:00"
         },
         {
@@ -222,6 +230,10 @@
                 "flow",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Compression/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Compression/tree/1.1.1"
+            },
             "time": "2018-05-01T21:15:56+00:00"
         },
         {
@@ -275,6 +287,10 @@
                 "eel",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Eel/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Eel/tree/1.12.1"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.me/Jonnitto/20eur",
@@ -337,6 +353,10 @@
                 "flow",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Hyphen/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Hyphen/tree/1.3.0"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.me/Jonnitto/20eur",
@@ -401,6 +421,10 @@
                 "helper",
                 "image"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Image/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Image/tree/2.3.0"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.me/Jonnitto/20eur",
@@ -465,6 +489,10 @@
                 "flow",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.IncludeAssets/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.IncludeAssets/tree/master"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.me/Jonnitto/20eur",
@@ -529,6 +557,10 @@
                 "helper",
                 "link"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Link/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Link/tree/1.7.0"
+            },
             "funding": [
                 {
                     "url": "https://www.paypal.me/Jonnitto/20eur",
@@ -591,6 +623,10 @@
                 "flow",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Notification/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Notification/tree/master"
+            },
             "time": "2019-09-23T08:31:05+00:00"
         },
         {
@@ -637,6 +673,10 @@
                 "flow",
                 "html"
             ],
+            "support": {
+                "issues": "https://github.com/code-q-web-factory/neos-htmlwidget/issues",
+                "source": "https://github.com/code-q-web-factory/neos-htmlwidget/tree/v1.5.0"
+            },
             "time": "2021-01-11T22:07:22+00:00"
         },
         {
@@ -749,6 +789,10 @@
                 "GPL-3.0+"
             ],
             "description": "This package sends notifications to admins every time someone publishes to an internal workspace.",
+            "support": {
+                "issues": "https://github.com/code-q-web-factory/neos-publishnotifier/issues",
+                "source": "https://github.com/code-q-web-factory/neos-publishnotifier/tree/v2.3.0"
+            },
             "time": "2021-01-19T18:04:54+00:00"
         },
         {
@@ -860,6 +904,10 @@
                 "flow",
                 "helper"
             ],
+            "support": {
+                "issues": "https://github.com/code-q-web-factory/neos-unicodenormalizer/issues",
+                "source": "https://github.com/code-q-web-factory/neos-unicodenormalizer/tree/v2.3.0"
+            },
             "time": "2021-01-11T19:35:31+00:00"
         },
         {
@@ -917,6 +965,11 @@
                 "ssl",
                 "tls"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/ca-bundle/issues",
+                "source": "https://github.com/composer/ca-bundle/tree/1.2.10"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -1011,6 +1064,11 @@
                 "dependency",
                 "package"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/composer/issues",
+                "source": "https://github.com/composer/composer/tree/1.10.22"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -1086,6 +1144,11 @@
                 "validation",
                 "versioning"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/semver/issues",
+                "source": "https://github.com/composer/semver/tree/1.7.2"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -1160,6 +1223,11 @@
                 "spdx",
                 "validator"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/spdx-licenses/issues",
+                "source": "https://github.com/composer/spdx-licenses/tree/1.5.5"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -1219,6 +1287,11 @@
                 "Xdebug",
                 "performance"
             ],
+            "support": {
+                "irc": "irc://irc.freenode.org/composer",
+                "issues": "https://github.com/composer/xdebug-handler/issues",
+                "source": "https://github.com/composer/xdebug-handler/tree/1.4.6"
+            },
             "funding": [
                 {
                     "url": "https://packagist.com",
@@ -1301,6 +1374,10 @@
                 "docblock",
                 "parser"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/annotations/issues",
+                "source": "https://github.com/doctrine/annotations/tree/1.13.2"
+            },
             "time": "2021-08-05T19:00:23+00:00"
         },
         {
@@ -1382,6 +1459,10 @@
                 "redis",
                 "xcache"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/cache/issues",
+                "source": "https://github.com/doctrine/cache/tree/1.12.1"
+            },
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -1461,6 +1542,10 @@
                 "iterators",
                 "php"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/collections/issues",
+                "source": "https://github.com/doctrine/collections/tree/1.6.8"
+            },
             "time": "2021-08-10T18:51:53+00:00"
         },
         {
@@ -1534,6 +1619,10 @@
                 "persistence",
                 "spl"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/common/issues",
+                "source": "https://github.com/doctrine/common/tree/v2.7.3"
+            },
             "time": "2017-07-22T08:35:12+00:00"
         },
         {
@@ -1609,6 +1698,10 @@
                 "persistence",
                 "queryobject"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/dbal/issues",
+                "source": "https://github.com/doctrine/dbal/tree/v2.7.2"
+            },
             "time": "2018-07-13T04:49:01+00:00"
         },
         {
@@ -1687,6 +1780,10 @@
                 "uppercase",
                 "words"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/inflector/issues",
+                "source": "https://github.com/doctrine/inflector/tree/1.4.4"
+            },
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -1752,6 +1849,10 @@
                 "constructor",
                 "instantiate"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/instantiator/issues",
+                "source": "https://github.com/doctrine/instantiator/tree/1.4.0"
+            },
             "funding": [
                 {
                     "url": "https://www.doctrine-project.org/sponsorship.html",
@@ -1828,6 +1929,24 @@
                 "parser",
                 "php"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/lexer/issues",
+                "source": "https://github.com/doctrine/lexer/tree/1.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Flexer",
+                    "type": "tidelift"
+                }
+            ],
             "time": "2020-05-25T17:44:05+00:00"
         },
         {
@@ -1902,6 +2021,10 @@
                 "database",
                 "migrations"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/migrations/issues",
+                "source": "https://github.com/doctrine/migrations/tree/1.8"
+            },
             "time": "2018-06-06T21:00:30+00:00"
         },
         {
@@ -1983,6 +2106,10 @@
                 "database",
                 "orm"
             ],
+            "support": {
+                "issues": "https://github.com/doctrine/orm/issues",
+                "source": "https://github.com/doctrine/orm/tree/v2.6.6"
+            },
             "time": "2019-11-18T22:01:21+00:00"
         },
         {
@@ -2041,6 +2168,10 @@
                 "validation",
                 "validator"
             ],
+            "support": {
+                "issues": "https://github.com/egulias/EmailValidator/issues",
+                "source": "https://github.com/egulias/EmailValidator/tree/3.1.1"
+            },
             "funding": [
                 {
                     "url": "https://github.com/egulias",
@@ -2100,6 +2231,10 @@
                 "jwt",
                 "php"
             ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/v5.4.0"
+            },
             "time": "2021-06-23T19:00:23+00:00"
         },
         {
@@ -2181,6 +2316,10 @@
                     "role": "Developer"
                 }
             ],
+            "support": {
+                "issues": "https://github.com/flownative/flow-google-cloudstorage/issues",
+                "source": "https://github.com/flownative/flow-google-cloudstorage/tree/4.5.1"
+            },
             "time": "2019-08-16T08:21:12+00:00"
         },
         {
@@ -2217,6 +2356,10 @@
                 }
             ],
             "description": "Cache buster for static resources in Neos",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.CacheBuster/issues",
+                "source": "https://github.com/Flowpack/Flowpack.CacheBuster/tree/1.1.0"
+            },
             "time": "2020-12-08T22:06:15+00:00"
         },
         {
@@ -2313,6 +2456,10 @@
                 "MIT"
             ],
             "description": "This package provides wrapper functionality for the Elasticsearch engine.",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.ElasticSearch/issues",
+                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch/tree/master"
+            },
             "time": "2018-04-27T20:07:52+00:00"
         },
         {
@@ -2427,6 +2574,10 @@
             ],
             "description": "This package provides functionality for using Elasticsearch on top of Neos.ContentRepository.Search",
             "homepage": "http://flowpack.org/",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/issues",
+                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/tree/4.0"
+            },
             "time": "2019-01-31T12:44:15+00:00"
         },
         {
@@ -2457,6 +2608,10 @@
                 "GPL-3.0+"
             ],
             "description": "Neos package that allows to modify nodes on creation via templates.",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.NodeTemplates/issues",
+                "source": "https://github.com/Flowpack/Flowpack.NodeTemplates/tree/1.1"
+            },
             "time": "2020-07-13T11:58:49+00:00"
         },
         {
@@ -2569,6 +2724,10 @@
                 "MIT"
             ],
             "description": "Plugin for search integration via content node",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.SearchPlugin/issues",
+                "source": "https://github.com/Flowpack/Flowpack.SearchPlugin/tree/master"
+            },
             "time": "2020-05-21T06:42:11+00:00"
         },
         {
@@ -2651,38 +2810,62 @@
                 "tree",
                 "uploadable"
             ],
+            "support": {
+                "email": "gediminas.morkevicius@gmail.com",
+                "issues": "https://github.com/Atlantic18/DoctrineExtensions/issues",
+                "source": "https://github.com/Atlantic18/DoctrineExtensions/tree/v3.0.0-beta",
+                "wiki": "https://github.com/Atlantic18/DoctrineExtensions/tree/master/doc"
+            },
             "time": "2020-08-21T01:27:20+00:00"
         },
         {
             "name": "google/apiclient",
-            "version": "v1.1.8",
+            "version": "v2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323"
+                "reference": "d6c7563bdf88d6a0719ea63e21c74dc86032364e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/85309a3520bb5f53368d43e35fd24f43c9556323",
-                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/d6c7563bdf88d6a0719ea63e21c74dc86032364e",
+                "reference": "d6c7563bdf88d6a0719ea63e21c74dc86032364e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.2.1"
+                "firebase/php-jwt": "~2.0||~3.0||~4.0||~5.0",
+                "google/apiclient-services": "~0.13",
+                "google/auth": "^1.0",
+                "guzzlehttp/guzzle": "~5.3.1||~6.0",
+                "guzzlehttp/psr7": "^1.2",
+                "monolog/monolog": "^1.17",
+                "php": ">=5.4",
+                "phpseclib/phpseclib": "~0.3.10||~2.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "3.7.*",
-                "squizlabs/php_codesniffer": "~2.3"
+                "cache/filesystem-adapter": "^0.3.2",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.2",
+                "phpunit/phpunit": "~4.8.36",
+                "squizlabs/php_codesniffer": "~2.3",
+                "symfony/css-selector": "~2.1",
+                "symfony/dom-crawler": "~2.1"
+            },
+            "suggest": {
+                "cache/filesystem-adapter": "For caching certs and tokens (using Google_Client::setCache)"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-v1-master": "1.1.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
-                "files": [
-                    "src/Google/autoload.php"
+                "psr-0": {
+                    "Google_": "src/"
+                },
+                "classmap": [
+                    "src/Google/Service/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2694,7 +2877,55 @@
             "keywords": [
                 "google"
             ],
-            "time": "2016-06-06T21:22:48+00:00"
+            "support": {
+                "issues": "https://github.com/googleapis/google-api-php-client/issues",
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.2.4"
+            },
+            "time": "2019-08-19T18:09:46+00:00"
+        },
+        {
+            "name": "google/apiclient-services",
+            "version": "v0.208.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-api-php-client-services.git",
+                "reference": "77fdacfc99f582970dcb3c41233158b02cc4ba5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/77fdacfc99f582970dcb3c41233158b02cc4ba5e",
+                "reference": "77fdacfc99f582970dcb3c41233158b02cc4ba5e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7||^8.5.13"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Service\\": "src"
+                },
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.208.0"
+            },
+            "time": "2021-08-15T11:18:25+00:00"
         },
         {
             "name": "google/auth",
@@ -2745,6 +2976,11 @@
                 "google",
                 "oauth2"
             ],
+            "support": {
+                "docs": "https://googleapis.github.io/google-auth-library-php/master/",
+                "issues": "https://github.com/googleapis/google-auth-library-php/issues",
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.17.0"
+            },
             "time": "2021-08-18T16:10:00+00:00"
         },
         {
@@ -2806,6 +3042,9 @@
                 "Apache-2.0"
             ],
             "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
+            "support": {
+                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.42.2"
+            },
             "time": "2021-06-30T16:21:40+00:00"
         },
         {
@@ -2847,6 +3086,9 @@
                 "Apache-2.0"
             ],
             "description": "Cloud Storage Client for PHP",
+            "support": {
+                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.1.5"
+            },
             "time": "2017-09-18T15:09:56+00:00"
         },
         {
@@ -2914,6 +3156,10 @@
                 "rest",
                 "web service"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
             "time": "2020-06-16T21:01:06+00:00"
         },
         {
@@ -2965,6 +3211,10 @@
             "keywords": [
                 "promise"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/1.4.1"
+            },
             "time": "2021-03-07T09:25:29+00:00"
         },
         {
@@ -3036,6 +3286,10 @@
                 "uri",
                 "url"
             ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.8.2"
+            },
             "time": "2021-04-26T09:17:50+00:00"
         },
         {
@@ -3094,6 +3348,10 @@
                 "image manipulation",
                 "image processing"
             ],
+            "support": {
+                "issues": "https://github.com/avalanche123/Imagine/issues",
+                "source": "https://github.com/avalanche123/Imagine/tree/v0.7.1"
+            },
             "time": "2017-05-16T10:31:22+00:00"
         },
         {
@@ -3151,6 +3409,10 @@
                 "libvips",
                 "processing"
             ],
+            "support": {
+                "issues": "https://github.com/libvips/php-vips/issues",
+                "source": "https://github.com/libvips/php-vips/tree/v1.0.8"
+            },
             "time": "2020-08-29T13:10:03+00:00"
         },
         {
@@ -3208,6 +3470,10 @@
                 "video",
                 "vimeo"
             ],
+            "support": {
+                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo/issues",
+                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo"
+            },
             "time": "2019-05-28T08:58:59+00:00"
         },
         {
@@ -3338,6 +3604,10 @@
                 "video",
                 "youtube"
             ],
+            "support": {
+                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube/issues",
+                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube"
+            },
             "time": "2019-05-28T08:59:05+00:00"
         },
         {
@@ -3404,43 +3674,45 @@
                 "json",
                 "schema"
             ],
+            "support": {
+                "issues": "https://github.com/justinrainbow/json-schema/issues",
+                "source": "https://github.com/justinrainbow/json-schema/tree/5.2.11"
+            },
             "time": "2021-07-22T09:24:00+00:00"
         },
         {
             "name": "laminas/laminas-code",
-            "version": "3.5.1",
+            "version": "4.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laminas/laminas-code.git",
-                "reference": "b549b70c0bb6e935d497f84f750c82653326ac77"
+                "reference": "54251ab2b16c41c6980387839496b235f5f6e10b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/b549b70c0bb6e935d497f84f750c82653326ac77",
-                "reference": "b549b70c0bb6e935d497f84f750c82653326ac77",
+                "url": "https://api.github.com/repos/laminas/laminas-code/zipball/54251ab2b16c41c6980387839496b235f5f6e10b",
+                "reference": "54251ab2b16c41c6980387839496b235f5f6e10b",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-eventmanager": "^3.3",
-                "laminas/laminas-zendframework-bridge": "^1.1",
-                "php": "^7.3 || ~8.0.0"
+                "php": "^7.4 || ~8.0.0"
             },
             "conflict": {
                 "phpspec/prophecy": "<1.9.0"
             },
-            "replace": {
-                "zendframework/zend-code": "^3.4.1"
-            },
             "require-dev": {
                 "doctrine/annotations": "^1.10.4",
                 "ext-phar": "*",
-                "laminas/laminas-coding-standard": "^1.0.0",
+                "laminas/laminas-coding-standard": "^2.1.4",
                 "laminas/laminas-stdlib": "^3.3.0",
-                "phpunit/phpunit": "^9.4.2"
+                "phpunit/phpunit": "^9.4.2",
+                "psalm/plugin-phpunit": "^0.14.0",
+                "vimeo/psalm": "^4.3.1"
             },
             "suggest": {
                 "doctrine/annotations": "Doctrine\\Common\\Annotations >=1.0 for annotation features",
-                "laminas/laminas-stdlib": "Laminas\\Stdlib component"
+                "laminas/laminas-stdlib": "Laminas\\Stdlib component",
+                "laminas/laminas-zendframework-bridge": "A bridge with Zend Framework"
             },
             "type": "library",
             "autoload": {
@@ -3456,129 +3728,24 @@
             "homepage": "https://laminas.dev",
             "keywords": [
                 "code",
-                "laminas"
-            ],
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2020-11-30T20:16:31+00:00"
-        },
-        {
-            "name": "laminas/laminas-eventmanager",
-            "version": "3.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-eventmanager.git",
-                "reference": "966c859b67867b179fde1eff0cd38df51472ce4a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-eventmanager/zipball/966c859b67867b179fde1eff0cd38df51472ce4a",
-                "reference": "966c859b67867b179fde1eff0cd38df51472ce4a",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-zendframework-bridge": "^1.0",
-                "php": "^7.3 || ^8.0"
-            },
-            "replace": {
-                "zendframework/zend-eventmanager": "^3.2.1"
-            },
-            "require-dev": {
-                "container-interop/container-interop": "^1.1",
-                "laminas/laminas-coding-standard": "~1.0.0",
-                "laminas/laminas-stdlib": "^2.7.3 || ^3.0",
-                "phpbench/phpbench": "^0.17.1",
-                "phpunit/phpunit": "^8.5.8"
-            },
-            "suggest": {
-                "container-interop/container-interop": "^1.1, to use the lazy listeners feature",
-                "laminas/laminas-stdlib": "^2.7.3 || ^3.0, to use the FilterChain feature"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Laminas\\EventManager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Trigger and listen to events within a PHP application",
-            "homepage": "https://laminas.dev",
-            "keywords": [
-                "event",
-                "eventmanager",
-                "events",
-                "laminas"
-            ],
-            "funding": [
-                {
-                    "url": "https://funding.communitybridge.org/projects/laminas-project",
-                    "type": "community_bridge"
-                }
-            ],
-            "time": "2021-03-08T15:24:29+00:00"
-        },
-        {
-            "name": "laminas/laminas-zendframework-bridge",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laminas/laminas-zendframework-bridge.git",
-                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-zendframework-bridge/zipball/13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
-                "reference": "13af2502d9bb6f7d33be2de4b51fb68c6cdb476e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.3 || ^8.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.1 || ^9.3",
-                "psalm/plugin-phpunit": "^0.15.1",
-                "squizlabs/php_codesniffer": "^3.5",
-                "vimeo/psalm": "^4.6"
-            },
-            "type": "library",
-            "extra": {
-                "laminas": {
-                    "module": "Laminas\\ZendFrameworkBridge"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/autoload.php"
-                ],
-                "psr-4": {
-                    "Laminas\\ZendFrameworkBridge\\": "src//"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "description": "Alias legacy ZF class names to Laminas Project equivalents.",
-            "keywords": [
-                "ZendFramework",
-                "autoloading",
                 "laminas",
-                "zf"
+                "laminasframework"
             ],
+            "support": {
+                "chat": "https://laminas.dev/chat",
+                "docs": "https://docs.laminas.dev/laminas-code/",
+                "forum": "https://discourse.laminas.dev",
+                "issues": "https://github.com/laminas/laminas-code/issues",
+                "rss": "https://github.com/laminas/laminas-code/releases.atom",
+                "source": "https://github.com/laminas/laminas-code"
+            },
             "funding": [
                 {
                     "url": "https://funding.communitybridge.org/projects/laminas-project",
                     "type": "community_bridge"
                 }
             ],
-            "time": "2021-06-24T12:49:22+00:00"
+            "time": "2021-07-09T11:58:40+00:00"
         },
         {
             "name": "maknz/slack",
@@ -3627,6 +3794,10 @@
                 "laravel",
                 "slack"
             ],
+            "support": {
+                "issues": "https://github.com/maknz/slack/issues",
+                "source": "https://github.com/maknz/slack/tree/master"
+            },
             "time": "2015-06-03T03:35:16+00:00"
         },
         {
@@ -3744,25 +3915,29 @@
                 "flow",
                 "not found"
             ],
+            "support": {
+                "issues": "https://github.com/mocdk/MOC.NotFound/issues",
+                "source": "https://github.com/mocdk/MOC.NotFound/tree/3.1.4"
+            },
             "time": "2020-01-12T08:16:21+00:00"
         },
         {
             "name": "monolog/monolog",
-            "version": "2.3.2",
+            "version": "1.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "71312564759a7db5b789296369c1a264efc43aad"
+                "reference": "c6b00f05152ae2c9b04a448f99c7590beb6042f5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/71312564759a7db5b789296369c1a264efc43aad",
-                "reference": "71312564759a7db5b789296369c1a264efc43aad",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/c6b00f05152ae2c9b04a448f99c7590beb6042f5",
+                "reference": "c6b00f05152ae2c9b04a448f99c7590beb6042f5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2",
-                "psr/log": "^1.0.1"
+                "php": ">=5.3.0",
+                "psr/log": "~1.0"
             },
             "provide": {
                 "psr/log-implementation": "1.0.0"
@@ -3770,39 +3945,29 @@
             "require-dev": {
                 "aws/aws-sdk-php": "^2.4.9 || ^3.0",
                 "doctrine/couchdb": "~1.0@dev",
-                "elasticsearch/elasticsearch": "^7",
-                "graylog2/gelf-php": "^1.4.2",
-                "mongodb/mongodb": "^1.8",
+                "graylog2/gelf-php": "~1.0",
                 "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
-                "phpspec/prophecy": "^1.6.1",
-                "phpstan/phpstan": "^0.12.91",
-                "phpunit/phpunit": "^8.5",
-                "predis/predis": "^1.1",
-                "rollbar/rollbar": "^1.3",
-                "ruflin/elastica": ">=0.90 <7.0.1",
+                "phpstan/phpstan": "^0.12.59",
+                "phpunit/phpunit": "~4.5",
+                "ruflin/elastica": ">=0.90 <3.0",
+                "sentry/sentry": "^0.13",
                 "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
                 "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-                "ext-mbstring": "Allow to work properly with unicode symbols",
-                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
                 "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
+                "sentry/sentry": "Allow sending log messages to a Sentry server"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-main": "2.x-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Monolog\\": "src/Monolog"
@@ -3816,16 +3981,20 @@
                 {
                     "name": "Jordi Boggiano",
                     "email": "j.boggiano@seld.be",
-                    "homepage": "https://seld.be"
+                    "homepage": "http://seld.be"
                 }
             ],
             "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-            "homepage": "https://github.com/Seldaek/monolog",
+            "homepage": "http://github.com/Seldaek/monolog",
             "keywords": [
                 "log",
                 "logging",
                 "psr-3"
             ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/1.26.1"
+            },
             "funding": [
                 {
                     "url": "https://github.com/Seldaek",
@@ -3836,7 +4005,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-07-23T07:42:52+00:00"
+            "time": "2021-05-28T08:32:12+00:00"
         },
         {
             "name": "neos/cache",
@@ -3890,6 +4059,9 @@
             ],
             "description": "Neos Cache Framework",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/cache/tree/5.3.7"
+            },
             "time": "2019-10-25T09:55:22+00:00"
         },
         {
@@ -3927,6 +4099,14 @@
                 "MIT"
             ],
             "description": "Flow Composer Plugin",
+            "support": {
+                "docs": "http://flowframework.readthedocs.org/",
+                "email": "hello@neos.io",
+                "forum": "https://discuss.neos.io/",
+                "issues": "https://github.com/neos/composer-plugin/issues",
+                "slack": "http://slack.neos.io/",
+                "source": "https://github.com/neos/composer-plugin"
+            },
             "time": "2020-11-27T08:16:46+00:00"
         },
         {
@@ -4054,6 +4234,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Content repository based on Flow, specifically made for Neos.",
+            "support": {
+                "issues": "https://github.com/neos/content-repository/issues",
+                "source": "https://github.com/neos/content-repository/tree/4.2.18"
+            },
             "time": "2020-09-08T11:52:29+00:00"
         },
         {
@@ -4161,6 +4345,10 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Common code and interface for a Neos CR search implementation",
+            "support": {
+                "issues": "https://github.com/neos/typo3cr-search/issues",
+                "source": "https://github.com/neos/typo3cr-search/tree/master"
+            },
             "time": "2019-11-19T14:40:25+00:00"
         },
         {
@@ -4191,6 +4379,9 @@
                 "BSD-3-Clause"
             ],
             "description": "This is a comprehensive library for generating differences between two strings or arrays",
+            "support": {
+                "source": "https://github.com/neos/diff/tree/4.2"
+            },
             "time": "2020-09-08T11:52:29+00:00"
         },
         {
@@ -4356,6 +4547,9 @@
                 "MIT"
             ],
             "description": "The Embedded Expression Language (Eel) is a building block for creating Domain Specific Languages",
+            "support": {
+                "source": "https://github.com/neos/eel/tree/5.2.4"
+            },
             "time": "2018-11-28T00:54:37+00:00"
         },
         {
@@ -4390,6 +4584,9 @@
             ],
             "description": "Flow error messages",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/error-messages/tree/5.2.3"
+            },
             "time": "2018-06-27T10:03:23+00:00"
         },
         {
@@ -4471,6 +4668,9 @@
             ],
             "description": "Flow Application Framework",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/flow/tree/5.2"
+            },
             "time": "2020-05-04T14:55:44+00:00"
         },
         {
@@ -4515,6 +4715,9 @@
             ],
             "description": "Flow Framework Logger",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/flow-log/tree/5.2.4"
+            },
             "time": "2018-10-03T12:18:05+00:00"
         },
         {
@@ -4550,6 +4753,9 @@
                 "MIT"
             ],
             "description": "Fluid Templating Framework Adaptor",
+            "support": {
+                "source": "https://github.com/neos/fluidadaptor/tree/5.2.14"
+            },
             "time": "2019-11-28T12:29:24+00:00"
         },
         {
@@ -4654,6 +4860,10 @@
                 "MIT"
             ],
             "description": "Extensible and flexible API for building web forms",
+            "support": {
+                "issues": "https://github.com/neos/form/issues",
+                "source": "https://github.com/neos/form/tree/4.3.3"
+            },
             "funding": [
                 {
                     "url": "https://neosfunding.sandstorm.de/en",
@@ -4782,6 +4992,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Fusion is a hierarchical, prototype based processing language",
+            "support": {
+                "source": "https://github.com/neos/fusion/tree/4.2"
+            },
             "time": "2020-09-08T11:52:29+00:00"
         },
         {
@@ -4823,24 +5036,28 @@
                 "GPL-3.0-or-later"
             ],
             "description": "JSX inspired compact syntax for Neos.Fusion",
+            "support": {
+                "issues": "https://github.com/neos/fusion-afx/issues",
+                "source": "https://github.com/neos/fusion-afx/tree/master"
+            },
             "time": "2020-01-29T07:41:29+00:00"
         },
         {
             "name": "neos/googleanalytics",
-            "version": "2.0.6",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-googleanalytics.git",
-                "reference": "0478b18be5762ccd1f9b0fce80f13d6c5ce2c8db"
+                "reference": "5ae8597ad0e0f986a7968cdbcc795776c5c5e671"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-googleanalytics/zipball/0478b18be5762ccd1f9b0fce80f13d6c5ce2c8db",
-                "reference": "0478b18be5762ccd1f9b0fce80f13d6c5ce2c8db",
+                "url": "https://api.github.com/repos/neos/neos-googleanalytics/zipball/5ae8597ad0e0f986a7968cdbcc795776c5c5e671",
+                "reference": "5ae8597ad0e0f986a7968cdbcc795776c5c5e671",
                 "shasum": ""
             },
             "require": {
-                "google/apiclient": "1.1.*",
+                "google/apiclient": "~2.2.0",
                 "neos/neos": "~3.0 || ~4.0 || dev-master"
             },
             "replace": {
@@ -4925,7 +5142,17 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Google Analytics integration for Neos CMS",
-            "time": "2018-05-23T08:33:03+00:00"
+            "support": {
+                "issues": "https://github.com/neos/neos-googleanalytics/issues",
+                "source": "https://github.com/neos/neos-googleanalytics/tree/2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://neosfunding.sandstorm.de/en",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-04-14T02:37:57+00:00"
         },
         {
             "name": "neos/imagine",
@@ -5009,6 +5236,9 @@
             "license": [
                 "MIT"
             ],
+            "support": {
+                "source": "https://github.com/neos/imagine/tree/master"
+            },
             "time": "2018-04-21T06:46:44+00:00"
         },
         {
@@ -5133,6 +5363,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "The Media package",
+            "support": {
+                "source": "https://github.com/neos/media/tree/4.2.18"
+            },
             "time": "2020-09-08T11:52:29+00:00"
         },
         {
@@ -5254,6 +5487,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "This module allows managing of media assets including pictures, videos, audio and documents.",
+            "support": {
+                "source": "https://github.com/neos/media-browser/tree/4.2.18"
+            },
             "time": "2020-09-08T11:52:29+00:00"
         },
         {
@@ -5391,6 +5627,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "An open source Content Application Platform based on Flow. A set of core Content Management features is resting within a larger context that allows you to build a perfectly customized experience for your users.",
+            "support": {
+                "source": "https://github.com/neos/neos/tree/4.2.18"
+            },
             "time": "2020-12-02T09:43:01+00:00"
         },
         {
@@ -5500,6 +5739,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos CMS UI written in React",
+            "support": {
+                "issues": "https://github.com/neos/neos-ui/issues",
+                "source": "https://github.com/neos/neos-ui/tree/3.8.1"
+            },
             "time": "2019-07-31T15:30:28+00:00"
         },
         {
@@ -5531,6 +5774,10 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/neos/neos-ui-compiled/issues",
+                "source": "https://github.com/neos/neos-ui-compiled/tree/3.8.1"
+            },
             "time": "2019-07-31T15:36:57+00:00"
         },
         {
@@ -5646,6 +5893,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Base mixins which are useful across projects.",
+            "support": {
+                "source": "https://github.com/neos/nodetypes-basemixins/tree/7.1.0"
+            },
             "funding": [
                 {
                     "url": "https://neosfunding.sandstorm.de/en",
@@ -5768,6 +6018,9 @@
                 "GPL-3.0-or-later"
             ],
             "description": "A simple content reference node type.",
+            "support": {
+                "source": "https://github.com/neos/nodetypes-contentreferences/tree/7.1.0"
+            },
             "funding": [
                 {
                     "url": "https://neosfunding.sandstorm.de/en",
@@ -5853,6 +6106,10 @@
                 "MIT"
             ],
             "description": "A party package for PHP based on the OASIS Customer Information Quality (CIQ) XML Standard.",
+            "support": {
+                "issues": "https://github.com/neos/party/issues",
+                "source": "https://github.com/neos/party/tree/master"
+            },
             "time": "2019-09-17T03:15:45+00:00"
         },
         {
@@ -5918,6 +6175,10 @@
                 "MIT"
             ],
             "description": "Basic API to handle HTTP redirects with the Flow Framework",
+            "support": {
+                "issues": "https://github.com/neos/redirecthandler/issues",
+                "source": "https://github.com/neos/redirecthandler/tree/master"
+            },
             "time": "2018-04-25T19:39:51+00:00"
         },
         {
@@ -5982,6 +6243,10 @@
                 "MIT"
             ],
             "description": "A plugin for neos/redirecthandler to store redirects in the database",
+            "support": {
+                "issues": "https://github.com/neos/redirecthandler-databasestorage/issues",
+                "source": "https://github.com/neos/redirecthandler-databasestorage/tree/master"
+            },
             "time": "2018-05-18T15:26:47+00:00"
         },
         {
@@ -6075,6 +6340,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Neos Redirect Handler",
+            "support": {
+                "issues": "https://github.com/neos/redirecthandler-neosadapter/issues",
+                "source": "https://github.com/neos/redirecthandler-neosadapter/tree/3.1.0"
+            },
             "time": "2019-08-15T15:36:17+00:00"
         },
         {
@@ -6115,6 +6384,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
+            "support": {
+                "issues": "https://github.com/neos/redirecthandler-ui/issues",
+                "source": "https://github.com/neos/redirecthandler-ui/tree/master"
+            },
             "time": "2019-05-20T13:03:30+00:00"
         },
         {
@@ -6224,6 +6497,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "SEO configuration and tools for Neos",
+            "support": {
+                "issues": "https://github.com/neos/neos-seo/issues",
+                "source": "https://github.com/neos/neos-seo/tree/2.1.3"
+            },
             "time": "2019-06-14T08:34:30+00:00"
         },
         {
@@ -6310,6 +6587,10 @@
                 "MIT"
             ],
             "description": "An extensible setup tool for Neos Flow based applications",
+            "support": {
+                "issues": "https://github.com/neos/setup/issues",
+                "source": "https://github.com/neos/setup/tree/master"
+            },
             "time": "2018-09-03T09:03:46+00:00"
         },
         {
@@ -6374,6 +6655,10 @@
                 "MIT"
             ],
             "description": "A Flow package for easy use of Swift Mailer",
+            "support": {
+                "issues": "https://github.com/neos/swiftmailer/issues",
+                "source": "https://github.com/neos/swiftmailer/tree/7.2.0"
+            },
             "funding": [
                 {
                     "url": "https://neosfunding.sandstorm.de/en",
@@ -6464,6 +6749,9 @@
                 "MIT"
             ],
             "description": "Simple and flexible HTML, CSS, and Javascript for popular user interface components and interactions. Packaged for use with Neos Flow",
+            "support": {
+                "source": "https://github.com/neos/twitter-bootstrap/tree/3.0.6"
+            },
             "funding": [
                 {
                     "url": "https://neosfunding.sandstorm.de/en",
@@ -6511,6 +6799,9 @@
             ],
             "description": "Flow Array Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-arrays/tree/5.2.3"
+            },
             "time": "2018-06-27T10:03:23+00:00"
         },
         {
@@ -6552,6 +6843,9 @@
             ],
             "description": "Flow Files Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-files/tree/5.3.3"
+            },
             "time": "2018-10-24T07:01:32+00:00"
         },
         {
@@ -6589,6 +6883,9 @@
             ],
             "description": "Flow Locking Implementation",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-lock/tree/5.2.4"
+            },
             "time": "2018-06-27T10:03:23+00:00"
         },
         {
@@ -6629,6 +6926,9 @@
             ],
             "description": "Flow Media Types Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-mediatypes/tree/5.0.15"
+            },
             "time": "2019-06-14T12:37:02+00:00"
         },
         {
@@ -6670,6 +6970,9 @@
             ],
             "description": "Flow array/object property and type utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-objecthandling/tree/5.3.1"
+            },
             "time": "2019-06-14T12:42:32+00:00"
         },
         {
@@ -6706,6 +7009,9 @@
             ],
             "description": "Flow Opcode Cache Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-opcodecache/tree/5.2.3"
+            },
             "time": "2017-12-29T20:04:27+00:00"
         },
         {
@@ -6742,6 +7048,9 @@
             ],
             "description": "Flow PDO Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-pdo/tree/5.2.3"
+            },
             "time": "2018-04-17T12:43:53+00:00"
         },
         {
@@ -6783,6 +7092,9 @@
             ],
             "description": "Flow Schema Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-schema/tree/5.2.7"
+            },
             "time": "2019-08-22T15:02:09+00:00"
         },
         {
@@ -6819,104 +7131,48 @@
             ],
             "description": "Flow Unicode Utilities",
             "homepage": "http://flow.neos.io",
+            "support": {
+                "source": "https://github.com/neos/utility-unicode/tree/5.2.4"
+            },
             "time": "2018-10-24T07:01:32+00:00"
         },
         {
-            "name": "ocramius/package-versions",
-            "version": "1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "94c9d42a466c57f91390cdd49c81313264f49d85"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/94c9d42a466c57f91390cdd49c81313264f49d85",
-                "reference": "94c9d42a466c57f91390cdd49c81313264f49d85",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.1.0 || ^2.0",
-                "php": "^7.4.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.9.3 || ^2.0@dev",
-                "doctrine/coding-standard": "^7.0.2",
-                "ext-zip": "^1.15.0",
-                "infection/infection": "^0.15.3",
-                "phpunit/phpunit": "^9.1.1",
-                "vimeo/psalm": "^3.9.3"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "1.99.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "funding": [
-                {
-                    "url": "https://github.com/Ocramius",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ocramius/package-versions",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-06-22T14:15:44+00:00"
-        },
-        {
             "name": "ocramius/proxy-manager",
-            "version": "2.8.1",
+            "version": "2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/ProxyManager.git",
-                "reference": "371c8f2d9d1e888ce1f8f2137d9187252b07ee94"
+                "reference": "21e2b4aa7d7661e7641cc6362fc8635ddcfa8464"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/371c8f2d9d1e888ce1f8f2137d9187252b07ee94",
-                "reference": "371c8f2d9d1e888ce1f8f2137d9187252b07ee94",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/21e2b4aa7d7661e7641cc6362fc8635ddcfa8464",
+                "reference": "21e2b4aa7d7661e7641cc6362fc8635ddcfa8464",
                 "shasum": ""
             },
             "require": {
-                "laminas/laminas-code": "^3.4.1",
-                "ocramius/package-versions": "^1.8.0,<1.10.0",
-                "php": "~7.4.1",
-                "webimpress/safe-writer": "^2.0.1"
+                "composer-runtime-api": "^2.1.0",
+                "laminas/laminas-code": "^4.3.0",
+                "php": "~7.4.1 || ~8.0.0",
+                "webimpress/safe-writer": "^2.2.0"
             },
             "conflict": {
                 "doctrine/annotations": "<1.6.1",
                 "laminas/laminas-stdlib": "<3.2.1",
+                "thecodingmachine/safe": "<1.3.3",
                 "zendframework/zend-stdlib": "<3.2.1"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^6.0.0",
+                "codelicia/xulieta": "^0.1.6",
+                "doctrine/coding-standard": "^8.2.1",
                 "ext-phar": "*",
-                "infection/infection": "^0.16.2",
-                "nikic/php-parser": "^4.4.0",
-                "phpbench/phpbench": "^0.17.0",
-                "phpunit/phpunit": "^9.1.1",
-                "slevomat/coding-standard": "^5.0.4",
-                "squizlabs/php_codesniffer": "^3.5.4",
-                "vimeo/psalm": "^3.11.1"
+                "infection/infection": "^0.21.5",
+                "nikic/php-parser": "^4.10.5",
+                "phpbench/phpbench": "^0.17.1 || 1.0.0-alpha2",
+                "phpunit/phpunit": "^9.5.4",
+                "slevomat/coding-standard": "^6.3.10",
+                "squizlabs/php_codesniffer": "^3.6.0",
+                "vimeo/psalm": "^4.4.1"
             },
             "suggest": {
                 "laminas/laminas-json": "To have the JsonRpc adapter (Remote Object feature)",
@@ -6955,6 +7211,10 @@
                 "proxy pattern",
                 "service proxies"
             ],
+            "support": {
+                "issues": "https://github.com/Ocramius/ProxyManager/issues",
+                "source": "https://github.com/Ocramius/ProxyManager/tree/2.13.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/Ocramius",
@@ -6965,7 +7225,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-13T19:23:57+00:00"
+            "time": "2021-06-09T10:16:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -7010,7 +7270,121 @@
                 "pseudorandom",
                 "random"
             ],
+            "support": {
+                "email": "info@paragonie.com",
+                "issues": "https://github.com/paragonie/random_compat/issues",
+                "source": "https://github.com/paragonie/random_compat"
+            },
             "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "2.0.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "fb53b7889497ec7c1362c94e61d8127ac67ea094"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/fb53b7889497ec7c1362c94e61d8127ac67ea094",
+                "reference": "fb53b7889497ec7c1362c94e61d8127ac67ea094",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phing/phing": "~2.7",
+                "phpunit/phpunit": "^4.8.35|^5.7|^6.0|^9.4",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
+                "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpseclib/bootstrap.php"
+                ],
+                "psr-4": {
+                    "phpseclib\\": "phpseclib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Patrick Monnerat",
+                    "email": "pm@datasphere.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Fischer",
+                    "email": "bantu@phpbb.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Hans-Jürgen Petrich",
+                    "email": "petrich@tronic-media.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "blowfish",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "twofish",
+                "x.509",
+                "x509"
+            ],
+            "support": {
+                "issues": "https://github.com/phpseclib/phpseclib/issues",
+                "source": "https://github.com/phpseclib/phpseclib/tree/2.0.33"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/terrafrost",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/phpseclib",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/phpseclib/phpseclib",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-08-16T04:20:12+00:00"
         },
         {
             "name": "psr/cache",
@@ -7056,6 +7430,9 @@
                 "psr",
                 "psr-6"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/master"
+            },
             "time": "2016-08-06T20:24:11+00:00"
         },
         {
@@ -7105,6 +7482,10 @@
                 "container-interop",
                 "psr"
             ],
+            "support": {
+                "issues": "https://github.com/php-fig/container/issues",
+                "source": "https://github.com/php-fig/container/tree/master"
+            },
             "time": "2017-02-14T16:28:37+00:00"
         },
         {
@@ -7155,6 +7536,9 @@
                 "request",
                 "response"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/http-message/tree/master"
+            },
             "time": "2016-08-06T14:39:51+00:00"
         },
         {
@@ -7202,6 +7586,9 @@
                 "psr",
                 "psr-3"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/log/tree/1.1.4"
+            },
             "time": "2021-05-03T11:20:27+00:00"
         },
         {
@@ -7250,6 +7637,9 @@
                 "psr-16",
                 "simple-cache"
             ],
+            "support": {
+                "source": "https://github.com/php-fig/simple-cache/tree/master"
+            },
             "time": "2017-10-23T01:57:42+00:00"
         },
         {
@@ -7290,6 +7680,10 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
             "time": "2019-03-08T08:55:37+00:00"
         },
         {
@@ -7377,6 +7771,12 @@
                 "identifier",
                 "uuid"
             ],
+            "support": {
+                "issues": "https://github.com/ramsey/uuid/issues",
+                "rss": "https://github.com/ramsey/uuid/releases.atom",
+                "source": "https://github.com/ramsey/uuid",
+                "wiki": "https://github.com/ramsey/uuid/wiki"
+            },
             "funding": [
                 {
                     "url": "https://github.com/ramsey",
@@ -7431,6 +7831,10 @@
                 "template",
                 "uri"
             ],
+            "support": {
+                "issues": "https://github.com/rize/UriTemplate/issues",
+                "source": "https://github.com/rize/UriTemplate/tree/0.3.3"
+            },
             "time": "2021-02-22T15:03:38+00:00"
         },
         {
@@ -7488,6 +7892,10 @@
                 "php-vips",
                 "vips"
             ],
+            "support": {
+                "issues": "https://github.com/rokka-io/imagine-vips/issues",
+                "source": "https://github.com/rokka-io/imagine-vips/tree/master"
+            },
             "time": "2017-12-06T09:48:21+00:00"
         },
         {
@@ -7594,6 +8002,10 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "description": "Integrate MXGraph / Draw.io into Neos as Node Type for creating interactive diagrams and flowcharts",
+            "support": {
+                "issues": "https://github.com/sandstorm/MxGraph/issues",
+                "source": "https://github.com/sandstorm/MxGraph/tree/master"
+            },
             "time": "2020-04-16T06:43:38+00:00"
         },
         {
@@ -7643,6 +8055,10 @@
                 "parser",
                 "validator"
             ],
+            "support": {
+                "issues": "https://github.com/Seldaek/jsonlint/issues",
+                "source": "https://github.com/Seldaek/jsonlint/tree/1.8.3"
+            },
             "funding": [
                 {
                     "url": "https://github.com/Seldaek",
@@ -7697,6 +8113,10 @@
             "keywords": [
                 "phar"
             ],
+            "support": {
+                "issues": "https://github.com/Seldaek/phar-utils/issues",
+                "source": "https://github.com/Seldaek/phar-utils/tree/master"
+            },
             "time": "2020-07-07T18:42:57+00:00"
         },
         {
@@ -7742,6 +8162,10 @@
                 }
             ],
             "description": "A package to validate projects against the sitegeist-project-guidelines.",
+            "support": {
+                "issues": "https://github.com/sitegeist/Sitegeist.NeosGuidelines/issues",
+                "source": "https://github.com/sitegeist/Sitegeist.NeosGuidelines/tree/master"
+            },
             "abandoned": true,
             "time": "2019-09-23T10:31:33+00:00"
         },
@@ -7780,6 +8204,10 @@
                 "GPL-3.0-or-later"
             ],
             "description": "Preconfigure property-silhuettes that can be applied to various properties of multiple NodeTypes.",
+            "support": {
+                "issues": "https://github.com/sitegeist/Sitegeist.Silhouettes/issues",
+                "source": "https://github.com/sitegeist/Sitegeist.Silhouettes/tree/v1.1.0"
+            },
             "time": "2020-04-06T15:41:14+00:00"
         },
         {
@@ -7841,6 +8269,10 @@
                 "mail",
                 "mailer"
             ],
+            "support": {
+                "issues": "https://github.com/swiftmailer/swiftmailer/issues",
+                "source": "https://github.com/swiftmailer/swiftmailer/tree/v6.2.7"
+            },
             "funding": [
                 {
                     "url": "https://github.com/fabpot",
@@ -7922,6 +8354,9 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/console/tree/v4.1.12"
+            },
             "time": "2019-01-25T14:34:37+00:00"
         },
         {
@@ -7979,6 +8414,9 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dom-crawler/tree/v4.1.12"
+            },
             "time": "2019-01-16T19:07:26+00:00"
         },
         {
@@ -8025,6 +8463,9 @@
             ],
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/filesystem/tree/v5.3.4"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8084,6 +8525,9 @@
             ],
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/finder/tree/v5.3.4"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8160,6 +8604,9 @@
                 "polyfill",
                 "portable"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8237,6 +8684,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-iconv/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8321,6 +8771,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-idn/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8402,6 +8855,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8479,6 +8935,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.23.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8552,6 +9011,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php72/tree/v1.23.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8632,6 +9094,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.23.1"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8691,6 +9156,9 @@
             ],
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v5.3.4"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -8764,6 +9232,9 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v4.1.12"
+            },
             "time": "2019-01-16T19:07:26+00:00"
         },
         {
@@ -8803,6 +9274,10 @@
                 "LGPL-3.0-or-later"
             ],
             "description": "The TYPO3 Fluid template rendering engine",
+            "support": {
+                "issues": "https://github.com/TYPO3/Fluid/issues",
+                "source": "https://github.com/TYPO3/Fluid/tree/2.5.11"
+            },
             "time": "2020-11-16T21:48:02+00:00"
         },
         {
@@ -8852,6 +9327,10 @@
                 "safe writer",
                 "webimpress"
             ],
+            "support": {
+                "issues": "https://github.com/webimpress/safe-writer/issues",
+                "source": "https://github.com/webimpress/safe-writer/tree/2.2.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/michalbundyra",
@@ -8918,6 +9397,10 @@
                 "seo",
                 "yoast"
             ],
+            "support": {
+                "issues": "https://github.com/Yoast/Yoast-SEO-for-Neos/issues",
+                "source": "https://github.com/Yoast/Yoast-SEO-for-Neos/tree/master"
+            },
             "time": "2019-04-29T13:49:38+00:00"
         }
     ],
@@ -8935,5 +9418,5 @@
     "platform-overrides": {
         "php": "7.4.6"
     },
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.1.0"
 }
