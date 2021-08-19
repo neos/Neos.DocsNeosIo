@@ -1,7 +1,6 @@
 Neos:
   ContentRepository:
     Search:
-      indexAllWorkspaces: true
       elasticSearch:
         indexName: '%env:BEACH_ELASTICSEARCH_INDEX_NAME%'
 
