@@ -114,8 +114,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * For licensing, see LICENSE.md.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 /**
@@ -354,8 +354,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
 /**
@@ -559,7 +559,7 @@ var Command = function () {
 		}
 
 		/**
-   * Clears forced disable previously set through {@link #clearForceDisabled}. See {@link #clearForceDisabled}.
+   * Clears forced disable previously set through {@link #forceDisabled}. See {@link #forceDisabled}.
    *
    * @param {String} id Unique identifier, equal to the one passed in {@link #forceDisabled} call.
    */
@@ -585,6 +585,9 @@ var Command = function () {
    * This behavior is implemented by a high priority listener to the {@link #event:execute} event.
    *
    * In order to see how to disable a command from "outside" see the {@link #isEnabled} documentation.
+   *
+   * This method may return a value, which would be forwarded all the way down to the
+   * {@link module:core/editor/editor~Editor#execute `editor.execute()`}.
    *
    * @fires execute
    */
@@ -649,8 +652,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
 /**
@@ -699,17 +702,117 @@ var Plugin = function () {
      * @member {module:core/editor/editor~Editor} #editor
      */
     this.editor = editor;
+
+    /**
+     * Flag indicating whether a plugin is enabled or disabled.
+     * A disabled plugin will not transform text.
+     *
+     * Plugin can be simply disabled like that:
+     *
+     *		// Disable the plugin so that no toolbars are visible.
+     *		editor.plugins.get( 'TextTransformation' ).isEnabled = false;
+     *
+     * You can also use {@link #forceDisabled} method.
+     *
+     * @observable
+     * @readonly
+     * @member {Boolean} #isEnabled
+     */
+    this.set('isEnabled', true);
+
+    /**
+     * Holds identifiers for {@link #forceDisabled} mechanism.
+     *
+     * @type {Set.<String>}
+     * @private
+     */
+    this._disableStack = new Set();
   }
 
   /**
-   * @inheritDoc
+   * Disables the plugin.
+   *
+   * Plugin may be disabled by multiple features or algorithms (at once). When disabling a plugin, unique id should be passed
+   * (e.g. feature name). The same identifier should be used when {@link #clearForceDisabled enabling back} the plugin.
+   * The plugin becomes enabled only after all features {@link #clearForceDisabled enabled it back}.
+   *
+   * Disabling and enabling a plugin:
+   *
+   *		plugin.isEnabled; // -> true
+   *		plugin.forceDisabled( 'MyFeature' );
+   *		plugin.isEnabled; // -> false
+   *		plugin.clearForceDisabled( 'MyFeature' );
+   *		plugin.isEnabled; // -> true
+   *
+   * Plugin disabled by multiple features:
+   *
+   *		plugin.forceDisabled( 'MyFeature' );
+   *		plugin.forceDisabled( 'OtherFeature' );
+   *		plugin.clearForceDisabled( 'MyFeature' );
+   *		plugin.isEnabled; // -> false
+   *		plugin.clearForceDisabled( 'OtherFeature' );
+   *		plugin.isEnabled; // -> true
+   *
+   * Multiple disabling with the same identifier is redundant:
+   *
+   *		plugin.forceDisabled( 'MyFeature' );
+   *		plugin.forceDisabled( 'MyFeature' );
+   *		plugin.clearForceDisabled( 'MyFeature' );
+   *		plugin.isEnabled; // -> true
+   *
+   * **Note:** some plugins or algorithms may have more complex logic when it comes to enabling or disabling certain plugins,
+   * so the plugin might be still disabled after {@link #clearForceDisabled} was used.
+   *
+   * @param {String} id Unique identifier for disabling. Use the same id when {@link #clearForceDisabled enabling back} the plugin.
    */
 
 
   _createClass(Plugin, [{
+    key: 'forceDisabled',
+    value: function forceDisabled(id) {
+      this._disableStack.add(id);
+
+      if (this._disableStack.size == 1) {
+        this.on('set:isEnabled', forceDisable, { priority: 'highest' });
+        this.isEnabled = false;
+      }
+    }
+
+    /**
+     * Clears forced disable previously set through {@link #forceDisabled}. See {@link #forceDisabled}.
+     *
+     * @param {String} id Unique identifier, equal to the one passed in {@link #forceDisabled} call.
+     */
+
+  }, {
+    key: 'clearForceDisabled',
+    value: function clearForceDisabled(id) {
+      this._disableStack.delete(id);
+
+      if (this._disableStack.size == 0) {
+        this.off('set:isEnabled', forceDisable);
+        this.isEnabled = true;
+      }
+    }
+
+    /**
+     * @inheritDoc
+     */
+
+  }, {
     key: 'destroy',
     value: function destroy() {
       this.stopListening();
+    }
+
+    /**
+     * @inheritDoc
+     */
+
+  }], [{
+    key: 'isContextPlugin',
+    get: function get() {
+      return false;
     }
   }]);
 
@@ -724,16 +827,15 @@ exports.default = Plugin;
 /**
  * The base interface for CKEditor plugins.
  *
- * In its minimal form it can be a simple function (it will be used as a constructor) that accepts
- * {@link module:core/editor/editor~Editor the editor} as a parameter.
- * It can also implement a few methods which, when present, will be used to properly initialize and destroy the plugin.
+ * In its minimal form a plugin can be a simple function that accepts {@link module:core/editor/editor~Editor the editor}
+ * as a parameter:
  *
  *		// A simple plugin that enables a data processor.
  *		function MyPlugin( editor ) {
  *			editor.data.processor = new MyDataProcessor();
  *		}
  *
- * In most cases, however, you will want to inherit from the {@link module:core/plugin~Plugin} class which implements the
+ * In most cases however, you will want to inherit from the {@link module:core/plugin~Plugin} class which implements the
  * {@link module:utils/observablemixin~ObservableMixin} and is, therefore, more convenient:
  *
  *		class MyPlugin extends Plugin {
@@ -746,6 +848,17 @@ exports.default = Plugin;
  *				} );
  *			}
  *		}
+ *
+ * The plugin can also implement methods (e.g. {@link module:core/plugin~PluginInterface#init `init()`} or
+ * {@link module:core/plugin~PluginInterface#destroy `destroy()`}) which, when present, will be used to properly
+ * initialize and destroy the plugin.
+ *
+ * **Note:** When defined as a plain function, the plugin acts as a constructor and will be
+ * called in parallel with other plugins' {@link module:core/plugin~PluginInterface#constructor constructors}.
+ * This means the code of that plugin will be executed **before** {@link module:core/plugin~PluginInterface#init `init()`} and
+ * {@link module:core/plugin~PluginInterface#afterInit `afterInit()`} methods of other plugins and, for instance,
+ * you cannot use it to extend other plugins' {@glink framework/guides/architecture/editing-engine#schema schema}
+ * rules as they are defined later on during the `init()` stage.
  *
  * @interface PluginInterface
  */
@@ -791,7 +904,7 @@ exports.default = Plugin;
  *
  * The name should reflect the constructor name.
  *
- * To keep the plugin class definition tight it is recommended to define this property as a static getter:
+ * To keep the plugin class definition tight, it is recommended to define this property as a static getter:
  *
  *		export default class ImageCaption {
  *			static get pluginName() {
@@ -811,11 +924,11 @@ exports.default = Plugin;
  */
 
 /**
- * The second stage (after plugin {@link #constructor}) of plugin initialization.
+ * The second stage (after plugin {@link #constructor}) of the plugin initialization.
  * Unlike the plugin constructor this method can be asynchronous.
  *
  * A plugin's `init()` method is called after its {@link module:core/plugin~PluginInterface.requires dependencies} are initialized,
- * so in the same order as constructors of these plugins.
+ * so in the same order as the constructors of these plugins.
  *
  * **Note:** This method is optional. A plugin instance does not need to have it defined.
  *
@@ -824,7 +937,7 @@ exports.default = Plugin;
  */
 
 /**
- * The third (and last) stage of plugin initialization. See also {@link #constructor} and {@link #init}.
+ * The third (and last) stage of the plugin initialization. See also {@link #constructor} and {@link #init}.
  *
  * **Note:** This method is optional. A plugin instance does not need to have it defined.
  *
@@ -842,10 +955,24 @@ exports.default = Plugin;
  */
 
 /**
- * Array of loaded plugins.
+ * A flag which defines if a plugin is allowed or not allowed to be used directly by a {@link module:core/context~Context}.
+ *
+ * @static
+ * @readonly
+ * @member {Boolean} module:core/plugin~PluginInterface.isContextPlugin
+ */
+
+/**
+ * An array of loaded plugins.
  *
  * @typedef {Array.<module:core/plugin~PluginInterface>} module:core/plugin~LoadedPlugins
  */
+
+// Helper function that forces plugin to be disabled.
+function forceDisable(evt) {
+  evt.return = false;
+  evt.stop();
+}
 
 /***/ }),
 
@@ -865,7 +992,10 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.attachLinkToDocumentation = attachLinkToDocumentation;
+exports.logWarning = logWarning;
+exports.logError = logError;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -874,13 +1004,15 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
  * @module utils/ckeditorerror
  */
+
+/* globals console */
 
 /**
  * URL to the documentation with error codes.
@@ -890,10 +1022,28 @@ var DOCUMENTATION_URL = exports.DOCUMENTATION_URL = 'https://ckeditor.com/docs/c
 /**
  * The CKEditor error class.
  *
- * All errors will be shortened during the minification process in order to reduce the code size.
- * Therefore, all error messages should be documented in the same way as those in {@link module:utils/log}.
+ * You should throw `CKEditorError` when:
  *
- * Read more in the {@link module:utils/log} module.
+ * * An unexpected situation occurred and the editor (most probably) will not work properly. Such exception will be handled
+ * by the {@link module:watchdog/watchdog~Watchdog watchdog} (if it is integrated),
+ * * If the editor is incorrectly integrated or the editor API is used in the wrong way. This way you will give
+ * feedback to the developer as soon as possible. Keep in mind that for common integration issues which should not
+ * stop editor initialization (like missing upload adapter, wrong name of a toolbar component) we use
+ * {@link module:utils/ckeditorerror~logWarning `logWarning()`} and
+ * {@link module:utils/ckeditorerror~logError `logError()`}
+ * to improve developers experience and let them see the a working editor as soon as possible.
+ *
+ *		/**
+ *		 * Error thrown when a plugin cannot be loaded due to JavaScript errors, lack of plugins with a given name, etc.
+ *		 *
+ *		 * @error plugin-load
+ *		 * @param pluginName The name of the plugin that could not be loaded.
+ *		 * @param moduleName The name of the module which tried to load this plugin.
+ *		 * /
+ *		throw new CKEditorError( 'plugin-load', {
+ *			pluginName: 'foo',
+ *			moduleName: 'bar'
+ *		} );
  *
  * @extends Error
  */
@@ -904,52 +1054,90 @@ var CKEditorError = function (_Error) {
 	/**
   * Creates an instance of the CKEditorError class.
   *
-  * Read more about error logging in the {@link module:utils/log} module.
-  *
-  * @param {String} message The error message in an `error-name: Error message.` format.
-  * During the minification process the "Error message" part will be removed to limit the code size
-  * and a link to this error documentation will be added to the `message`.
+  * @param {String} errorName The error id in an `error-name` format. A link to this error documentation page will be added
+  * to the thrown error's `message`.
+  * @param {Object|null} context A context of the error by which the {@link module:watchdog/watchdog~Watchdog watchdog}
+  * is able to determine which editor crashed. It should be an editor instance or a property connected to it. It can be also
+  * a `null` value if the editor should not be restarted in case of the error (e.g. during the editor initialization).
+  * The error context should be checked using the `areConnectedThroughProperties( editor, context )` utility
+  * to check if the object works as the context.
   * @param {Object} [data] Additional data describing the error. A stringified version of this object
   * will be appended to the error message, so the data are quickly visible in the console. The original
   * data object will also be later available under the {@link #data} property.
   */
-	function CKEditorError(message, data) {
+	function CKEditorError(errorName, context, data) {
 		_classCallCheck(this, CKEditorError);
 
-		message = attachLinkToDocumentation(message);
-
-		if (data) {
-			message += ' ' + JSON.stringify(data);
-		}
+		var message = '' + errorName + (data ? ' ' + JSON.stringify(data) : '') + getLinkToDocumentationMessage(errorName);
 
 		/**
-   * @member {String}
+   * @type {String}
    */
 		var _this = _possibleConstructorReturn(this, (CKEditorError.__proto__ || Object.getPrototypeOf(CKEditorError)).call(this, message));
 
 		_this.name = 'CKEditorError';
 
 		/**
+   * A context of the error by which the Watchdog is able to determine which editor crashed.
+   *
+   * @type {Object|null}
+   */
+		_this.context = context;
+
+		/**
    * The additional error data passed to the constructor. Undefined if none was passed.
    *
-   * @member {Object|undefined}
+   * @type {Object|undefined}
    */
 		_this.data = data;
 		return _this;
 	}
 
 	/**
-  * Checks if error is an instance of CKEditorError class.
-  *
-  * @param {Object} error Object to check.
-  * @returns {Boolean}
+  * Checks if the error is of the `CKEditorError` type.
   */
 
 
-	_createClass(CKEditorError, null, [{
-		key: 'isCKEditorError',
-		value: function isCKEditorError(error) {
-			return error instanceof CKEditorError;
+	_createClass(CKEditorError, [{
+		key: 'is',
+		value: function is(type) {
+			return type === 'CKEditorError';
+		}
+
+		/**
+   * A utility that ensures that the thrown error is a {@link module:utils/ckeditorerror~CKEditorError} one.
+   * It is useful when combined with the {@link module:watchdog/watchdog~Watchdog} feature, which can restart the editor in case
+   * of a {@link module:utils/ckeditorerror~CKEditorError} error.
+   *
+   * @static
+   * @param {Error} err The error to rethrow.
+   * @param {Object} context An object connected through properties with the editor instance. This context will be used
+   * by the watchdog to verify which editor should be restarted.
+   */
+
+	}], [{
+		key: 'rethrowUnexpectedError',
+		value: function rethrowUnexpectedError(err, context) {
+			if (err.is && err.is('CKEditorError')) {
+				throw err;
+			}
+
+			/**
+    * An unexpected error occurred inside the CKEditor 5 codebase. This error will look like the original one
+    * to make the debugging easier.
+    *
+    * This error is only useful when the editor is initialized using the {@link module:watchdog/watchdog~Watchdog} feature.
+    * In case of such error (or any {@link module:utils/ckeditorerror~CKEditorError} error) the watchdog should restart the editor.
+    *
+    * @error unexpected-error
+    */
+			var error = new CKEditorError(err.message, context);
+
+			// Restore the original stack trace to make the error look like the original one.
+			// See https://github.com/ckeditor/ckeditor5/issues/5595 for more details.
+			error.stack = err.stack;
+
+			throw error;
 		}
 	}]);
 
@@ -957,22 +1145,69 @@ var CKEditorError = function (_Error) {
 }(Error);
 
 /**
- * Attaches link to the documentation at the end of the error message.
+ * Logs a warning to the console with a properly formatted message and adds a link to the documentation.
+ * Use whenever you want to log a warning to the console.
  *
- * @param {String} message Message to be logged.
+ *		/**
+ *		 * There was a problem processing the configuration of the toolbar. The item with the given
+ *		 * name does not exist, so it was omitted when rendering the toolbar.
+ *		 *
+ *		 * @error toolbarview-item-unavailable
+ *		 * @param {String} name The name of the component.
+ *		 * /
+ *		logWarning( 'toolbarview-item-unavailable', { name } );
+ *
+ * See also {@link module:utils/ckeditorerror~CKEditorError} for an explanation when to throw an error and when to log
+ * a warning or an error to the console.
+ *
+ * @param {String} errorName The error name to be logged.
+ * @param {Object} [data] Additional data to be logged.
  * @returns {String}
  */
 
 
 exports.default = CKEditorError;
-function attachLinkToDocumentation(message) {
-	var matchedErrorName = message.match(/^([^:]+):/);
+function logWarning(errorName, data) {
+	var _console;
 
-	if (!matchedErrorName) {
-		return message;
-	}
+	(_console = console).warn.apply(_console, _toConsumableArray(formatConsoleArguments(errorName, data)));
+}
 
-	return message + (' Read more: ' + DOCUMENTATION_URL + '#error-' + matchedErrorName[1] + '\n');
+/**
+ * Logs an error to the console with a properly formatted message and adds a link to the documentation.
+ * Use whenever you want to log an error to the console.
+ *
+ *		/**
+ *		 * There was a problem processing the configuration of the toolbar. The item with the given
+ *		 * name does not exist, so it was omitted when rendering the toolbar.
+ *		 *
+ *		 * @error toolbarview-item-unavailable
+ *		 * @param {String} name The name of the component.
+ *		 * /
+ *		 logError( 'toolbarview-item-unavailable', { name } );
+ *
+ * **Note**: In most cases logging a warning using {@link module:utils/ckeditorerror~logWarning} is enough.
+ *
+ * See also {@link module:utils/ckeditorerror~CKEditorError} for an explanation when to use each method.
+ *
+ * @param {String} errorName The error name to be logged.
+ * @param {Object} [data] Additional data to be logged.
+ * @returns {String}
+ */
+function logError(errorName, data) {
+	var _console2;
+
+	(_console2 = console).error.apply(_console2, _toConsumableArray(formatConsoleArguments(errorName, data)));
+}
+
+function getLinkToDocumentationMessage(errorName) {
+	return '\nRead more: ' + DOCUMENTATION_URL + '#error-' + errorName;
+}
+
+function formatConsoleArguments(errorName, data) {
+	var documentationMessage = getLinkToDocumentationMessage(errorName);
+
+	return data ? [errorName, data, documentationMessage] : [errorName, documentationMessage];
 }
 
 /***/ }),
@@ -992,8 +1227,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * For licensing, see LICENSE.md.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
 
 /**
@@ -1020,6 +1255,10 @@ var _priorities = __webpack_require__(/*! ./priorities */ "./node_modules/@ckedi
 var _priorities2 = _interopRequireDefault(_priorities);
 
 __webpack_require__(/*! ./version */ "./node_modules/@ckeditor/ckeditor5-utils/src/version.js");
+
+var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
+
+var _ckeditorerror2 = _interopRequireDefault(_ckeditorerror);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1201,6 +1440,18 @@ var EmitterMixin = {
 		// All params provided. off() that single callback.
 		if (callback) {
 			removeCallback(emitter, event, callback);
+
+			// We must remove callbacks as well in order to prevent memory leaks.
+			// See https://github.com/ckeditor/ckeditor5/pull/8480
+			var index = eventCallbacks.indexOf(callback);
+
+			if (index !== -1) {
+				if (eventCallbacks.length === 1) {
+					delete emitterInfo.callbacks[event];
+				} else {
+					removeCallback(emitter, event, callback);
+				}
+			}
 		}
 		// Only `emitter` and `event` provided. off() all callbacks for that event.
 		else if (eventCallbacks) {
@@ -1231,63 +1482,69 @@ var EmitterMixin = {
   * @inheritDoc
   */
 	fire: function fire(eventOrInfo) {
-		var eventInfo = eventOrInfo instanceof _eventinfo2.default ? eventOrInfo : new _eventinfo2.default(this, eventOrInfo);
-		var event = eventInfo.name;
-		var callbacks = getCallbacksForEvent(this, event);
+		try {
+			var eventInfo = eventOrInfo instanceof _eventinfo2.default ? eventOrInfo : new _eventinfo2.default(this, eventOrInfo);
+			var event = eventInfo.name;
+			var callbacks = getCallbacksForEvent(this, event);
 
-		// Record that the event passed this emitter on its path.
-		eventInfo.path.push(this);
+			// Record that the event passed this emitter on its path.
+			eventInfo.path.push(this);
 
-		// Handle event listener callbacks first.
+			// Handle event listener callbacks first.
 
-		for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-			args[_key2 - 1] = arguments[_key2];
-		}
+			for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+				args[_key2 - 1] = arguments[_key2];
+			}
 
-		if (callbacks) {
-			// Arguments passed to each callback.
-			var callbackArgs = [eventInfo].concat(args);
+			if (callbacks) {
+				// Arguments passed to each callback.
+				var callbackArgs = [eventInfo].concat(args);
 
-			// Copying callbacks array is the easiest and most secure way of preventing infinite loops, when event callbacks
-			// are added while processing other callbacks. Previous solution involved adding counters (unique ids) but
-			// failed if callbacks were added to the queue before currently processed callback.
-			// If this proves to be too inefficient, another method is to change `.on()` so callbacks are stored if same
-			// event is currently processed. Then, `.fire()` at the end, would have to add all stored events.
-			callbacks = Array.from(callbacks);
+				// Copying callbacks array is the easiest and most secure way of preventing infinite loops, when event callbacks
+				// are added while processing other callbacks. Previous solution involved adding counters (unique ids) but
+				// failed if callbacks were added to the queue before currently processed callback.
+				// If this proves to be too inefficient, another method is to change `.on()` so callbacks are stored if same
+				// event is currently processed. Then, `.fire()` at the end, would have to add all stored events.
+				callbacks = Array.from(callbacks);
 
-			for (var i = 0; i < callbacks.length; i++) {
-				callbacks[i].callback.apply(this, callbackArgs);
+				for (var i = 0; i < callbacks.length; i++) {
+					callbacks[i].callback.apply(this, callbackArgs);
 
-				// Remove the callback from future requests if off() has been called.
-				if (eventInfo.off.called) {
-					// Remove the called mark for the next calls.
-					delete eventInfo.off.called;
+					// Remove the callback from future requests if off() has been called.
+					if (eventInfo.off.called) {
+						// Remove the called mark for the next calls.
+						delete eventInfo.off.called;
 
-					removeCallback(this, event, callbacks[i].callback);
+						removeCallback(this, event, callbacks[i].callback);
+					}
+
+					// Do not execute next callbacks if stop() was called.
+					if (eventInfo.stop.called) {
+						break;
+					}
+				}
+			}
+
+			// Delegate event to other emitters if needed.
+			if (this._delegations) {
+				var destinations = this._delegations.get(event);
+				var passAllDestinations = this._delegations.get('*');
+
+				if (destinations) {
+					fireDelegatedEvents(destinations, eventInfo, args);
 				}
 
-				// Do not execute next callbacks if stop() was called.
-				if (eventInfo.stop.called) {
-					break;
+				if (passAllDestinations) {
+					fireDelegatedEvents(passAllDestinations, eventInfo, args);
 				}
 			}
+
+			return eventInfo.return;
+		} catch (err) {
+			// @if CK_DEBUG // throw err;
+			/* istanbul ignore next */
+			_ckeditorerror2.default.rethrowUnexpectedError(err, this);
 		}
-
-		// Delegate event to other emitters if needed.
-		if (this._delegations) {
-			var destinations = this._delegations.get(event);
-			var passAllDestinations = this._delegations.get('*');
-
-			if (destinations) {
-				fireDelegatedEvents(destinations, eventInfo, args);
-			}
-
-			if (passAllDestinations) {
-				fireDelegatedEvents(passAllDestinations, eventInfo, args);
-			}
-		}
-
-		return eventInfo.return;
 	},
 
 
@@ -1489,9 +1746,9 @@ exports.default = EmitterMixin;
  * If not, returns `null`.
  *
  * @protected
- * @param {module:utils/emittermixin~EmitterMixin} listeningEmitter Emitter that listens.
+ * @param {module:utils/emittermixin~Emitter} listeningEmitter An emitter that listens.
  * @param {String} listenedToEmitterId Unique emitter id of emitter listened to.
- * @returns {module:utils/emittermixin~EmitterMixin|null}
+ * @returns {module:utils/emittermixin~Emitter|null}
  */
 
 function _getEmitterListenedTo(listeningEmitter, listenedToEmitterId) {
@@ -1508,7 +1765,7 @@ function _getEmitterListenedTo(listeningEmitter, listenedToEmitterId) {
  * **Note:** `_emitterId` can be set only once.
  *
  * @protected
- * @param {module:utils/emittermixin~EmitterMixin} emitter Emitter for which id will be set.
+ * @param {module:utils/emittermixin~Emitter} emitter An emitter for which id will be set.
  * @param {String} [id] Unique id to set. If not passed, random unique id will be set.
  */
 function _setEmitterId(emitter, id) {
@@ -1521,7 +1778,7 @@ function _setEmitterId(emitter, id) {
  * Returns emitter's unique id.
  *
  * @protected
- * @param {module:utils/emittermixin~EmitterMixin} emitter Emitter which id will be returned.
+ * @param {module:utils/emittermixin~Emitter} emitter An emitter which id will be returned.
  */
 function _getEmitterId(emitter) {
 	return emitter[_emitterId];
@@ -1682,7 +1939,8 @@ function getCallbacksForEvent(source, eventName) {
 // Fires delegated events for given map of destinations.
 //
 // @private
-// * @param {Map.<utils.Emitter>} destinations A map containing `[ {@link utils.Emitter}, "event name" ]` pair destinations.
+// * @param {Map.<utils.Emitter>} destinations A map containing
+// `[ {@link module:utils/emittermixin~Emitter}, "event name" ]` pair destinations.
 // * @param {utils.EventInfo} eventInfo The original event info object.
 // * @param {Array.<*>} fireArgs Arguments the original event was fired with.
 function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
@@ -1802,8 +2060,8 @@ var _spy2 = _interopRequireDefault(_spy);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
-                                                                                                                                                           * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                           * For licensing, see LICENSE.md.
+                                                                                                                                                           * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                           * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                            */
 
 /**
@@ -1884,98 +2142,6 @@ exports.default = EventInfo;
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/log.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/log.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
-
-/**
- * The logging module.
- *
- * This object features two functions that should be used across CKEditor code base to log errors and warnings.
- * Despite being an overridable interface for native `console.*` this module serves also the goal to limit the
- * code size of a minified CKEditor package. During minification process the messages will be shortened and
- * links to their documentation will be logged to the console.
- *
- * All errors and warning should be documented in the following way:
- *
- *		/**
- *		 * Error thrown when a plugin cannot be loaded due to JavaScript errors, lack of plugins with a given name, etc.
- *		 *
- *		 * @error plugin-load
- *		 * @param pluginName The name of the plugin that could not be loaded.
- *		 * @param moduleName The name of the module which tried to load this plugin.
- *		 * /
- *		log.error( 'plugin-load: It was not possible to load the "{$pluginName}" plugin in module "{$moduleName}', {
- *			pluginName: 'foo',
- *			moduleName: 'bar'
- *		} );
- *
- * ### Warning vs Error vs Throw
- *
- * * Whenever a potentially incorrect situation occurs, which does not directly lead to an incorrect behavior,
- * log a warning.
- * * Whenever an incorrect situation occurs, but the app may continue working (although perhaps incorrectly),
- * log an error.
- * * Whenever it's really bad and it does not make sense to continue working, throw a {@link module:utils/ckeditorerror~CKEditorError}.
- *
- * @namespace
- */
-var log = {
-  /**
-   * Logs an error to the console.
-   *
-   * Read more about error logging in the {@link module:utils/log} module.
-   *
-   * @param {String} message The error message in an `error-name: Error message.` format.
-   * During the minification process the "Error message" part will be removed to limit the code size
-   * and a link to this error documentation will be logged to the console.
-   * @param {Object} [data] Additional data describing the error.
-   */
-  error: function error(message, data) {
-    console.error((0, _ckeditorerror.attachLinkToDocumentation)(message), data);
-  },
-
-
-  /**
-   * Logs a warning to the console.
-   *
-   * Read more about error logging in the {@link module:utils/log} module.
-   *
-   * @param {String} message The warning message in a `warning-name: Warning message.` format.
-   * During the minification process the "Warning message" part will be removed to limit the code size
-   * and a link to this error documentation will be logged to the console.
-   * @param {Object} [data] Additional data describing the warning.
-   */
-  warn: function warn(message, data) {
-    console.warn((0, _ckeditorerror.attachLinkToDocumentation)(message), data);
-  }
-}; /**
-    * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-    * For licensing, see LICENSE.md.
-    */
-
-/* global console */
-
-/**
- * @module utils/log
- */
-
-exports.default = log;
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-utils/src/mix.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-utils/src/mix.js ***!
@@ -1991,8 +2157,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = mix;
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
@@ -2072,8 +2238,8 @@ var _lodashEs = __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/l
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
-                                                                                                                                                                                                     * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                     * For licensing, see LICENSE.md.
+                                                                                                                                                                                                     * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                     * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                      */
 
 /**
@@ -2085,7 +2251,7 @@ var boundObservablesSymbol = Symbol('boundObservables');
 var boundPropertiesSymbol = Symbol('boundProperties');
 
 /**
- * Mixin that injects the "observable properties" and data binding functionality described in the
+ * A mixin that injects the "observable properties" and data binding functionality described in the
  * {@link ~Observable} interface.
  *
  * Read more about the concept of observables in the:
@@ -2121,7 +2287,7 @@ var ObservableMixin = {
 			/**
     * Cannot override an existing property.
     *
-    * This error is thrown when trying to {@link ~Observable#set set} an property with
+    * This error is thrown when trying to {@link ~Observable#set set} a property with
     * a name of an already existing property. For example:
     *
     *		let observable = new Model();
@@ -2133,7 +2299,7 @@ var ObservableMixin = {
     *
     * @error observable-set-cannot-override
     */
-			throw new _ckeditorerror2.default('observable-set-cannot-override: Cannot override an existing property.');
+			throw new _ckeditorerror2.default('observable-set-cannot-override', this);
 		}
 
 		Object.defineProperty(this, name, {
@@ -2172,6 +2338,8 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	bind: function bind() {
+		var _this2 = this;
+
 		for (var _len = arguments.length, bindProperties = Array(_len), _key = 0; _key < _len; _key++) {
 			bindProperties[_key] = arguments[_key];
 		}
@@ -2182,7 +2350,7 @@ var ObservableMixin = {
     *
     * @error observable-bind-wrong-properties
     */
-			throw new _ckeditorerror2.default('observable-bind-wrong-properties: All properties must be strings.');
+			throw new _ckeditorerror2.default('observable-bind-wrong-properties', this);
 		}
 
 		if (new Set(bindProperties).size !== bindProperties.length) {
@@ -2191,7 +2359,7 @@ var ObservableMixin = {
     *
     * @error observable-bind-duplicate-properties
     */
-			throw new _ckeditorerror2.default('observable-bind-duplicate-properties: Properties must be unique.');
+			throw new _ckeditorerror2.default('observable-bind-duplicate-properties', this);
 		}
 
 		initObservable(this);
@@ -2201,11 +2369,11 @@ var ObservableMixin = {
 		bindProperties.forEach(function (propertyName) {
 			if (boundProperties.has(propertyName)) {
 				/**
-     * Cannot bind the same property more that once.
+     * Cannot bind the same property more than once.
      *
      * @error observable-bind-rebind
      */
-				throw new _ckeditorerror2.default('observable-bind-rebind: Cannot bind the same property more that once.');
+				throw new _ckeditorerror2.default('observable-bind-rebind', _this2);
 			}
 		});
 
@@ -2247,10 +2415,10 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	unbind: function unbind() {
-		var _this2 = this;
+		var _this3 = this;
 
 		// Nothing to do here if not inited yet.
-		if (!(observablePropertiesSymbol in this)) {
+		if (!this[observablePropertiesSymbol]) {
 			return;
 		}
 
@@ -2268,7 +2436,7 @@ var ObservableMixin = {
      *
      * @error observable-unbind-wrong-properties
      */
-				throw new _ckeditorerror2.default('observable-unbind-wrong-properties: Properties must be strings.');
+				throw new _ckeditorerror2.default('observable-unbind-wrong-properties', this);
 			}
 
 			unbindProperties.forEach(function (propertyName) {
@@ -2299,7 +2467,7 @@ var ObservableMixin = {
 
 					if (!Object.keys(toProperties).length) {
 						boundObservables.delete(toObservable);
-						_this2.stopListening(toObservable, 'change');
+						_this3.stopListening(toObservable, 'change');
 					}
 				});
 
@@ -2307,7 +2475,7 @@ var ObservableMixin = {
 			});
 		} else {
 			boundObservables.forEach(function (bindings, boundObservable) {
-				_this2.stopListening(boundObservable, 'change');
+				_this3.stopListening(boundObservable, 'change');
 			});
 
 			boundObservables.clear();
@@ -2320,7 +2488,7 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	decorate: function decorate(methodName) {
-		var _this3 = this;
+		var _this4 = this;
 
 		var originalMethod = this[methodName];
 
@@ -2332,11 +2500,11 @@ var ObservableMixin = {
     * @param {Object} object The object which method should be decorated.
     * @param {String} methodName Name of the method which does not exist.
     */
-			throw new _ckeditorerror2.default('observablemixin-cannot-decorate-undefined: Cannot decorate an undefined method.', { object: this, methodName: methodName });
+			throw new _ckeditorerror2.default('observablemixin-cannot-decorate-undefined', this, { object: this, methodName: methodName });
 		}
 
 		this.on(methodName, function (evt, args) {
-			evt.return = originalMethod.apply(_this3, args);
+			evt.return = originalMethod.apply(_this4, args);
 		});
 
 		this[methodName] = function () {
@@ -2353,14 +2521,14 @@ var ObservableMixin = {
 
 exports.default = ObservableMixin;
 
-// Init symbol properties needed to for the observable mechanism to work.
+// Init symbol properties needed for the observable mechanism to work.
 //
 // @private
 // @param {module:utils/observablemixin~ObservableMixin} observable
 
 function initObservable(observable) {
 	// Do nothing if already inited.
-	if (observablePropertiesSymbol in observable) {
+	if (observable[observablePropertiesSymbol]) {
 		return;
 	}
 
@@ -2422,11 +2590,12 @@ function initObservable(observable) {
 	});
 
 	// Object that stores which properties of this observable are bound and how. It shares
-	// the binding objects (`{ observable: A, property: 'a', to: ... }`) with {@link utils.ObservableMixin#_boundObservables}.
-	// This data structure is a reverse of {@link utils.ObservableMixin#_boundObservables} and it is helpful for
-	// {@link utils.ObservableMixin#unbind}.
+	// the binding objects (`{ observable: A, property: 'a', to: ... }`) with
+	// {@link module:utils/observablemixin~ObservableMixin#_boundObservables}. This data structure is
+	// a reverse of {@link module:utils/observablemixin~ObservableMixin#_boundObservables} and it is helpful for
+	// {@link module:utils/observablemixin~ObservableMixin#unbind}.
 	//
-	// See {@link utils.ObservableMixin#bind}.
+	// See {@link module:utils/observablemixin~ObservableMixin#bind}.
 	//
 	//		A.bind( 'a', 'b', 'c' ).to( B, 'x', 'y', 'x' );
 	//		console.log( A._boundProperties );
@@ -2459,7 +2628,7 @@ function initObservable(observable) {
 // @private
 // @param {...[Observable|String|Function]} args Arguments of the `.to( args )` binding.
 function bindTo() {
-	var _this4 = this;
+	var _this5 = this;
 
 	var parsedArgs = parseBindToArgs.apply(undefined, arguments);
 	var bindingsKeys = Array.from(this._bindings.keys());
@@ -2470,9 +2639,9 @@ function bindTo() {
 		/**
    * Binding multiple observables only possible with callback.
    *
-   * @error observable-bind-no-callback
+   * @error observable-bind-to-no-callback
    */
-		throw new _ckeditorerror2.default('observable-bind-to-no-callback: Binding multiple observables only possible with callback.');
+		throw new _ckeditorerror2.default('observable-bind-to-no-callback', this);
 	}
 
 	// Eliminate A.bind( 'x', 'y' ).to( B, callback )
@@ -2482,7 +2651,7 @@ function bindTo() {
    *
    * @error observable-bind-to-extra-callback
    */
-		throw new _ckeditorerror2.default('observable-bind-to-extra-callback: Cannot bind multiple properties and use a callback in one binding.');
+		throw new _ckeditorerror2.default('observable-bind-to-extra-callback', this);
 	}
 
 	parsedArgs.to.forEach(function (to) {
@@ -2493,13 +2662,13 @@ function bindTo() {
     *
     * @error observable-bind-to-properties-length
     */
-			throw new _ckeditorerror2.default('observable-bind-to-properties-length: The number of properties must match.');
+			throw new _ckeditorerror2.default('observable-bind-to-properties-length', _this5);
 		}
 
 		// When no to.properties specified, observing source properties instead i.e.
 		// A.bind( 'x', 'y' ).to( B ) -> Observe B.x and B.y
 		if (!to.properties.length) {
-			to.properties = _this4._bindProperties;
+			to.properties = _this5._bindProperties;
 		}
 	});
 
@@ -2517,7 +2686,7 @@ function bindTo() {
 
 	// Set initial values of bound properties.
 	this._bindProperties.forEach(function (propertyName) {
-		updateBoundObservableProperty(_this4._observable, propertyName);
+		updateBoundObservableProperty(_this5._observable, propertyName);
 	});
 }
 
@@ -2534,7 +2703,7 @@ function bindToMany(observables, attribute, callback) {
    *
    * @error observable-bind-to-many-not-one-binding
    */
-		throw new _ckeditorerror2.default('observable-bind-to-many-not-one-binding: Cannot bind multiple properties with toMany().');
+		throw new _ckeditorerror2.default('observable-bind-to-many-not-one-binding', this);
 	}
 
 	this.to.apply(this, _toConsumableArray(getBindingTargets(observables, attribute)).concat([
@@ -2598,7 +2767,7 @@ function parseBindToArgs() {
    *
    * @error observable-bind-to-parse-error
    */
-		throw new _ckeditorerror2.default('observable-bind-to-parse-error: Invalid argument syntax in `to()`.');
+		throw new _ckeditorerror2.default('observable-bind-to-parse-error', null);
 	}
 
 	var parsed = { to: [] };
@@ -2615,7 +2784,7 @@ function parseBindToArgs() {
 			lastObservable = { observable: a, properties: [] };
 			parsed.to.push(lastObservable);
 		} else {
-			throw new _ckeditorerror2.default('observable-bind-to-parse-error: Invalid argument syntax in `to()`.');
+			throw new _ckeditorerror2.default('observable-bind-to-parse-error', null);
 		}
 	});
 
@@ -2724,7 +2893,7 @@ function updateBoundObservableProperty(observable, propertyName) {
 		propertyValue = propertyValue[0][propertyValue[1]];
 	}
 
-	if (observable.hasOwnProperty(propertyName)) {
+	if (Object.prototype.hasOwnProperty.call(observable, propertyName)) {
 		observable[propertyName] = propertyValue;
 	} else {
 		observable.set(propertyName, propertyValue);
@@ -2761,7 +2930,7 @@ function attachBindToListeners(observable, toBindings) {
 }
 
 /**
- * Interface which adds "observable properties" and data binding functionality.
+ * An interface which adds "observable properties" and data binding functionality.
  *
  * Can be easily implemented by a class by mixing the {@link module:utils/observablemixin~ObservableMixin} mixin.
  *
@@ -2815,7 +2984,7 @@ function attachBindToListeners(observable, toBindings) {
  *		                     // -> 'Current property value is 1'
  *		                     // -> 'Value has changed from 1 to 3'
  *
- * **Note:** Event is fired even when the new value is the same as the old value.
+ * **Note:** The event is fired even when the new value is the same as the old value.
  *
  * @event set:{property}
  * @param {String} name The property name.
@@ -2824,13 +2993,13 @@ function attachBindToListeners(observable, toBindings) {
  */
 
 /**
- * Creates and sets the value of an observable property of this object. Such an property becomes a part
- * of the state and is be observable.
+ * Creates and sets the value of an observable property of this object. Such a property becomes a part
+ * of the state and is observable.
  *
  * It accepts also a single object literal containing key/value pairs with properties to be set.
  *
  * This method throws the `observable-set-cannot-override` error if the observable instance already
- * have a property with the given property name. This prevents from mistakenly overriding existing
+ * has a property with the given property name. This prevents from mistakenly overriding existing
  * properties and methods, but means that `foo.set( 'bar', 1 )` may be slightly slower than `foo.bar = 1`.
  *
  * @method #set
@@ -2839,13 +3008,13 @@ function attachBindToListeners(observable, toBindings) {
  */
 
 /**
- * Binds {@link #set obvervable properties} to other objects implementing the
+ * Binds {@link #set observable properties} to other objects implementing the
  * {@link module:utils/observablemixin~Observable} interface.
  *
  * Read more in the {@glink framework/guides/deep-dive/observables#property-bindings dedicated guide}
  * covering the topic of property bindings with some additional examples.
  *
- * Let's consider two objects: a `button` and an associated `command` (both `Observable`).
+ * Consider two objects: a `button` and an associated `command` (both `Observable`).
  *
  * A simple property binding could be as follows:
  *
@@ -2860,7 +3029,7 @@ function attachBindToListeners(observable, toBindings) {
  * * `button.isEnabled` **instantly equals** `command.isEnabled`,
  * * whenever `command.isEnabled` changes, `button.isEnabled` will immediately reflect its value.
  *
- * **Note**: To release the binding use {@link module:utils/observablemixin~Observable#unbind}.
+ * **Note**: To release the binding, use {@link module:utils/observablemixin~Observable#unbind}.
  *
  * You can also "rename" the property in the binding by specifying the new name in the `to()` chain:
  *
@@ -2880,6 +3049,10 @@ function attachBindToListeners(observable, toBindings) {
  *		button.bind( 'isEnabled' ).to( command, 'isEnabled', ui, 'isVisible',
  *			( isCommandEnabled, isUIVisible ) => isCommandEnabled && isUIVisible );
  *
+ * Using a custom callback allows processing the value before passing it to the target property:
+ *
+ *		button.bind( 'isEnabled' ).to( command, 'value', value => value === 'heading1' );
+ *
  * It is also possible to bind to the same property in an array of observables.
  * To bind a `button` to multiple commands (also `Observables`) so that each and every one of them
  * must be enabled for the button to become enabled, use the following code:
@@ -2888,7 +3061,7 @@ function attachBindToListeners(observable, toBindings) {
  *			( isAEnabled, isBEnabled, isCEnabled ) => isAEnabled && isBEnabled && isCEnabled );
  *
  * @method #bind
- * @param {...String} bindProperties Observable properties that will be bound to another observable(s).
+ * @param {...String} bindProperties Observable properties that will be bound to other observable(s).
  * @returns {Object} The bind chain with the `to()` and `toMany()` methods.
  */
 
@@ -2903,7 +3076,7 @@ function attachBindToListeners(observable, toBindings) {
  *
  * @method #unbind
  * @param {...String} [unbindProperties] Observable properties to be unbound. All the bindings will
- * be released if no properties provided.
+ * be released if no properties are provided.
  */
 
 /**
@@ -2984,8 +3157,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
@@ -3045,8 +3218,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
@@ -3083,32 +3256,52 @@ exports.default = spy;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
 exports.default = uid;
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
 /**
  * @module utils/uid
  */
 
+// A hash table of hex numbers to avoid using toString() in uid() which is costly.
+// [ '00', '01', '02', ..., 'fe', 'ff' ]
+var HEX_NUMBERS = new Array(256).fill().map(function (val, index) {
+	return ('0' + index.toString(16)).slice(-2);
+});
+
 /**
- * Returns a unique id. This id consist of an 'e' character and a randomly generated string of 32 aphanumeric characters.
- * Each character in uid string represents a hexadecimal digit (base 16).
+ * Returns a unique id. The id starts with an "e" character and a randomly generated string of
+ * 32 alphanumeric characters.
  *
- * @returns {String} A hexadecimal number representing the id.
+ * **Note**: The characters the unique id is built from correspond to the hex number notation
+ * (from "0" to "9", from "a" to "f"). In other words, each id corresponds to an "e" followed
+ * by 16 8-bit numbers next to each other.
+ *
+ * @returns {String} An unique id string.
  */
 function uid() {
-  var uuid = 'e'; // Make sure that id does not start with number.
+	// Let's create some positive random 32bit integers first.
+	//
+	// 1. Math.random() is a float between 0 and 1.
+	// 2. 0x100000000 is 2^32 = 4294967296.
+	// 3. >>> 0 enforces integer (in JS all numbers are floating point).
+	//
+	// For instance:
+	//		Math.random() * 0x100000000 = 3366450031.853859
+	// but
+	//		Math.random() * 0x100000000 >>> 0 = 3366450031.
+	var r1 = Math.random() * 0x100000000 >>> 0;
+	var r2 = Math.random() * 0x100000000 >>> 0;
+	var r3 = Math.random() * 0x100000000 >>> 0;
+	var r4 = Math.random() * 0x100000000 >>> 0;
 
-  for (var i = 0; i < 8; i++) {
-    uuid += Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-  }
-
-  return uuid;
+	// Make sure that id does not start with number.
+	return 'e' + HEX_NUMBERS[r1 >> 0 & 0xFF] + HEX_NUMBERS[r1 >> 8 & 0xFF] + HEX_NUMBERS[r1 >> 16 & 0xFF] + HEX_NUMBERS[r1 >> 24 & 0xFF] + HEX_NUMBERS[r2 >> 0 & 0xFF] + HEX_NUMBERS[r2 >> 8 & 0xFF] + HEX_NUMBERS[r2 >> 16 & 0xFF] + HEX_NUMBERS[r2 >> 24 & 0xFF] + HEX_NUMBERS[r3 >> 0 & 0xFF] + HEX_NUMBERS[r3 >> 8 & 0xFF] + HEX_NUMBERS[r3 >> 16 & 0xFF] + HEX_NUMBERS[r3 >> 24 & 0xFF] + HEX_NUMBERS[r4 >> 0 & 0xFF] + HEX_NUMBERS[r4 >> 8 & 0xFF] + HEX_NUMBERS[r4 >> 16 & 0xFF] + HEX_NUMBERS[r4 >> 24 & 0xFF];
 }
 
 /***/ }),
@@ -3124,8 +3317,8 @@ function uid() {
 /* WEBPACK VAR INJECTION */(function(global) {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                               * For licensing, see LICENSE.md.
+                                                                                                                                                                                                                                                                               * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                               * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
                                                                                                                                                                                                                                                                                */
 
 /**
@@ -3134,16 +3327,18 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /* globals window, global */
 
-var _log = __webpack_require__(/*! ./log */ "./node_modules/@ckeditor/ckeditor5-utils/src/log.js");
+var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
 
-var _log2 = _interopRequireDefault(_log);
-
-var _package = __webpack_require__(/*! ckeditor5/package.json */ "./node_modules/ckeditor5/package.json");
+var _ckeditorerror2 = _interopRequireDefault(_ckeditorerror);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var version = '25.0.0';
+
+/* istanbul ignore next */
 var windowOrGlobal = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' ? window : global;
 
+/* istanbul ignore next */
 if (windowOrGlobal.CKEDITOR_VERSION) {
 	/**
   * This error is thrown when due to a mistake in how CKEditor 5 was installed or initialized, some
@@ -3151,7 +3346,7 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   * errors.
   *
   * There are many situations in which some modules can be loaded twice. In the worst case scenario,
-  * you may need to check your project for each of those issues and fix them all.
+  * you may need to check your project for each of these issues and fix them all.
   *
   * # Trying to add a plugin to an existing build
   *
@@ -3162,17 +3357,17 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   *
   * Then your project loads some CKEditor 5 packages twice. How does it happen?
   *
-  * The build package contains a file which is already compiled with webpack,
-  * meaning that it contains all the necessary code from e.g. `@ckeditor/ckeditor5-engine` and `@ckeditor/ckeditor5-utils`.
+  * The build package contains a file which is already compiled with webpack. This means
+  * that it contains all the necessary code from e.g. `@ckeditor/ckeditor5-engine` and `@ckeditor/ckeditor5-utils`.
   *
-  * However, the `Highlight` plugin imports some of the modules from those packages too. If you ask webpack to
-  * build such a project, you will end up with those modules being included (and run) twice – first, because they are
-  * included inside the build package, and second because they are required by the `Highlight` plugin.
+  * However, the `Highlight` plugin imports some of the modules from these packages, too. If you ask webpack to
+  * build such a project, you will end up with the modules being included (and run) twice &mdash; first, because they are
+  * included inside the build package, and second, because they are required by the `Highlight` plugin.
   *
   * Therefore, **you must never add plugins to an existing build** unless your plugin has no dependencies.
   *
   * Adding plugins to a build is done by taking the source version of this build (so, before it was built with webpack)
-  * and adding plugins there. In this situation, webpack will know that it only needs to load each plugins once.
+  * and adding plugins there. In this situation, webpack will know that it only needs to load each plugin once.
   *
   * Read more in the {@glink builds/guides/integration/installing-plugins "Installing plugins"} guide.
   *
@@ -3180,9 +3375,9 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   *
   * This scenario is very similar to the previous one, but has a different origin.
   *
-  * Let's assume, that you wanted to use CKEditor 5 from source, as explained in the
+  * Let's assume that you wanted to use CKEditor 5 from source, as explained in the
   * {@glink builds/guides/integration/advanced-setup#scenario-2-building-from-source "Building from source"} section
-  * or in the {@glink framework/guides/quick-start "Quick start"} guide of the CKEditor 5 Framework.
+  * or in the {@glink framework/guides/quick-start "Quick start"} guide of CKEditor 5 Framework.
   *
   * The correct way to do so is to import an editor and plugins and run them together like this:
   *
@@ -3204,7 +3399,7 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   *				console.error( error.stack );
   *			} );
   *
-  * However, you might have mistakenly import a build instead of a source `ClassicEditor`. In which case
+  * However, you might have mistakenly imported a build instead of the source `ClassicEditor`. In this case
   * your imports will look like this:
   *
   *		import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -3215,12 +3410,12 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   *
   * This creates the same situation as in the previous section because you use a build together with source plugins.
   *
-  * Remember: `@ckeditor/ckeditor5-build-*` packages contain editor builds and `@ckeditor/ckeditor5-editor-*` source editors.
+  * Remember: `@ckeditor/ckeditor5-build-*` packages contain editor builds and `@ckeditor/ckeditor5-editor-*` contain source editors.
   *
-  * # Loading two+ builds on one page
+  * # Loading two or more builds on one page
   *
-  * If you use CKEditor 5 builds, you might have loaded two (or more) `ckeditor.js` files in one web page
-  * – check your web page for duplicated `<script>` elements or make sure your page builder/bundler includes CKEditor only once.
+  * If you use CKEditor 5 builds, you might have loaded two (or more) `ckeditor.js` files on one web page.
+  * Check your web page for duplicated `<script>` elements or make sure your page builder/bundler includes CKEditor only once.
   *
   * If you want to use two different types of editors at once, see the
   * {@glink builds/guides/integration/advanced-setup#scenario-3-using-two-different-editors "Using two different editors"}
@@ -3228,49 +3423,54 @@ if (windowOrGlobal.CKEDITOR_VERSION) {
   *
   * # Using outdated packages
   *
-  * Building CKEditor 5 from source require using multiple npm packages. Those packages have their dependencies
-  * to other packages. If you use the latest version of let's say `@ckeditor/ckeditor5-editor-classic` with
-  * and outdated version of `@ckeditor/ckeditor5-image`, npm or yarn will need to install two different versions of
+  * Building CKEditor 5 from source requires using multiple npm packages. These packages have their dependencies
+  * to other packages. If you use the latest version of, for example, `@ckeditor/ckeditor5-editor-classic` with
+  * an outdated version of `@ckeditor/ckeditor5-image`, npm or yarn will need to install two different versions of
   * `@ckeditor/ckeditor5-core` because `@ckeditor/ckeditor5-editor-classic` and `@ckeditor/ckeditor5-image` may require
   * different versions of the core package.
   *
   * The solution to this issue is to update all packages to their latest version. We recommend
-  * using tools like [`node-check-updates`](https://www.npmjs.com/package/npm-check-updates) which simplify this process.
+  * using tools like [`npm-check-updates`](https://www.npmjs.com/package/npm-check-updates) which simplify this process.
   *
   * # Conflicting version of dependencies
   *
-  * This is a special case of the previous scenario. If you use CKEditor 5 with some 3rd party plugins,
+  * This is a special case of the previous scenario. If you use CKEditor 5 with some third-party plugins,
   * it may happen that even if you use the latest versions of the official packages and the latest version of
-  * those 3rd party packages, there will be a conflict between some of their dependencies.
+  * these third-party packages, there will be a conflict between some of their dependencies.
   *
   * Such a problem can be resolved by either downgrading CKEditor 5 packages (which we do not recommend) or
-  * asking the author of the 3rd party package to upgrade its depdendencies (or forking his project and doing this yourself).
+  * asking the author of the third-party package to upgrade its depdendencies (or forking their project and doing this yourself).
+  *
+  * **Note:** All official CKEditor 5 packages (excluding integrations and `ckeditor5-dev-*` packages) are released in the
+  * same major version. This is &mdash; in the `x.y.z`, the `x` is the same for all packages. This is the simplest way to check
+  * whether you use packages coming from the same CKEditor 5 version. You can read more about versioning in the
+  * {@glink framework/guides/support/versioning-policy Versioning policy} guide.
   *
   * # Packages were duplicated in `node_modules`
   *
   * In some situations, especially when calling `npm install` multiple times, it may happen
-  * than npm will not correctly "deduplicate" packages.
+  * that npm will not correctly "deduplicate" packages.
   *
-  * Normally, npm deduplicates all packages so e.g. `@ckeditor/ckeditor5-core` is installed only once in `node_modules/`.
-  * However, it was known to fail to do so from time to time.
+  * Normally, npm deduplicates all packages so, for example, `@ckeditor/ckeditor5-core` is installed only once in `node_modules/`.
+  * However, it is known to fail to do so from time to time.
   *
-  * We recommend checking if any of the below steps helps:
+  * We recommend checking if any of the steps listed below help:
   *
-  * * `rm -rf node_modules && npm install` to make sure you have a clean `node_modules/` – this step
-  * is known to help in majority of cases,
-  * * if you use `yarn.lock` or `package-lock.json`, remove it before `npm install`,
-  * * check whether all CKEditor 5 packages are up to date and reinstall them
+  * * `rm -rf node_modules && npm install` to make sure you have a clean `node_modules/` directory. This step
+  * is known to help in most cases.
+  * * If you use `yarn.lock` or `package-lock.json`, remove it before `npm install`.
+  * * Check whether all CKEditor 5 packages are up to date and reinstall them
   * if you changed anything (`rm -rf node_modules && npm install`).
   *
-  * If all packages are correct and compatible with each other the above steps are known to help. If not, you may
+  * If all packages are correct and compatible with each other, the steps above are known to help. If not, you may
   * try to check with `npm ls` how many times packages like `@ckeditor/ckeditor5-core`, `@ckeditor/ckeditor5-engine` and
   *`@ckeditor/ckeditor5-utils` are installed. If more than once, verify which package causes that.
   *
   * @error ckeditor-duplicated-modules
   */
-	_log2.default.error('ckeditor-duplicated-modules: Some CKEditor 5 modules are duplicated.');
+	throw new _ckeditorerror2.default('ckeditor-duplicated-modules', null);
 } else {
-	windowOrGlobal.CKEDITOR_VERSION = _package.version;
+	windowOrGlobal.CKEDITOR_VERSION = version;
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
@@ -3369,15 +3569,16 @@ exports["default"] = function (manifests) {
 
 
 exports.__esModule = true;
+var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 function readFromConsumerApi(key) {
     return function () {
+        var _a;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        var _a;
         if (window['@Neos:HostPluginAPI'] && window['@Neos:HostPluginAPI']["@" + key]) {
-            return (_a = window['@Neos:HostPluginAPI'])["@" + key].apply(_a, args);
+            return (_a = window['@Neos:HostPluginAPI'])["@" + key].apply(_a, tslib_1.__spread(args));
         }
         throw new Error("You are trying to read from a consumer api that hasn't been initialized yet!");
     };
@@ -3636,13 +3837,9 @@ module.exports = (0, _readFromConsumerApi2.default)('vendor')().React;
 
 
 exports.__esModule = true;
-var isOriginal = function isOriginal(value) {
-    return value && value.indexOf && value.indexOf('_original_') === 0;
-};
-var getOriginal = function getOriginal(value) {
-    return value && value.substring && Number(value.substring(10));
-};
+var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 var positionalArraySorter = function positionalArraySorter(subject, position, idKey) {
+    var e_1, _a, e_2, _b, e_3, _c, e_4, _d, e_5, _e, e_6, _f, e_7, _g;
     if (position === void 0) {
         position = 'position';
     }
@@ -3652,145 +3849,243 @@ var positionalArraySorter = function positionalArraySorter(subject, position, id
     var positionAccessor = typeof position === 'string' ? function (value) {
         return value[position];
     } : position;
-    var positionsArray = subject.map(function (value, index) {
-        var position = positionAccessor(value);
-        return position === undefined ? "_original_" + index : position;
-    });
-    var validKeys = subject.map(function (value) {
-        return idKey in value && value[idKey];
-    }).filter(function (i) {
-        return i;
-    }).map(function (i) {
-        return String(i);
-    });
-    var middleKeys = [];
-    var startKeys = [];
-    var endKeys = [];
-    var beforeKeys = [];
-    var afterKeys = [];
-    var corruptKeys = [];
-    positionsArray.forEach(function (value, index) {
-        if (isNaN(value) === false || isOriginal(value)) {
-            middleKeys.push([index, value]);
-        } else if (typeof value === 'string') {
-            if (value.includes('start')) {
-                var weightMatch = value.match(/start\s+(\d+)/);
-                var weight = weightMatch && weightMatch[1] || 0;
-                startKeys.push([index, Number(weight)]);
-            } else if (value.includes('end')) {
-                var weightMatch = value.match(/end\s+(\d+)/);
-                var weight = weightMatch && weightMatch[1] || 0;
-                endKeys.push([index, Number(weight)]);
-            } else if (value.includes('before')) {
-                var keyMatch = value.match(/before\s+(\S+)/);
-                var key = keyMatch && keyMatch[1];
-                if (key && validKeys.includes(key)) {
-                    beforeKeys.push([index, key]);
-                } else {
-                    corruptKeys.push(index);
-                    console.warn('The following position value is corrupt: %s', value);
-                }
-            } else if (value.includes('after')) {
-                var keyMatch = value.match(/after\s+(\S+)/);
-                var key = keyMatch && keyMatch[1];
-                if (key && validKeys.includes(key)) {
-                    afterKeys.push([index, key]);
-                } else {
-                    corruptKeys.push(index);
-                    console.warn('The following position value is corrupt: %s', value);
-                }
+    var indexMapping = {};
+    var middleKeys = {};
+    var startKeys = {};
+    var endKeys = {};
+    var beforeKeys = {};
+    var afterKeys = {};
+    subject.forEach(function (item, index) {
+        var key = item[idKey] ? item[idKey] : String(index);
+        indexMapping[key] = index;
+        var positionValue = positionAccessor(item);
+        var position = String(positionValue ? positionValue : index);
+        var invalid = false;
+        if (position.startsWith('start')) {
+            var weightMatch = position.match(/start\s+(\d+)/);
+            var weight = weightMatch && weightMatch[1] ? Number(weightMatch[1]) : 0;
+            if (!startKeys[weight]) {
+                startKeys[weight] = [];
+            }
+            startKeys[weight].push(key);
+        } else if (position.startsWith('end')) {
+            var weightMatch = position.match(/end\s+(\d+)/);
+            var weight = weightMatch && weightMatch[1] ? Number(weightMatch[1]) : 0;
+            if (!endKeys[weight]) {
+                endKeys[weight] = [];
+            }
+            endKeys[weight].push(key);
+        } else if (position.startsWith('before')) {
+            var match = position.match(/before\s+(\S+)(\s+(\d+))?/);
+            if (!match) {
+                invalid = true;
             } else {
-                corruptKeys.push(index);
-                console.warn('The following position value is corrupt: %s', value);
+                var reference = match[1];
+                var weight = match[3] ? Number(match[3]) : 0;
+                if (!beforeKeys[reference]) {
+                    beforeKeys[reference] = {};
+                }
+                if (!beforeKeys[reference][weight]) {
+                    beforeKeys[reference][weight] = [];
+                }
+                beforeKeys[reference][weight].push(key);
+            }
+        } else if (position.startsWith('after')) {
+            var match = position.match(/after\s+(\S+)(\s+(\d+))?/);
+            if (!match) {
+                invalid = true;
+            } else {
+                var reference = match[1];
+                var weight = match[3] ? Number(match[3]) : 0;
+                if (!afterKeys[reference]) {
+                    afterKeys[reference] = {};
+                }
+                if (!afterKeys[reference][weight]) {
+                    afterKeys[reference][weight] = [];
+                }
+                afterKeys[reference][weight].push(key);
             }
         } else {
-            corruptKeys.push(index);
-            console.warn('The following position value is corrupt: %s', value);
+            invalid = true;
+        }
+        if (invalid) {
+            var numberPosition = parseFloat(position);
+            if (isNaN(numberPosition) || !isFinite(numberPosition)) {
+                numberPosition = index;
+            }
+            if (!middleKeys[numberPosition]) {
+                middleKeys[numberPosition] = [];
+            }
+            middleKeys[numberPosition].push(key);
         }
     });
-    var sortByWeightFunc = function sortByWeightFunc(a, b) {
-        return a[1] - b[1];
+    var resultStart = [];
+    var resultMiddle = [];
+    var resultEnd = [];
+    var processedKeys = [];
+    var sortedWeights = function sortedWeights(dict, asc) {
+        var weights = Object.keys(dict).map(function (x) {
+            return Number(x);
+        }).sort(function (a, b) {
+            return a - b;
+        });
+        return asc ? weights : weights.reverse();
     };
-    var sortWithRetainingOriginalPos = function sortWithRetainingOriginalPos(_a, _b) {
-        var a = _a[1];
-        var b = _b[1];
-        if (isOriginal(a) && isOriginal(b)) {
-            return getOriginal(a) - getOriginal(b);
-        }
-        if (typeof a === 'string' && a.includes && a.includes('_original_')) {
-            return 1;
-        }
-        if (typeof b === 'string' && b.includes && b.includes('_original_')) {
-            return -1;
-        }
-        return Number(a) - Number(b);
-    };
-    var sortedIndexes = startKeys.sort(sortByWeightFunc).map(function (pair) {
-        return pair[0];
-    }).concat(middleKeys.sort(sortWithRetainingOriginalPos).map(function (pair) {
-        return pair[0];
-    }), corruptKeys, endKeys.sort(sortByWeightFunc).map(function (pair) {
-        return pair[0];
-    }));
-    var _loop_1 = function _loop_1() {
-        var alteredNumber = 0;
-        beforeKeys.forEach(function (pair, index) {
-            var targetIndexInSubject = subject.findIndex(function (item) {
-                return String(item[idKey]) === pair[1];
-            });
-            var indexInIndexes = sortedIndexes.findIndex(function (item) {
-                return item === targetIndexInSubject;
-            });
-            if (indexInIndexes !== -1) {
-                sortedIndexes.splice(indexInIndexes, 0, pair[0]);
-                beforeKeys.splice(index, 1);
-                alteredNumber++;
+    var addToResults = function addToResults(keys, result) {
+        keys.forEach(function (key) {
+            var e_8, _a, e_9, _b;
+            if (processedKeys.indexOf(key) >= 0) {
+                return;
+            }
+            processedKeys.push(key);
+            if (beforeKeys[key]) {
+                var beforeWeights = sortedWeights(beforeKeys[key], true);
+                try {
+                    for (var beforeWeights_1 = tslib_1.__values(beforeWeights), beforeWeights_1_1 = beforeWeights_1.next(); !beforeWeights_1_1.done; beforeWeights_1_1 = beforeWeights_1.next()) {
+                        var i = beforeWeights_1_1.value;
+                        addToResults(beforeKeys[key][i], result);
+                    }
+                } catch (e_8_1) {
+                    e_8 = { error: e_8_1 };
+                } finally {
+                    try {
+                        if (beforeWeights_1_1 && !beforeWeights_1_1.done && (_a = beforeWeights_1["return"])) _a.call(beforeWeights_1);
+                    } finally {
+                        if (e_8) throw e_8.error;
+                    }
+                }
+            }
+            result.push(key);
+            if (afterKeys[key]) {
+                var afterWeights = sortedWeights(afterKeys[key], false);
+                try {
+                    for (var afterWeights_1 = tslib_1.__values(afterWeights), afterWeights_1_1 = afterWeights_1.next(); !afterWeights_1_1.done; afterWeights_1_1 = afterWeights_1.next()) {
+                        var i = afterWeights_1_1.value;
+                        addToResults(afterKeys[key][i], result);
+                    }
+                } catch (e_9_1) {
+                    e_9 = { error: e_9_1 };
+                } finally {
+                    try {
+                        if (afterWeights_1_1 && !afterWeights_1_1.done && (_b = afterWeights_1["return"])) _b.call(afterWeights_1);
+                    } finally {
+                        if (e_9) throw e_9.error;
+                    }
+                }
             }
         });
-        afterKeys.forEach(function (pair, index) {
-            var targetIndexInSubject = subject.findIndex(function (item) {
-                return String(item[idKey]) === pair[1];
-            });
-            var indexInIndexes = sortedIndexes.findIndex(function (item) {
-                return item === targetIndexInSubject;
-            });
-            if (indexInIndexes !== -1) {
-                sortedIndexes.splice(indexInIndexes + 1, 0, pair[0]);
-                afterKeys.splice(index, 1);
-                alteredNumber++;
-            }
-        });
-        if (alteredNumber === 0) {
-            console.warn('Circular reference detected. Append broken entries at the end.');
-            sortedIndexes = sortedIndexes.concat(beforeKeys.map(function (pair) {
-                return pair[0];
-            }), afterKeys.map(function (pair) {
-                return pair[0];
-            }));
-            return "break";
-        }
     };
-    while (beforeKeys.length > 0 || afterKeys.length > 0) {
-        var state_1 = _loop_1();
-        if (state_1 === "break") break;
+    try {
+        for (var _h = tslib_1.__values(sortedWeights(startKeys, false)), _j = _h.next(); !_j.done; _j = _h.next()) {
+            var i = _j.value;
+            addToResults(startKeys[i], resultStart);
+        }
+    } catch (e_1_1) {
+        e_1 = { error: e_1_1 };
+    } finally {
+        try {
+            if (_j && !_j.done && (_a = _h["return"])) _a.call(_h);
+        } finally {
+            if (e_1) throw e_1.error;
+        }
     }
-    return sortedIndexes.map(function (index) {
-        return subject[index];
+    try {
+        for (var _k = tslib_1.__values(sortedWeights(middleKeys, true)), _l = _k.next(); !_l.done; _l = _k.next()) {
+            var i = _l.value;
+            addToResults(middleKeys[i], resultMiddle);
+        }
+    } catch (e_2_1) {
+        e_2 = { error: e_2_1 };
+    } finally {
+        try {
+            if (_l && !_l.done && (_b = _k["return"])) _b.call(_k);
+        } finally {
+            if (e_2) throw e_2.error;
+        }
+    }
+    try {
+        for (var _m = tslib_1.__values(sortedWeights(endKeys, true)), _o = _m.next(); !_o.done; _o = _m.next()) {
+            var i = _o.value;
+            addToResults(endKeys[i], resultEnd);
+        }
+    } catch (e_3_1) {
+        e_3 = { error: e_3_1 };
+    } finally {
+        try {
+            if (_o && !_o.done && (_c = _m["return"])) _c.call(_m);
+        } finally {
+            if (e_3) throw e_3.error;
+        }
+    }
+    try {
+        for (var _p = tslib_1.__values(Object.keys(beforeKeys)), _q = _p.next(); !_q.done; _q = _p.next()) {
+            var key = _q.value;
+            if (processedKeys.indexOf(key) >= 0) {
+                continue;
+            }
+            try {
+                for (var _r = (e_5 = void 0, tslib_1.__values(sortedWeights(beforeKeys[key], false))), _s = _r.next(); !_s.done; _s = _r.next()) {
+                    var i = _s.value;
+                    addToResults(beforeKeys[key][i], resultStart);
+                }
+            } catch (e_5_1) {
+                e_5 = { error: e_5_1 };
+            } finally {
+                try {
+                    if (_s && !_s.done && (_e = _r["return"])) _e.call(_r);
+                } finally {
+                    if (e_5) throw e_5.error;
+                }
+            }
+        }
+    } catch (e_4_1) {
+        e_4 = { error: e_4_1 };
+    } finally {
+        try {
+            if (_q && !_q.done && (_d = _p["return"])) _d.call(_p);
+        } finally {
+            if (e_4) throw e_4.error;
+        }
+    }
+    try {
+        for (var _t = tslib_1.__values(Object.keys(afterKeys)), _u = _t.next(); !_u.done; _u = _t.next()) {
+            var key = _u.value;
+            if (processedKeys.indexOf(key) >= 0) {
+                continue;
+            }
+            try {
+                for (var _v = (e_7 = void 0, tslib_1.__values(sortedWeights(afterKeys[key], false))), _w = _v.next(); !_w.done; _w = _v.next()) {
+                    var i = _w.value;
+                    addToResults(afterKeys[key][i], resultMiddle);
+                }
+            } catch (e_7_1) {
+                e_7 = { error: e_7_1 };
+            } finally {
+                try {
+                    if (_w && !_w.done && (_g = _v["return"])) _g.call(_v);
+                } finally {
+                    if (e_7) throw e_7.error;
+                }
+            }
+        }
+    } catch (e_6_1) {
+        e_6 = { error: e_6_1 };
+    } finally {
+        try {
+            if (_u && !_u.done && (_f = _t["return"])) _f.call(_t);
+        } finally {
+            if (e_6) throw e_6.error;
+        }
+    }
+    var sortedKeys = tslib_1.__spread(resultStart, resultMiddle, resultEnd);
+    return sortedKeys.map(function (key) {
+        return indexMapping[key];
+    }).map(function (i) {
+        return subject[i];
     });
 };
 exports["default"] = positionalArraySorter;
 //# sourceMappingURL=positionalArraySorter.js.map
-
-/***/ }),
-
-/***/ "./node_modules/ckeditor5/package.json":
-/*!*********************************************!*\
-  !*** ./node_modules/ckeditor5/package.json ***!
-  \*********************************************/
-/*! exports provided: name, version, description, keywords, engines, author, license, homepage, bugs, repository, default */
-/***/ (function(module) {
-
-module.exports = {"name":"ckeditor5","version":"12.1.0","description":"A set of ready-to-use rich text editors created with a powerful framework. Made with real-time collaborative editing in mind.","keywords":["ckeditor","ckeditor5","ckeditor 5","wysiwyg","rich text","editor","html","contentEditable","editing","operational transformation","ot","collaboration","collaborative","real-time","framework"],"engines":{"node":">=8.0.0","npm":">=5.7.1"},"author":"CKSource (http://cksource.com/)","license":"GPL-2.0-or-later","homepage":"https://ckeditor.com/ckeditor-5","bugs":"https://github.com/ckeditor/ckeditor5/issues","repository":{"type":"git","url":"https://github.com/ckeditor/ckeditor5.git"}};
 
 /***/ }),
 
@@ -5312,6 +5607,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
 /* harmony import */ var _isSet_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./isSet.js */ "./node_modules/lodash-es/isSet.js");
 /* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./keys.js */ "./node_modules/lodash-es/keys.js");
+/* harmony import */ var _keysIn_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./keysIn.js */ "./node_modules/lodash-es/keysIn.js");
+
 
 
 
@@ -5454,21 +5751,15 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     value.forEach(function(subValue) {
       result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
     });
-
-    return result;
-  }
-
-  if (Object(_isMap_js__WEBPACK_IMPORTED_MODULE_17__["default"])(value)) {
+  } else if (Object(_isMap_js__WEBPACK_IMPORTED_MODULE_17__["default"])(value)) {
     value.forEach(function(subValue, key) {
       result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
     });
-
-    return result;
   }
 
   var keysFunc = isFull
     ? (isFlat ? _getAllKeysIn_js__WEBPACK_IMPORTED_MODULE_10__["default"] : _getAllKeys_js__WEBPACK_IMPORTED_MODULE_9__["default"])
-    : (isFlat ? keysIn : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    : (isFlat ? _keysIn_js__WEBPACK_IMPORTED_MODULE_21__["default"] : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
 
   var props = isArr ? undefined : keysFunc(value);
   Object(_arrayEach_js__WEBPACK_IMPORTED_MODULE_1__["default"])(props || value, function(subValue, key) {
@@ -7683,8 +7974,8 @@ function baseMerge(object, source, srcIndex, customizer, stack) {
     return;
   }
   Object(_baseFor_js__WEBPACK_IMPORTED_MODULE_2__["default"])(source, function(srcValue, key) {
+    stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
     if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_4__["default"])(srcValue)) {
-      stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
       Object(_baseMergeDeep_js__WEBPACK_IMPORTED_MODULE_3__["default"])(object, source, key, srcIndex, baseMerge, customizer, stack);
     }
     else {
@@ -7871,12 +8162,16 @@ function baseNth(array, n) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _arrayMap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayMap.js */ "./node_modules/lodash-es/_arrayMap.js");
-/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseIteratee.js */ "./node_modules/lodash-es/_baseIteratee.js");
-/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseMap.js */ "./node_modules/lodash-es/_baseMap.js");
-/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseSortBy.js */ "./node_modules/lodash-es/_baseSortBy.js");
-/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseUnary.js */ "./node_modules/lodash-es/_baseUnary.js");
-/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_compareMultiple.js */ "./node_modules/lodash-es/_compareMultiple.js");
-/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./identity.js */ "./node_modules/lodash-es/identity.js");
+/* harmony import */ var _baseGet_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseGet.js */ "./node_modules/lodash-es/_baseGet.js");
+/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseIteratee.js */ "./node_modules/lodash-es/_baseIteratee.js");
+/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseMap.js */ "./node_modules/lodash-es/_baseMap.js");
+/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseSortBy.js */ "./node_modules/lodash-es/_baseSortBy.js");
+/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_baseUnary.js */ "./node_modules/lodash-es/_baseUnary.js");
+/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_compareMultiple.js */ "./node_modules/lodash-es/_compareMultiple.js");
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./identity.js */ "./node_modules/lodash-es/identity.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./isArray.js */ "./node_modules/lodash-es/isArray.js");
+
+
 
 
 
@@ -7895,18 +8190,31 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {Array} Returns the new sorted array.
  */
 function baseOrderBy(collection, iteratees, orders) {
-  var index = -1;
-  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees.length ? iteratees : [_identity_js__WEBPACK_IMPORTED_MODULE_6__["default"]], Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+  if (iteratees.length) {
+    iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
+      if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(iteratee)) {
+        return function(value) {
+          return Object(_baseGet_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+        }
+      }
+      return iteratee;
+    });
+  } else {
+    iteratees = [_identity_js__WEBPACK_IMPORTED_MODULE_7__["default"]];
+  }
 
-  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_2__["default"])(collection, function(value, key, collection) {
+  var index = -1;
+  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_5__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection, function(value, key, collection) {
     var criteria = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
       return iteratee(value);
     });
     return { 'criteria': criteria, 'index': ++index, 'value': value };
   });
 
-  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__["default"])(result, function(object, other) {
-    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__["default"])(object, other, orders);
+  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__["default"])(result, function(object, other) {
+    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__["default"])(object, other, orders);
   });
 }
 
@@ -8498,6 +8806,10 @@ function baseSet(object, path, value, customizer) {
     var key = Object(_toKey_js__WEBPACK_IMPORTED_MODULE_4__["default"])(path[index]),
         newValue = value;
 
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+      return object;
+    }
+
     if (index != lastIndex) {
       var objValue = nested[key];
       newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -8824,11 +9136,14 @@ var nativeFloor = Math.floor,
  *  into `array`.
  */
 function baseSortedIndexBy(array, value, iteratee, retHighest) {
-  value = iteratee(value);
-
   var low = 0,
-      high = array == null ? 0 : array.length,
-      valIsNaN = value !== value,
+      high = array == null ? 0 : array.length;
+  if (high === 0) {
+    return 0;
+  }
+
+  value = iteratee(value);
+  var valIsNaN = value !== value,
       valIsNull = value === null,
       valIsSymbol = Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value),
       valIsUndefined = value === undefined;
@@ -9102,6 +9417,39 @@ function baseToString(value) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (baseToString);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_baseTrim.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash-es/_baseTrim.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
+
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string
+    ? string.slice(0, Object(_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__["default"])(string) + 1).replace(reTrimStart, '')
+    : string;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseTrim);
 
 
 /***/ }),
@@ -11449,15 +11797,18 @@ function createRelationalOperation(operator) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _toInteger_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toInteger.js */ "./node_modules/lodash-es/toInteger.js");
-/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
-/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
+/* harmony import */ var _toInteger_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toInteger.js */ "./node_modules/lodash-es/toInteger.js");
+/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
+/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+
 
 
 
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMin = Math.min;
+var nativeIsFinite = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].isFinite,
+    nativeMin = Math.min;
 
 /**
  * Creates a function like `_.round`.
@@ -11469,15 +11820,15 @@ var nativeMin = Math.min;
 function createRound(methodName) {
   var func = Math[methodName];
   return function(number, precision) {
-    number = Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_1__["default"])(number);
-    precision = precision == null ? 0 : nativeMin(Object(_toInteger_js__WEBPACK_IMPORTED_MODULE_0__["default"])(precision), 292);
-    if (precision) {
+    number = Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_2__["default"])(number);
+    precision = precision == null ? 0 : nativeMin(Object(_toInteger_js__WEBPACK_IMPORTED_MODULE_1__["default"])(precision), 292);
+    if (precision && nativeIsFinite(number)) {
       // Shift with exponential notation to avoid floating-point issues.
       // See [MDN](https://mdn.io/round#Examples) for more details.
-      var pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(number) + 'e').split('e'),
+      var pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_3__["default"])(number) + 'e').split('e'),
           value = func(pair[0] + 'e' + (+pair[1] + precision));
 
-      pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value) + 'e').split('e');
+      pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value) + 'e').split('e');
       return +(pair[0] + 'e' + (+pair[1] - precision));
     }
     return func(number);
@@ -11967,10 +12318,11 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
   if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
     return false;
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(array);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var arrStacked = stack.get(array);
+  var othStacked = stack.get(other);
+  if (arrStacked && othStacked) {
+    return arrStacked == other && othStacked == array;
   }
   var index = -1,
       result = true,
@@ -12207,10 +12559,11 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
       return false;
     }
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var objStacked = stack.get(object);
+  var othStacked = stack.get(other);
+  if (objStacked && othStacked) {
+    return objStacked == other && othStacked == object;
   }
   var result = true;
   stack.set(object, other);
@@ -15076,7 +15429,7 @@ var root = _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"] || freeSelf ||
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /**
- * Gets the value at `key`, unless `key` is "__proto__".
+ * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
  *
  * @private
  * @param {Object} object The object to query.
@@ -15084,6 +15437,10 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {*} Returns the property value.
  */
 function safeGet(object, key) {
+  if (key === 'constructor' && typeof object[key] === 'function') {
+    return;
+  }
+
   if (key == '__proto__') {
     return;
   }
@@ -15824,6 +16181,38 @@ function toSource(func) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (toSource);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_trimmedEndIndex.js":
+/*!****************************************************!*\
+  !*** ./node_modules/lodash-es/_trimmedEndIndex.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (trimmedEndIndex);
 
 
 /***/ }),
@@ -18932,6 +19321,7 @@ function debounce(func, wait, options) {
       }
       if (maxing) {
         // Handle invocations in a tight loop.
+        clearTimeout(timerId);
         timerId = setTimeout(timerExpired, wait);
         return invokeFunc(lastCallTime);
       }
@@ -20200,6 +20590,10 @@ __webpack_require__.r(__webpack_exports__);
  * // The `_.property` iteratee shorthand.
  * _.filter(users, 'active');
  * // => objects for ['barney']
+ *
+ * // Combining several predicates using `_.overEvery` or `_.overSome`.
+ * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+ * // => objects for ['fred', 'barney']
  */
 function filter(collection, predicate) {
   var func = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection) ? _arrayFilter_js__WEBPACK_IMPORTED_MODULE_0__["default"] : _baseFilter_js__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -25255,7 +25649,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="es" -o ./`
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -25298,7 +25692,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /** Used as the semantic version number. */
-var VERSION = '4.17.11';
+var VERSION = '4.17.21';
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_KEY_FLAG = 2;
@@ -25859,10 +26253,11 @@ Object(_arrayEach_js__WEBPACK_IMPORTED_MODULE_14__["default"])(['pop', 'push', '
 Object(_baseForOwn_js__WEBPACK_IMPORTED_MODULE_16__["default"])(_LazyWrapper_js__WEBPACK_IMPORTED_MODULE_11__["default"].prototype, function(func, methodName) {
   var lodashFunc = _wrapperLodash_js__WEBPACK_IMPORTED_MODULE_35__["default"][methodName];
   if (lodashFunc) {
-    var key = (lodashFunc.name + ''),
-        names = _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] || (_realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] = []);
-
-    names.push({ 'name': methodName, 'func': lodashFunc });
+    var key = lodashFunc.name + '';
+    if (!hasOwnProperty.call(_realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"], key)) {
+      _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] = [];
+    }
+    _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key].push({ 'name': methodName, 'func': lodashFunc });
   }
 });
 
@@ -26871,7 +27266,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="es" -o ./`
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -27577,6 +27972,9 @@ var CLONE_DEEP_FLAG = 1;
  * values against any array or object value, respectively. See `_.isEqual`
  * for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.0.0
@@ -27592,6 +27990,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
  * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matches(source) {
   return Object(_baseMatches_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(source, CLONE_DEEP_FLAG));
@@ -27628,6 +28030,9 @@ var CLONE_DEEP_FLAG = 1;
  * `srcValue` values against any array or object value, respectively. See
  * `_.isEqual` for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.2.0
@@ -27644,6 +28049,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.find(objects, _.matchesProperty('a', 4));
  * // => { 'a': 4, 'b': 5, 'c': 6 }
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matchesProperty(path, srcValue) {
   return Object(_baseMatchesProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"])(path, Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(srcValue, CLONE_DEEP_FLAG));
@@ -29476,6 +29885,10 @@ __webpack_require__.r(__webpack_exports__);
  * Creates a function that checks if **all** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+ *
  * @static
  * @memberOf _
  * @since 4.0.0
@@ -29521,6 +29934,10 @@ __webpack_require__.r(__webpack_exports__);
  * Creates a function that checks if **any** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+ *
  * @static
  * @memberOf _
  * @since 4.0.0
@@ -29540,6 +29957,9 @@ __webpack_require__.r(__webpack_exports__);
  *
  * func(NaN);
  * // => false
+ *
+ * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+ * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
  */
 var overSome = Object(_createOver_js__WEBPACK_IMPORTED_MODULE_1__["default"])(_arraySome_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -29740,7 +30160,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
+/** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -31910,15 +32330,15 @@ __webpack_require__.r(__webpack_exports__);
  * var users = [
  *   { 'user': 'fred',   'age': 48 },
  *   { 'user': 'barney', 'age': 36 },
- *   { 'user': 'fred',   'age': 40 },
+ *   { 'user': 'fred',   'age': 30 },
  *   { 'user': 'barney', 'age': 34 }
  * ];
  *
  * _.sortBy(users, [function(o) { return o.user; }]);
- * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+ * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
  *
  * _.sortBy(users, ['user', 'age']);
- * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+ * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
  */
 var sortBy = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_2__["default"])(function(collection, iteratees) {
   if (collection == null) {
@@ -33385,10 +33805,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/** Error message constants. */
+var INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
+
 /** Used to match empty string literals in compiled template source. */
 var reEmptyStringLeading = /\b__p \+= '';/g,
     reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
     reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
+
+/**
+ * Used to validate the `validate` option in `_.template` variable.
+ *
+ * Forbids characters which could potentially change the meaning of the function argument definition:
+ * - "()," (modification of function parameters)
+ * - "=" (default value)
+ * - "[]{}" (destructuring of function parameters)
+ * - "/" (beginning of a comment)
+ * - whitespace
+ */
+var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
 /**
  * Used to match
@@ -33401,6 +33836,12 @@ var reNoMatch = /($^)/;
 
 /** Used to match unescaped characters in compiled string literals. */
 var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
  * Creates a compiled template function that can interpolate data properties
@@ -33537,7 +33978,14 @@ function template(string, options, guard) {
   , 'g');
 
   // Use a sourceURL for easier debugging.
-  var sourceURL = 'sourceURL' in options ? '//# sourceURL=' + options.sourceURL + '\n' : '';
+  // The sourceURL gets injected into the source that's eval-ed, so be careful
+  // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+  // and escape the comment, thus injecting code that gets evaled.
+  var sourceURL = hasOwnProperty.call(options, 'sourceURL')
+    ? ('//# sourceURL=' +
+       (options.sourceURL + '').replace(/\s/g, ' ') +
+       '\n')
+    : '';
 
   string.replace(reDelimiters, function(match, escapeValue, interpolateValue, esTemplateValue, evaluateValue, offset) {
     interpolateValue || (interpolateValue = esTemplateValue);
@@ -33568,10 +34016,16 @@ function template(string, options, guard) {
 
   // If `variable` is not specified wrap a with-statement around the generated
   // code to add the data object to the top of the scope chain.
-  var variable = options.variable;
+  var variable = hasOwnProperty.call(options, 'variable') && options.variable;
   if (!variable) {
     source = 'with (obj) {\n' + source + '\n}\n';
   }
+  // Throw an error if a forbidden character was found in `variable`, to prevent
+  // potential command injection attacks.
+  else if (reForbiddenIdentifierChars.test(variable)) {
+    throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+  }
+
   // Cleanup code by stripping empty strings.
   source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
     .replace(reEmptyStringMiddle, '$1')
@@ -34235,16 +34689,15 @@ function toLower(value) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
-/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
+/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
+
 
 
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
 
 /** Used to detect bad signed hexadecimal string values. */
 var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -34285,17 +34738,17 @@ function toNumber(value) {
   if (typeof value == 'number') {
     return value;
   }
-  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value)) {
     return NAN;
   }
-  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
     var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(other) ? (other + '') : other;
+    value = Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other) ? (other + '') : other;
   }
   if (typeof value != 'string') {
     return value === 0 ? value : +value;
   }
-  value = value.replace(reTrim, '');
+  value = Object(_baseTrim_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
   var isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -34731,11 +35184,12 @@ function transform(object, iteratee, accumulator) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _baseToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseToString.js */ "./node_modules/lodash-es/_baseToString.js");
-/* harmony import */ var _castSlice_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_castSlice.js */ "./node_modules/lodash-es/_castSlice.js");
-/* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
-/* harmony import */ var _charsStartIndex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_charsStartIndex.js */ "./node_modules/lodash-es/_charsStartIndex.js");
-/* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
-/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
+/* harmony import */ var _castSlice_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_castSlice.js */ "./node_modules/lodash-es/_castSlice.js");
+/* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
+/* harmony import */ var _charsStartIndex_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_charsStartIndex.js */ "./node_modules/lodash-es/_charsStartIndex.js");
+/* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
+/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
 
 
 
@@ -34743,8 +35197,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
 
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
@@ -34769,19 +35221,19 @@ var reTrim = /^\s+|\s+$/g;
  * // => ['foo', 'bar']
  */
 function trim(string, chars, guard) {
-  string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string);
+  string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_6__["default"])(string);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrim, '');
+    return Object(_baseTrim_js__WEBPACK_IMPORTED_MODULE_1__["default"])(string);
   }
   if (!string || !(chars = Object(_baseToString_js__WEBPACK_IMPORTED_MODULE_0__["default"])(chars))) {
     return string;
   }
-  var strSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(string),
-      chrSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(chars),
-      start = Object(_charsStartIndex_js__WEBPACK_IMPORTED_MODULE_3__["default"])(strSymbols, chrSymbols),
-      end = Object(_charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__["default"])(strSymbols, chrSymbols) + 1;
+  var strSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string),
+      chrSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(chars),
+      start = Object(_charsStartIndex_js__WEBPACK_IMPORTED_MODULE_4__["default"])(strSymbols, chrSymbols),
+      end = Object(_charsEndIndex_js__WEBPACK_IMPORTED_MODULE_3__["default"])(strSymbols, chrSymbols) + 1;
 
-  return Object(_castSlice_js__WEBPACK_IMPORTED_MODULE_1__["default"])(strSymbols, start, end).join('');
+  return Object(_castSlice_js__WEBPACK_IMPORTED_MODULE_2__["default"])(strSymbols, start, end).join('');
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (trim);
@@ -34803,14 +35255,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
 /* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
 /* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
 
 
 
 
 
 
-/** Used to match leading and trailing whitespace. */
-var reTrimEnd = /\s+$/;
 
 /**
  * Removes trailing whitespace or specified characters from `string`.
@@ -34834,7 +35285,7 @@ var reTrimEnd = /\s+$/;
 function trimEnd(string, chars, guard) {
   string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_4__["default"])(string);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrimEnd, '');
+    return string.slice(0, Object(_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string) + 1);
   }
   if (!string || !(chars = Object(_baseToString_js__WEBPACK_IMPORTED_MODULE_0__["default"])(chars))) {
     return string;
@@ -34870,7 +35321,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
+/** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
 
 /**
@@ -36995,7 +37446,7 @@ var zipWith = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_0__["default"])(funct
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
   \*****************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37008,10 +37459,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__metadata", function() { return __metadata; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__awaiter", function() { return __awaiter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__generator", function() { return __generator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__createBinding", function() { return __createBinding; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__exportStar", function() { return __exportStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -37019,19 +37472,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
@@ -37064,8 +37519,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -37085,10 +37542,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -37121,19 +37579,25 @@ function __generator(thisArg, body) {
     }
 }
 
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
 function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 
 function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
-    return {
+    if (o && typeof o.length === "number") return {
         next: function () {
             if (o && i >= o.length) o = void 0;
             return { value: o && o[i++], done: !o };
         }
     };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
 function __read(o, n) {
@@ -37158,6 +37622,14 @@ function __spread() {
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -37204,6 +37676,21 @@ function __importStar(mod) {
 
 function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
 }
 
 
