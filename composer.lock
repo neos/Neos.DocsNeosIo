@@ -2910,16 +2910,16 @@
         },
         {
             "name": "flowpack/elasticsearch",
-            "version": "4.0.2",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.ElasticSearch.git",
-                "reference": "f6a2ec00383aa7e5ef07f612462f23e2503ff5cf"
+                "reference": "d07a14b625edd8d1bb0197f4224d6c4894b0f7e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.ElasticSearch/zipball/f6a2ec00383aa7e5ef07f612462f23e2503ff5cf",
-                "reference": "f6a2ec00383aa7e5ef07f612462f23e2503ff5cf",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.ElasticSearch/zipball/d07a14b625edd8d1bb0197f4224d6c4894b0f7e2",
+                "reference": "d07a14b625edd8d1bb0197f4224d6c4894b0f7e2",
                 "shasum": ""
             },
             "require": {
@@ -2927,10 +2927,10 @@
                 "doctrine/collections": "^1.0",
                 "doctrine/orm": "^2.0",
                 "ext-curl": "*",
-                "neos/error-messages": "^6.0",
-                "neos/flow": "^6.0",
-                "neos/utility-arrays": "^6.0",
-                "neos/utility-objecthandling": "^6.0"
+                "neos/error-messages": "^6.0 || ^7.0",
+                "neos/flow": "^6.0 || ^7.0",
+                "neos/utility-arrays": "^6.0 || ^7.0",
+                "neos/utility-objecthandling": "^6.0 || ^7.0"
             },
             "type": "neos-package",
             "extra": {
@@ -3004,29 +3004,29 @@
             "description": "This package provides wrapper functionality for the Elasticsearch engine.",
             "support": {
                 "issues": "https://github.com/Flowpack/Flowpack.ElasticSearch/issues",
-                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch/tree/master"
+                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch/tree/5.0.3"
             },
-            "time": "2019-10-22T05:38:25+00:00"
+            "time": "2021-01-07T21:40:38+00:00"
         },
         {
             "name": "flowpack/elasticsearch-contentrepositoryadaptor",
-            "version": "6.0.6",
+            "version": "7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor.git",
-                "reference": "11b0ff1edf49afa57cda0be5e83d88fcf381ffed"
+                "reference": "4620d605daf6bc6e8ceb67db900519b2d43bb896"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/zipball/11b0ff1edf49afa57cda0be5e83d88fcf381ffed",
-                "reference": "11b0ff1edf49afa57cda0be5e83d88fcf381ffed",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/zipball/4620d605daf6bc6e8ceb67db900519b2d43bb896",
+                "reference": "4620d605daf6bc6e8ceb67db900519b2d43bb896",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "flowpack/elasticsearch": " ^4.0",
+                "flowpack/elasticsearch": " ^5.0 || dev-master",
                 "neos/content-repository": "^5.0",
-                "neos/content-repository-search": "^3.0",
+                "neos/content-repository-search": "^4.0 || dev-master",
                 "neos/eel": "^6.0",
                 "neos/flow": "^6.0",
                 "neos/fluid-adaptor": "^6.0",
@@ -3123,9 +3123,9 @@
             "homepage": "http://flowpack.org/",
             "support": {
                 "issues": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/issues",
-                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/tree/6.0.6"
+                "source": "https://github.com/Flowpack/Flowpack.ElasticSearch.ContentRepositoryAdaptor/tree/7.0.7"
             },
-            "time": "2020-08-11T11:56:57+00:00"
+            "time": "2021-04-13T22:07:28+00:00"
         },
         {
             "name": "flowpack/googleapiclient",
@@ -3204,25 +3204,28 @@
         },
         {
             "name": "flowpack/searchplugin",
-            "version": "4.1.0",
+            "version": "5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.SearchPlugin.git",
-                "reference": "a1650eb29842ec8959d5dabe55322295d137bb49"
+                "reference": "75473a3a1fee1db72af3ce7591b0842e5c0e7d70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.SearchPlugin/zipball/a1650eb29842ec8959d5dabe55322295d137bb49",
-                "reference": "a1650eb29842ec8959d5dabe55322295d137bb49",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.SearchPlugin/zipball/75473a3a1fee1db72af3ce7591b0842e5c0e7d70",
+                "reference": "75473a3a1fee1db72af3ce7591b0842e5c0e7d70",
                 "shasum": ""
             },
             "require": {
-                "neos/content-repository": "^4.0 || ^5.0",
-                "neos/content-repository-search": "^3.0 || dev-master",
-                "neos/eel": "^5.0 || ^6.0",
-                "neos/flow": "^5.0 || ^6.0",
-                "neos/fusion": "^4.0 || ^5.0",
-                "neos/neos": "^4.0 || ^5.0"
+                "neos/content-repository": "^4.0 || ^5.0 || ^7.0",
+                "neos/content-repository-search": "^4.0 || dev-master",
+                "neos/eel": "^5.0 || ^6.0 || ^7.0",
+                "neos/flow": "^5.0 || ^6.0 || ^7.0",
+                "neos/fusion": "^4.0 || ^5.0 || ^7.0",
+                "neos/neos": "^4.0 || ^5.0 || ^7.0"
+            },
+            "conflict": {
+                "flowpack/elasticsearch-contentrepositoryadaptor": "<7.0.0"
             },
             "suggest": {
                 "flowpack/elasticsearch-contentrepositoryadaptor": "Provides search using Elasticsearch",
@@ -3299,7 +3302,8 @@
                     "Neos.Neos-20161219122512",
                     "Neos.Fusion-20161219130100",
                     "Neos.Neos-20161220163741",
-                    "Neos.Fusion-20170120013047"
+                    "Neos.Fusion-20170120013047",
+                    "Flowpack.ElasticSearch.ContentRepositoryAdaptor-20200513223401"
                 ]
             },
             "autoload": {
@@ -3314,9 +3318,9 @@
             "description": "Plugin for search integration via content node",
             "support": {
                 "issues": "https://github.com/Flowpack/Flowpack.SearchPlugin/issues",
-                "source": "https://github.com/Flowpack/Flowpack.SearchPlugin/tree/master"
+                "source": "https://github.com/Flowpack/Flowpack.SearchPlugin/tree/5.2.0"
             },
-            "time": "2020-05-21T06:42:11+00:00"
+            "time": "2021-07-13T16:06:54+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -4919,21 +4923,22 @@
         },
         {
             "name": "neos/content-repository-search",
-            "version": "3.0.7",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/neos/typo3cr-search.git",
-                "reference": "0b60b96cfbf9d5eaa504b9db86b86e14022f75ee"
+                "url": "https://github.com/neos/content-repository-search.git",
+                "reference": "895ca8fa8bb9ee373dcc4c76a05b743ff3950e80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/typo3cr-search/zipball/0b60b96cfbf9d5eaa504b9db86b86e14022f75ee",
-                "reference": "0b60b96cfbf9d5eaa504b9db86b86e14022f75ee",
+                "url": "https://api.github.com/repos/neos/content-repository-search/zipball/895ca8fa8bb9ee373dcc4c76a05b743ff3950e80",
+                "reference": "895ca8fa8bb9ee373dcc4c76a05b743ff3950e80",
                 "shasum": ""
             },
             "require": {
-                "neos/content-repository": "^3.0 || ^4.0 || ^5.0",
-                "neos/flow": "^4.0 || ^5.0 || ^6.0"
+                "neos/content-repository": "^4.0 || ^5.0 || ^7.0",
+                "neos/flow": "^5.1 || ^6.0 || ^7.0",
+                "php": ">=7.3"
             },
             "replace": {
                 "typo3/typo3cr-search": "self.version"
@@ -5023,10 +5028,16 @@
             "notification-url": "https://packagist.org/downloads/",
             "description": "Common code and interface for a Neos CR search implementation",
             "support": {
-                "issues": "https://github.com/neos/typo3cr-search/issues",
-                "source": "https://github.com/neos/typo3cr-search/tree/master"
+                "issues": "https://github.com/neos/content-repository-search/issues",
+                "source": "https://github.com/neos/content-repository-search/tree/4.1.0"
             },
-            "time": "2019-11-19T14:40:25+00:00"
+            "funding": [
+                {
+                    "url": "https://neosfunding.sandstorm.de/en",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-12-16T21:25:18+00:00"
         },
         {
             "name": "neos/diff",
@@ -5073,7 +5084,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "e67f27e7006a50a4f5af57f5d17dfa80b0e9d66e"
+                "reference": "05ce2f72b2db93906e214a8ebf2bca591b4e9b15"
             },
             "require": {
                 "aertmann/history": "^2.0",
@@ -5085,9 +5096,9 @@
                 "codeq/publishnotifier": "^2.2",
                 "codeq/unicodenormalizer": "^2.1",
                 "flowpack/cachebuster": "^1.0",
-                "flowpack/elasticsearch-contentrepositoryadaptor": "^6.0",
+                "flowpack/elasticsearch-contentrepositoryadaptor": "^7.0",
                 "flowpack/nodetemplates": "^1.0",
-                "flowpack/searchplugin": "^4.0",
+                "flowpack/searchplugin": "^5.0",
                 "jonnitto/prettyembedvimeo": "^2.0",
                 "jonnitto/prettyembedyoutube": "^6.0",
                 "moc/notfound": "^3.1",
