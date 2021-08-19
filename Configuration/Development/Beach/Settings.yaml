@@ -22,6 +22,6 @@ Flowpack:
     clients:
       default:
         - host: '%env:ELASTICSEARCH_HOSTNAME%'
-          port: 9200
+          port: '%env:ELASTICSEARCH_PORT%'
           username: '%env:ELASTICSEARCH_USERNAME%'
           password: '%env:ELASTICSEARCH_PASSWORD%'
