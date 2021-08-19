@@ -1,7 +1,0 @@
-
-Neos:
-  ContentRepository:
-    Search:
-      indexAllWorkspaces: true
-      elasticSearch:
-        indexName: 'docsneosio-production'
