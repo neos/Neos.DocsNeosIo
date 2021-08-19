@@ -3,39 +3,38 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~4.2",
-        "neos/neos-ui": "^3.1",
-        "neos/neos-ui-compiled": "^3.1",
-        "neos/fusion-afx": "~1.0",
+        "neos/neos": "^4.2",
+        "neos/neos-ui": "^4.0",
+        "neos/fusion-afx": "^1.0",
         "neos/googleanalytics": "^2.0",
         "neos/redirecthandler-ui": "^1.1",
         "neos/redirecthandler-neosadapter": "^3.0",
         "neos/redirecthandler-databasestorage": "^3.0",
         "neos/seo": "^2.1",
 
-        "aertmann/history": "~2.0",
-        "codeq/publishnotifier": "~2.2",
+        "aertmann/history": "^2.0",
+        "codeq/publishnotifier": "^2.2",
 
         "carbon/compression": "^1.1",
         "carbon/hyphen": "^1.1",
         "carbon/link": "^1.0",
         "carbon/includeassets": "^3.5 || ^4.0",
-        "codeq/unicodenormalizer": "~2.1",
+        "codeq/unicodenormalizer": "^2.1",
         "flowpack/cachebuster": "^1.0",
-        "flowpack/nodetemplates": "~1.0",
+        "flowpack/nodetemplates": "^1.0",
         "moc/notfound": "^3.1",
         "sitegeist/neosguidelines": "^1.2",
         "sitegeist/silhouettes": "^1.0",
 
-        "flowpack/searchplugin": "~4.0",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "~4.1",
+        "flowpack/searchplugin": "^4.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^4.1",
 
-        "codeq/htmlwidget" : "~1.2",
-        "jonnitto/prettyembedvimeo": "~1.0",
-        "jonnitto/prettyembedyoutube": "~5.0",
+        "codeq/htmlwidget" : "^1.2",
+        "jonnitto/prettyembedvimeo": "^1.0",
+        "jonnitto/prettyembedyoutube": "^5.0",
         "neos/nodetypes-contentreferences": "*",
-        "sandstorm/mxgraph": "~2.0",
-        "yoast/yoast-seo-for-neos": "1.0.0-beta"
+        "sandstorm/mxgraph": "^2.0",
+        "yoast/yoast-seo-for-neos": "^1.0"
     },
     "autoload": {
         "psr-4": {

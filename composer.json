@@ -4,17 +4,14 @@
     "license": "GPL-3.0-or-later",
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin",
-        "platform": {
-            "php": "7.4.6"
-        }
+        "bin-dir": "bin"
     },
     "require": {
+        "php": "^7.4",
         "neos/docs-neos-io": "@dev",
 
-        "flownative/google-cloudstorage": "4.*",
-        "rokka/imagine-vips": "^0.1",
-        "yoast/yoast-seo-for-neos": "1.0.0-beta"
+        "flownative/google-cloudstorage": "^4.0",
+        "rokka/imagine-vips": "^0.13"
     },
     "repositories": {
         "distribution": {
