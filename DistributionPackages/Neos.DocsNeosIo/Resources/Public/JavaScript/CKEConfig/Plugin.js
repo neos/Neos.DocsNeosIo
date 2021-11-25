@@ -114,8 +114,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
 /**
@@ -354,8 +354,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
 /**
@@ -464,14 +464,6 @@ var Command = function () {
    */
 		this.set('isEnabled', false);
 
-		/**
-   * Holds identifiers for {@link #forceDisabled} mechanism.
-   *
-   * @type {Set.<String>}
-   * @private
-   */
-		this._disableStack = new Set();
-
 		this.decorate('execute');
 
 		// By default every command is refreshed when changes are applied to the model.
@@ -488,9 +480,11 @@ var Command = function () {
 		// By default commands are disabled when the editor is in read-only mode.
 		this.listenTo(editor, 'change:isReadOnly', function (evt, name, value) {
 			if (value) {
-				_this.forceDisabled('readOnlyMode');
+				_this.on('set:isEnabled', forceDisable, { priority: 'highest' });
+				_this.isEnabled = false;
 			} else {
-				_this.clearForceDisabled('readOnlyMode');
+				_this.off('set:isEnabled', forceDisable);
+				_this.refresh();
 			}
 		});
 	}
@@ -511,71 +505,6 @@ var Command = function () {
 		}
 
 		/**
-   * Disables the command.
-   *
-   * Command may be disabled by multiple features or algorithms (at once). When disabling a command, unique id should be passed
-   * (e.g. feature name). The same identifier should be used when {@link #clearForceDisabled enabling back} the command.
-   * The command becomes enabled only after all features {@link #clearForceDisabled enabled it back}.
-   *
-   * Disabling and enabling a command:
-   *
-   *		command.isEnabled; // -> true
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> false
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * Command disabled by multiple features:
-   *
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.forceDisabled( 'OtherFeature' );
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> false
-   *		command.clearForceDisabled( 'OtherFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * Multiple disabling with the same identifier is redundant:
-   *
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * **Note:** some commands or algorithms may have more complex logic when it comes to enabling or disabling certain commands,
-   * so the command might be still disabled after {@link #clearForceDisabled} was used.
-   *
-   * @param {String} id Unique identifier for disabling. Use the same id when {@link #clearForceDisabled enabling back} the command.
-   */
-
-	}, {
-		key: 'forceDisabled',
-		value: function forceDisabled(id) {
-			this._disableStack.add(id);
-
-			if (this._disableStack.size == 1) {
-				this.on('set:isEnabled', forceDisable, { priority: 'highest' });
-				this.isEnabled = false;
-			}
-		}
-
-		/**
-   * Clears forced disable previously set through {@link #forceDisabled}. See {@link #forceDisabled}.
-   *
-   * @param {String} id Unique identifier, equal to the one passed in {@link #forceDisabled} call.
-   */
-
-	}, {
-		key: 'clearForceDisabled',
-		value: function clearForceDisabled(id) {
-			this._disableStack.delete(id);
-
-			if (this._disableStack.size == 0) {
-				this.off('set:isEnabled', forceDisable);
-				this.refresh();
-			}
-		}
-
-		/**
    * Executes the command.
    *
    * A command may accept parameters. They will be passed from {@link module:core/editor/editor~Editor#execute `editor.execute()`}
@@ -585,9 +514,6 @@ var Command = function () {
    * This behavior is implemented by a high priority listener to the {@link #event:execute} event.
    *
    * In order to see how to disable a command from "outside" see the {@link #isEnabled} documentation.
-   *
-   * This method may return a value, which would be forwarded all the way down to the
-   * {@link module:core/editor/editor~Editor#execute `editor.execute()`}.
    *
    * @fires execute
    */
@@ -610,7 +536,7 @@ var Command = function () {
    * Event fired by the {@link #execute} method. The command action is a listener to this event so it's
    * possible to change/cancel the behavior of the command by listening to this event.
    *
-   * See {@link module:utils/observablemixin~ObservableMixin#decorate} for more information and samples.
+   * See {@link module:utils/observablemixin~ObservableMixin.decorate} for more information and samples.
    *
    * **Note:** This event is fired even if command is disabled. However, it is automatically blocked
    * by a high priority listener in order to prevent command execution.
@@ -636,346 +562,6 @@ function forceDisable(evt) {
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/src/plugin.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-/**
- * @module core/plugin
- */
-
-var _observablemixin = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/observablemixin */ "./node_modules/@ckeditor/ckeditor5-utils/src/observablemixin.js");
-
-var _observablemixin2 = _interopRequireDefault(_observablemixin);
-
-var _mix = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/mix */ "./node_modules/@ckeditor/ckeditor5-utils/src/mix.js");
-
-var _mix2 = _interopRequireDefault(_mix);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The base class for CKEditor plugin classes.
- *
- * @implements module:core/plugin~PluginInterface
- * @mixes module:utils/observablemixin~ObservableMixin
- */
-var Plugin = function () {
-  /**
-   * @inheritDoc
-   */
-  function Plugin(editor) {
-    _classCallCheck(this, Plugin);
-
-    /**
-     * The editor instance.
-     *
-     * Note that most editors implement the {@link module:core/editor/editorwithui~EditorWithUI} interface in addition
-     * to the base {@link module:core/editor/editor~Editor} interface. However, editors with an external UI
-     * (i.e. Bootstrap-based) or a headless editor may not implement the {@link module:core/editor/editorwithui~EditorWithUI}
-     * interface.
-     *
-     * Because of above, to make plugins more universal, it is recommended to split features into:
-     *  - The "editing" part that only uses the {@link module:core/editor/editor~Editor} interface.
-     *  - The "UI" part that uses both the {@link module:core/editor/editor~Editor} interface and
-     *  the {@link module:core/editor/editorwithui~EditorWithUI} interface.
-     *
-     * @readonly
-     * @member {module:core/editor/editor~Editor} #editor
-     */
-    this.editor = editor;
-
-    /**
-     * Flag indicating whether a plugin is enabled or disabled.
-     * A disabled plugin will not transform text.
-     *
-     * Plugin can be simply disabled like that:
-     *
-     *		// Disable the plugin so that no toolbars are visible.
-     *		editor.plugins.get( 'TextTransformation' ).isEnabled = false;
-     *
-     * You can also use {@link #forceDisabled} method.
-     *
-     * @observable
-     * @readonly
-     * @member {Boolean} #isEnabled
-     */
-    this.set('isEnabled', true);
-
-    /**
-     * Holds identifiers for {@link #forceDisabled} mechanism.
-     *
-     * @type {Set.<String>}
-     * @private
-     */
-    this._disableStack = new Set();
-  }
-
-  /**
-   * Disables the plugin.
-   *
-   * Plugin may be disabled by multiple features or algorithms (at once). When disabling a plugin, unique id should be passed
-   * (e.g. feature name). The same identifier should be used when {@link #clearForceDisabled enabling back} the plugin.
-   * The plugin becomes enabled only after all features {@link #clearForceDisabled enabled it back}.
-   *
-   * Disabling and enabling a plugin:
-   *
-   *		plugin.isEnabled; // -> true
-   *		plugin.forceDisabled( 'MyFeature' );
-   *		plugin.isEnabled; // -> false
-   *		plugin.clearForceDisabled( 'MyFeature' );
-   *		plugin.isEnabled; // -> true
-   *
-   * Plugin disabled by multiple features:
-   *
-   *		plugin.forceDisabled( 'MyFeature' );
-   *		plugin.forceDisabled( 'OtherFeature' );
-   *		plugin.clearForceDisabled( 'MyFeature' );
-   *		plugin.isEnabled; // -> false
-   *		plugin.clearForceDisabled( 'OtherFeature' );
-   *		plugin.isEnabled; // -> true
-   *
-   * Multiple disabling with the same identifier is redundant:
-   *
-   *		plugin.forceDisabled( 'MyFeature' );
-   *		plugin.forceDisabled( 'MyFeature' );
-   *		plugin.clearForceDisabled( 'MyFeature' );
-   *		plugin.isEnabled; // -> true
-   *
-   * **Note:** some plugins or algorithms may have more complex logic when it comes to enabling or disabling certain plugins,
-   * so the plugin might be still disabled after {@link #clearForceDisabled} was used.
-   *
-   * @param {String} id Unique identifier for disabling. Use the same id when {@link #clearForceDisabled enabling back} the plugin.
-   */
-
-
-  _createClass(Plugin, [{
-    key: 'forceDisabled',
-    value: function forceDisabled(id) {
-      this._disableStack.add(id);
-
-      if (this._disableStack.size == 1) {
-        this.on('set:isEnabled', forceDisable, { priority: 'highest' });
-        this.isEnabled = false;
-      }
-    }
-
-    /**
-     * Clears forced disable previously set through {@link #forceDisabled}. See {@link #forceDisabled}.
-     *
-     * @param {String} id Unique identifier, equal to the one passed in {@link #forceDisabled} call.
-     */
-
-  }, {
-    key: 'clearForceDisabled',
-    value: function clearForceDisabled(id) {
-      this._disableStack.delete(id);
-
-      if (this._disableStack.size == 0) {
-        this.off('set:isEnabled', forceDisable);
-        this.isEnabled = true;
-      }
-    }
-
-    /**
-     * @inheritDoc
-     */
-
-  }, {
-    key: 'destroy',
-    value: function destroy() {
-      this.stopListening();
-    }
-
-    /**
-     * @inheritDoc
-     */
-
-  }], [{
-    key: 'isContextPlugin',
-    get: function get() {
-      return false;
-    }
-  }]);
-
-  return Plugin;
-}();
-
-exports.default = Plugin;
-
-
-(0, _mix2.default)(Plugin, _observablemixin2.default);
-
-/**
- * The base interface for CKEditor plugins.
- *
- * In its minimal form a plugin can be a simple function that accepts {@link module:core/editor/editor~Editor the editor}
- * as a parameter:
- *
- *		// A simple plugin that enables a data processor.
- *		function MyPlugin( editor ) {
- *			editor.data.processor = new MyDataProcessor();
- *		}
- *
- * In most cases however, you will want to inherit from the {@link module:core/plugin~Plugin} class which implements the
- * {@link module:utils/observablemixin~ObservableMixin} and is, therefore, more convenient:
- *
- *		class MyPlugin extends Plugin {
- *			init() {
- *				// `listenTo()` and `editor` are available thanks to `Plugin`.
- *				// By using `listenTo()` you will ensure that the listener is removed when
- *				// the plugin is destroyed.
- *				this.listenTo( this.editor.data, 'ready', () => {
- *					// Do something when the data is ready.
- *				} );
- *			}
- *		}
- *
- * The plugin can also implement methods (e.g. {@link module:core/plugin~PluginInterface#init `init()`} or
- * {@link module:core/plugin~PluginInterface#destroy `destroy()`}) which, when present, will be used to properly
- * initialize and destroy the plugin.
- *
- * **Note:** When defined as a plain function, the plugin acts as a constructor and will be
- * called in parallel with other plugins' {@link module:core/plugin~PluginInterface#constructor constructors}.
- * This means the code of that plugin will be executed **before** {@link module:core/plugin~PluginInterface#init `init()`} and
- * {@link module:core/plugin~PluginInterface#afterInit `afterInit()`} methods of other plugins and, for instance,
- * you cannot use it to extend other plugins' {@glink framework/guides/architecture/editing-engine#schema schema}
- * rules as they are defined later on during the `init()` stage.
- *
- * @interface PluginInterface
- */
-
-/**
- * Creates a new plugin instance. This is the first step of the plugin initialization.
- * See also {@link #init} and {@link #afterInit}.
- *
- * A plugin is always instantiated after its {@link module:core/plugin~PluginInterface.requires dependencies} and the
- * {@link #init} and {@link #afterInit} methods are called in the same order.
- *
- * Usually, you will want to put your plugin's initialization code in the {@link #init} method.
- * The constructor can be understood as "before init" and used in special cases, just like
- * {@link #afterInit} serves the special "after init" scenarios (e.g.the code which depends on other
- * plugins, but which does not {@link module:core/plugin~PluginInterface.requires explicitly require} them).
- *
- * @method #constructor
- * @param {module:core/editor/editor~Editor} editor
- */
-
-/**
- * An array of plugins required by this plugin.
- *
- * To keep the plugin class definition tight it is recommended to define this property as a static getter:
- *
- *		import Image from './image.js';
- *
- *		export default class ImageCaption {
- *			static get requires() {
- *				return [ Image ];
- *			}
- *		}
- *
- * @static
- * @readonly
- * @member {Array.<Function>|undefined} module:core/plugin~PluginInterface.requires
- */
-
-/**
- * An optional name of the plugin. If set, the plugin will be available in
- * {@link module:core/plugincollection~PluginCollection#get} by its
- * name and its constructor. If not, then only by its constructor.
- *
- * The name should reflect the constructor name.
- *
- * To keep the plugin class definition tight, it is recommended to define this property as a static getter:
- *
- *		export default class ImageCaption {
- *			static get pluginName() {
- *				return 'ImageCaption';
- *			}
- *		}
- *
- * Note: The native `Function.name` property could not be used to keep the plugin name because
- * it will be mangled during code minification.
- *
- * Naming a plugin is necessary to enable removing it through the
- * {@link module:core/editor/editorconfig~EditorConfig#removePlugins `config.removePlugins`} option.
- *
- * @static
- * @readonly
- * @member {String|undefined} module:core/plugin~PluginInterface.pluginName
- */
-
-/**
- * The second stage (after plugin {@link #constructor}) of the plugin initialization.
- * Unlike the plugin constructor this method can be asynchronous.
- *
- * A plugin's `init()` method is called after its {@link module:core/plugin~PluginInterface.requires dependencies} are initialized,
- * so in the same order as the constructors of these plugins.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #init
- * @returns {null|Promise}
- */
-
-/**
- * The third (and last) stage of the plugin initialization. See also {@link #constructor} and {@link #init}.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #afterInit
- * @returns {null|Promise}
- */
-
-/**
- * Destroys the plugin.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #destroy
- * @returns {null|Promise}
- */
-
-/**
- * A flag which defines if a plugin is allowed or not allowed to be used directly by a {@link module:core/context~Context}.
- *
- * @static
- * @readonly
- * @member {Boolean} module:core/plugin~PluginInterface.isContextPlugin
- */
-
-/**
- * An array of loaded plugins.
- *
- * @typedef {Array.<module:core/plugin~PluginInterface>} module:core/plugin~LoadedPlugins
- */
-
-// Helper function that forces plugin to be disabled.
-function forceDisable(evt) {
-  evt.return = false;
-  evt.stop();
-}
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js ***!
@@ -992,10 +578,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.logWarning = logWarning;
-exports.logError = logError;
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+exports.attachLinkToDocumentation = attachLinkToDocumentation;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1004,15 +587,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
  */
 
 /**
  * @module utils/ckeditorerror
  */
-
-/* globals console */
 
 /**
  * URL to the documentation with error codes.
@@ -1022,28 +603,10 @@ var DOCUMENTATION_URL = exports.DOCUMENTATION_URL = 'https://ckeditor.com/docs/c
 /**
  * The CKEditor error class.
  *
- * You should throw `CKEditorError` when:
+ * All errors will be shortened during the minification process in order to reduce the code size.
+ * Therefore, all error messages should be documented in the same way as those in {@link module:utils/log}.
  *
- * * An unexpected situation occurred and the editor (most probably) will not work properly. Such exception will be handled
- * by the {@link module:watchdog/watchdog~Watchdog watchdog} (if it is integrated),
- * * If the editor is incorrectly integrated or the editor API is used in the wrong way. This way you will give
- * feedback to the developer as soon as possible. Keep in mind that for common integration issues which should not
- * stop editor initialization (like missing upload adapter, wrong name of a toolbar component) we use
- * {@link module:utils/ckeditorerror~logWarning `logWarning()`} and
- * {@link module:utils/ckeditorerror~logError `logError()`}
- * to improve developers experience and let them see the a working editor as soon as possible.
- *
- *		/**
- *		 * Error thrown when a plugin cannot be loaded due to JavaScript errors, lack of plugins with a given name, etc.
- *		 *
- *		 * @error plugin-load
- *		 * @param pluginName The name of the plugin that could not be loaded.
- *		 * @param moduleName The name of the module which tried to load this plugin.
- *		 * /
- *		throw new CKEditorError( 'plugin-load', {
- *			pluginName: 'foo',
- *			moduleName: 'bar'
- *		} );
+ * Read more in the {@link module:utils/log} module.
  *
  * @extends Error
  */
@@ -1054,90 +617,52 @@ var CKEditorError = function (_Error) {
 	/**
   * Creates an instance of the CKEditorError class.
   *
-  * @param {String} errorName The error id in an `error-name` format. A link to this error documentation page will be added
-  * to the thrown error's `message`.
-  * @param {Object|null} context A context of the error by which the {@link module:watchdog/watchdog~Watchdog watchdog}
-  * is able to determine which editor crashed. It should be an editor instance or a property connected to it. It can be also
-  * a `null` value if the editor should not be restarted in case of the error (e.g. during the editor initialization).
-  * The error context should be checked using the `areConnectedThroughProperties( editor, context )` utility
-  * to check if the object works as the context.
+  * Read more about error logging in the {@link module:utils/log} module.
+  *
+  * @param {String} message The error message in an `error-name: Error message.` format.
+  * During the minification process the "Error message" part will be removed to limit the code size
+  * and a link to this error documentation will be added to the `message`.
   * @param {Object} [data] Additional data describing the error. A stringified version of this object
   * will be appended to the error message, so the data are quickly visible in the console. The original
   * data object will also be later available under the {@link #data} property.
   */
-	function CKEditorError(errorName, context, data) {
+	function CKEditorError(message, data) {
 		_classCallCheck(this, CKEditorError);
 
-		var message = '' + errorName + (data ? ' ' + JSON.stringify(data) : '') + getLinkToDocumentationMessage(errorName);
+		message = attachLinkToDocumentation(message);
+
+		if (data) {
+			message += ' ' + JSON.stringify(data);
+		}
 
 		/**
-   * @type {String}
+   * @member {String}
    */
 		var _this = _possibleConstructorReturn(this, (CKEditorError.__proto__ || Object.getPrototypeOf(CKEditorError)).call(this, message));
 
 		_this.name = 'CKEditorError';
 
 		/**
-   * A context of the error by which the Watchdog is able to determine which editor crashed.
-   *
-   * @type {Object|null}
-   */
-		_this.context = context;
-
-		/**
    * The additional error data passed to the constructor. Undefined if none was passed.
    *
-   * @type {Object|undefined}
+   * @member {Object|undefined}
    */
 		_this.data = data;
 		return _this;
 	}
 
 	/**
-  * Checks if the error is of the `CKEditorError` type.
+  * Checks if error is an instance of CKEditorError class.
+  *
+  * @param {Object} error Object to check.
+  * @returns {Boolean}
   */
 
 
-	_createClass(CKEditorError, [{
-		key: 'is',
-		value: function is(type) {
-			return type === 'CKEditorError';
-		}
-
-		/**
-   * A utility that ensures that the thrown error is a {@link module:utils/ckeditorerror~CKEditorError} one.
-   * It is useful when combined with the {@link module:watchdog/watchdog~Watchdog} feature, which can restart the editor in case
-   * of a {@link module:utils/ckeditorerror~CKEditorError} error.
-   *
-   * @static
-   * @param {Error} err The error to rethrow.
-   * @param {Object} context An object connected through properties with the editor instance. This context will be used
-   * by the watchdog to verify which editor should be restarted.
-   */
-
-	}], [{
-		key: 'rethrowUnexpectedError',
-		value: function rethrowUnexpectedError(err, context) {
-			if (err.is && err.is('CKEditorError')) {
-				throw err;
-			}
-
-			/**
-    * An unexpected error occurred inside the CKEditor 5 codebase. This error will look like the original one
-    * to make the debugging easier.
-    *
-    * This error is only useful when the editor is initialized using the {@link module:watchdog/watchdog~Watchdog} feature.
-    * In case of such error (or any {@link module:utils/ckeditorerror~CKEditorError} error) the watchdog should restart the editor.
-    *
-    * @error unexpected-error
-    */
-			var error = new CKEditorError(err.message, context);
-
-			// Restore the original stack trace to make the error look like the original one.
-			// See https://github.com/ckeditor/ckeditor5/issues/5595 for more details.
-			error.stack = err.stack;
-
-			throw error;
+	_createClass(CKEditorError, null, [{
+		key: 'isCKEditorError',
+		value: function isCKEditorError(error) {
+			return error instanceof CKEditorError;
 		}
 	}]);
 
@@ -1145,69 +670,22 @@ var CKEditorError = function (_Error) {
 }(Error);
 
 /**
- * Logs a warning to the console with a properly formatted message and adds a link to the documentation.
- * Use whenever you want to log a warning to the console.
+ * Attaches link to the documentation at the end of the error message.
  *
- *		/**
- *		 * There was a problem processing the configuration of the toolbar. The item with the given
- *		 * name does not exist, so it was omitted when rendering the toolbar.
- *		 *
- *		 * @error toolbarview-item-unavailable
- *		 * @param {String} name The name of the component.
- *		 * /
- *		logWarning( 'toolbarview-item-unavailable', { name } );
- *
- * See also {@link module:utils/ckeditorerror~CKEditorError} for an explanation when to throw an error and when to log
- * a warning or an error to the console.
- *
- * @param {String} errorName The error name to be logged.
- * @param {Object} [data] Additional data to be logged.
+ * @param {String} message Message to be logged.
  * @returns {String}
  */
 
 
 exports.default = CKEditorError;
-function logWarning(errorName, data) {
-	var _console;
+function attachLinkToDocumentation(message) {
+	var matchedErrorName = message.match(/^([^:]+):/);
 
-	(_console = console).warn.apply(_console, _toConsumableArray(formatConsoleArguments(errorName, data)));
-}
+	if (!matchedErrorName) {
+		return message;
+	}
 
-/**
- * Logs an error to the console with a properly formatted message and adds a link to the documentation.
- * Use whenever you want to log an error to the console.
- *
- *		/**
- *		 * There was a problem processing the configuration of the toolbar. The item with the given
- *		 * name does not exist, so it was omitted when rendering the toolbar.
- *		 *
- *		 * @error toolbarview-item-unavailable
- *		 * @param {String} name The name of the component.
- *		 * /
- *		 logError( 'toolbarview-item-unavailable', { name } );
- *
- * **Note**: In most cases logging a warning using {@link module:utils/ckeditorerror~logWarning} is enough.
- *
- * See also {@link module:utils/ckeditorerror~CKEditorError} for an explanation when to use each method.
- *
- * @param {String} errorName The error name to be logged.
- * @param {Object} [data] Additional data to be logged.
- * @returns {String}
- */
-function logError(errorName, data) {
-	var _console2;
-
-	(_console2 = console).error.apply(_console2, _toConsumableArray(formatConsoleArguments(errorName, data)));
-}
-
-function getLinkToDocumentationMessage(errorName) {
-	return '\nRead more: ' + DOCUMENTATION_URL + '#error-' + errorName;
-}
-
-function formatConsoleArguments(errorName, data) {
-	var documentationMessage = getLinkToDocumentationMessage(errorName);
-
-	return data ? [errorName, data, documentationMessage] : [errorName, documentationMessage];
+	return message + (' Read more: ' + DOCUMENTATION_URL + '#error-' + matchedErrorName[1] + '\n');
 }
 
 /***/ }),
@@ -1227,16 +705,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
 
 /**
  * @module utils/emittermixin
  */
-
-// To check if component is loaded more than once.
-
 
 exports._getEmitterListenedTo = _getEmitterListenedTo;
 exports._setEmitterId = _setEmitterId;
@@ -1253,12 +728,6 @@ var _uid2 = _interopRequireDefault(_uid);
 var _priorities = __webpack_require__(/*! ./priorities */ "./node_modules/@ckeditor/ckeditor5-utils/src/priorities.js");
 
 var _priorities2 = _interopRequireDefault(_priorities);
-
-__webpack_require__(/*! ./version */ "./node_modules/@ckeditor/ckeditor5-utils/src/version.js");
-
-var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
-
-var _ckeditorerror2 = _interopRequireDefault(_ckeditorerror);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1288,25 +757,17 @@ var EmitterMixin = {
   * @inheritDoc
   */
 	once: function once(event, callback, options) {
-		var wasFired = false;
-
 		var onceCallback = function onceCallback(event) {
-			// Ensure the callback is called only once even if the callback itself leads to re-firing the event
-			// (which would call the callback again).
-			if (!wasFired) {
-				wasFired = true;
+			// Go off() at the first call.
+			event.off();
 
-				// Go off() at the first call.
-				event.off();
+			// Go with the original callback.
 
-				// Go with the original callback.
-
-				for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-					args[_key - 1] = arguments[_key];
-				}
-
-				callback.call.apply(callback, [this, event].concat(args));
+			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				args[_key - 1] = arguments[_key];
 			}
+
+			callback.call.apply(callback, [this, event].concat(args));
 		};
 
 		// Make a similar on() call, simply replacing the callback.
@@ -1440,18 +901,6 @@ var EmitterMixin = {
 		// All params provided. off() that single callback.
 		if (callback) {
 			removeCallback(emitter, event, callback);
-
-			// We must remove callbacks as well in order to prevent memory leaks.
-			// See https://github.com/ckeditor/ckeditor5/pull/8480
-			var index = eventCallbacks.indexOf(callback);
-
-			if (index !== -1) {
-				if (eventCallbacks.length === 1) {
-					delete emitterInfo.callbacks[event];
-				} else {
-					removeCallback(emitter, event, callback);
-				}
-			}
 		}
 		// Only `emitter` and `event` provided. off() all callbacks for that event.
 		else if (eventCallbacks) {
@@ -1482,69 +931,63 @@ var EmitterMixin = {
   * @inheritDoc
   */
 	fire: function fire(eventOrInfo) {
-		try {
-			var eventInfo = eventOrInfo instanceof _eventinfo2.default ? eventOrInfo : new _eventinfo2.default(this, eventOrInfo);
-			var event = eventInfo.name;
-			var callbacks = getCallbacksForEvent(this, event);
+		var eventInfo = eventOrInfo instanceof _eventinfo2.default ? eventOrInfo : new _eventinfo2.default(this, eventOrInfo);
+		var event = eventInfo.name;
+		var callbacks = getCallbacksForEvent(this, event);
 
-			// Record that the event passed this emitter on its path.
-			eventInfo.path.push(this);
+		// Record that the event passed this emitter on its path.
+		eventInfo.path.push(this);
 
-			// Handle event listener callbacks first.
+		// Handle event listener callbacks first.
 
-			for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-				args[_key2 - 1] = arguments[_key2];
-			}
-
-			if (callbacks) {
-				// Arguments passed to each callback.
-				var callbackArgs = [eventInfo].concat(args);
-
-				// Copying callbacks array is the easiest and most secure way of preventing infinite loops, when event callbacks
-				// are added while processing other callbacks. Previous solution involved adding counters (unique ids) but
-				// failed if callbacks were added to the queue before currently processed callback.
-				// If this proves to be too inefficient, another method is to change `.on()` so callbacks are stored if same
-				// event is currently processed. Then, `.fire()` at the end, would have to add all stored events.
-				callbacks = Array.from(callbacks);
-
-				for (var i = 0; i < callbacks.length; i++) {
-					callbacks[i].callback.apply(this, callbackArgs);
-
-					// Remove the callback from future requests if off() has been called.
-					if (eventInfo.off.called) {
-						// Remove the called mark for the next calls.
-						delete eventInfo.off.called;
-
-						removeCallback(this, event, callbacks[i].callback);
-					}
-
-					// Do not execute next callbacks if stop() was called.
-					if (eventInfo.stop.called) {
-						break;
-					}
-				}
-			}
-
-			// Delegate event to other emitters if needed.
-			if (this._delegations) {
-				var destinations = this._delegations.get(event);
-				var passAllDestinations = this._delegations.get('*');
-
-				if (destinations) {
-					fireDelegatedEvents(destinations, eventInfo, args);
-				}
-
-				if (passAllDestinations) {
-					fireDelegatedEvents(passAllDestinations, eventInfo, args);
-				}
-			}
-
-			return eventInfo.return;
-		} catch (err) {
-			// @if CK_DEBUG // throw err;
-			/* istanbul ignore next */
-			_ckeditorerror2.default.rethrowUnexpectedError(err, this);
+		for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+			args[_key2 - 1] = arguments[_key2];
 		}
+
+		if (callbacks) {
+			// Arguments passed to each callback.
+			var callbackArgs = [eventInfo].concat(args);
+
+			// Copying callbacks array is the easiest and most secure way of preventing infinite loops, when event callbacks
+			// are added while processing other callbacks. Previous solution involved adding counters (unique ids) but
+			// failed if callbacks were added to the queue before currently processed callback.
+			// If this proves to be too inefficient, another method is to change `.on()` so callbacks are stored if same
+			// event is currently processed. Then, `.fire()` at the end, would have to add all stored events.
+			callbacks = Array.from(callbacks);
+
+			for (var i = 0; i < callbacks.length; i++) {
+				callbacks[i].callback.apply(this, callbackArgs);
+
+				// Remove the callback from future requests if off() has been called.
+				if (eventInfo.off.called) {
+					// Remove the called mark for the next calls.
+					delete eventInfo.off.called;
+
+					removeCallback(this, event, callbacks[i].callback);
+				}
+
+				// Do not execute next callbacks if stop() was called.
+				if (eventInfo.stop.called) {
+					break;
+				}
+			}
+		}
+
+		// Delegate event to other emitters if needed.
+		if (this._delegations) {
+			var destinations = this._delegations.get(event);
+			var passAllDestinations = this._delegations.get('*');
+
+			if (destinations) {
+				fireDelegatedEvents(destinations, eventInfo, args);
+			}
+
+			if (passAllDestinations) {
+				fireDelegatedEvents(passAllDestinations, eventInfo, args);
+			}
+		}
+
+		return eventInfo.return;
 	},
 
 
@@ -1564,17 +1007,36 @@ var EmitterMixin = {
 					_this._delegations = new Map();
 				}
 
-				// Originally there was a for..of loop which unfortunately caused an error in Babel that didn't allow
-				// build an application. See: https://github.com/ckeditor/ckeditor5-react/issues/40.
-				events.forEach(function (eventName) {
-					var destinations = _this._delegations.get(eventName);
+				var _iteratorNormalCompletion2 = true;
+				var _didIteratorError2 = false;
+				var _iteratorError2 = undefined;
 
-					if (!destinations) {
-						_this._delegations.set(eventName, new Map([[emitter, nameOrFunction]]));
-					} else {
-						destinations.set(emitter, nameOrFunction);
+				try {
+					for (var _iterator2 = events[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+						var eventName = _step2.value;
+
+						var destinations = _this._delegations.get(eventName);
+
+						if (!destinations) {
+							_this._delegations.set(eventName, new Map([[emitter, nameOrFunction]]));
+						} else {
+							destinations.set(emitter, nameOrFunction);
+						}
 					}
-				});
+				} catch (err) {
+					_didIteratorError2 = true;
+					_iteratorError2 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion2 && _iterator2.return) {
+							_iterator2.return();
+						}
+					} finally {
+						if (_didIteratorError2) {
+							throw _iteratorError2;
+						}
+					}
+				}
 			}
 		};
 	},
@@ -1746,9 +1208,9 @@ exports.default = EmitterMixin;
  * If not, returns `null`.
  *
  * @protected
- * @param {module:utils/emittermixin~Emitter} listeningEmitter An emitter that listens.
+ * @param {module:utils/emittermixin~EmitterMixin} listeningEmitter Emitter that listens.
  * @param {String} listenedToEmitterId Unique emitter id of emitter listened to.
- * @returns {module:utils/emittermixin~Emitter|null}
+ * @returns {module:utils/emittermixin~EmitterMixin|null}
  */
 
 function _getEmitterListenedTo(listeningEmitter, listenedToEmitterId) {
@@ -1765,7 +1227,7 @@ function _getEmitterListenedTo(listeningEmitter, listenedToEmitterId) {
  * **Note:** `_emitterId` can be set only once.
  *
  * @protected
- * @param {module:utils/emittermixin~Emitter} emitter An emitter for which id will be set.
+ * @param {module:utils/emittermixin~EmitterMixin} emitter Emitter for which id will be set.
  * @param {String} [id] Unique id to set. If not passed, random unique id will be set.
  */
 function _setEmitterId(emitter, id) {
@@ -1778,7 +1240,7 @@ function _setEmitterId(emitter, id) {
  * Returns emitter's unique id.
  *
  * @protected
- * @param {module:utils/emittermixin~Emitter} emitter An emitter which id will be returned.
+ * @param {module:utils/emittermixin~EmitterMixin} emitter Emitter which id will be returned.
  */
 function _getEmitterId(emitter) {
 	return emitter[_emitterId];
@@ -1863,29 +1325,29 @@ function createEventNamespace(source, eventName) {
 		// event we wanted to register.
 
 		// Copy that event's callbacks to newly registered events.
-		var _iteratorNormalCompletion2 = true;
-		var _didIteratorError2 = false;
-		var _iteratorError2 = undefined;
+		var _iteratorNormalCompletion3 = true;
+		var _didIteratorError3 = false;
+		var _iteratorError3 = undefined;
 
 		try {
-			for (var _iterator2 = newEventNodes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-				var node = _step2.value;
+			for (var _iterator3 = newEventNodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+				var node = _step3.value;
 
 				node.callbacks = events[name].callbacks.slice();
 			}
 
 			// Add last newly created event to the already registered event.
 		} catch (err) {
-			_didIteratorError2 = true;
-			_iteratorError2 = err;
+			_didIteratorError3 = true;
+			_iteratorError3 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion2 && _iterator2.return) {
-					_iterator2.return();
+				if (!_iteratorNormalCompletion3 && _iterator3.return) {
+					_iterator3.return();
 				}
 			} finally {
-				if (_didIteratorError2) {
-					throw _iteratorError2;
+				if (_didIteratorError3) {
+					throw _iteratorError3;
 				}
 			}
 		}
@@ -1939,20 +1401,19 @@ function getCallbacksForEvent(source, eventName) {
 // Fires delegated events for given map of destinations.
 //
 // @private
-// * @param {Map.<utils.Emitter>} destinations A map containing
-// `[ {@link module:utils/emittermixin~Emitter}, "event name" ]` pair destinations.
+// * @param {Map.<utils.Emitter>} destinations A map containing `[ {@link utils.Emitter}, "event name" ]` pair destinations.
 // * @param {utils.EventInfo} eventInfo The original event info object.
 // * @param {Array.<*>} fireArgs Arguments the original event was fired with.
 function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
-	var _iteratorNormalCompletion3 = true;
-	var _didIteratorError3 = false;
-	var _iteratorError3 = undefined;
+	var _iteratorNormalCompletion4 = true;
+	var _didIteratorError4 = false;
+	var _iteratorError4 = undefined;
 
 	try {
-		for (var _iterator3 = destinations[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-			var _step3$value = _slicedToArray(_step3.value, 2),
-			    emitter = _step3$value[0],
-			    name = _step3$value[1];
+		for (var _iterator4 = destinations[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+			var _step4$value = _slicedToArray(_step4.value, 2),
+			    emitter = _step4$value[0],
+			    name = _step4$value[1];
 
 			if (!name) {
 				name = eventInfo.name;
@@ -1967,16 +1428,16 @@ function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
 			emitter.fire.apply(emitter, [delegatedInfo].concat(_toConsumableArray(fireArgs)));
 		}
 	} catch (err) {
-		_didIteratorError3 = true;
-		_iteratorError3 = err;
+		_didIteratorError4 = true;
+		_iteratorError4 = err;
 	} finally {
 		try {
-			if (!_iteratorNormalCompletion3 && _iterator3.return) {
-				_iterator3.return();
+			if (!_iteratorNormalCompletion4 && _iterator4.return) {
+				_iterator4.return();
 			}
 		} finally {
-			if (_didIteratorError3) {
-				throw _iteratorError3;
+			if (_didIteratorError4) {
+				throw _iteratorError4;
 			}
 		}
 	}
@@ -1990,13 +1451,13 @@ function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
 function removeCallback(emitter, event, callback) {
 	var lists = getCallbacksListsForNamespace(emitter, event);
 
-	var _iteratorNormalCompletion4 = true;
-	var _didIteratorError4 = false;
-	var _iteratorError4 = undefined;
+	var _iteratorNormalCompletion5 = true;
+	var _didIteratorError5 = false;
+	var _iteratorError5 = undefined;
 
 	try {
-		for (var _iterator4 = lists[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-			var callbacks = _step4.value;
+		for (var _iterator5 = lists[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+			var callbacks = _step5.value;
 
 			for (var i = 0; i < callbacks.length; i++) {
 				if (callbacks[i].callback == callback) {
@@ -2007,16 +1468,16 @@ function removeCallback(emitter, event, callback) {
 			}
 		}
 	} catch (err) {
-		_didIteratorError4 = true;
-		_iteratorError4 = err;
+		_didIteratorError5 = true;
+		_iteratorError5 = err;
 	} finally {
 		try {
-			if (!_iteratorNormalCompletion4 && _iterator4.return) {
-				_iterator4.return();
+			if (!_iteratorNormalCompletion5 && _iterator5.return) {
+				_iterator5.return();
 			}
 		} finally {
-			if (_didIteratorError4) {
-				throw _iteratorError4;
+			if (_didIteratorError5) {
+				throw _iteratorError5;
 			}
 		}
 	}
@@ -2060,8 +1521,8 @@ var _spy2 = _interopRequireDefault(_spy);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
-                                                                                                                                                           * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                           * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+                                                                                                                                                           * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                           * For licensing, see LICENSE.md.
                                                                                                                                                            */
 
 /**
@@ -2157,8 +1618,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = mix;
 /**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
  */
 
 /**
@@ -2238,8 +1699,8 @@ var _lodashEs = __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/l
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
-                                                                                                                                                                                                     * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                     * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+                                                                                                                                                                                                     * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                     * For licensing, see LICENSE.md.
                                                                                                                                                                                                      */
 
 /**
@@ -2251,7 +1712,7 @@ var boundObservablesSymbol = Symbol('boundObservables');
 var boundPropertiesSymbol = Symbol('boundProperties');
 
 /**
- * A mixin that injects the "observable properties" and data binding functionality described in the
+ * Mixin that injects the "observable properties" and data binding functionality described in the
  * {@link ~Observable} interface.
  *
  * Read more about the concept of observables in the:
@@ -2287,7 +1748,7 @@ var ObservableMixin = {
 			/**
     * Cannot override an existing property.
     *
-    * This error is thrown when trying to {@link ~Observable#set set} a property with
+    * This error is thrown when trying to {@link ~Observable#set set} an property with
     * a name of an already existing property. For example:
     *
     *		let observable = new Model();
@@ -2299,7 +1760,7 @@ var ObservableMixin = {
     *
     * @error observable-set-cannot-override
     */
-			throw new _ckeditorerror2.default('observable-set-cannot-override', this);
+			throw new _ckeditorerror2.default('observable-set-cannot-override: Cannot override an existing property.');
 		}
 
 		Object.defineProperty(this, name, {
@@ -2338,8 +1799,6 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	bind: function bind() {
-		var _this2 = this;
-
 		for (var _len = arguments.length, bindProperties = Array(_len), _key = 0; _key < _len; _key++) {
 			bindProperties[_key] = arguments[_key];
 		}
@@ -2350,7 +1809,7 @@ var ObservableMixin = {
     *
     * @error observable-bind-wrong-properties
     */
-			throw new _ckeditorerror2.default('observable-bind-wrong-properties', this);
+			throw new _ckeditorerror2.default('observable-bind-wrong-properties: All properties must be strings.');
 		}
 
 		if (new Set(bindProperties).size !== bindProperties.length) {
@@ -2359,7 +1818,7 @@ var ObservableMixin = {
     *
     * @error observable-bind-duplicate-properties
     */
-			throw new _ckeditorerror2.default('observable-bind-duplicate-properties', this);
+			throw new _ckeditorerror2.default('observable-bind-duplicate-properties: Properties must be unique.');
 		}
 
 		initObservable(this);
@@ -2369,11 +1828,11 @@ var ObservableMixin = {
 		bindProperties.forEach(function (propertyName) {
 			if (boundProperties.has(propertyName)) {
 				/**
-     * Cannot bind the same property more than once.
+     * Cannot bind the same property more that once.
      *
      * @error observable-bind-rebind
      */
-				throw new _ckeditorerror2.default('observable-bind-rebind', _this2);
+				throw new _ckeditorerror2.default('observable-bind-rebind: Cannot bind the same property more that once.');
 			}
 		});
 
@@ -2415,10 +1874,10 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	unbind: function unbind() {
-		var _this3 = this;
+		var _this2 = this;
 
 		// Nothing to do here if not inited yet.
-		if (!this[observablePropertiesSymbol]) {
+		if (!(observablePropertiesSymbol in this)) {
 			return;
 		}
 
@@ -2436,7 +1895,7 @@ var ObservableMixin = {
      *
      * @error observable-unbind-wrong-properties
      */
-				throw new _ckeditorerror2.default('observable-unbind-wrong-properties', this);
+				throw new _ckeditorerror2.default('observable-unbind-wrong-properties: Properties must be strings.');
 			}
 
 			unbindProperties.forEach(function (propertyName) {
@@ -2467,7 +1926,7 @@ var ObservableMixin = {
 
 					if (!Object.keys(toProperties).length) {
 						boundObservables.delete(toObservable);
-						_this3.stopListening(toObservable, 'change');
+						_this2.stopListening(toObservable, 'change');
 					}
 				});
 
@@ -2475,7 +1934,7 @@ var ObservableMixin = {
 			});
 		} else {
 			boundObservables.forEach(function (bindings, boundObservable) {
-				_this3.stopListening(boundObservable, 'change');
+				_this2.stopListening(boundObservable, 'change');
 			});
 
 			boundObservables.clear();
@@ -2488,7 +1947,7 @@ var ObservableMixin = {
   * @inheritDoc
   */
 	decorate: function decorate(methodName) {
-		var _this4 = this;
+		var _this3 = this;
 
 		var originalMethod = this[methodName];
 
@@ -2500,11 +1959,11 @@ var ObservableMixin = {
     * @param {Object} object The object which method should be decorated.
     * @param {String} methodName Name of the method which does not exist.
     */
-			throw new _ckeditorerror2.default('observablemixin-cannot-decorate-undefined', this, { object: this, methodName: methodName });
+			throw new _ckeditorerror2.default('observablemixin-cannot-decorate-undefined: Cannot decorate an undefined method.', { object: this, methodName: methodName });
 		}
 
 		this.on(methodName, function (evt, args) {
-			evt.return = originalMethod.apply(_this4, args);
+			evt.return = originalMethod.apply(_this3, args);
 		});
 
 		this[methodName] = function () {
@@ -2521,14 +1980,14 @@ var ObservableMixin = {
 
 exports.default = ObservableMixin;
 
-// Init symbol properties needed for the observable mechanism to work.
+// Init symbol properties needed to for the observable mechanism to work.
 //
 // @private
 // @param {module:utils/observablemixin~ObservableMixin} observable
 
 function initObservable(observable) {
 	// Do nothing if already inited.
-	if (observable[observablePropertiesSymbol]) {
+	if (observablePropertiesSymbol in observable) {
 		return;
 	}
 
@@ -2590,12 +2049,11 @@ function initObservable(observable) {
 	});
 
 	// Object that stores which properties of this observable are bound and how. It shares
-	// the binding objects (`{ observable: A, property: 'a', to: ... }`) with
-	// {@link module:utils/observablemixin~ObservableMixin#_boundObservables}. This data structure is
-	// a reverse of {@link module:utils/observablemixin~ObservableMixin#_boundObservables} and it is helpful for
-	// {@link module:utils/observablemixin~ObservableMixin#unbind}.
+	// the binding objects (`{ observable: A, property: 'a', to: ... }`) with {@link utils.ObservableMixin#_boundObservables}.
+	// This data structure is a reverse of {@link utils.ObservableMixin#_boundObservables} and it is helpful for
+	// {@link utils.ObservableMixin#unbind}.
 	//
-	// See {@link module:utils/observablemixin~ObservableMixin#bind}.
+	// See {@link utils.ObservableMixin#bind}.
 	//
 	//		A.bind( 'a', 'b', 'c' ).to( B, 'x', 'y', 'x' );
 	//		console.log( A._boundProperties );
@@ -2628,7 +2086,7 @@ function initObservable(observable) {
 // @private
 // @param {...[Observable|String|Function]} args Arguments of the `.to( args )` binding.
 function bindTo() {
-	var _this5 = this;
+	var _this4 = this;
 
 	var parsedArgs = parseBindToArgs.apply(undefined, arguments);
 	var bindingsKeys = Array.from(this._bindings.keys());
@@ -2639,9 +2097,9 @@ function bindTo() {
 		/**
    * Binding multiple observables only possible with callback.
    *
-   * @error observable-bind-to-no-callback
+   * @error observable-bind-no-callback
    */
-		throw new _ckeditorerror2.default('observable-bind-to-no-callback', this);
+		throw new _ckeditorerror2.default('observable-bind-to-no-callback: Binding multiple observables only possible with callback.');
 	}
 
 	// Eliminate A.bind( 'x', 'y' ).to( B, callback )
@@ -2651,7 +2109,7 @@ function bindTo() {
    *
    * @error observable-bind-to-extra-callback
    */
-		throw new _ckeditorerror2.default('observable-bind-to-extra-callback', this);
+		throw new _ckeditorerror2.default('observable-bind-to-extra-callback: Cannot bind multiple properties and use a callback in one binding.');
 	}
 
 	parsedArgs.to.forEach(function (to) {
@@ -2662,13 +2120,13 @@ function bindTo() {
     *
     * @error observable-bind-to-properties-length
     */
-			throw new _ckeditorerror2.default('observable-bind-to-properties-length', _this5);
+			throw new _ckeditorerror2.default('observable-bind-to-properties-length: The number of properties must match.');
 		}
 
 		// When no to.properties specified, observing source properties instead i.e.
 		// A.bind( 'x', 'y' ).to( B ) -> Observe B.x and B.y
 		if (!to.properties.length) {
-			to.properties = _this5._bindProperties;
+			to.properties = _this4._bindProperties;
 		}
 	});
 
@@ -2686,7 +2144,7 @@ function bindTo() {
 
 	// Set initial values of bound properties.
 	this._bindProperties.forEach(function (propertyName) {
-		updateBoundObservableProperty(_this5._observable, propertyName);
+		updateBoundObservableProperty(_this4._observable, propertyName);
 	});
 }
 
@@ -2703,7 +2161,7 @@ function bindToMany(observables, attribute, callback) {
    *
    * @error observable-bind-to-many-not-one-binding
    */
-		throw new _ckeditorerror2.default('observable-bind-to-many-not-one-binding', this);
+		throw new _ckeditorerror2.default('observable-bind-to-many-not-one-binding: Cannot bind multiple properties with toMany().');
 	}
 
 	this.to.apply(this, _toConsumableArray(getBindingTargets(observables, attribute)).concat([
@@ -2767,7 +2225,7 @@ function parseBindToArgs() {
    *
    * @error observable-bind-to-parse-error
    */
-		throw new _ckeditorerror2.default('observable-bind-to-parse-error', null);
+		throw new _ckeditorerror2.default('observable-bind-to-parse-error: Invalid argument syntax in `to()`.');
 	}
 
 	var parsed = { to: [] };
@@ -2784,7 +2242,7 @@ function parseBindToArgs() {
 			lastObservable = { observable: a, properties: [] };
 			parsed.to.push(lastObservable);
 		} else {
-			throw new _ckeditorerror2.default('observable-bind-to-parse-error', null);
+			throw new _ckeditorerror2.default('observable-bind-to-parse-error: Invalid argument syntax in `to()`.');
 		}
 	});
 
@@ -2893,7 +2351,7 @@ function updateBoundObservableProperty(observable, propertyName) {
 		propertyValue = propertyValue[0][propertyValue[1]];
 	}
 
-	if (Object.prototype.hasOwnProperty.call(observable, propertyName)) {
+	if (observable.hasOwnProperty(propertyName)) {
 		observable[propertyName] = propertyValue;
 	} else {
 		observable.set(propertyName, propertyValue);
@@ -2930,7 +2388,7 @@ function attachBindToListeners(observable, toBindings) {
 }
 
 /**
- * An interface which adds "observable properties" and data binding functionality.
+ * Interface which adds "observable properties" and data binding functionality.
  *
  * Can be easily implemented by a class by mixing the {@link module:utils/observablemixin~ObservableMixin} mixin.
  *
@@ -2984,7 +2442,7 @@ function attachBindToListeners(observable, toBindings) {
  *		                     // -> 'Current property value is 1'
  *		                     // -> 'Value has changed from 1 to 3'
  *
- * **Note:** The event is fired even when the new value is the same as the old value.
+ * **Note:** Event is fired even when the new value is the same as the old value.
  *
  * @event set:{property}
  * @param {String} name The property name.
@@ -2993,13 +2451,13 @@ function attachBindToListeners(observable, toBindings) {
  */
 
 /**
- * Creates and sets the value of an observable property of this object. Such a property becomes a part
- * of the state and is observable.
+ * Creates and sets the value of an observable property of this object. Such an property becomes a part
+ * of the state and is be observable.
  *
  * It accepts also a single object literal containing key/value pairs with properties to be set.
  *
  * This method throws the `observable-set-cannot-override` error if the observable instance already
- * has a property with the given property name. This prevents from mistakenly overriding existing
+ * have a property with the given property name. This prevents from mistakenly overriding existing
  * properties and methods, but means that `foo.set( 'bar', 1 )` may be slightly slower than `foo.bar = 1`.
  *
  * @method #set
@@ -3008,13 +2466,13 @@ function attachBindToListeners(observable, toBindings) {
  */
 
 /**
- * Binds {@link #set observable properties} to other objects implementing the
+ * Binds {@link #set obvervable properties} to other objects implementing the
  * {@link module:utils/observablemixin~Observable} interface.
  *
  * Read more in the {@glink framework/guides/deep-dive/observables#property-bindings dedicated guide}
  * covering the topic of property bindings with some additional examples.
  *
- * Consider two objects: a `button` and an associated `command` (both `Observable`).
+ * Let's consider two objects: a `button` and an associated `command` (both `Observable`).
  *
  * A simple property binding could be as follows:
  *
@@ -3029,7 +2487,7 @@ function attachBindToListeners(observable, toBindings) {
  * * `button.isEnabled` **instantly equals** `command.isEnabled`,
  * * whenever `command.isEnabled` changes, `button.isEnabled` will immediately reflect its value.
  *
- * **Note**: To release the binding, use {@link module:utils/observablemixin~Observable#unbind}.
+ * **Note**: To release the binding use {@link module:utils/observablemixin~Observable#unbind}.
  *
  * You can also "rename" the property in the binding by specifying the new name in the `to()` chain:
  *
@@ -3049,10 +2507,6 @@ function attachBindToListeners(observable, toBindings) {
  *		button.bind( 'isEnabled' ).to( command, 'isEnabled', ui, 'isVisible',
  *			( isCommandEnabled, isUIVisible ) => isCommandEnabled && isUIVisible );
  *
- * Using a custom callback allows processing the value before passing it to the target property:
- *
- *		button.bind( 'isEnabled' ).to( command, 'value', value => value === 'heading1' );
- *
  * It is also possible to bind to the same property in an array of observables.
  * To bind a `button` to multiple commands (also `Observables`) so that each and every one of them
  * must be enabled for the button to become enabled, use the following code:
@@ -3061,7 +2515,7 @@ function attachBindToListeners(observable, toBindings) {
  *			( isAEnabled, isBEnabled, isCEnabled ) => isAEnabled && isBEnabled && isCEnabled );
  *
  * @method #bind
- * @param {...String} bindProperties Observable properties that will be bound to other observable(s).
+ * @param {...String} bindProperties Observable properties that will be bound to another observable(s).
  * @returns {Object} The bind chain with the `to()` and `toMany()` methods.
  */
 
@@ -3076,7 +2530,7 @@ function attachBindToListeners(observable, toBindings) {
  *
  * @method #unbind
  * @param {...String} [unbindProperties] Observable properties to be unbound. All the bindings will
- * be released if no properties are provided.
+ * be released if no properties provided.
  */
 
 /**
@@ -3157,8 +2611,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 /**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
  */
 
 /**
@@ -3218,8 +2672,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
  */
 
 /**
@@ -3256,223 +2710,33 @@ exports.default = spy;
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 exports.default = uid;
 /**
- * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
- * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
  */
 
 /**
  * @module utils/uid
  */
 
-// A hash table of hex numbers to avoid using toString() in uid() which is costly.
-// [ '00', '01', '02', ..., 'fe', 'ff' ]
-var HEX_NUMBERS = new Array(256).fill().map(function (val, index) {
-	return ('0' + index.toString(16)).slice(-2);
-});
-
 /**
- * Returns a unique id. The id starts with an "e" character and a randomly generated string of
- * 32 alphanumeric characters.
+ * Returns a unique id. This id consist of an 'e' character and a randomly generated string of 32 aphanumeric characters.
+ * Each character in uid string represents a hexadecimal digit (base 16).
  *
- * **Note**: The characters the unique id is built from correspond to the hex number notation
- * (from "0" to "9", from "a" to "f"). In other words, each id corresponds to an "e" followed
- * by 16 8-bit numbers next to each other.
- *
- * @returns {String} An unique id string.
+ * @returns {String} A hexadecimal number representing the id.
  */
 function uid() {
-	// Let's create some positive random 32bit integers first.
-	//
-	// 1. Math.random() is a float between 0 and 1.
-	// 2. 0x100000000 is 2^32 = 4294967296.
-	// 3. >>> 0 enforces integer (in JS all numbers are floating point).
-	//
-	// For instance:
-	//		Math.random() * 0x100000000 = 3366450031.853859
-	// but
-	//		Math.random() * 0x100000000 >>> 0 = 3366450031.
-	var r1 = Math.random() * 0x100000000 >>> 0;
-	var r2 = Math.random() * 0x100000000 >>> 0;
-	var r3 = Math.random() * 0x100000000 >>> 0;
-	var r4 = Math.random() * 0x100000000 >>> 0;
+  var uuid = 'e'; // Make sure that id does not start with number.
 
-	// Make sure that id does not start with number.
-	return 'e' + HEX_NUMBERS[r1 >> 0 & 0xFF] + HEX_NUMBERS[r1 >> 8 & 0xFF] + HEX_NUMBERS[r1 >> 16 & 0xFF] + HEX_NUMBERS[r1 >> 24 & 0xFF] + HEX_NUMBERS[r2 >> 0 & 0xFF] + HEX_NUMBERS[r2 >> 8 & 0xFF] + HEX_NUMBERS[r2 >> 16 & 0xFF] + HEX_NUMBERS[r2 >> 24 & 0xFF] + HEX_NUMBERS[r3 >> 0 & 0xFF] + HEX_NUMBERS[r3 >> 8 & 0xFF] + HEX_NUMBERS[r3 >> 16 & 0xFF] + HEX_NUMBERS[r3 >> 24 & 0xFF] + HEX_NUMBERS[r4 >> 0 & 0xFF] + HEX_NUMBERS[r4 >> 8 & 0xFF] + HEX_NUMBERS[r4 >> 16 & 0xFF] + HEX_NUMBERS[r4 >> 24 & 0xFF];
+  for (var i = 0; i < 8; i++) {
+    uuid += Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+  }
+
+  return uuid;
 }
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/version.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/version.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                               * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
-                                                                                                                                                                                                                                                                               */
-
-/**
- * @module utils/version
- */
-
-/* globals window, global */
-
-var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
-
-var _ckeditorerror2 = _interopRequireDefault(_ckeditorerror);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var version = '25.0.0';
-
-/* istanbul ignore next */
-var windowOrGlobal = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' ? window : global;
-
-/* istanbul ignore next */
-if (windowOrGlobal.CKEDITOR_VERSION) {
-	/**
-  * This error is thrown when due to a mistake in how CKEditor 5 was installed or initialized, some
-  * of its modules were duplicated (evaluated and executed twice). Module duplication leads to inevitable runtime
-  * errors.
-  *
-  * There are many situations in which some modules can be loaded twice. In the worst case scenario,
-  * you may need to check your project for each of these issues and fix them all.
-  *
-  * # Trying to add a plugin to an existing build
-  *
-  * If you import an existing CKEditor 5 build and a plugin like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  *		import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
-  *
-  * Then your project loads some CKEditor 5 packages twice. How does it happen?
-  *
-  * The build package contains a file which is already compiled with webpack. This means
-  * that it contains all the necessary code from e.g. `@ckeditor/ckeditor5-engine` and `@ckeditor/ckeditor5-utils`.
-  *
-  * However, the `Highlight` plugin imports some of the modules from these packages, too. If you ask webpack to
-  * build such a project, you will end up with the modules being included (and run) twice &mdash; first, because they are
-  * included inside the build package, and second, because they are required by the `Highlight` plugin.
-  *
-  * Therefore, **you must never add plugins to an existing build** unless your plugin has no dependencies.
-  *
-  * Adding plugins to a build is done by taking the source version of this build (so, before it was built with webpack)
-  * and adding plugins there. In this situation, webpack will know that it only needs to load each plugin once.
-  *
-  * Read more in the {@glink builds/guides/integration/installing-plugins "Installing plugins"} guide.
-  *
-  * # Confused an editor build with an editor implementation
-  *
-  * This scenario is very similar to the previous one, but has a different origin.
-  *
-  * Let's assume that you wanted to use CKEditor 5 from source, as explained in the
-  * {@glink builds/guides/integration/advanced-setup#scenario-2-building-from-source "Building from source"} section
-  * or in the {@glink framework/guides/quick-start "Quick start"} guide of CKEditor 5 Framework.
-  *
-  * The correct way to do so is to import an editor and plugins and run them together like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-  *		import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-  *		import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-  *		import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-  *		import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-  *
-  *		ClassicEditor
-  *			.create( document.querySelector( '#editor' ), {
-  *				plugins: [ Essentials, Paragraph, Bold, Italic ],
-  *				toolbar: [ 'bold', 'italic' ]
-  *			} )
-  *			.then( editor => {
-  *				console.log( 'Editor was initialized', editor );
-  *			} )
-  *			.catch( error => {
-  *				console.error( error.stack );
-  *			} );
-  *
-  * However, you might have mistakenly imported a build instead of the source `ClassicEditor`. In this case
-  * your imports will look like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  *		import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-  *		import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-  *		import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-  *		import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-  *
-  * This creates the same situation as in the previous section because you use a build together with source plugins.
-  *
-  * Remember: `@ckeditor/ckeditor5-build-*` packages contain editor builds and `@ckeditor/ckeditor5-editor-*` contain source editors.
-  *
-  * # Loading two or more builds on one page
-  *
-  * If you use CKEditor 5 builds, you might have loaded two (or more) `ckeditor.js` files on one web page.
-  * Check your web page for duplicated `<script>` elements or make sure your page builder/bundler includes CKEditor only once.
-  *
-  * If you want to use two different types of editors at once, see the
-  * {@glink builds/guides/integration/advanced-setup#scenario-3-using-two-different-editors "Using two different editors"}
-  * section.
-  *
-  * # Using outdated packages
-  *
-  * Building CKEditor 5 from source requires using multiple npm packages. These packages have their dependencies
-  * to other packages. If you use the latest version of, for example, `@ckeditor/ckeditor5-editor-classic` with
-  * an outdated version of `@ckeditor/ckeditor5-image`, npm or yarn will need to install two different versions of
-  * `@ckeditor/ckeditor5-core` because `@ckeditor/ckeditor5-editor-classic` and `@ckeditor/ckeditor5-image` may require
-  * different versions of the core package.
-  *
-  * The solution to this issue is to update all packages to their latest version. We recommend
-  * using tools like [`npm-check-updates`](https://www.npmjs.com/package/npm-check-updates) which simplify this process.
-  *
-  * # Conflicting version of dependencies
-  *
-  * This is a special case of the previous scenario. If you use CKEditor 5 with some third-party plugins,
-  * it may happen that even if you use the latest versions of the official packages and the latest version of
-  * these third-party packages, there will be a conflict between some of their dependencies.
-  *
-  * Such a problem can be resolved by either downgrading CKEditor 5 packages (which we do not recommend) or
-  * asking the author of the third-party package to upgrade its depdendencies (or forking their project and doing this yourself).
-  *
-  * **Note:** All official CKEditor 5 packages (excluding integrations and `ckeditor5-dev-*` packages) are released in the
-  * same major version. This is &mdash; in the `x.y.z`, the `x` is the same for all packages. This is the simplest way to check
-  * whether you use packages coming from the same CKEditor 5 version. You can read more about versioning in the
-  * {@glink framework/guides/support/versioning-policy Versioning policy} guide.
-  *
-  * # Packages were duplicated in `node_modules`
-  *
-  * In some situations, especially when calling `npm install` multiple times, it may happen
-  * that npm will not correctly "deduplicate" packages.
-  *
-  * Normally, npm deduplicates all packages so, for example, `@ckeditor/ckeditor5-core` is installed only once in `node_modules/`.
-  * However, it is known to fail to do so from time to time.
-  *
-  * We recommend checking if any of the steps listed below help:
-  *
-  * * `rm -rf node_modules && npm install` to make sure you have a clean `node_modules/` directory. This step
-  * is known to help in most cases.
-  * * If you use `yarn.lock` or `package-lock.json`, remove it before `npm install`.
-  * * Check whether all CKEditor 5 packages are up to date and reinstall them
-  * if you changed anything (`rm -rf node_modules && npm install`).
-  *
-  * If all packages are correct and compatible with each other, the steps above are known to help. If not, you may
-  * try to check with `npm ls` how many times packages like `@ckeditor/ckeditor5-core`, `@ckeditor/ckeditor5-engine` and
-  *`@ckeditor/ckeditor5-utils` are installed. If more than once, verify which package causes that.
-  *
-  * @error ckeditor-duplicated-modules
-  */
-	throw new _ckeditorerror2.default('ckeditor-duplicated-modules', null);
-} else {
-	windowOrGlobal.CKEDITOR_VERSION = version;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -3783,6 +3047,26 @@ var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 module.exports = (0, _readFromConsumerApi2.default)('NeosProjectPackages')().ReactUiComponents;
+
+/***/ }),
+
+/***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _readFromConsumerApi = __webpack_require__(/*! ../../../../dist/readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js");
+
+var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _readFromConsumerApi2.default)('vendor')().CkEditor5;
 
 /***/ }),
 
@@ -37779,9 +37063,7 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _plugin = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-
-var _plugin2 = _interopRequireDefault(_plugin);
+var _ckeditor5Exports = __webpack_require__(/*! ckeditor5-exports */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js");
 
 var _attributecommand = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/attributecommand */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js");
 
@@ -37797,16 +37079,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var CODE = 'code';
 
-var SubSup = function (_Plugin) {
-    _inherits(SubSup, _Plugin);
+var CodeFormating = function (_Plugin) {
+    _inherits(CodeFormating, _Plugin);
 
-    function SubSup() {
-        _classCallCheck(this, SubSup);
+    function CodeFormating() {
+        _classCallCheck(this, CodeFormating);
 
-        return _possibleConstructorReturn(this, (SubSup.__proto__ || Object.getPrototypeOf(SubSup)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (CodeFormating.__proto__ || Object.getPrototypeOf(CodeFormating)).apply(this, arguments));
     }
 
-    _createClass(SubSup, [{
+    _createClass(CodeFormating, [{
         key: 'init',
         value: function init() {
             this.editor.model.schema.extend('$text', { allowAttributes: CODE });
@@ -37819,14 +37101,14 @@ var SubSup = function (_Plugin) {
     }], [{
         key: 'pluginName',
         get: function get() {
-            return 'Code';
+            return 'CodeFormating';
         }
     }]);
 
-    return SubSup;
-}(_plugin2.default);
+    return CodeFormating;
+}(_ckeditor5Exports.Plugin);
 
-exports.default = SubSup;
+exports.default = CodeFormating;
 
 /***/ }),
 

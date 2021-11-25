@@ -1,11 +1,11 @@
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import {Plugin} from 'ckeditor5-exports';
 import AttributeCommand from '@ckeditor/ckeditor5-basic-styles/src/attributecommand';
 
 const CODE = 'code';
 
-export default class SubSup extends Plugin {
+export default class CodeFormating extends Plugin {
     static get pluginName() {
-        return 'Code';
+        return 'CodeFormating';
     }
     init() {
         this.editor.model.schema.extend('$text', {allowAttributes: CODE});

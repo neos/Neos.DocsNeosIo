@@ -1,18 +1,18 @@
 {
   "description": "CKEConfig",
-  "license": "MIT",
+  "license": "GNU GPLv3",
   "private": true,
   "scripts": {
     "build": "neos-react-scripts build",
     "watch": "neos-react-scripts watch"
   },
   "devDependencies": {
-    "@neos-project/neos-ui-extensibility": "^5"
+    "@neos-project/neos-ui-extensibility": "^7.0.0"
   },
   "neos": {
     "buildTargetDirectory": "../../Public/JavaScript/CKEConfig"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-basic-styles": "^25.0.0"
+    "@ckeditor/ckeditor5-basic-styles": "10.1.0"
   }
 }
