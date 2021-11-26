@@ -5224,7 +5224,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "f52f3dd244f360394bb77edc5daa657e3b599821"
+                "reference": "ddc2b97df92805d061ce1bb66d253d47e6597dfc"
             },
             "require": {
                 "aertmann/history": "^2.0",
@@ -5243,8 +5243,8 @@
                 "jonnitto/prettyembedyoutube": "^7.1",
                 "moc/notfound": "^3.1",
                 "neos/googleanalytics": "^3.3",
-                "neos/neos": "^7.2",
-                "neos/neos-ui": "^7.2",
+                "neos/neos": "~7.2.0",
+                "neos/neos-ui": "~7.2.0",
                 "neos/nodetypes-contentreferences": "*",
                 "neos/redirecthandler-databasestorage": "^5.0",
                 "neos/redirecthandler-neosadapter": "^4.3",
