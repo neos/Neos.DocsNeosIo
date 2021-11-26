@@ -3,8 +3,8 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "^7.0",
-        "neos/neos-ui": "^7.0",
+        "neos/neos": "~7.2.0",
+        "neos/neos-ui": "~7.2.0",
         "neos/googleanalytics": "^3.3",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
