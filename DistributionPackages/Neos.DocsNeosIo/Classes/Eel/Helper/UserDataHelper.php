@@ -1,12 +1,19 @@
 <?php
+
 namespace Neos\DocsNeosIo\Eel\Helper;
 
+use Neos\Eel\Helper\ArrayHelper;
 use Neos\Flow\Annotations as Flow;
 use Neos\Neos\Domain\Repository\UserRepository;
-use Neos\Party\Domain\Model\ElectronicAddress;
 
-class UserDataHelper extends \Neos\Eel\Helper\ArrayHelper
+class UserDataHelper extends ArrayHelper
 {
+    /**
+     * @var string[]
+     * @Flow\InjectConfiguration(package="Neos.Party", path="availableUsageTypes")
+     * @Flow\Transient
+     */
+    protected $availableUsageTypes = [];
 
     /**
      * @Flow\Inject
@@ -25,8 +32,8 @@ class UserDataHelper extends \Neos\Eel\Helper\ArrayHelper
             $user = $this->userRepository->findByIdentifier($userIdentifier);
             if ($user) {
                 $email = false;
-                foreach($user->getElectronicAddresses() as $current) {
-                    if (!$email && $current->getType() == ElectronicAddress::TYPE_EMAIL) {
+                foreach ($user->getElectronicAddresses() as $current) {
+                    if (!$email && isset($this->availableUsageTypes['Email']) && $current->getType() == $this->availableUsageTypes['Email']) {
                         $email = $current->getIdentifier();
                     }
                 }
