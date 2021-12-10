@@ -1,3 +1,8 @@
 prototype(Neos.DocsNeosIo:Content.YouTube) < prototype(Jonnitto.PrettyEmbedYoutube:Content.Youtube) {
-    renderer.attributes.class.base = 'docs-youtube video-container'
+    prototype(Jonnitto.PrettyEmbedYoutube:Component.Youtube) {
+        renderer.@process.class = Neos.Fusion:Augmenter {
+            class = 'docs-youtube video-container'
+            content = ${value}
+        }
+    }
 }
