@@ -18,7 +18,6 @@
         "carbon/hyphen": "^1.1",
         "carbon/link": "^1.0",
         "carbon/includeassets": "^5.2",
-        "codeq/unicodenormalizer": "^2.1",
         "flowpack/cachebuster": "^1.0",
         "flowpack/nodetemplates": "^1.0",
         "moc/notfound": "^3.1",
@@ -28,11 +27,10 @@
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
 
         "codeq/htmlwidget" : "^1.2",
-        "jonnitto/prettyembedvimeo": "^3.1",
-        "jonnitto/prettyembedyoutube": "^7.1",
         "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "^2.0",
-        "yoast/yoast-seo-for-neos": "^1.1"
+        "yoast/yoast-seo-for-neos": "^1.1",
+        "jonnitto/prettyembedvideoplatforms": "^1.1"
     },
     "autoload": {
         "psr-4": {

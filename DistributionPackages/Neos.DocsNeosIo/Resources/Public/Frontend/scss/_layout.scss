@@ -18,10 +18,9 @@
 @import "../../../Private/Fusion/Content/Image/Image";
 @import "../../../Private/Fusion/Content/Section/Section";
 @import "../../../Private/Fusion/Content/Tabs/Tabs";
-@import "../../../Private/Fusion/Content/Vimeo/Vimeo";
-@import "../../../Private/Fusion/Content/YouTube/YouTube";
 
 // Overrides
+@import "../../../Private/Fusion/Override/PrettyEmbed";
 @import "../../../Private/Fusion/Override/Flowpack.Searchplugin/Search";
 @import "../../../Private/Fusion/Override/Sandstorm.MxGraph/Sandstorm.MxGraph";
 

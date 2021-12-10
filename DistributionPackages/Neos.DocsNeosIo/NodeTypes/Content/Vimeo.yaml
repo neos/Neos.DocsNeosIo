@@ -1,3 +1,0 @@
-'Neos.DocsNeosIo:Content.Vimeo':
-  superTypes:
-    'Jonnitto.PrettyEmbedVimeo:Content.Vimeo': true
