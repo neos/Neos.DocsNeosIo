@@ -48,7 +48,7 @@
     "css-copy": "cp -R node_modules/@fortawesome/fontawesome-free/webfonts build/fontawesome",
     "css-deploy": "yarn run css-build && yarn run css-postcss",
     "css-build": "node-sass scss/app.scss build/app.css",
-    "css-postcss": "postcss --use autoprefixer --output build/app.css build/app.css",
+    "css-postcss": "postcss --use autoprefixer --map --output build/app.css build/app.css",
     "css-watch": "yarn run css-build && yarn run css-build -- --watch --recursive ../../../Private/Fusion --error-bell",
     "js-copy": "npm-run-all --parallel js-copy-materialize",
     "js-copy-materialize": "cp node_modules/materialize-css/dist/js/materialize.js build/materialize.js",
