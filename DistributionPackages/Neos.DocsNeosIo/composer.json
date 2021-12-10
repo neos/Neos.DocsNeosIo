@@ -18,7 +18,6 @@
         "carbon/hyphen": "^1.1",
         "carbon/link": "^1.0",
         "carbon/includeassets": "^5.2",
-        "codeq/unicodenormalizer": "^2.1",
         "flowpack/cachebuster": "^1.0",
         "flowpack/nodetemplates": "^1.0",
         "moc/notfound": "^3.1",
