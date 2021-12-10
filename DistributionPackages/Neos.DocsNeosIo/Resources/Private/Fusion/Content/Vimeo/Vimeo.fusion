@@ -1,8 +1,1 @@
-prototype(Neos.DocsNeosIo:Content.Vimeo) < prototype(Jonnitto.PrettyEmbedVimeo:Content.Vimeo) {
-    prototype(Jonnitto.PrettyEmbedVimeo:Component.Vimeo) {
-        renderer.@process.class = Neos.Fusion:Augmenter {
-            class = 'docs-vimeo video-container'
-            content = ${value}
-        }
-    }
-}
+prototype(Neos.DocsNeosIo:Content.Vimeo) < prototype(Jonnitto.PrettyEmbedVimeo:Content.Vimeo)
