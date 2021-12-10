@@ -28,11 +28,10 @@
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
 
         "codeq/htmlwidget" : "^1.2",
-        "jonnitto/prettyembedvimeo": "^3.1",
-        "jonnitto/prettyembedyoutube": "^7.1",
         "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "^2.0",
-        "yoast/yoast-seo-for-neos": "^1.1"
+        "yoast/yoast-seo-for-neos": "^1.1",
+        "jonnitto/prettyembedvideoplatforms": "^1.1"
     },
     "autoload": {
         "psr-4": {

@@ -4258,17 +4258,17 @@
             "time": "2021-10-07T14:10:32+00:00"
         },
         {
-            "name": "jonnitto/prettyembedvimeo",
-            "version": "3.3.0",
+            "name": "jonnitto/prettyembedvideoplatforms",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo.git",
-                "reference": "ef3ee01917916858b1a45f114f210280910d8313"
+                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms.git",
+                "reference": "378df7e19cef0c75974c41d4c724ccaf6c546ee2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVimeo/zipball/ef3ee01917916858b1a45f114f210280910d8313",
-                "reference": "ef3ee01917916858b1a45f114f210280910d8313",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/zipball/378df7e19cef0c75974c41d4c724ccaf6c546ee2",
+                "reference": "378df7e19cef0c75974c41d4c724ccaf6c546ee2",
                 "shasum": ""
             },
             "require": {
@@ -4276,14 +4276,14 @@
             },
             "type": "neos-plugin",
             "extra": {
-                "installer-name": "Jonnitto.PrettyEmbedVimeo",
+                "installer-name": "Jonnitto.PrettyEmbedVideoPlatforms",
                 "neos": {
-                    "package-key": "Jonnitto.PrettyEmbedVimeo"
+                    "package-key": "Jonnitto.PrettyEmbedVideoPlatforms"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Jonnitto\\PrettyEmbedVimeo\\": "Classes"
+                    "Jonnitto\\PrettyEmbedVideoPlatforms\\": "Classes"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4298,84 +4298,19 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Prettier embeds for your Vimeo videos in Neos CMS - with nice options like high-res preview images, lightbox feature and advanced customization of embed options.",
-            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo",
+            "description": "Prettier embeds for your YouTube and Vimeo videos and playlists in Neos CMS - with nice options like high-res preview images, lightbox feature and advanced customization of embed options.",
+            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms",
             "keywords": [
                 "Neos",
                 "contentelement",
                 "flow",
                 "video",
-                "vimeo"
-            ],
-            "support": {
-                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo/issues",
-                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVimeo"
-            },
-            "funding": [
-                {
-                    "url": "https://www.paypal.me/Jonnitto/20eur",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/jonnitto",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-08-25T22:08:03+00:00"
-        },
-        {
-            "name": "jonnitto/prettyembedyoutube",
-            "version": "7.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube.git",
-                "reference": "41d8784da75b818f066a5eaa0bee4ce47adbdbb4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedYoutube/zipball/41d8784da75b818f066a5eaa0bee4ce47adbdbb4",
-                "reference": "41d8784da75b818f066a5eaa0bee4ce47adbdbb4",
-                "shasum": ""
-            },
-            "require": {
-                "jonnitto/prettyembedhelper": "^2.8 || ^3.0 || dev-master"
-            },
-            "type": "neos-plugin",
-            "extra": {
-                "installer-name": "Jonnitto.PrettyEmbedYoutube",
-                "neos": {
-                    "package-key": "Jonnitto.PrettyEmbedYoutube"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jonnitto\\PrettyEmbedYoutube\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Jon Uhlmann",
-                    "email": "hello@uhlmann.pro",
-                    "homepage": "https://www.uhlmann.pro",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Prettier embeds for your YouTube videos and playlists in Neos CMS - with nice options like high-res preview images, lightbox feature and advanced customization of embed options.",
-            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube",
-            "keywords": [
-                "Neos",
-                "contentelement",
-                "flow",
-                "video",
+                "vimeo",
                 "youtube"
             ],
             "support": {
-                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube/issues",
-                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedYoutube"
+                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/issues",
+                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms"
             },
             "funding": [
                 {
@@ -4387,7 +4322,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-25T22:07:31+00:00"
+            "time": "2021-08-25T22:20:57+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5303,11 +5238,11 @@
         },
         {
             "name": "neos/docs-neos-io",
-            "version": "dev-master",
+            "version": "dev-bugfix/videos_classes",
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "5e7bbaaf0d94fb5987709133e32de5226e80e13d"
+                "reference": "b05ded7ef9291e98fdea6890c4dae054bbb8e8b1"
             },
             "require": {
                 "aertmann/history": "^2.0",
@@ -5322,8 +5257,7 @@
                 "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
                 "flowpack/nodetemplates": "^1.0",
                 "flowpack/searchplugin": "^5.0",
-                "jonnitto/prettyembedvimeo": "^3.1",
-                "jonnitto/prettyembedyoutube": "^7.1",
+                "jonnitto/prettyembedvideoplatforms": "^1.1",
                 "moc/notfound": "^3.1",
                 "neos/googleanalytics": "^3.3",
                 "neos/neos": "~7.3.0",
@@ -9748,23 +9682,23 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.4.0",
+            "version": "v5.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "ec3661faca1d110d6c307e124b44f99ac54179e3"
+                "reference": "9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/ec3661faca1d110d6c307e124b44f99ac54179e3",
-                "reference": "ec3661faca1d110d6c307e124b44f99ac54179e3",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
+                "reference": "9130e1a0fc93cb0faadca4ee917171bd2ca9e5f4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/deprecation-contracts": "^2.1|^3",
                 "symfony/polyfill-mbstring": "~1.0",
-                "symfony/polyfill-php73": "^1.8",
+                "symfony/polyfill-php73": "^1.9",
                 "symfony/polyfill-php80": "^1.16",
                 "symfony/service-contracts": "^1.1|^2|^3",
                 "symfony/string": "^5.1|^6.0"
@@ -9827,7 +9761,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v5.4.0"
+                "source": "https://github.com/symfony/console/tree/v5.4.1"
             },
             "funding": [
                 {
@@ -9843,7 +9777,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-11-29T15:30:56+00:00"
+            "time": "2021-12-09T11:22:43+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -10891,16 +10825,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v6.0.0",
+            "version": "v6.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "ba727797426af0f587f4800566300bdc0cda0777"
+                "reference": "0cfed595758ec6e0a25591bdc8ca733c1896af32"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/ba727797426af0f587f4800566300bdc0cda0777",
-                "reference": "ba727797426af0f587f4800566300bdc0cda0777",
+                "url": "https://api.github.com/repos/symfony/string/zipball/0cfed595758ec6e0a25591bdc8ca733c1896af32",
+                "reference": "0cfed595758ec6e0a25591bdc8ca733c1896af32",
                 "shasum": ""
             },
             "require": {
@@ -10956,7 +10890,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v6.0.0"
+                "source": "https://github.com/symfony/string/tree/v6.0.1"
             },
             "funding": [
                 {
@@ -10972,7 +10906,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-29T07:35:21+00:00"
+            "time": "2021-12-08T15:13:44+00:00"
         },
         {
             "name": "symfony/yaml",

@@ -1,1 +1,0 @@
-prototype(Neos.DocsNeosIo:Content.Vimeo) < prototype(Jonnitto.PrettyEmbedVimeo:Content.Vimeo)
