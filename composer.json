@@ -17,7 +17,8 @@
         "rokka/imagine-vips": "^0.13",
 
         "neos/contentrepository-development-collection": "dev-master",
-        "neos/content-repository-dimensionspace": "dev-master"
+        "neos/content-repository-dimensionspace": "dev-master",
+        "cweagans/composer-patches": "^1.7"
     },
     "require-dev": {
         "sandstorm/plumber": "dev-master",
@@ -34,5 +35,8 @@
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
         "post-package-install": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall"
+    },
+    "extra": {
+        "patches-file": "Packages/CR/Neos.EventSourcedNeosAdjustments/composer.patches.json"
     }
 }
