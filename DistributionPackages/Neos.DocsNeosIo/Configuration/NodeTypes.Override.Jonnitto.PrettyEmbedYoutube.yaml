@@ -1,6 +1,0 @@
-
-# We wrap it in our own node type
-'Jonnitto.PrettyEmbedYoutube:Content.Youtube':
-  abstract: true
-  ui:
-    position: 350

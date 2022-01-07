@@ -1,3 +1,0 @@
-prototype(Neos.DocsNeosIo:Content.Vimeo) < prototype(Jonnitto.PrettyEmbedVimeo:Content.Vimeo) {
-    renderer.attributes.class.base = 'docs-vimeo video-container'
-}

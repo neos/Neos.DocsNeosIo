@@ -38,7 +38,7 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                     <p>
                         Neos is free and open source software licensed under <a href="https://opensource.org/licenses/GPL-3.0" target="_blank" rel="noopener">GPL v3</a> or later.<br />
                         Created with passion by over <span data-component="GitHubAPI" data-endpoint="repos/Neos/neos-development-collection/stats/contributors" data-property="length">100</span> contributors around the world.<br />
-                        Website hosted by <a href="https://www.flownative.com" target="_blank" rel="noopener">Flownative</a>. <a target="_blank" rel="noopener" href="https://status.neos.io">System status.</a><br />
+                        Website hosted by <a href="https://www.flownative.com" target="_blank" rel="noopener">Flownative</a>. <a target="_blank" rel="noopener" href="https://stats.uptimerobot.com/275vWHgGq">System status.</a><br />
                         <a href="https://www.neos.io/footer-content/imprint.html">Imprint</a>
                     </p>
                 </div>

@@ -114,7 +114,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 */
 
@@ -354,7 +354,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
@@ -464,14 +464,6 @@ var Command = function () {
    */
 		this.set('isEnabled', false);
 
-		/**
-   * Holds identifiers for {@link #forceDisabled} mechanism.
-   *
-   * @type {Set.<String>}
-   * @private
-   */
-		this._disableStack = new Set();
-
 		this.decorate('execute');
 
 		// By default every command is refreshed when changes are applied to the model.
@@ -488,9 +480,11 @@ var Command = function () {
 		// By default commands are disabled when the editor is in read-only mode.
 		this.listenTo(editor, 'change:isReadOnly', function (evt, name, value) {
 			if (value) {
-				_this.forceDisabled('readOnlyMode');
+				_this.on('set:isEnabled', forceDisable, { priority: 'highest' });
+				_this.isEnabled = false;
 			} else {
-				_this.clearForceDisabled('readOnlyMode');
+				_this.off('set:isEnabled', forceDisable);
+				_this.refresh();
 			}
 		});
 	}
@@ -508,71 +502,6 @@ var Command = function () {
 		key: 'refresh',
 		value: function refresh() {
 			this.isEnabled = true;
-		}
-
-		/**
-   * Disables the command.
-   *
-   * Command may be disabled by multiple features or algorithms (at once). When disabling a command, unique id should be passed
-   * (e.g. feature name). The same identifier should be used when {@link #clearForceDisabled enabling back} the command.
-   * The command becomes enabled only after all features {@link #clearForceDisabled enabled it back}.
-   *
-   * Disabling and enabling a command:
-   *
-   *		command.isEnabled; // -> true
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> false
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * Command disabled by multiple features:
-   *
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.forceDisabled( 'OtherFeature' );
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> false
-   *		command.clearForceDisabled( 'OtherFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * Multiple disabling with the same identifier is redundant:
-   *
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.forceDisabled( 'MyFeature' );
-   *		command.clearForceDisabled( 'MyFeature' );
-   *		command.isEnabled; // -> true
-   *
-   * **Note:** some commands or algorithms may have more complex logic when it comes to enabling or disabling certain commands,
-   * so the command might be still disabled after {@link #clearForceDisabled} was used.
-   *
-   * @param {String} id Unique identifier for disabling. Use the same id when {@link #clearForceDisabled enabling back} the command.
-   */
-
-	}, {
-		key: 'forceDisabled',
-		value: function forceDisabled(id) {
-			this._disableStack.add(id);
-
-			if (this._disableStack.size == 1) {
-				this.on('set:isEnabled', forceDisable, { priority: 'highest' });
-				this.isEnabled = false;
-			}
-		}
-
-		/**
-   * Clears forced disable previously set through {@link #clearForceDisabled}. See {@link #clearForceDisabled}.
-   *
-   * @param {String} id Unique identifier, equal to the one passed in {@link #forceDisabled} call.
-   */
-
-	}, {
-		key: 'clearForceDisabled',
-		value: function clearForceDisabled(id) {
-			this._disableStack.delete(id);
-
-			if (this._disableStack.size == 0) {
-				this.off('set:isEnabled', forceDisable);
-				this.refresh();
-			}
 		}
 
 		/**
@@ -607,7 +536,7 @@ var Command = function () {
    * Event fired by the {@link #execute} method. The command action is a listener to this event so it's
    * possible to change/cancel the behavior of the command by listening to this event.
    *
-   * See {@link module:utils/observablemixin~ObservableMixin#decorate} for more information and samples.
+   * See {@link module:utils/observablemixin~ObservableMixin.decorate} for more information and samples.
    *
    * **Note:** This event is fired even if command is disabled. However, it is automatically blocked
    * by a high priority listener in order to prevent command execution.
@@ -630,222 +559,6 @@ function forceDisable(evt) {
 	evt.return = false;
 	evt.stop();
 }
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-core/src/plugin.js ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-/**
- * @module core/plugin
- */
-
-var _observablemixin = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/observablemixin */ "./node_modules/@ckeditor/ckeditor5-utils/src/observablemixin.js");
-
-var _observablemixin2 = _interopRequireDefault(_observablemixin);
-
-var _mix = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/mix */ "./node_modules/@ckeditor/ckeditor5-utils/src/mix.js");
-
-var _mix2 = _interopRequireDefault(_mix);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-/**
- * The base class for CKEditor plugin classes.
- *
- * @implements module:core/plugin~PluginInterface
- * @mixes module:utils/observablemixin~ObservableMixin
- */
-var Plugin = function () {
-  /**
-   * @inheritDoc
-   */
-  function Plugin(editor) {
-    _classCallCheck(this, Plugin);
-
-    /**
-     * The editor instance.
-     *
-     * Note that most editors implement the {@link module:core/editor/editorwithui~EditorWithUI} interface in addition
-     * to the base {@link module:core/editor/editor~Editor} interface. However, editors with an external UI
-     * (i.e. Bootstrap-based) or a headless editor may not implement the {@link module:core/editor/editorwithui~EditorWithUI}
-     * interface.
-     *
-     * Because of above, to make plugins more universal, it is recommended to split features into:
-     *  - The "editing" part that only uses the {@link module:core/editor/editor~Editor} interface.
-     *  - The "UI" part that uses both the {@link module:core/editor/editor~Editor} interface and
-     *  the {@link module:core/editor/editorwithui~EditorWithUI} interface.
-     *
-     * @readonly
-     * @member {module:core/editor/editor~Editor} #editor
-     */
-    this.editor = editor;
-  }
-
-  /**
-   * @inheritDoc
-   */
-
-
-  _createClass(Plugin, [{
-    key: 'destroy',
-    value: function destroy() {
-      this.stopListening();
-    }
-  }]);
-
-  return Plugin;
-}();
-
-exports.default = Plugin;
-
-
-(0, _mix2.default)(Plugin, _observablemixin2.default);
-
-/**
- * The base interface for CKEditor plugins.
- *
- * In its minimal form it can be a simple function (it will be used as a constructor) that accepts
- * {@link module:core/editor/editor~Editor the editor} as a parameter.
- * It can also implement a few methods which, when present, will be used to properly initialize and destroy the plugin.
- *
- *		// A simple plugin that enables a data processor.
- *		function MyPlugin( editor ) {
- *			editor.data.processor = new MyDataProcessor();
- *		}
- *
- * In most cases, however, you will want to inherit from the {@link module:core/plugin~Plugin} class which implements the
- * {@link module:utils/observablemixin~ObservableMixin} and is, therefore, more convenient:
- *
- *		class MyPlugin extends Plugin {
- *			init() {
- *				// `listenTo()` and `editor` are available thanks to `Plugin`.
- *				// By using `listenTo()` you will ensure that the listener is removed when
- *				// the plugin is destroyed.
- *				this.listenTo( this.editor.data, 'ready', () => {
- *					// Do something when the data is ready.
- *				} );
- *			}
- *		}
- *
- * @interface PluginInterface
- */
-
-/**
- * Creates a new plugin instance. This is the first step of the plugin initialization.
- * See also {@link #init} and {@link #afterInit}.
- *
- * A plugin is always instantiated after its {@link module:core/plugin~PluginInterface.requires dependencies} and the
- * {@link #init} and {@link #afterInit} methods are called in the same order.
- *
- * Usually, you will want to put your plugin's initialization code in the {@link #init} method.
- * The constructor can be understood as "before init" and used in special cases, just like
- * {@link #afterInit} serves the special "after init" scenarios (e.g.the code which depends on other
- * plugins, but which does not {@link module:core/plugin~PluginInterface.requires explicitly require} them).
- *
- * @method #constructor
- * @param {module:core/editor/editor~Editor} editor
- */
-
-/**
- * An array of plugins required by this plugin.
- *
- * To keep the plugin class definition tight it is recommended to define this property as a static getter:
- *
- *		import Image from './image.js';
- *
- *		export default class ImageCaption {
- *			static get requires() {
- *				return [ Image ];
- *			}
- *		}
- *
- * @static
- * @readonly
- * @member {Array.<Function>|undefined} module:core/plugin~PluginInterface.requires
- */
-
-/**
- * An optional name of the plugin. If set, the plugin will be available in
- * {@link module:core/plugincollection~PluginCollection#get} by its
- * name and its constructor. If not, then only by its constructor.
- *
- * The name should reflect the constructor name.
- *
- * To keep the plugin class definition tight it is recommended to define this property as a static getter:
- *
- *		export default class ImageCaption {
- *			static get pluginName() {
- *				return 'ImageCaption';
- *			}
- *		}
- *
- * Note: The native `Function.name` property could not be used to keep the plugin name because
- * it will be mangled during code minification.
- *
- * Naming a plugin is necessary to enable removing it through the
- * {@link module:core/editor/editorconfig~EditorConfig#removePlugins `config.removePlugins`} option.
- *
- * @static
- * @readonly
- * @member {String|undefined} module:core/plugin~PluginInterface.pluginName
- */
-
-/**
- * The second stage (after plugin {@link #constructor}) of plugin initialization.
- * Unlike the plugin constructor this method can be asynchronous.
- *
- * A plugin's `init()` method is called after its {@link module:core/plugin~PluginInterface.requires dependencies} are initialized,
- * so in the same order as constructors of these plugins.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #init
- * @returns {null|Promise}
- */
-
-/**
- * The third (and last) stage of plugin initialization. See also {@link #constructor} and {@link #init}.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #afterInit
- * @returns {null|Promise}
- */
-
-/**
- * Destroys the plugin.
- *
- * **Note:** This method is optional. A plugin instance does not need to have it defined.
- *
- * @method #destroy
- * @returns {null|Promise}
- */
-
-/**
- * Array of loaded plugins.
- *
- * @typedef {Array.<module:core/plugin~PluginInterface>} module:core/plugin~LoadedPlugins
- */
 
 /***/ }),
 
@@ -874,7 +587,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -992,16 +705,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           * For licensing, see LICENSE.md.
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           */
 
 /**
  * @module utils/emittermixin
  */
-
-// To check if component is loaded more than once.
-
 
 exports._getEmitterListenedTo = _getEmitterListenedTo;
 exports._setEmitterId = _setEmitterId;
@@ -1018,8 +728,6 @@ var _uid2 = _interopRequireDefault(_uid);
 var _priorities = __webpack_require__(/*! ./priorities */ "./node_modules/@ckeditor/ckeditor5-utils/src/priorities.js");
 
 var _priorities2 = _interopRequireDefault(_priorities);
-
-__webpack_require__(/*! ./version */ "./node_modules/@ckeditor/ckeditor5-utils/src/version.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1049,25 +757,17 @@ var EmitterMixin = {
   * @inheritDoc
   */
 	once: function once(event, callback, options) {
-		var wasFired = false;
-
 		var onceCallback = function onceCallback(event) {
-			// Ensure the callback is called only once even if the callback itself leads to re-firing the event
-			// (which would call the callback again).
-			if (!wasFired) {
-				wasFired = true;
+			// Go off() at the first call.
+			event.off();
 
-				// Go off() at the first call.
-				event.off();
+			// Go with the original callback.
 
-				// Go with the original callback.
-
-				for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-					args[_key - 1] = arguments[_key];
-				}
-
-				callback.call.apply(callback, [this, event].concat(args));
+			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+				args[_key - 1] = arguments[_key];
 			}
+
+			callback.call.apply(callback, [this, event].concat(args));
 		};
 
 		// Make a similar on() call, simply replacing the callback.
@@ -1307,17 +1007,36 @@ var EmitterMixin = {
 					_this._delegations = new Map();
 				}
 
-				// Originally there was a for..of loop which unfortunately caused an error in Babel that didn't allow
-				// build an application. See: https://github.com/ckeditor/ckeditor5-react/issues/40.
-				events.forEach(function (eventName) {
-					var destinations = _this._delegations.get(eventName);
+				var _iteratorNormalCompletion2 = true;
+				var _didIteratorError2 = false;
+				var _iteratorError2 = undefined;
 
-					if (!destinations) {
-						_this._delegations.set(eventName, new Map([[emitter, nameOrFunction]]));
-					} else {
-						destinations.set(emitter, nameOrFunction);
+				try {
+					for (var _iterator2 = events[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+						var eventName = _step2.value;
+
+						var destinations = _this._delegations.get(eventName);
+
+						if (!destinations) {
+							_this._delegations.set(eventName, new Map([[emitter, nameOrFunction]]));
+						} else {
+							destinations.set(emitter, nameOrFunction);
+						}
 					}
-				});
+				} catch (err) {
+					_didIteratorError2 = true;
+					_iteratorError2 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion2 && _iterator2.return) {
+							_iterator2.return();
+						}
+					} finally {
+						if (_didIteratorError2) {
+							throw _iteratorError2;
+						}
+					}
+				}
 			}
 		};
 	},
@@ -1606,29 +1325,29 @@ function createEventNamespace(source, eventName) {
 		// event we wanted to register.
 
 		// Copy that event's callbacks to newly registered events.
-		var _iteratorNormalCompletion2 = true;
-		var _didIteratorError2 = false;
-		var _iteratorError2 = undefined;
+		var _iteratorNormalCompletion3 = true;
+		var _didIteratorError3 = false;
+		var _iteratorError3 = undefined;
 
 		try {
-			for (var _iterator2 = newEventNodes[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-				var node = _step2.value;
+			for (var _iterator3 = newEventNodes[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+				var node = _step3.value;
 
 				node.callbacks = events[name].callbacks.slice();
 			}
 
 			// Add last newly created event to the already registered event.
 		} catch (err) {
-			_didIteratorError2 = true;
-			_iteratorError2 = err;
+			_didIteratorError3 = true;
+			_iteratorError3 = err;
 		} finally {
 			try {
-				if (!_iteratorNormalCompletion2 && _iterator2.return) {
-					_iterator2.return();
+				if (!_iteratorNormalCompletion3 && _iterator3.return) {
+					_iterator3.return();
 				}
 			} finally {
-				if (_didIteratorError2) {
-					throw _iteratorError2;
+				if (_didIteratorError3) {
+					throw _iteratorError3;
 				}
 			}
 		}
@@ -1686,15 +1405,15 @@ function getCallbacksForEvent(source, eventName) {
 // * @param {utils.EventInfo} eventInfo The original event info object.
 // * @param {Array.<*>} fireArgs Arguments the original event was fired with.
 function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
-	var _iteratorNormalCompletion3 = true;
-	var _didIteratorError3 = false;
-	var _iteratorError3 = undefined;
+	var _iteratorNormalCompletion4 = true;
+	var _didIteratorError4 = false;
+	var _iteratorError4 = undefined;
 
 	try {
-		for (var _iterator3 = destinations[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-			var _step3$value = _slicedToArray(_step3.value, 2),
-			    emitter = _step3$value[0],
-			    name = _step3$value[1];
+		for (var _iterator4 = destinations[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+			var _step4$value = _slicedToArray(_step4.value, 2),
+			    emitter = _step4$value[0],
+			    name = _step4$value[1];
 
 			if (!name) {
 				name = eventInfo.name;
@@ -1709,16 +1428,16 @@ function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
 			emitter.fire.apply(emitter, [delegatedInfo].concat(_toConsumableArray(fireArgs)));
 		}
 	} catch (err) {
-		_didIteratorError3 = true;
-		_iteratorError3 = err;
+		_didIteratorError4 = true;
+		_iteratorError4 = err;
 	} finally {
 		try {
-			if (!_iteratorNormalCompletion3 && _iterator3.return) {
-				_iterator3.return();
+			if (!_iteratorNormalCompletion4 && _iterator4.return) {
+				_iterator4.return();
 			}
 		} finally {
-			if (_didIteratorError3) {
-				throw _iteratorError3;
+			if (_didIteratorError4) {
+				throw _iteratorError4;
 			}
 		}
 	}
@@ -1732,13 +1451,13 @@ function fireDelegatedEvents(destinations, eventInfo, fireArgs) {
 function removeCallback(emitter, event, callback) {
 	var lists = getCallbacksListsForNamespace(emitter, event);
 
-	var _iteratorNormalCompletion4 = true;
-	var _didIteratorError4 = false;
-	var _iteratorError4 = undefined;
+	var _iteratorNormalCompletion5 = true;
+	var _didIteratorError5 = false;
+	var _iteratorError5 = undefined;
 
 	try {
-		for (var _iterator4 = lists[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
-			var callbacks = _step4.value;
+		for (var _iterator5 = lists[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+			var callbacks = _step5.value;
 
 			for (var i = 0; i < callbacks.length; i++) {
 				if (callbacks[i].callback == callback) {
@@ -1749,16 +1468,16 @@ function removeCallback(emitter, event, callback) {
 			}
 		}
 	} catch (err) {
-		_didIteratorError4 = true;
-		_iteratorError4 = err;
+		_didIteratorError5 = true;
+		_iteratorError5 = err;
 	} finally {
 		try {
-			if (!_iteratorNormalCompletion4 && _iterator4.return) {
-				_iterator4.return();
+			if (!_iteratorNormalCompletion5 && _iterator5.return) {
+				_iterator5.return();
 			}
 		} finally {
-			if (_didIteratorError4) {
-				throw _iteratorError4;
+			if (_didIteratorError5) {
+				throw _iteratorError5;
 			}
 		}
 	}
@@ -1802,7 +1521,7 @@ var _spy2 = _interopRequireDefault(_spy);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
-                                                                                                                                                           * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                           * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
                                                                                                                                                            * For licensing, see LICENSE.md.
                                                                                                                                                            */
 
@@ -1884,98 +1603,6 @@ exports.default = EventInfo;
 
 /***/ }),
 
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/log.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/log.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _ckeditorerror = __webpack_require__(/*! ./ckeditorerror */ "./node_modules/@ckeditor/ckeditor5-utils/src/ckeditorerror.js");
-
-/**
- * The logging module.
- *
- * This object features two functions that should be used across CKEditor code base to log errors and warnings.
- * Despite being an overridable interface for native `console.*` this module serves also the goal to limit the
- * code size of a minified CKEditor package. During minification process the messages will be shortened and
- * links to their documentation will be logged to the console.
- *
- * All errors and warning should be documented in the following way:
- *
- *		/**
- *		 * Error thrown when a plugin cannot be loaded due to JavaScript errors, lack of plugins with a given name, etc.
- *		 *
- *		 * @error plugin-load
- *		 * @param pluginName The name of the plugin that could not be loaded.
- *		 * @param moduleName The name of the module which tried to load this plugin.
- *		 * /
- *		log.error( 'plugin-load: It was not possible to load the "{$pluginName}" plugin in module "{$moduleName}', {
- *			pluginName: 'foo',
- *			moduleName: 'bar'
- *		} );
- *
- * ### Warning vs Error vs Throw
- *
- * * Whenever a potentially incorrect situation occurs, which does not directly lead to an incorrect behavior,
- * log a warning.
- * * Whenever an incorrect situation occurs, but the app may continue working (although perhaps incorrectly),
- * log an error.
- * * Whenever it's really bad and it does not make sense to continue working, throw a {@link module:utils/ckeditorerror~CKEditorError}.
- *
- * @namespace
- */
-var log = {
-  /**
-   * Logs an error to the console.
-   *
-   * Read more about error logging in the {@link module:utils/log} module.
-   *
-   * @param {String} message The error message in an `error-name: Error message.` format.
-   * During the minification process the "Error message" part will be removed to limit the code size
-   * and a link to this error documentation will be logged to the console.
-   * @param {Object} [data] Additional data describing the error.
-   */
-  error: function error(message, data) {
-    console.error((0, _ckeditorerror.attachLinkToDocumentation)(message), data);
-  },
-
-
-  /**
-   * Logs a warning to the console.
-   *
-   * Read more about error logging in the {@link module:utils/log} module.
-   *
-   * @param {String} message The warning message in a `warning-name: Warning message.` format.
-   * During the minification process the "Warning message" part will be removed to limit the code size
-   * and a link to this error documentation will be logged to the console.
-   * @param {Object} [data] Additional data describing the warning.
-   */
-  warn: function warn(message, data) {
-    console.warn((0, _ckeditorerror.attachLinkToDocumentation)(message), data);
-  }
-}; /**
-    * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-    * For licensing, see LICENSE.md.
-    */
-
-/* global console */
-
-/**
- * @module utils/log
- */
-
-exports.default = log;
-
-/***/ }),
-
 /***/ "./node_modules/@ckeditor/ckeditor5-utils/src/mix.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@ckeditor/ckeditor5-utils/src/mix.js ***!
@@ -1991,7 +1618,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = mix;
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -2072,7 +1699,7 @@ var _lodashEs = __webpack_require__(/*! lodash-es */ "./node_modules/lodash-es/l
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } } /**
-                                                                                                                                                                                                     * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+                                                                                                                                                                                                     * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
                                                                                                                                                                                                      * For licensing, see LICENSE.md.
                                                                                                                                                                                                      */
 
@@ -2984,7 +2611,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -3045,7 +2672,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -3087,7 +2714,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = uid;
 /**
- * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
  */
 
@@ -3110,169 +2737,6 @@ function uid() {
 
   return uuid;
 }
-
-/***/ }),
-
-/***/ "./node_modules/@ckeditor/ckeditor5-utils/src/version.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@ckeditor/ckeditor5-utils/src/version.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /**
-                                                                                                                                                                                                                                                                               * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                               * For licensing, see LICENSE.md.
-                                                                                                                                                                                                                                                                               */
-
-/**
- * @module utils/version
- */
-
-/* globals window, global */
-
-var _log = __webpack_require__(/*! ./log */ "./node_modules/@ckeditor/ckeditor5-utils/src/log.js");
-
-var _log2 = _interopRequireDefault(_log);
-
-var _package = __webpack_require__(/*! ckeditor5/package.json */ "./node_modules/ckeditor5/package.json");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var windowOrGlobal = (typeof window === 'undefined' ? 'undefined' : _typeof(window)) === 'object' ? window : global;
-
-if (windowOrGlobal.CKEDITOR_VERSION) {
-	/**
-  * This error is thrown when due to a mistake in how CKEditor 5 was installed or initialized, some
-  * of its modules were duplicated (evaluated and executed twice). Module duplication leads to inevitable runtime
-  * errors.
-  *
-  * There are many situations in which some modules can be loaded twice. In the worst case scenario,
-  * you may need to check your project for each of those issues and fix them all.
-  *
-  * # Trying to add a plugin to an existing build
-  *
-  * If you import an existing CKEditor 5 build and a plugin like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  *		import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
-  *
-  * Then your project loads some CKEditor 5 packages twice. How does it happen?
-  *
-  * The build package contains a file which is already compiled with webpack,
-  * meaning that it contains all the necessary code from e.g. `@ckeditor/ckeditor5-engine` and `@ckeditor/ckeditor5-utils`.
-  *
-  * However, the `Highlight` plugin imports some of the modules from those packages too. If you ask webpack to
-  * build such a project, you will end up with those modules being included (and run) twice – first, because they are
-  * included inside the build package, and second because they are required by the `Highlight` plugin.
-  *
-  * Therefore, **you must never add plugins to an existing build** unless your plugin has no dependencies.
-  *
-  * Adding plugins to a build is done by taking the source version of this build (so, before it was built with webpack)
-  * and adding plugins there. In this situation, webpack will know that it only needs to load each plugins once.
-  *
-  * Read more in the {@glink builds/guides/integration/installing-plugins "Installing plugins"} guide.
-  *
-  * # Confused an editor build with an editor implementation
-  *
-  * This scenario is very similar to the previous one, but has a different origin.
-  *
-  * Let's assume, that you wanted to use CKEditor 5 from source, as explained in the
-  * {@glink builds/guides/integration/advanced-setup#scenario-2-building-from-source "Building from source"} section
-  * or in the {@glink framework/guides/quick-start "Quick start"} guide of the CKEditor 5 Framework.
-  *
-  * The correct way to do so is to import an editor and plugins and run them together like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-  *		import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-  *		import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-  *		import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-  *		import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-  *
-  *		ClassicEditor
-  *			.create( document.querySelector( '#editor' ), {
-  *				plugins: [ Essentials, Paragraph, Bold, Italic ],
-  *				toolbar: [ 'bold', 'italic' ]
-  *			} )
-  *			.then( editor => {
-  *				console.log( 'Editor was initialized', editor );
-  *			} )
-  *			.catch( error => {
-  *				console.error( error.stack );
-  *			} );
-  *
-  * However, you might have mistakenly import a build instead of a source `ClassicEditor`. In which case
-  * your imports will look like this:
-  *
-  *		import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-  *		import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-  *		import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-  *		import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-  *		import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-  *
-  * This creates the same situation as in the previous section because you use a build together with source plugins.
-  *
-  * Remember: `@ckeditor/ckeditor5-build-*` packages contain editor builds and `@ckeditor/ckeditor5-editor-*` source editors.
-  *
-  * # Loading two+ builds on one page
-  *
-  * If you use CKEditor 5 builds, you might have loaded two (or more) `ckeditor.js` files in one web page
-  * – check your web page for duplicated `<script>` elements or make sure your page builder/bundler includes CKEditor only once.
-  *
-  * If you want to use two different types of editors at once, see the
-  * {@glink builds/guides/integration/advanced-setup#scenario-3-using-two-different-editors "Using two different editors"}
-  * section.
-  *
-  * # Using outdated packages
-  *
-  * Building CKEditor 5 from source require using multiple npm packages. Those packages have their dependencies
-  * to other packages. If you use the latest version of let's say `@ckeditor/ckeditor5-editor-classic` with
-  * and outdated version of `@ckeditor/ckeditor5-image`, npm or yarn will need to install two different versions of
-  * `@ckeditor/ckeditor5-core` because `@ckeditor/ckeditor5-editor-classic` and `@ckeditor/ckeditor5-image` may require
-  * different versions of the core package.
-  *
-  * The solution to this issue is to update all packages to their latest version. We recommend
-  * using tools like [`node-check-updates`](https://www.npmjs.com/package/npm-check-updates) which simplify this process.
-  *
-  * # Conflicting version of dependencies
-  *
-  * This is a special case of the previous scenario. If you use CKEditor 5 with some 3rd party plugins,
-  * it may happen that even if you use the latest versions of the official packages and the latest version of
-  * those 3rd party packages, there will be a conflict between some of their dependencies.
-  *
-  * Such a problem can be resolved by either downgrading CKEditor 5 packages (which we do not recommend) or
-  * asking the author of the 3rd party package to upgrade its depdendencies (or forking his project and doing this yourself).
-  *
-  * # Packages were duplicated in `node_modules`
-  *
-  * In some situations, especially when calling `npm install` multiple times, it may happen
-  * than npm will not correctly "deduplicate" packages.
-  *
-  * Normally, npm deduplicates all packages so e.g. `@ckeditor/ckeditor5-core` is installed only once in `node_modules/`.
-  * However, it was known to fail to do so from time to time.
-  *
-  * We recommend checking if any of the below steps helps:
-  *
-  * * `rm -rf node_modules && npm install` to make sure you have a clean `node_modules/` – this step
-  * is known to help in majority of cases,
-  * * if you use `yarn.lock` or `package-lock.json`, remove it before `npm install`,
-  * * check whether all CKEditor 5 packages are up to date and reinstall them
-  * if you changed anything (`rm -rf node_modules && npm install`).
-  *
-  * If all packages are correct and compatible with each other the above steps are known to help. If not, you may
-  * try to check with `npm ls` how many times packages like `@ckeditor/ckeditor5-core`, `@ckeditor/ckeditor5-engine` and
-  *`@ckeditor/ckeditor5-utils` are installed. If more than once, verify which package causes that.
-  *
-  * @error ckeditor-duplicated-modules
-  */
-	_log2.default.error('ckeditor-duplicated-modules: Some CKEditor 5 modules are duplicated.');
-} else {
-	windowOrGlobal.CKEDITOR_VERSION = _package.version;
-}
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -3369,15 +2833,16 @@ exports["default"] = function (manifests) {
 
 
 exports.__esModule = true;
+var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 function readFromConsumerApi(key) {
     return function () {
+        var _a;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        var _a;
         if (window['@Neos:HostPluginAPI'] && window['@Neos:HostPluginAPI']["@" + key]) {
-            return (_a = window['@Neos:HostPluginAPI'])["@" + key].apply(_a, args);
+            return (_a = window['@Neos:HostPluginAPI'])["@" + key].apply(_a, tslib_1.__spread(args));
         }
         throw new Error("You are trying to read from a consumer api that hasn't been initialized yet!");
     };
@@ -3585,6 +3050,26 @@ module.exports = (0, _readFromConsumerApi2.default)('NeosProjectPackages')().Rea
 
 /***/ }),
 
+/***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _readFromConsumerApi = __webpack_require__(/*! ../../../../dist/readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js");
+
+var _readFromConsumerApi2 = _interopRequireDefault(_readFromConsumerApi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = (0, _readFromConsumerApi2.default)('vendor')().CkEditor5;
+
+/***/ }),
+
 /***/ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/plow-js/index.js":
 /*!********************************************************************************************!*\
   !*** ./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/plow-js/index.js ***!
@@ -3636,13 +3121,9 @@ module.exports = (0, _readFromConsumerApi2.default)('vendor')().React;
 
 
 exports.__esModule = true;
-var isOriginal = function isOriginal(value) {
-    return value && value.indexOf && value.indexOf('_original_') === 0;
-};
-var getOriginal = function getOriginal(value) {
-    return value && value.substring && Number(value.substring(10));
-};
+var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 var positionalArraySorter = function positionalArraySorter(subject, position, idKey) {
+    var e_1, _a, e_2, _b, e_3, _c, e_4, _d, e_5, _e, e_6, _f, e_7, _g;
     if (position === void 0) {
         position = 'position';
     }
@@ -3652,145 +3133,243 @@ var positionalArraySorter = function positionalArraySorter(subject, position, id
     var positionAccessor = typeof position === 'string' ? function (value) {
         return value[position];
     } : position;
-    var positionsArray = subject.map(function (value, index) {
-        var position = positionAccessor(value);
-        return position === undefined ? "_original_" + index : position;
-    });
-    var validKeys = subject.map(function (value) {
-        return idKey in value && value[idKey];
-    }).filter(function (i) {
-        return i;
-    }).map(function (i) {
-        return String(i);
-    });
-    var middleKeys = [];
-    var startKeys = [];
-    var endKeys = [];
-    var beforeKeys = [];
-    var afterKeys = [];
-    var corruptKeys = [];
-    positionsArray.forEach(function (value, index) {
-        if (isNaN(value) === false || isOriginal(value)) {
-            middleKeys.push([index, value]);
-        } else if (typeof value === 'string') {
-            if (value.includes('start')) {
-                var weightMatch = value.match(/start\s+(\d+)/);
-                var weight = weightMatch && weightMatch[1] || 0;
-                startKeys.push([index, Number(weight)]);
-            } else if (value.includes('end')) {
-                var weightMatch = value.match(/end\s+(\d+)/);
-                var weight = weightMatch && weightMatch[1] || 0;
-                endKeys.push([index, Number(weight)]);
-            } else if (value.includes('before')) {
-                var keyMatch = value.match(/before\s+(\S+)/);
-                var key = keyMatch && keyMatch[1];
-                if (key && validKeys.includes(key)) {
-                    beforeKeys.push([index, key]);
-                } else {
-                    corruptKeys.push(index);
-                    console.warn('The following position value is corrupt: %s', value);
-                }
-            } else if (value.includes('after')) {
-                var keyMatch = value.match(/after\s+(\S+)/);
-                var key = keyMatch && keyMatch[1];
-                if (key && validKeys.includes(key)) {
-                    afterKeys.push([index, key]);
-                } else {
-                    corruptKeys.push(index);
-                    console.warn('The following position value is corrupt: %s', value);
-                }
+    var indexMapping = {};
+    var middleKeys = {};
+    var startKeys = {};
+    var endKeys = {};
+    var beforeKeys = {};
+    var afterKeys = {};
+    subject.forEach(function (item, index) {
+        var key = item[idKey] ? item[idKey] : String(index);
+        indexMapping[key] = index;
+        var positionValue = positionAccessor(item);
+        var position = String(positionValue ? positionValue : index);
+        var invalid = false;
+        if (position.startsWith('start')) {
+            var weightMatch = position.match(/start\s+(\d+)/);
+            var weight = weightMatch && weightMatch[1] ? Number(weightMatch[1]) : 0;
+            if (!startKeys[weight]) {
+                startKeys[weight] = [];
+            }
+            startKeys[weight].push(key);
+        } else if (position.startsWith('end')) {
+            var weightMatch = position.match(/end\s+(\d+)/);
+            var weight = weightMatch && weightMatch[1] ? Number(weightMatch[1]) : 0;
+            if (!endKeys[weight]) {
+                endKeys[weight] = [];
+            }
+            endKeys[weight].push(key);
+        } else if (position.startsWith('before')) {
+            var match = position.match(/before\s+(\S+)(\s+(\d+))?/);
+            if (!match) {
+                invalid = true;
             } else {
-                corruptKeys.push(index);
-                console.warn('The following position value is corrupt: %s', value);
+                var reference = match[1];
+                var weight = match[3] ? Number(match[3]) : 0;
+                if (!beforeKeys[reference]) {
+                    beforeKeys[reference] = {};
+                }
+                if (!beforeKeys[reference][weight]) {
+                    beforeKeys[reference][weight] = [];
+                }
+                beforeKeys[reference][weight].push(key);
+            }
+        } else if (position.startsWith('after')) {
+            var match = position.match(/after\s+(\S+)(\s+(\d+))?/);
+            if (!match) {
+                invalid = true;
+            } else {
+                var reference = match[1];
+                var weight = match[3] ? Number(match[3]) : 0;
+                if (!afterKeys[reference]) {
+                    afterKeys[reference] = {};
+                }
+                if (!afterKeys[reference][weight]) {
+                    afterKeys[reference][weight] = [];
+                }
+                afterKeys[reference][weight].push(key);
             }
         } else {
-            corruptKeys.push(index);
-            console.warn('The following position value is corrupt: %s', value);
+            invalid = true;
+        }
+        if (invalid) {
+            var numberPosition = parseFloat(position);
+            if (isNaN(numberPosition) || !isFinite(numberPosition)) {
+                numberPosition = index;
+            }
+            if (!middleKeys[numberPosition]) {
+                middleKeys[numberPosition] = [];
+            }
+            middleKeys[numberPosition].push(key);
         }
     });
-    var sortByWeightFunc = function sortByWeightFunc(a, b) {
-        return a[1] - b[1];
+    var resultStart = [];
+    var resultMiddle = [];
+    var resultEnd = [];
+    var processedKeys = [];
+    var sortedWeights = function sortedWeights(dict, asc) {
+        var weights = Object.keys(dict).map(function (x) {
+            return Number(x);
+        }).sort(function (a, b) {
+            return a - b;
+        });
+        return asc ? weights : weights.reverse();
     };
-    var sortWithRetainingOriginalPos = function sortWithRetainingOriginalPos(_a, _b) {
-        var a = _a[1];
-        var b = _b[1];
-        if (isOriginal(a) && isOriginal(b)) {
-            return getOriginal(a) - getOriginal(b);
-        }
-        if (typeof a === 'string' && a.includes && a.includes('_original_')) {
-            return 1;
-        }
-        if (typeof b === 'string' && b.includes && b.includes('_original_')) {
-            return -1;
-        }
-        return Number(a) - Number(b);
-    };
-    var sortedIndexes = startKeys.sort(sortByWeightFunc).map(function (pair) {
-        return pair[0];
-    }).concat(middleKeys.sort(sortWithRetainingOriginalPos).map(function (pair) {
-        return pair[0];
-    }), corruptKeys, endKeys.sort(sortByWeightFunc).map(function (pair) {
-        return pair[0];
-    }));
-    var _loop_1 = function _loop_1() {
-        var alteredNumber = 0;
-        beforeKeys.forEach(function (pair, index) {
-            var targetIndexInSubject = subject.findIndex(function (item) {
-                return String(item[idKey]) === pair[1];
-            });
-            var indexInIndexes = sortedIndexes.findIndex(function (item) {
-                return item === targetIndexInSubject;
-            });
-            if (indexInIndexes !== -1) {
-                sortedIndexes.splice(indexInIndexes, 0, pair[0]);
-                beforeKeys.splice(index, 1);
-                alteredNumber++;
+    var addToResults = function addToResults(keys, result) {
+        keys.forEach(function (key) {
+            var e_8, _a, e_9, _b;
+            if (processedKeys.indexOf(key) >= 0) {
+                return;
+            }
+            processedKeys.push(key);
+            if (beforeKeys[key]) {
+                var beforeWeights = sortedWeights(beforeKeys[key], true);
+                try {
+                    for (var beforeWeights_1 = tslib_1.__values(beforeWeights), beforeWeights_1_1 = beforeWeights_1.next(); !beforeWeights_1_1.done; beforeWeights_1_1 = beforeWeights_1.next()) {
+                        var i = beforeWeights_1_1.value;
+                        addToResults(beforeKeys[key][i], result);
+                    }
+                } catch (e_8_1) {
+                    e_8 = { error: e_8_1 };
+                } finally {
+                    try {
+                        if (beforeWeights_1_1 && !beforeWeights_1_1.done && (_a = beforeWeights_1["return"])) _a.call(beforeWeights_1);
+                    } finally {
+                        if (e_8) throw e_8.error;
+                    }
+                }
+            }
+            result.push(key);
+            if (afterKeys[key]) {
+                var afterWeights = sortedWeights(afterKeys[key], false);
+                try {
+                    for (var afterWeights_1 = tslib_1.__values(afterWeights), afterWeights_1_1 = afterWeights_1.next(); !afterWeights_1_1.done; afterWeights_1_1 = afterWeights_1.next()) {
+                        var i = afterWeights_1_1.value;
+                        addToResults(afterKeys[key][i], result);
+                    }
+                } catch (e_9_1) {
+                    e_9 = { error: e_9_1 };
+                } finally {
+                    try {
+                        if (afterWeights_1_1 && !afterWeights_1_1.done && (_b = afterWeights_1["return"])) _b.call(afterWeights_1);
+                    } finally {
+                        if (e_9) throw e_9.error;
+                    }
+                }
             }
         });
-        afterKeys.forEach(function (pair, index) {
-            var targetIndexInSubject = subject.findIndex(function (item) {
-                return String(item[idKey]) === pair[1];
-            });
-            var indexInIndexes = sortedIndexes.findIndex(function (item) {
-                return item === targetIndexInSubject;
-            });
-            if (indexInIndexes !== -1) {
-                sortedIndexes.splice(indexInIndexes + 1, 0, pair[0]);
-                afterKeys.splice(index, 1);
-                alteredNumber++;
-            }
-        });
-        if (alteredNumber === 0) {
-            console.warn('Circular reference detected. Append broken entries at the end.');
-            sortedIndexes = sortedIndexes.concat(beforeKeys.map(function (pair) {
-                return pair[0];
-            }), afterKeys.map(function (pair) {
-                return pair[0];
-            }));
-            return "break";
-        }
     };
-    while (beforeKeys.length > 0 || afterKeys.length > 0) {
-        var state_1 = _loop_1();
-        if (state_1 === "break") break;
+    try {
+        for (var _h = tslib_1.__values(sortedWeights(startKeys, false)), _j = _h.next(); !_j.done; _j = _h.next()) {
+            var i = _j.value;
+            addToResults(startKeys[i], resultStart);
+        }
+    } catch (e_1_1) {
+        e_1 = { error: e_1_1 };
+    } finally {
+        try {
+            if (_j && !_j.done && (_a = _h["return"])) _a.call(_h);
+        } finally {
+            if (e_1) throw e_1.error;
+        }
     }
-    return sortedIndexes.map(function (index) {
-        return subject[index];
+    try {
+        for (var _k = tslib_1.__values(sortedWeights(middleKeys, true)), _l = _k.next(); !_l.done; _l = _k.next()) {
+            var i = _l.value;
+            addToResults(middleKeys[i], resultMiddle);
+        }
+    } catch (e_2_1) {
+        e_2 = { error: e_2_1 };
+    } finally {
+        try {
+            if (_l && !_l.done && (_b = _k["return"])) _b.call(_k);
+        } finally {
+            if (e_2) throw e_2.error;
+        }
+    }
+    try {
+        for (var _m = tslib_1.__values(sortedWeights(endKeys, true)), _o = _m.next(); !_o.done; _o = _m.next()) {
+            var i = _o.value;
+            addToResults(endKeys[i], resultEnd);
+        }
+    } catch (e_3_1) {
+        e_3 = { error: e_3_1 };
+    } finally {
+        try {
+            if (_o && !_o.done && (_c = _m["return"])) _c.call(_m);
+        } finally {
+            if (e_3) throw e_3.error;
+        }
+    }
+    try {
+        for (var _p = tslib_1.__values(Object.keys(beforeKeys)), _q = _p.next(); !_q.done; _q = _p.next()) {
+            var key = _q.value;
+            if (processedKeys.indexOf(key) >= 0) {
+                continue;
+            }
+            try {
+                for (var _r = (e_5 = void 0, tslib_1.__values(sortedWeights(beforeKeys[key], false))), _s = _r.next(); !_s.done; _s = _r.next()) {
+                    var i = _s.value;
+                    addToResults(beforeKeys[key][i], resultStart);
+                }
+            } catch (e_5_1) {
+                e_5 = { error: e_5_1 };
+            } finally {
+                try {
+                    if (_s && !_s.done && (_e = _r["return"])) _e.call(_r);
+                } finally {
+                    if (e_5) throw e_5.error;
+                }
+            }
+        }
+    } catch (e_4_1) {
+        e_4 = { error: e_4_1 };
+    } finally {
+        try {
+            if (_q && !_q.done && (_d = _p["return"])) _d.call(_p);
+        } finally {
+            if (e_4) throw e_4.error;
+        }
+    }
+    try {
+        for (var _t = tslib_1.__values(Object.keys(afterKeys)), _u = _t.next(); !_u.done; _u = _t.next()) {
+            var key = _u.value;
+            if (processedKeys.indexOf(key) >= 0) {
+                continue;
+            }
+            try {
+                for (var _v = (e_7 = void 0, tslib_1.__values(sortedWeights(afterKeys[key], false))), _w = _v.next(); !_w.done; _w = _v.next()) {
+                    var i = _w.value;
+                    addToResults(afterKeys[key][i], resultMiddle);
+                }
+            } catch (e_7_1) {
+                e_7 = { error: e_7_1 };
+            } finally {
+                try {
+                    if (_w && !_w.done && (_g = _v["return"])) _g.call(_v);
+                } finally {
+                    if (e_7) throw e_7.error;
+                }
+            }
+        }
+    } catch (e_6_1) {
+        e_6 = { error: e_6_1 };
+    } finally {
+        try {
+            if (_u && !_u.done && (_f = _t["return"])) _f.call(_t);
+        } finally {
+            if (e_6) throw e_6.error;
+        }
+    }
+    var sortedKeys = tslib_1.__spread(resultStart, resultMiddle, resultEnd);
+    return sortedKeys.map(function (key) {
+        return indexMapping[key];
+    }).map(function (i) {
+        return subject[i];
     });
 };
 exports["default"] = positionalArraySorter;
 //# sourceMappingURL=positionalArraySorter.js.map
-
-/***/ }),
-
-/***/ "./node_modules/ckeditor5/package.json":
-/*!*********************************************!*\
-  !*** ./node_modules/ckeditor5/package.json ***!
-  \*********************************************/
-/*! exports provided: name, version, description, keywords, engines, author, license, homepage, bugs, repository, default */
-/***/ (function(module) {
-
-module.exports = {"name":"ckeditor5","version":"12.1.0","description":"A set of ready-to-use rich text editors created with a powerful framework. Made with real-time collaborative editing in mind.","keywords":["ckeditor","ckeditor5","ckeditor 5","wysiwyg","rich text","editor","html","contentEditable","editing","operational transformation","ot","collaboration","collaborative","real-time","framework"],"engines":{"node":">=8.0.0","npm":">=5.7.1"},"author":"CKSource (http://cksource.com/)","license":"GPL-2.0-or-later","homepage":"https://ckeditor.com/ckeditor-5","bugs":"https://github.com/ckeditor/ckeditor5/issues","repository":{"type":"git","url":"https://github.com/ckeditor/ckeditor5.git"}};
 
 /***/ }),
 
@@ -5312,6 +4891,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
 /* harmony import */ var _isSet_js__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./isSet.js */ "./node_modules/lodash-es/isSet.js");
 /* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./keys.js */ "./node_modules/lodash-es/keys.js");
+/* harmony import */ var _keysIn_js__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./keysIn.js */ "./node_modules/lodash-es/keysIn.js");
+
 
 
 
@@ -5454,21 +5035,15 @@ function baseClone(value, bitmask, customizer, key, object, stack) {
     value.forEach(function(subValue) {
       result.add(baseClone(subValue, bitmask, customizer, subValue, value, stack));
     });
-
-    return result;
-  }
-
-  if (Object(_isMap_js__WEBPACK_IMPORTED_MODULE_17__["default"])(value)) {
+  } else if (Object(_isMap_js__WEBPACK_IMPORTED_MODULE_17__["default"])(value)) {
     value.forEach(function(subValue, key) {
       result.set(key, baseClone(subValue, bitmask, customizer, key, value, stack));
     });
-
-    return result;
   }
 
   var keysFunc = isFull
     ? (isFlat ? _getAllKeysIn_js__WEBPACK_IMPORTED_MODULE_10__["default"] : _getAllKeys_js__WEBPACK_IMPORTED_MODULE_9__["default"])
-    : (isFlat ? keysIn : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
+    : (isFlat ? _keysIn_js__WEBPACK_IMPORTED_MODULE_21__["default"] : _keys_js__WEBPACK_IMPORTED_MODULE_20__["default"]);
 
   var props = isArr ? undefined : keysFunc(value);
   Object(_arrayEach_js__WEBPACK_IMPORTED_MODULE_1__["default"])(props || value, function(subValue, key) {
@@ -7683,8 +7258,8 @@ function baseMerge(object, source, srcIndex, customizer, stack) {
     return;
   }
   Object(_baseFor_js__WEBPACK_IMPORTED_MODULE_2__["default"])(source, function(srcValue, key) {
+    stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
     if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_4__["default"])(srcValue)) {
-      stack || (stack = new _Stack_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
       Object(_baseMergeDeep_js__WEBPACK_IMPORTED_MODULE_3__["default"])(object, source, key, srcIndex, baseMerge, customizer, stack);
     }
     else {
@@ -7871,12 +7446,16 @@ function baseNth(array, n) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _arrayMap_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_arrayMap.js */ "./node_modules/lodash-es/_arrayMap.js");
-/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseIteratee.js */ "./node_modules/lodash-es/_baseIteratee.js");
-/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseMap.js */ "./node_modules/lodash-es/_baseMap.js");
-/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseSortBy.js */ "./node_modules/lodash-es/_baseSortBy.js");
-/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseUnary.js */ "./node_modules/lodash-es/_baseUnary.js");
-/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_compareMultiple.js */ "./node_modules/lodash-es/_compareMultiple.js");
-/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./identity.js */ "./node_modules/lodash-es/identity.js");
+/* harmony import */ var _baseGet_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseGet.js */ "./node_modules/lodash-es/_baseGet.js");
+/* harmony import */ var _baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_baseIteratee.js */ "./node_modules/lodash-es/_baseIteratee.js");
+/* harmony import */ var _baseMap_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_baseMap.js */ "./node_modules/lodash-es/_baseMap.js");
+/* harmony import */ var _baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_baseSortBy.js */ "./node_modules/lodash-es/_baseSortBy.js");
+/* harmony import */ var _baseUnary_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_baseUnary.js */ "./node_modules/lodash-es/_baseUnary.js");
+/* harmony import */ var _compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./_compareMultiple.js */ "./node_modules/lodash-es/_compareMultiple.js");
+/* harmony import */ var _identity_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./identity.js */ "./node_modules/lodash-es/identity.js");
+/* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./isArray.js */ "./node_modules/lodash-es/isArray.js");
+
+
 
 
 
@@ -7895,18 +7474,31 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {Array} Returns the new sorted array.
  */
 function baseOrderBy(collection, iteratees, orders) {
-  var index = -1;
-  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees.length ? iteratees : [_identity_js__WEBPACK_IMPORTED_MODULE_6__["default"]], Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_4__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_1__["default"]));
+  if (iteratees.length) {
+    iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
+      if (Object(_isArray_js__WEBPACK_IMPORTED_MODULE_8__["default"])(iteratee)) {
+        return function(value) {
+          return Object(_baseGet_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value, iteratee.length === 1 ? iteratee[0] : iteratee);
+        }
+      }
+      return iteratee;
+    });
+  } else {
+    iteratees = [_identity_js__WEBPACK_IMPORTED_MODULE_7__["default"]];
+  }
 
-  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_2__["default"])(collection, function(value, key, collection) {
+  var index = -1;
+  iteratees = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, Object(_baseUnary_js__WEBPACK_IMPORTED_MODULE_5__["default"])(_baseIteratee_js__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+  var result = Object(_baseMap_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection, function(value, key, collection) {
     var criteria = Object(_arrayMap_js__WEBPACK_IMPORTED_MODULE_0__["default"])(iteratees, function(iteratee) {
       return iteratee(value);
     });
     return { 'criteria': criteria, 'index': ++index, 'value': value };
   });
 
-  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_3__["default"])(result, function(object, other) {
-    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_5__["default"])(object, other, orders);
+  return Object(_baseSortBy_js__WEBPACK_IMPORTED_MODULE_4__["default"])(result, function(object, other) {
+    return Object(_compareMultiple_js__WEBPACK_IMPORTED_MODULE_6__["default"])(object, other, orders);
   });
 }
 
@@ -8498,6 +8090,10 @@ function baseSet(object, path, value, customizer) {
     var key = Object(_toKey_js__WEBPACK_IMPORTED_MODULE_4__["default"])(path[index]),
         newValue = value;
 
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+      return object;
+    }
+
     if (index != lastIndex) {
       var objValue = nested[key];
       newValue = customizer ? customizer(objValue, key, nested) : undefined;
@@ -8824,11 +8420,14 @@ var nativeFloor = Math.floor,
  *  into `array`.
  */
 function baseSortedIndexBy(array, value, iteratee, retHighest) {
-  value = iteratee(value);
-
   var low = 0,
-      high = array == null ? 0 : array.length,
-      valIsNaN = value !== value,
+      high = array == null ? 0 : array.length;
+  if (high === 0) {
+    return 0;
+  }
+
+  value = iteratee(value);
+  var valIsNaN = value !== value,
       valIsNull = value === null,
       valIsSymbol = Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value),
       valIsUndefined = value === undefined;
@@ -9102,6 +8701,39 @@ function baseToString(value) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (baseToString);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_baseTrim.js":
+/*!*********************************************!*\
+  !*** ./node_modules/lodash-es/_baseTrim.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
+
+
+/** Used to match leading whitespace. */
+var reTrimStart = /^\s+/;
+
+/**
+ * The base implementation of `_.trim`.
+ *
+ * @private
+ * @param {string} string The string to trim.
+ * @returns {string} Returns the trimmed string.
+ */
+function baseTrim(string) {
+  return string
+    ? string.slice(0, Object(_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_0__["default"])(string) + 1).replace(reTrimStart, '')
+    : string;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (baseTrim);
 
 
 /***/ }),
@@ -11449,15 +11081,18 @@ function createRelationalOperation(operator) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _toInteger_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./toInteger.js */ "./node_modules/lodash-es/toInteger.js");
-/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
-/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _root_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_root.js */ "./node_modules/lodash-es/_root.js");
+/* harmony import */ var _toInteger_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./toInteger.js */ "./node_modules/lodash-es/toInteger.js");
+/* harmony import */ var _toNumber_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./toNumber.js */ "./node_modules/lodash-es/toNumber.js");
+/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+
 
 
 
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMin = Math.min;
+var nativeIsFinite = _root_js__WEBPACK_IMPORTED_MODULE_0__["default"].isFinite,
+    nativeMin = Math.min;
 
 /**
  * Creates a function like `_.round`.
@@ -11469,15 +11104,15 @@ var nativeMin = Math.min;
 function createRound(methodName) {
   var func = Math[methodName];
   return function(number, precision) {
-    number = Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_1__["default"])(number);
-    precision = precision == null ? 0 : nativeMin(Object(_toInteger_js__WEBPACK_IMPORTED_MODULE_0__["default"])(precision), 292);
-    if (precision) {
+    number = Object(_toNumber_js__WEBPACK_IMPORTED_MODULE_2__["default"])(number);
+    precision = precision == null ? 0 : nativeMin(Object(_toInteger_js__WEBPACK_IMPORTED_MODULE_1__["default"])(precision), 292);
+    if (precision && nativeIsFinite(number)) {
       // Shift with exponential notation to avoid floating-point issues.
       // See [MDN](https://mdn.io/round#Examples) for more details.
-      var pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(number) + 'e').split('e'),
+      var pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_3__["default"])(number) + 'e').split('e'),
           value = func(pair[0] + 'e' + (+pair[1] + precision));
 
-      pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value) + 'e').split('e');
+      pair = (Object(_toString_js__WEBPACK_IMPORTED_MODULE_3__["default"])(value) + 'e').split('e');
       return +(pair[0] + 'e' + (+pair[1] - precision));
     }
     return func(number);
@@ -11967,10 +11602,11 @@ function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {
   if (arrLength != othLength && !(isPartial && othLength > arrLength)) {
     return false;
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(array);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var arrStacked = stack.get(array);
+  var othStacked = stack.get(other);
+  if (arrStacked && othStacked) {
+    return arrStacked == other && othStacked == array;
   }
   var index = -1,
       result = true,
@@ -12207,10 +11843,11 @@ function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {
       return false;
     }
   }
-  // Assume cyclic values are equal.
-  var stacked = stack.get(object);
-  if (stacked && stack.get(other)) {
-    return stacked == other;
+  // Check that cyclic values are equal.
+  var objStacked = stack.get(object);
+  var othStacked = stack.get(other);
+  if (objStacked && othStacked) {
+    return objStacked == other && othStacked == object;
   }
   var result = true;
   stack.set(object, other);
@@ -15076,7 +14713,7 @@ var root = _freeGlobal_js__WEBPACK_IMPORTED_MODULE_0__["default"] || freeSelf ||
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /**
- * Gets the value at `key`, unless `key` is "__proto__".
+ * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
  *
  * @private
  * @param {Object} object The object to query.
@@ -15084,6 +14721,10 @@ __webpack_require__.r(__webpack_exports__);
  * @returns {*} Returns the property value.
  */
 function safeGet(object, key) {
+  if (key === 'constructor' && typeof object[key] === 'function') {
+    return;
+  }
+
   if (key == '__proto__') {
     return;
   }
@@ -15824,6 +15465,38 @@ function toSource(func) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (toSource);
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash-es/_trimmedEndIndex.js":
+/*!****************************************************!*\
+  !*** ./node_modules/lodash-es/_trimmedEndIndex.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/** Used to match a single whitespace character. */
+var reWhitespace = /\s/;
+
+/**
+ * Used by `_.trim` and `_.trimEnd` to get the index of the last non-whitespace
+ * character of `string`.
+ *
+ * @private
+ * @param {string} string The string to inspect.
+ * @returns {number} Returns the index of the last non-whitespace character.
+ */
+function trimmedEndIndex(string) {
+  var index = string.length;
+
+  while (index-- && reWhitespace.test(string.charAt(index))) {}
+  return index;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (trimmedEndIndex);
 
 
 /***/ }),
@@ -18932,6 +18605,7 @@ function debounce(func, wait, options) {
       }
       if (maxing) {
         // Handle invocations in a tight loop.
+        clearTimeout(timerId);
         timerId = setTimeout(timerExpired, wait);
         return invokeFunc(lastCallTime);
       }
@@ -20200,6 +19874,10 @@ __webpack_require__.r(__webpack_exports__);
  * // The `_.property` iteratee shorthand.
  * _.filter(users, 'active');
  * // => objects for ['barney']
+ *
+ * // Combining several predicates using `_.overEvery` or `_.overSome`.
+ * _.filter(users, _.overSome([{ 'age': 36 }, ['age', 40]]));
+ * // => objects for ['fred', 'barney']
  */
 function filter(collection, predicate) {
   var func = Object(_isArray_js__WEBPACK_IMPORTED_MODULE_3__["default"])(collection) ? _arrayFilter_js__WEBPACK_IMPORTED_MODULE_0__["default"] : _baseFilter_js__WEBPACK_IMPORTED_MODULE_1__["default"];
@@ -25255,7 +24933,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="es" -o ./`
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -25298,7 +24976,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /** Used as the semantic version number. */
-var VERSION = '4.17.11';
+var VERSION = '4.17.21';
 
 /** Used to compose bitmasks for function metadata. */
 var WRAP_BIND_KEY_FLAG = 2;
@@ -25859,10 +25537,11 @@ Object(_arrayEach_js__WEBPACK_IMPORTED_MODULE_14__["default"])(['pop', 'push', '
 Object(_baseForOwn_js__WEBPACK_IMPORTED_MODULE_16__["default"])(_LazyWrapper_js__WEBPACK_IMPORTED_MODULE_11__["default"].prototype, function(func, methodName) {
   var lodashFunc = _wrapperLodash_js__WEBPACK_IMPORTED_MODULE_35__["default"][methodName];
   if (lodashFunc) {
-    var key = (lodashFunc.name + ''),
-        names = _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] || (_realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] = []);
-
-    names.push({ 'name': methodName, 'func': lodashFunc });
+    var key = lodashFunc.name + '';
+    if (!hasOwnProperty.call(_realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"], key)) {
+      _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key] = [];
+    }
+    _realNames_js__WEBPACK_IMPORTED_MODULE_32__["default"][key].push({ 'name': methodName, 'func': lodashFunc });
   }
 });
 
@@ -26871,7 +26550,7 @@ __webpack_require__.r(__webpack_exports__);
  * @license
  * Lodash (Custom Build) <https://lodash.com/>
  * Build: `lodash modularize exports="es" -o ./`
- * Copyright JS Foundation and other contributors <https://js.foundation/>
+ * Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
  * Released under MIT license <https://lodash.com/license>
  * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
  * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -27577,6 +27256,9 @@ var CLONE_DEEP_FLAG = 1;
  * values against any array or object value, respectively. See `_.isEqual`
  * for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.0.0
@@ -27592,6 +27274,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.filter(objects, _.matches({ 'a': 4, 'c': 6 }));
  * // => [{ 'a': 4, 'b': 5, 'c': 6 }]
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matches({ 'a': 1 }), _.matches({ 'a': 4 })]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matches(source) {
   return Object(_baseMatches_js__WEBPACK_IMPORTED_MODULE_1__["default"])(Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(source, CLONE_DEEP_FLAG));
@@ -27628,6 +27314,9 @@ var CLONE_DEEP_FLAG = 1;
  * `srcValue` values against any array or object value, respectively. See
  * `_.isEqual` for a list of supported value comparisons.
  *
+ * **Note:** Multiple values can be checked by combining several matchers
+ * using `_.overSome`
+ *
  * @static
  * @memberOf _
  * @since 3.2.0
@@ -27644,6 +27333,10 @@ var CLONE_DEEP_FLAG = 1;
  *
  * _.find(objects, _.matchesProperty('a', 4));
  * // => { 'a': 4, 'b': 5, 'c': 6 }
+ *
+ * // Checking for several possible values
+ * _.filter(objects, _.overSome([_.matchesProperty('a', 1), _.matchesProperty('a', 4)]));
+ * // => [{ 'a': 1, 'b': 2, 'c': 3 }, { 'a': 4, 'b': 5, 'c': 6 }]
  */
 function matchesProperty(path, srcValue) {
   return Object(_baseMatchesProperty_js__WEBPACK_IMPORTED_MODULE_1__["default"])(path, Object(_baseClone_js__WEBPACK_IMPORTED_MODULE_0__["default"])(srcValue, CLONE_DEEP_FLAG));
@@ -29476,6 +29169,10 @@ __webpack_require__.r(__webpack_exports__);
  * Creates a function that checks if **all** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+ *
  * @static
  * @memberOf _
  * @since 4.0.0
@@ -29521,6 +29218,10 @@ __webpack_require__.r(__webpack_exports__);
  * Creates a function that checks if **any** of the `predicates` return
  * truthy when invoked with the arguments it receives.
  *
+ * Following shorthands are possible for providing predicates.
+ * Pass an `Object` and it will be used as an parameter for `_.matches` to create the predicate.
+ * Pass an `Array` of parameters for `_.matchesProperty` and the predicate will be created using them.
+ *
  * @static
  * @memberOf _
  * @since 4.0.0
@@ -29540,6 +29241,9 @@ __webpack_require__.r(__webpack_exports__);
  *
  * func(NaN);
  * // => false
+ *
+ * var matchesFunc = _.overSome([{ 'a': 1 }, { 'a': 2 }])
+ * var matchesPropertyFunc = _.overSome([['a', 1], ['a', 2]])
  */
 var overSome = Object(_createOver_js__WEBPACK_IMPORTED_MODULE_1__["default"])(_arraySome_js__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
@@ -29740,7 +29444,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
+/** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
 
 /* Built-in method references for those with the same name as other `lodash` methods. */
@@ -31910,15 +31614,15 @@ __webpack_require__.r(__webpack_exports__);
  * var users = [
  *   { 'user': 'fred',   'age': 48 },
  *   { 'user': 'barney', 'age': 36 },
- *   { 'user': 'fred',   'age': 40 },
+ *   { 'user': 'fred',   'age': 30 },
  *   { 'user': 'barney', 'age': 34 }
  * ];
  *
  * _.sortBy(users, [function(o) { return o.user; }]);
- * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 40]]
+ * // => objects for [['barney', 36], ['barney', 34], ['fred', 48], ['fred', 30]]
  *
  * _.sortBy(users, ['user', 'age']);
- * // => objects for [['barney', 34], ['barney', 36], ['fred', 40], ['fred', 48]]
+ * // => objects for [['barney', 34], ['barney', 36], ['fred', 30], ['fred', 48]]
  */
 var sortBy = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_2__["default"])(function(collection, iteratees) {
   if (collection == null) {
@@ -33385,10 +33089,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+/** Error message constants. */
+var INVALID_TEMPL_VAR_ERROR_TEXT = 'Invalid `variable` option passed into `_.template`';
+
 /** Used to match empty string literals in compiled template source. */
 var reEmptyStringLeading = /\b__p \+= '';/g,
     reEmptyStringMiddle = /\b(__p \+=) '' \+/g,
     reEmptyStringTrailing = /(__e\(.*?\)|\b__t\)) \+\n'';/g;
+
+/**
+ * Used to validate the `validate` option in `_.template` variable.
+ *
+ * Forbids characters which could potentially change the meaning of the function argument definition:
+ * - "()," (modification of function parameters)
+ * - "=" (default value)
+ * - "[]{}" (destructuring of function parameters)
+ * - "/" (beginning of a comment)
+ * - whitespace
+ */
+var reForbiddenIdentifierChars = /[()=,{}\[\]\/\s]/;
 
 /**
  * Used to match
@@ -33401,6 +33120,12 @@ var reNoMatch = /($^)/;
 
 /** Used to match unescaped characters in compiled string literals. */
 var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
  * Creates a compiled template function that can interpolate data properties
@@ -33537,7 +33262,14 @@ function template(string, options, guard) {
   , 'g');
 
   // Use a sourceURL for easier debugging.
-  var sourceURL = 'sourceURL' in options ? '//# sourceURL=' + options.sourceURL + '\n' : '';
+  // The sourceURL gets injected into the source that's eval-ed, so be careful
+  // to normalize all kinds of whitespace, so e.g. newlines (and unicode versions of it) can't sneak in
+  // and escape the comment, thus injecting code that gets evaled.
+  var sourceURL = hasOwnProperty.call(options, 'sourceURL')
+    ? ('//# sourceURL=' +
+       (options.sourceURL + '').replace(/\s/g, ' ') +
+       '\n')
+    : '';
 
   string.replace(reDelimiters, function(match, escapeValue, interpolateValue, esTemplateValue, evaluateValue, offset) {
     interpolateValue || (interpolateValue = esTemplateValue);
@@ -33568,10 +33300,16 @@ function template(string, options, guard) {
 
   // If `variable` is not specified wrap a with-statement around the generated
   // code to add the data object to the top of the scope chain.
-  var variable = options.variable;
+  var variable = hasOwnProperty.call(options, 'variable') && options.variable;
   if (!variable) {
     source = 'with (obj) {\n' + source + '\n}\n';
   }
+  // Throw an error if a forbidden character was found in `variable`, to prevent
+  // potential command injection attacks.
+  else if (reForbiddenIdentifierChars.test(variable)) {
+    throw new Error(INVALID_TEMPL_VAR_ERROR_TEXT);
+  }
+
   // Cleanup code by stripping empty strings.
   source = (isEvaluating ? source.replace(reEmptyStringLeading, '') : source)
     .replace(reEmptyStringMiddle, '$1')
@@ -34235,16 +33973,15 @@ function toLower(value) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
-/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
+/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
+/* harmony import */ var _isObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isObject.js */ "./node_modules/lodash-es/isObject.js");
+/* harmony import */ var _isSymbol_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isSymbol.js */ "./node_modules/lodash-es/isSymbol.js");
+
 
 
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
 
 /** Used to detect bad signed hexadecimal string values. */
 var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
@@ -34285,17 +34022,17 @@ function toNumber(value) {
   if (typeof value == 'number') {
     return value;
   }
-  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
+  if (Object(_isSymbol_js__WEBPACK_IMPORTED_MODULE_2__["default"])(value)) {
     return NAN;
   }
-  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value)) {
+  if (Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(value)) {
     var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = Object(_isObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(other) ? (other + '') : other;
+    value = Object(_isObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(other) ? (other + '') : other;
   }
   if (typeof value != 'string') {
     return value === 0 ? value : +value;
   }
-  value = value.replace(reTrim, '');
+  value = Object(_baseTrim_js__WEBPACK_IMPORTED_MODULE_0__["default"])(value);
   var isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
@@ -34731,11 +34468,12 @@ function transform(object, iteratee, accumulator) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _baseToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./_baseToString.js */ "./node_modules/lodash-es/_baseToString.js");
-/* harmony import */ var _castSlice_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_castSlice.js */ "./node_modules/lodash-es/_castSlice.js");
-/* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
-/* harmony import */ var _charsStartIndex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_charsStartIndex.js */ "./node_modules/lodash-es/_charsStartIndex.js");
-/* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
-/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _baseTrim_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./_baseTrim.js */ "./node_modules/lodash-es/_baseTrim.js");
+/* harmony import */ var _castSlice_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_castSlice.js */ "./node_modules/lodash-es/_castSlice.js");
+/* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
+/* harmony import */ var _charsStartIndex_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./_charsStartIndex.js */ "./node_modules/lodash-es/_charsStartIndex.js");
+/* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
+/* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
 
 
 
@@ -34743,8 +34481,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
 
 /**
  * Removes leading and trailing whitespace or specified characters from `string`.
@@ -34769,19 +34505,19 @@ var reTrim = /^\s+|\s+$/g;
  * // => ['foo', 'bar']
  */
 function trim(string, chars, guard) {
-  string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string);
+  string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_6__["default"])(string);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrim, '');
+    return Object(_baseTrim_js__WEBPACK_IMPORTED_MODULE_1__["default"])(string);
   }
   if (!string || !(chars = Object(_baseToString_js__WEBPACK_IMPORTED_MODULE_0__["default"])(chars))) {
     return string;
   }
-  var strSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(string),
-      chrSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_4__["default"])(chars),
-      start = Object(_charsStartIndex_js__WEBPACK_IMPORTED_MODULE_3__["default"])(strSymbols, chrSymbols),
-      end = Object(_charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__["default"])(strSymbols, chrSymbols) + 1;
+  var strSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string),
+      chrSymbols = Object(_stringToArray_js__WEBPACK_IMPORTED_MODULE_5__["default"])(chars),
+      start = Object(_charsStartIndex_js__WEBPACK_IMPORTED_MODULE_4__["default"])(strSymbols, chrSymbols),
+      end = Object(_charsEndIndex_js__WEBPACK_IMPORTED_MODULE_3__["default"])(strSymbols, chrSymbols) + 1;
 
-  return Object(_castSlice_js__WEBPACK_IMPORTED_MODULE_1__["default"])(strSymbols, start, end).join('');
+  return Object(_castSlice_js__WEBPACK_IMPORTED_MODULE_2__["default"])(strSymbols, start, end).join('');
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (trim);
@@ -34803,14 +34539,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _charsEndIndex_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./_charsEndIndex.js */ "./node_modules/lodash-es/_charsEndIndex.js");
 /* harmony import */ var _stringToArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./_stringToArray.js */ "./node_modules/lodash-es/_stringToArray.js");
 /* harmony import */ var _toString_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./toString.js */ "./node_modules/lodash-es/toString.js");
+/* harmony import */ var _trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./_trimmedEndIndex.js */ "./node_modules/lodash-es/_trimmedEndIndex.js");
 
 
 
 
 
 
-/** Used to match leading and trailing whitespace. */
-var reTrimEnd = /\s+$/;
 
 /**
  * Removes trailing whitespace or specified characters from `string`.
@@ -34834,7 +34569,7 @@ var reTrimEnd = /\s+$/;
 function trimEnd(string, chars, guard) {
   string = Object(_toString_js__WEBPACK_IMPORTED_MODULE_4__["default"])(string);
   if (string && (guard || chars === undefined)) {
-    return string.replace(reTrimEnd, '');
+    return string.slice(0, Object(_trimmedEndIndex_js__WEBPACK_IMPORTED_MODULE_5__["default"])(string) + 1);
   }
   if (!string || !(chars = Object(_baseToString_js__WEBPACK_IMPORTED_MODULE_0__["default"])(chars))) {
     return string;
@@ -34870,7 +34605,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/** Used to match leading and trailing whitespace. */
+/** Used to match leading whitespace. */
 var reTrimStart = /^\s+/;
 
 /**
@@ -36995,7 +36730,7 @@ var zipWith = Object(_baseRest_js__WEBPACK_IMPORTED_MODULE_0__["default"])(funct
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
   \*****************************************/
-/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __exportStar, __values, __read, __spread, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault */
+/*! exports provided: __extends, __assign, __rest, __decorate, __param, __metadata, __awaiter, __generator, __createBinding, __exportStar, __values, __read, __spread, __spreadArrays, __await, __asyncGenerator, __asyncDelegator, __asyncValues, __makeTemplateObject, __importStar, __importDefault, __classPrivateFieldGet, __classPrivateFieldSet */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37008,10 +36743,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__metadata", function() { return __metadata; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__awaiter", function() { return __awaiter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__generator", function() { return __generator; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__createBinding", function() { return __createBinding; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__exportStar", function() { return __exportStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__values", function() { return __values; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__read", function() { return __read; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spread", function() { return __spread; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__spreadArrays", function() { return __spreadArrays; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__await", function() { return __await; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncGenerator", function() { return __asyncGenerator; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__asyncDelegator", function() { return __asyncDelegator; });
@@ -37019,19 +36756,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__makeTemplateObject", function() { return __makeTemplateObject; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importStar", function() { return __importStar; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__importDefault", function() { return __importDefault; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldGet", function() { return __classPrivateFieldGet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "__classPrivateFieldSet", function() { return __classPrivateFieldSet; });
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
@@ -37064,8 +36803,10 @@ function __rest(s, e) {
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
     if (s != null && typeof Object.getOwnPropertySymbols === "function")
-        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0)
-            t[p[i]] = s[p[i]];
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
     return t;
 }
 
@@ -37085,10 +36826,11 @@ function __metadata(metadataKey, metadataValue) {
 }
 
 function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 }
@@ -37121,19 +36863,25 @@ function __generator(thisArg, body) {
     }
 }
 
+function __createBinding(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}
+
 function __exportStar(m, exports) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
 }
 
 function __values(o) {
-    var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+    var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
     if (m) return m.call(o);
-    return {
+    if (o && typeof o.length === "number") return {
         next: function () {
             if (o && i >= o.length) o = void 0;
             return { value: o && o[i++], done: !o };
         }
     };
+    throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
 }
 
 function __read(o, n) {
@@ -37158,6 +36906,14 @@ function __spread() {
         ar = ar.concat(__read(arguments[i]));
     return ar;
 }
+
+function __spreadArrays() {
+    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+    return r;
+};
 
 function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -37204,6 +36960,21 @@ function __importStar(mod) {
 
 function __importDefault(mod) {
     return (mod && mod.__esModule) ? mod : { default: mod };
+}
+
+function __classPrivateFieldGet(receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+}
+
+function __classPrivateFieldSet(receiver, privateMap, value) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to set private field on non-instance");
+    }
+    privateMap.set(receiver, value);
+    return value;
 }
 
 
@@ -37292,9 +37063,7 @@ exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _plugin = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/plugin */ "./node_modules/@ckeditor/ckeditor5-core/src/plugin.js");
-
-var _plugin2 = _interopRequireDefault(_plugin);
+var _ckeditor5Exports = __webpack_require__(/*! ckeditor5-exports */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js");
 
 var _attributecommand = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/attributecommand */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js");
 
@@ -37310,16 +37079,16 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var CODE = 'code';
 
-var SubSup = function (_Plugin) {
-    _inherits(SubSup, _Plugin);
+var CodeFormating = function (_Plugin) {
+    _inherits(CodeFormating, _Plugin);
 
-    function SubSup() {
-        _classCallCheck(this, SubSup);
+    function CodeFormating() {
+        _classCallCheck(this, CodeFormating);
 
-        return _possibleConstructorReturn(this, (SubSup.__proto__ || Object.getPrototypeOf(SubSup)).apply(this, arguments));
+        return _possibleConstructorReturn(this, (CodeFormating.__proto__ || Object.getPrototypeOf(CodeFormating)).apply(this, arguments));
     }
 
-    _createClass(SubSup, [{
+    _createClass(CodeFormating, [{
         key: 'init',
         value: function init() {
             this.editor.model.schema.extend('$text', { allowAttributes: CODE });
@@ -37332,14 +37101,14 @@ var SubSup = function (_Plugin) {
     }], [{
         key: 'pluginName',
         get: function get() {
-            return 'Code';
+            return 'CodeFormating';
         }
     }]);
 
-    return SubSup;
-}(_plugin2.default);
+    return CodeFormating;
+}(_ckeditor5Exports.Plugin);
 
-exports.default = SubSup;
+exports.default = CodeFormating;
 
 /***/ }),
 
