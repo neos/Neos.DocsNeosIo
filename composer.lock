@@ -5163,12 +5163,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/contentrepository-development-collection.git",
-                "reference": "4a22688c9ea79f26a07f1b37af6583a6d3a7167a"
+                "reference": "37dd1471295ea980e1ad8c67db6434ec21b79175"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/contentrepository-development-collection/zipball/4a22688c9ea79f26a07f1b37af6583a6d3a7167a",
-                "reference": "4a22688c9ea79f26a07f1b37af6583a6d3a7167a",
+                "url": "https://api.github.com/repos/neos/contentrepository-development-collection/zipball/37dd1471295ea980e1ad8c67db6434ec21b79175",
+                "reference": "37dd1471295ea980e1ad8c67db6434ec21b79175",
                 "shasum": ""
             },
             "require": {
@@ -5236,7 +5236,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-01-08T15:14:36+00:00"
+            "time": "2022-01-08T20:41:06+00:00"
         },
         {
             "name": "neos/docs-neos-io",
