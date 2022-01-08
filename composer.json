@@ -18,13 +18,9 @@
 
         "neos/neos-development-collection": "7.3.0",
         "neos/flow-development-collection": "7.3.x-dev",
-        "neos/contentrepository-development-collection": "dev-master",
+        "neos/contentrepository-development-collection": "dev-docsneosio-core-fixes",
         "neos/content-repository-dimensionspace": "dev-master",
         "cweagans/composer-patches": "^1.7"
-    },
-    "require-dev": {
-        "sandstorm/plumber": "dev-master",
-        "sandstorm/phpprofiler": "dev-master"
     },
     "repositories": {
         "distribution": {
