@@ -5088,12 +5088,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/contentrepository-development-collection.git",
-                "reference": "99c61886a20e2fd1f23e75faaf6f61f1fe5ebe8e"
+                "reference": "52ec92c9896c2248ff6b17af02172b6aac02e58c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/contentrepository-development-collection/zipball/99c61886a20e2fd1f23e75faaf6f61f1fe5ebe8e",
-                "reference": "99c61886a20e2fd1f23e75faaf6f61f1fe5ebe8e",
+                "url": "https://api.github.com/repos/neos/contentrepository-development-collection/zipball/52ec92c9896c2248ff6b17af02172b6aac02e58c",
+                "reference": "52ec92c9896c2248ff6b17af02172b6aac02e58c",
                 "shasum": ""
             },
             "require": {
@@ -5162,7 +5162,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-01-19T07:28:00+00:00"
+            "time": "2022-01-19T09:26:10+00:00"
         },
         {
             "name": "neos/docs-neos-io",
@@ -5352,12 +5352,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/flow-development-collection.git",
-                "reference": "1cc7724c4eb0b0117f32f35d12bba8d0fb46521c"
+                "reference": "59e0a6246577911e6f76ccd66a692018a1cb59da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/flow-development-collection/zipball/1cc7724c4eb0b0117f32f35d12bba8d0fb46521c",
-                "reference": "1cc7724c4eb0b0117f32f35d12bba8d0fb46521c",
+                "url": "https://api.github.com/repos/neos/flow-development-collection/zipball/59e0a6246577911e6f76ccd66a692018a1cb59da",
+                "reference": "59e0a6246577911e6f76ccd66a692018a1cb59da",
                 "shasum": ""
             },
             "require": {
@@ -5494,7 +5494,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-12-08T05:04:41+00:00"
+            "time": "2022-01-19T11:08:26+00:00"
         },
         {
             "name": "neos/form",
