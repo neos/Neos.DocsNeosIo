@@ -19,14 +19,13 @@
         "carbon/link": "^1.0",
         "carbon/includeassets": "^5.2",
         "flowpack/cachebuster": "^1.0",
-        "flowpack/nodetemplates": "^1.0",
         "moc/notfound": "^3.1",
         "sitegeist/silhouettes": "^2.0",
 
         "flowpack/searchplugin": "^5.0",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
 
-        "codeq/htmlwidget" : "^1.2",
+        "codeq/htmlwidget" : "dev-eventsourced-dependency-fix",
         "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "^2.0",
         "yoast/yoast-seo-for-neos": "^1.1",

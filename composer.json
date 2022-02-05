@@ -16,16 +16,19 @@
         "flownative/google-cloudstorage": "^5.0",
         "rokka/imagine-vips": "^0.13",
 
-        "neos/neos-development-collection": "7.3.0",
-        "neos/flow-development-collection": "7.3.x-dev",
         "neos/contentrepository-development-collection": "dev-master",
         "neos/content-repository-dimensionspace": "dev-master",
-        "cweagans/composer-patches": "^1.7"
+        "cweagans/composer-patches": "^1.7",
+        "codeq/htmlwidget" : "dev-eventsourced-dependency-fix"
     },
     "repositories": {
         "distribution": {
             "type": "path",
             "url": "./DistributionPackages/*"
+        },
+        "htmlwidget": {
+            "type": "git",
+            "url": "https://github.com/skurfuerst/neos-htmlwidget"
         }
     },
     "scripts": {
@@ -36,5 +39,9 @@
     },
     "extra": {
         "patches-file": "https://raw.githubusercontent.com/neos/contentrepository-development-collection/master/Neos.EventSourcedNeosAdjustments/composer.patches.json"
+    },
+    "require-dev": {
+        "sandstorm/phpprofiler": "dev-master",
+        "sandstorm/plumber": "3.0.*"
     }
 }
