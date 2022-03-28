@@ -3,8 +3,6 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~7.3.0",
-        "neos/neos-ui": "~7.3.0",
         "neos/googleanalytics": "^3.3",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
@@ -14,16 +12,13 @@
         "aertmann/history": "^2.0",
         "codeq/publishnotifier": "^2.2",
 
-        "carbon/compression": "^2.0",
-        "carbon/hyphen": "^1.1",
-        "carbon/link": "^1.0",
+        "carbon/compression": "^4.0",
+        "carbon/hyphen": "dev-main",
+        "carbon/link": "dev-patch-1",
         "carbon/includeassets": "^5.2",
-        "flowpack/cachebuster": "^1.0",
+        "flowpack/cachebuster": "dev-feature/8-0-compat",
         "moc/notfound": "^3.1",
         "sitegeist/silhouettes": "^2.0",
-
-        "flowpack/searchplugin": "^5.0",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
 
         "codeq/htmlwidget" : "dev-eventsourced-dependency-fix",
         "neos/nodetypes-contentreferences": "*",
