@@ -1,18 +1,24 @@
+@use "../../../../public/Frontend/scss/screen";
+
 .main-footer {
-	margin-top: 40px;
-	background-color: transparent;
-	border-top: 1px solid $border-color;
+	background-color: #f9fcff;
+	border-top: 1px solid var(--c-divider-light);
 	font-size: 0.9rem;
 	color: inherit;
 
+    h5 {
+        color: var(--c-text-light);
+        font-size: 1rem;
+    }
+
 	.footer-copyright {
-		color: inherit;
+		color: var(--c-text-light);
 		background-color: transparent;
 		font-style: italic;
 	}
 
 	a {
-		@extend .grey-text.text-darken-2;
+		//@extend .grey-text.text-darken-2;
 
 		&:active,
 		&:hover,
@@ -21,9 +27,32 @@
 		}
 	}
 
-	.container {
-		@media #{$medium-and-down} {
-			text-align: center;
-		}
-	}
+
+    &.page-footer {
+        padding-top: 40px;
+    }
+}
+
+.footer-grid {
+    display: grid;
+    place-content: center;
+    gap: 20px;
+    @include screen.sm {
+        grid-template-columns: 2fr 3fr;
+    }
+    margin: 0 auto 20px;
+}
+
+.socials {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    gap: 10px 20px;
+    flex-wrap: wrap;
+
+    li a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 }

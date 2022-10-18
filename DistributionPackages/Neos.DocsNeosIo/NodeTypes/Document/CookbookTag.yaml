@@ -1,0 +1,25 @@
+'Neos.DocsNeosIo:Document.CookbookTag':
+  superTypes:
+    'Neos.DocsNeosIo:Document.AbstractPage': true
+  ui:
+    label: 'Tutorial Tag'
+    help:
+      message: 'Task-oriented step-by-step description of a solution, can be opinionated'
+    icon: icon-book-open
+    position: 500
+  childNodes:
+    main: ~
+  constraints:
+    nodeTypes:
+      'Neos.Neos:Document': false
+      'Neos.DocsNeosIo:Document.Cookbook': true
+  properties:
+    includedTag:
+      type: reference
+      ui:
+        label: 'IncludedTag'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+          editorOptions:
+            nodeTypes: ['Neos.DocsNeosIo:Document.Tag']

@@ -1,0 +1,38 @@
+prototype(Neos.DocsNeosIo:Content.ApiSection) < prototype(Neos.Neos:ContentComponent) {
+    id = Neos.DocsNeosIo:Helper.StringToHash {
+        value = ${q(node).property('title') || node.identifier}
+    }
+    title = Neos.Neos:Editable {
+        property = 'title'
+        block = false
+        @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+    }
+    apiName = Neos.Neos:Editable {
+        property = 'apiName'
+        block = false
+        @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+    }
+
+    titleLink = ${q(node).property('titleLink')}
+
+    headlineSize = ${q(node).property('headlineSize')}
+    content = Neos.Neos:ContentCollection {
+        nodePath = '.'
+    }
+    tags = ${q(node).property('tags')}
+
+    renderer = afx`
+        <div class="content-section" id={props.id}>
+            <div class="api-object">
+                <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} attributes.class="docs-section-header" attributes.tabindex="-1">
+                    <a href={'#' + props.id} class="header-anchor" aria-hidden="true">#</a>
+                    <a @if={props.titleLink} href={props.titleLink}>{props.title}</a>
+                    <Neos.Fusion:Fragment @if={!props.titleLink}>{props.title}</Neos.Fusion:Fragment>
+                </Neos.Fusion:Tag>
+                <p class="api-name">{props.apiName}</p>
+            </div>
+            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
+            <div>{props.content}</div>
+        </div>
+    `
+}

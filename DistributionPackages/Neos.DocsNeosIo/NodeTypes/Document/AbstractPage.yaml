@@ -55,3 +55,10 @@
         reloadPageIfChanged: true
         inspector:
           group: visibility
+    mainMenuTitle:
+      type: string
+      ui:
+        label: 'Menu title'
+        reloadPageIfChanged: true
+        inspector:
+          group: document

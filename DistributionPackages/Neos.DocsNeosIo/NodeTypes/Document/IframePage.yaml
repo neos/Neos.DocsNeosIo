@@ -1,0 +1,25 @@
+'Neos.DocsNeosIo:Document.IframePage':
+  superTypes:
+    'Neos.Neos:Document': true
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+  ui:
+    label: 'IFrame Page'
+    help:
+      message: 'Manuals to describe the principals, ideas and mechanics behind Neos '
+    icon: icon-file-o
+    position: 100
+  properties:
+    url:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'URL'
+        reloadIfChanged: true
+        inspector:
+          group: document
+          position: 'after status'

@@ -1,13 +1,50 @@
 prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    body.navCollection = ${q(node).find('main').children()}
-    body.showSupportCall2Action = false
-    body.content = Neos.Fusion:Component {
-        main = Neos.Neos:ContentCollection {
-            nodePath = 'main'
+    bodyTag.attributes.class.@process.setNoSidebar = Neos.Fusion:Case {
+        classIsString {
+            condition = ${Type.isString(value)}
+            renderer = ${String.trim(value + ' no-sidebar')}
         }
 
-        renderer = afx`
-            {props.main}
-        `
+        classIsArray {
+            condition = ${Type.isArray(value)}
+            renderer = ${Array.push(value, 'no-sidebar')}
+        }
+    }
+    body = Neos.DocsNeosIo:Component.Layout {
+        navCollection = ${q(node).find('main').children()}
+        showSupportCall2Action = false
+
+        sidebarOnlyMobile = true
+        localNav = false
+
+        banner = Neos.Fusion:Component {
+            logo = Neos.Fusion:ResourceUri {
+                path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-light.svg"
+            }
+
+            renderer = afx`
+                <div class="banner">
+                    <img src={props.logo} width="400" height="110" alt="Neos" />
+                    <h1 style="font-size: 2rem">Developer Documentation</h1>
+                    <div style="margin-top: 20px;display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+                        <Carbon.Link:Link link="/guide/getting-started" additionalClass="btn secondary">Get started
+                        </Carbon.Link:Link>
+                        <Carbon.Link:Link link="/guide/installation-development-setup" additionalClass="btn secondary">
+                            Install
+                        </Carbon.Link:Link>
+                    </div>
+                </div>
+            `
+        }
+
+        content = Neos.Fusion:Component {
+            main = Neos.Neos:ContentCollection {
+                nodePath = 'main'
+            }
+
+            renderer = afx`
+                {props.main}
+            `
+        }
     }
 }

@@ -1,12 +1,16 @@
 @charset "utf-8";
 
+@import "fonts";
 // basic design
 @import "variables";
-@import "../node_modules/materialize-css/sass/materialize";
+@import "materialize_color_var";
+@import "materialize_color_class";
+@import "materialize_var";
+//@import "../node_modules/materialize-css/sass/materialize";
 
 // prism code highlighting
-@import "../node_modules/prismjs/themes/prism";
-@import "../node_modules/prismjs/plugins/autolinker/prism-autolinker";
+// @import "../node_modules/prismjs/themes/prism";
+// @import "../node_modules/prismjs/plugins/autolinker/prism-autolinker";
 // @import "../node_modules/prismjs/plugins/line-numbers/prism-line-numbers";
 // @import "../node_modules/prismjs/plugins/toolbar/toolbar";
 
@@ -17,12 +21,14 @@ $fa-font-path: "../build/fontawesome";
 @import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 // Neos design
-@import "fonts";
-@import "materialize-docs";
+//@import "materialize-docs";
 @import "base";
-@import "cards";
+//@import "cards";
 @import "collection";
 @import "preloaders";
-@import "styled-content";
+//@import "styled-content";
 @import "tags";
 @import "layout";
+@import "new";
+@import "new_modules";
+@import "new_addition";

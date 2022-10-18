@@ -1,6 +1,6 @@
 prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent) {
     renderer = Neos.Fusion:Tag {
-        attributes.class = 'docs-notice'
+        attributes.class = 'custom-block'
         tagName = 'div'
         content = Neos.DocsNeosIo:Component.Notice {
             id = Neos.DocsNeosIo:Helper.StringToHash {
@@ -11,10 +11,17 @@ prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent
                 block = false
                 @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
             }
-            content = Neos.Neos:Editable {
-                property = 'noticeText'
-                block = false
-                @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+            content = Neos.Fusion:Component {
+                text = Neos.Neos:Editable {
+                    property = 'noticeText'
+                    block = false
+                    @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+                }
+                collection = Neos.Neos:ContentCollection
+                renderer = afx`
+                    <p @if={props.text}>{props.text}</p>
+                    {props.collection}
+                `
             }
             type = ${q(node).property('noticeType')}
         }

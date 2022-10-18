@@ -1,38 +1,54 @@
 prototype(Neos.DocsNeosIo:Component.Header) < prototype(Neos.Fusion:Component) {
-    navigationRoot = false
     homeLink = Neos.Neos:NodeUri {
         node = ${site}
     }
-    logoUri = Neos.Fusion:ResourceUri {
-        path = 'resource://Neos.DocsNeosIo/Public/Frontend/img/neos_primary.svg'
+
+    sidebarOnlyMobile = false
+
+    logo = Neos.Fusion:ResourceUri {
+        path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-small.svg"
+    }
+
+    # rendering
+    @context {
+        startingPoint = ${this.startingPoint}
+        node = ${this.startingPoint}
+        renderCurrentPath = ${this.renderCurrentPath}
     }
 
     renderer = afx`
-        <header class="main-header">
-            <div class="container">
-                <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger circle hide-on-large-only">
-                    <i class="material-icons">menu</i>
-                </a>
-            </div>
-            <ul id="nav-mobile" class="sidenav sidenav-fixed">
-                <li class="logo">
-                    <a id="logo-container" href={props.homeLink} class="brand-logo">
-                        <object id="front-page-logo" type="image/svg+xml" data={props.logoUri}>Neos CMS Docs</object>
-                    </a>
-                </li>
-                <li class="search">
-                    <div class="search-wrapper">
-                        <Neos.DocsNeosIo:Component.SearchForm ajaxTarget=".main-header .search-results" />
-                        <div class="search-results"></div>
-                    </div>
-                </li>
-                <li>
-                    <ul>
-                        <Neos.DocsNeosIo:Component.Navigation startingPoint={props.navigationRoot} renderCurrentPath={true} />
-                    </ul>
-                </li>
-            </ul>
-        </header>
+    <header>
+        <div class="main-header">
+            <aside class={['sidebar', props.sidebarOnlyMobile && 'sidebar-only-mobile']}>
+                <Neos.DocsNeosIo:Component.NavBarContent
+                    startingPoint={props.startingPoint} node={props.startingPoint}
+                    renderCurrentPath={props.renderCurrentPath} />
+                <ul class="sidebar-links">
+                    <Neos.DocsNeosIo:Component.Sidebar startingPoint={props.navigationRoot} renderCurrentPath={true} />
+                </ul>
+            </aside>
+        </div>
+
+        <div class="nav-bar">
+            <button class="sidebar-button" onclick="document.querySelector('.sidebar')?.classList.toggle('open')">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="32"
+                     viewBox="0 0 448 512">
+                    <path fill="currentColor"
+                          d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+                          class=""></path>
+                </svg>
+            </button>
+            <Carbon.Link:Link
+                node={site}
+                additionalClass="nav-bar-title"
+                aria-label="Neos Dev Docs, back to home"
+            ><img class="logo" src={props.logo} alt="Logo" width="32" />Neos Dev Docs
+            </Carbon.Link:Link>
+            <Neos.DocsNeosIo:Component.NavBarContent
+                startingPoint={props.startingPoint} node={props.startingPoint}
+                renderCurrentPath={props.renderCurrentPath} />
+        </div>
+    </header>
     `
 
     @cache {

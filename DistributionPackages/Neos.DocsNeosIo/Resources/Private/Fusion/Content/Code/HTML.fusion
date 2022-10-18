@@ -1,0 +1,3 @@
+prototype(Neos.DocsNeosIo:Content.HTML) < prototype(Neos.Neos:ContentComponent) {
+    renderer = ${q(node).property('code')}
+}

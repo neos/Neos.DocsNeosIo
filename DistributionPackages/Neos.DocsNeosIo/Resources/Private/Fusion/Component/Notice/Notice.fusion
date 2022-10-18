@@ -13,13 +13,13 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
         backend = ${value == 'backend' ? 'fas fa-edit' : value}
     }
     renderer = afx`
-        <div id={props.id} class={'notice card-panel type-' + props.type} @if.isFrontendNotice={props.type != 'backend' || node.context.inBackend}>
-            <h4 @if.has={props.title || node.context.inBackend} class="header">
-                <Neos.DocsNeosIo:Component.Icon iconName={String.firstLetterToUpperCase(props.type)} iconClass={props.iconClass} additionalClass="left inline-icon" />
+        <div id={props.id} class={'custom-block ' + props.type} @if.isFrontendNotice={props.type != 'backend' || node.context.inBackend}>
+            <p @if.has={props.title || node.context.inBackend} class="custom-block-title">
+                <Neos.DocsNeosIo:Component.Icon iconName={String.firstLetterToUpperCase(props.type)} iconClass={props.iconClass} additionalClass="inline-icon custom-block-icon" />
                 <span @if.backend={props.type == 'backend'}>Backend only: </span>
                 {props.title}
-            </h4>
-            <div class="styled-content">{props.content}</div>
+            </p>
+            {props.content}
         </div>
     `
 }

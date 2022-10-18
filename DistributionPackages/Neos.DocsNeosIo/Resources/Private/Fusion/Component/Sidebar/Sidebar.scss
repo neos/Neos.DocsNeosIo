@@ -1,0 +1,59 @@
+@use "../../../../public/Frontend/scss/screen";
+
+.navigation-item--level-1 {
+    padding-top: 1.25rem;
+}
+
+.main-header ul.sidenav.sidenav-fixed .navigation-item.navigation-item--level-1 > .navigation-link {
+    font-weight: 600!important;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding: .25rem 1.5rem .15rem 1.25rem;
+}
+
+.main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-link {
+    padding: 0.25rem 1.5rem 0.15rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.main-header ul.sidenav.sidenav-fixed .navigation-item:first-child .navigation-link {
+    padding-top: 0;
+}
+
+.main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-2 > a {
+    padding-left: 1.25rem;
+}
+
+.main-header ul.sidenav.sidenav-fixed .navigation-item .navigation-item--level-3 > a {
+    padding: 0.2rem 1.5rem 0.2rem 2rem;
+}
+
+.navigation-item > .navigation-link {
+    border-left: .25rem solid transparent;
+}
+.main-header ul.sidenav.sidenav-fixed li.current,
+.main-header ul.sidenav.sidenav-fixed li.navigation-item.current > a.navigation-link,
+.navigation-item:is(.current,.active) > .navigation-link {
+    background-color: transparent!important;
+}
+.navigation-item.current.active > .navigation-link {
+    border-left-color: #00adee;
+    color: #00adee;
+    font-weight: 540;
+}
+
+.sidebar-link-item {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-link-item .badge {
+    margin-left: auto;
+}
+
+@include screen.sm {
+    .sidebar-only-mobile {
+        display: none;
+    }
+}

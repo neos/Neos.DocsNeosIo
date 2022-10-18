@@ -1,0 +1,13 @@
+prototype(Neos.DocsNeosIo:Document.IframePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    body = Neos.DocsNeosIo:Component.Iframe {
+        authors = ${q(node).property('authors') ? DocsNeosIo.UserData.getData(q(node).property('authors')) : ''}
+        navCollection = ${q(node).find('main').children()}
+        showSupportCall2Action = false
+        content = Neos.Fusion:Component {
+            url = ${q(node).property('url')}
+            renderer = afx`
+                <iframe src={props.url} frameborder="0" width="100%" height="100%" style="flex-grow: 1; height: calc(100vh - var(--header-height))"></iframe>
+            `
+        }
+    }
+}

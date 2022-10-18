@@ -2,23 +2,20 @@ prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Compo
     title = ${q(node).property('title')}
     subtitle = ${q(node).property('subtitle')}
     publishingDate = ${q(node).property('publishingDate')}
-    publishingDate.@process.format = ${value ? Date.format(value, 'd. F Y') : ''}
+    formattedPublishingDate = ${this.publishingDate ? Date.format(this.publishingDate, 'd. F Y') : ''}
     tags = ${q(node).property('tags')}
 
     renderer = afx`
-        <Carbon.Link:Link node={node} backendLink={true} additionalClass="cookbook-short card hoverable">
-            <div class="card-content white-text">
-                <span class="new badge" data-badge-caption="NEW"></span>
-                <div class="card-title">{props.title}</div>
-                <div class="card-text">
-                    <p>{props.subtitle}</p>
-                    <i>{props.publishingDate}</i>
-                </div>
+        <div class="card">
+            <Carbon.Link:Link node={node} backendLink={true} additionalClass="card__header" content={props.title} />
+            <div class="card__content">
+                <p @if={props.subtitle}>{props.subtitle}</p>
+            </div>
+            <div class="card__footer">
+
+                <time datetime={Date.format(props.publishingDate,'c')}>{props.formattedPublishingDate}</time>
                 <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
             </div>
-            <div class="card-action white-text">
-                Let's do this!
-            </div>
-        </Carbon.Link:Link>
+        </div>
     `
 }

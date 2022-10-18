@@ -1,0 +1,55 @@
+prototype(Neos.DocsNeosIo:Component.NavBar) < prototype(Neos.Fusion:Component) {
+    logo = Neos.Fusion:ResourceUri {
+        path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-small.svg"
+    }
+
+    # rendering
+    @context {
+        startingPoint = ${this.startingPoint}
+        node = ${this.startingPoint}
+        renderCurrentPath = ${this.renderCurrentPath}
+    }
+
+    @context.navBarNodeDepth = ${this.node.depth - this.startingPoint.depth}
+    node = ${node}
+    itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
+    itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
+    itemStatus = ${q(node).property('status')}
+    itemClass = Neos.Fusion:RawArray {
+        base = 'navigation-item'
+        level = ${'navigation-item--level-' + navBarNodeDepth}
+        current = 'current'
+        current.@if.isCurrent = ${node == documentNode}
+        active = 'active'
+        active.@if.isActive = ${node == documentNode || (navBarNodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
+    }
+    navigationClass = ${'navigation-level navigation-level--level-' + (navBarNodeDepth + 1)}
+    navigationItems = Neos.Fusion:Collection {
+        collection = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+        @if.notEmpty = ${this.collection.count() > 0}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Component.NavBarItem
+    }
+
+    renderer = afx`
+        <div class="nav-bar">
+            <button class="sidebar-button" onclick="document.querySelector('.sidebar')?.classList.toggle('open')">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="32"
+                     viewBox="0 0 448 512">
+                    <path fill="currentColor"
+                          d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+                          class=""></path>
+                </svg>
+            </button>
+            <Carbon.Link:Link
+                node={site}
+                additionalClass="nav-bar-title"
+                aria-label="Neos Dev Docs, back to home"
+            ><img class="logo" src={props.logo} alt="Logo" width="32" />Neos Dev Docs
+            </Carbon.Link:Link>
+            <Neos.DocsNeosIo:Component.NavBarContent
+                startingPoint={props.startingPoint} node={props.startingPoint}
+                renderCurrentPath={props.renderCurrentPath} />
+        </div>
+    `
+}

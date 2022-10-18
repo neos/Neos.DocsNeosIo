@@ -1,13 +1,3 @@
-.docs-navigation {
-	.navigation-item {
-		display: block;
-
-		&:not(:last-child) {
-			border-bottom: 1px solid $collection-border-color;
-		}
-	}
-
-	.navigation-link {
-		@extend .collection-item;
-	}
+.link-list {
+    padding-left: 0;
 }

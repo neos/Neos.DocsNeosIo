@@ -1,4 +1,15 @@
 prototype(Neos.DocsNeosIo:Document.SearchResultsPage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    bodyTag.attributes.class.@process.setNoSidebar = Neos.Fusion:Case {
+        classIsString {
+            condition = ${Type.isString(value)}
+            renderer = ${String.trim(value + ' no-sidebar')}
+        }
+
+        classIsArray {
+            condition = ${Type.isArray(value)}
+            renderer = ${Array.push(value, 'no-sidebar')}
+        }
+    }
     body {
         fullwidth = false
         content = Neos.Fusion:Component {
@@ -10,6 +21,7 @@ prototype(Neos.DocsNeosIo:Document.SearchResultsPage) < prototype(Neos.DocsNeosI
                 {props.main}
             `
         }
+        sidebarOnlyMobile = true
+        localNav = false
     }
-
 }

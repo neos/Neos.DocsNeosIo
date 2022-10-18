@@ -8,7 +8,7 @@
     label: Tutorial
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
-    icon: icon-book-open
+    icon: icon-graduation-cap
     position: 500
   constraints:
     nodeTypes:

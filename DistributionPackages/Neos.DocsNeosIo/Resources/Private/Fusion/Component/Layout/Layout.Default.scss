@@ -1,55 +1,4 @@
-
-#index-banner {
-	border-bottom: 1px solid $border-color;
-
-	@media #{$large-and-up} {
-		// align with the search top border
-		min-height: 162px;
-	}
-
-	.neos-top-navigation ~ main & {
-		@media #{$medium-and-up} {
-			margin-top: $top-navigation-height;
-		}
-	}
-
-	.container {
-		position: relative;
-	}
-
-	h1,
-	.image-container {
-		margin-top: 16px;
-	}
-
-	h4 {
-		margin-bottom: 40px;
-		line-height: 44px;
-		color: rgba(0, 0, 0, 0.7);
-	}
-
-	@media #{$medium-and-up} {
-		& > .container {
-			width: 100%;
-		}
-	}
-
-	@media #{$medium-and-down} {
-		h1,
-		.image-container {
-			margin-top: 70px;
-		}
-		h4 {
-			margin-bottom: 15px;
-		}
-	}
-
-	@media #{$small-and-down} {
-		h4 {
-			margin-bottom: 0;
-		}
-	}
-}
+@use "../../../../public/Frontend/scss/screen";
 
 .profile-image {
 	width: 200px;
@@ -58,13 +7,15 @@
 
 .fullwidth-layout {
 	max-width: none;
+    flex-grow: 1;
 
-	.neos-contentcollection > *:not(.docs-youtube):not(.docs-section),
+	.neos-contentcollection > *:not(.docs-youtube):not(.docs-section):not(.full):not(.jonnitto-prettyembed-wrapper),
 	.authors,
 	.docs-section > *:first-child { // spacing for the headline
 		max-width: 960px;
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+        margin: auto;
 	}
 
 	.docs-youtube {
@@ -79,29 +30,38 @@
 		margin-top: 16px;
 		margin-bottom: 16px;
 	}
+
+    .fullwidth-header {
+        display: grid;
+    }
 }
 
-.support-call2action {
-    overflow: hidden;
-    background: #00adee;
-    color: white;
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-    margin-bottom: 2rem !important;
+.main-container {
+    display: flow-root;
+    flex-grow: 1;
+    margin-bottom: 40px;
+}
 
-    @media #{$small-and-down} {
-        display: none;
+@include screen.xl {
+    .main-container.has-local-navigation {
+        display: grid;
+        grid-template-columns: 1fr 320px;
     }
+}
 
-    .btn {
-        padding: 0;
-        background-color: $primary-color-light;
-        margin-bottom: 2rem;
+.main-content {
+    max-width: 760px;
+    padding: 0 25px;
+    @include screen.lg {
+        padding: 0 60px;
     }
+    margin: 0 auto;
+    width: 100%;
+}
 
-    .btn__content {
-        color: $secondary-color;
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-    }
+.spacing-wrapper {
+    margin: auto;
+    max-width: 1000px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }

@@ -17,6 +17,10 @@ prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) 
             condition = ${q(node).property('language') == 'fusion'}
             renderer = 'Fusion'
         }
+        afx {
+            condition = ${q(node).property('language') == 'afx'}
+            renderer = 'AFX'
+        }
         fluid {
             condition = ${q(node).property('language') == 'fluid'}
             renderer = 'Fluid'
@@ -78,12 +82,12 @@ prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) 
             renderer = 'XML'
         }
     }
-    class = ${'language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fluid' ? 'markup' : (this.language=='fusion' ? 'php' : this.language)))}
+    class = ${'code language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fluid' ? 'markup' : (this.language=='fusion' ? 'neosfusion' : this.language)))}
     code = ${String.htmlSpecialChars(q(node).property('code'))}
 
     renderer = afx`
-        <div class="code">
-            <pre class={props.class} data-label={props.title}>
+        <div class={props.class}>
+            <pre>
                 <code>{props.code}</code>
             </pre>
         </div>

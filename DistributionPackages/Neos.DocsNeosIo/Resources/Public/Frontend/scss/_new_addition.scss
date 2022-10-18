@@ -1,0 +1,98 @@
+.lead {
+    font-size: 1.35rem;
+}
+
+span.badge {
+    font-size: 0.8em;
+    display: inline-block;
+    padding: 0 4px;
+    font-weight: 400;
+    border-radius: 2px;
+}
+
+span.badge.new {
+    color: #26224c;
+    background-color: #eceafa;
+}
+
+.sidebar-link-item {
+    align-items: baseline;
+    column-gap: 4px;
+}
+
+.card-content {
+    background: var(--c-text);
+}
+
+.chip {
+    display: inline-block;
+    border-radius: 100px;
+    padding: 5px 10px;
+}
+
+.notice-type-info {
+    background: #f3f5f7;
+}
+
+.tags-container {
+    display: inline-flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.cookbook-title {
+    display: block;
+    background-color: var(--c-text);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.cards {
+    display: grid;
+    margin: 20px;
+    grid-template-columns: repeat(auto-fill, min(100%, 540px));
+    gap: 1rem;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    gap: 1rem;
+    border: 1px solid var(--c-divider-light);
+    box-shadow: 0 3px 12px rgb(0 0 0 / 7%), 0 1px 4px rgb(0 0 0 / 7%);
+}
+
+.card__header {
+    padding: 0.6rem 1rem;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background: var(--c-text);
+    color: white;
+    margin: -1px -1px 0;
+    font-size: 1.5rem;
+}
+
+.card__content {
+    flex-grow: 1;
+    padding: 0 1rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+.card__footer {
+    padding: 0 1rem 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.content-section {
+    margin-bottom: 2rem;
+}

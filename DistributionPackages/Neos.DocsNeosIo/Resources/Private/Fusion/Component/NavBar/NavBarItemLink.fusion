@@ -1,0 +1,19 @@
+prototype(Neos.DocsNeosIo:Component.NavBarItemLink) < prototype(Neos.Fusion:Component) {
+    node = ${node}
+
+    itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
+
+    itemClass = Neos.Fusion:RawArray {
+        base = 'item'
+        active = 'active'
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
+    }
+
+    renderer = afx`
+        <div class="nav-link">
+            <Carbon.Link:Link title={props.itemTitle} node={props.node} additionalClass={props.itemClass} backendLink={true}>
+                { props.itemTitle } <Neos.DocsNeosIo:Component.OutboundLinkIcon @if={props.isExternal} />
+            </Carbon.Link:Link>
+        </div>
+    `
+}

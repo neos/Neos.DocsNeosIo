@@ -13,6 +13,17 @@
   constraints:
     nodeTypes:
       'Neos.DocsNeosIo:Constraint.Content.Restricted': false
+
+  properties:
+    titleLink:
+      type: string
+      ui:
+        label: Headline Link
+        reloadIfChanged: true
+        inspector:
+          group: general
+          position: 100
+          editor: Neos.Neos/Inspector/Editors/LinkEditor
   options:
     template:
       childNodes:

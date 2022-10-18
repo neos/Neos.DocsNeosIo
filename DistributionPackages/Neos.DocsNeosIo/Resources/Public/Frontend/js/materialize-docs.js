@@ -20,7 +20,9 @@
     $('.modal').modal();
     $('.scrollspy').scrollSpy();
     $('.datepicker').datepicker();
-    $('.tabs:not(:empty)').tabs();
+    $('.tabs:not(:empty)').tabs({
+		indicator: false
+	});
     $('.timepicker').timepicker();
     $('.tooltipped').tooltip();
     $('select')

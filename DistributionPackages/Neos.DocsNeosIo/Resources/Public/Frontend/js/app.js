@@ -11,9 +11,13 @@ import '../node_modules/prismjs/components/prism-apacheconf.js';
 import '../node_modules/prismjs/components/prism-bash.js';
 import '../node_modules/prismjs/components/prism-scss.js';
 import '../node_modules/prismjs/components/prism-sass.js';
+import '../node_modules/prismjs/components/prism-javascript.js';
 import '../node_modules/prismjs/components/prism-typescript.js';
+import '../node_modules/prismjs/components/prism-jsx.js';
 import '../node_modules/prismjs/components/prism-sql.js';
 import '../node_modules/prismjs/components/prism-markdown.js';
+import './prism-afx.js';
+import './prism-fusion.js';
 import '../node_modules/prismjs/plugins/autolinker/prism-autolinker.js';
 // import '../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js';
 // import '../node_modules/prismjs/plugins/toolbar/prism-toolbar.js';
@@ -21,7 +25,6 @@ import '../node_modules/prismjs/plugins/autolinker/prism-autolinker.js';
 import "../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js";
 
 // Components
-import '../../../Private/Fusion/Component/Header/Header.js';
 import '../../../Private/Fusion/Component/LocalNavigation/LocalNavigation.js';
 import '../../../Private/Fusion/Component/SearchForm/SearchForm.js';
 

@@ -1,0 +1,23 @@
+'Neos.DocsNeosIo:Content.HTML':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  ui:
+    label: HTML
+    icon: icon-code
+    position: 250
+    inlineEditable: true
+  properties:
+    code:
+      type: string
+      defaultValue: 'Enter code here...'
+      ui:
+        label: 'Edit code'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Edit code'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("code", value)}'

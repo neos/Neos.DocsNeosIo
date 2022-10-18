@@ -1,0 +1,97 @@
+prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentComponent) {
+    authors = false
+    title = false
+    subtitle = false
+    content = ''
+    navCollection = false
+    fullwidth = false
+    tags = false
+    navbarRoot = false
+    sidebarRoot = false
+    showSupportCall2Action = true
+
+    sidebarOnlyMobile = false
+    localNav = true
+
+    @context.tags = ${this.tags}
+    tagNotices = Neos.Fusion:Collection {
+        collection = ${tags}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Component.Notice {
+            @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}
+            type = ${q(node).property('noticeType')}
+            title = ${q(node).property('noticeTitle')}
+            content = ${q(node).property('noticeText')}
+        }
+    }
+    prevNextNavigation = Neos.DocsNeosIo:Component.PrevNextNavigation {
+        @if.showPrevNextNavigation = ${q(node).property('showPrevNextNavigation')}
+        prevNode = ${q(documentNode).prevAll('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]').last().get(0)}
+        nextNode = ${q(documentNode).nextAll('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]').get(0)}
+
+        @cache {
+            mode = 'cached'
+            entryIdentifier.node = ${documentNode}
+            entryTags {
+                1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
+            }
+        }
+    }
+
+    renderer = afx`
+        <Neos.DocsNeosIo:Component.Header
+            navigationRoot={props.sidebarRoot}
+            startingPoint={props.navbarRoot}
+            node={props.navbarRoot}
+            renderCurrentPath={true}
+            sidebarOnlyMobile={props.sidebarOnlyMobile}
+        />
+        <div class="page">
+            {props.banner}
+            <main class="fullwidth-layout" @if.is={props.fullwidth}>
+                <div class="fullwidth-header">
+                    <div class="container-wrapper">
+                        <div class="content" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) !=1}>
+                            <h1>{props.title}</h1>
+                            <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags"
+                                                               filter="" @if.inBackend={node.context.inBackend} />
+                        </div>
+                        <div class="content" @if.hasOneAuthor={props.authors && Array.length(props.authors)== 1}>
+                            <h1 class="header">{props.title}</h1>
+                            <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                            <div class="image-container">
+                                <img src={Array.first(props.authors).gravatar} class="profile-image"
+                                     style="margin-top: 16px;" /><br />
+                                <i>Written by</i><br />
+                                {Array.first(props.authors).label}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {props.tagNotices}
+                {props.content}
+
+                <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
+            </main>
+
+            <main class={["main-container", props.localNav && "has-local-navigation"]} @if.isNot={!props.fullwidth}>
+                <div class="main-content">
+                    <h1>{props.title}</h1>
+                    <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags"
+                                                       filter=""
+                                                       @if.inBackend={node.context.inBackend} />
+                    {props.tagNotices}
+                    {props.content}
+                    {props.prevNextNavigation}
+                    <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
+
+                </div>
+                <Neos.DocsNeosIo:Component.LocalNavigation @if={props.localNav && props.navCollection} collection={props.navCollection} />
+            </main>
+            <Neos.DocsNeosIo:Component.Footer />
+        </div>
+    `
+}

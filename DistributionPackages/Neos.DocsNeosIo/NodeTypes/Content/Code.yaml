@@ -32,6 +32,8 @@
                 label: 'YAML'
               fusion:
                 label: 'Fusion'
+              afx:
+                label: 'AFX'
               fluid:
                 label: 'Fluid'
               php:
