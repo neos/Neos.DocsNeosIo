@@ -23,12 +23,8 @@ $fa-font-path: "../build/fontawesome";
 // Neos design
 //@import "materialize-docs";
 @import "base";
-//@import "cards";
+@import "cards";
 @import "collection";
-@import "preloaders";
-//@import "styled-content";
 @import "tags";
 @import "layout";
-@import "new";
-@import "new_modules";
-@import "new_addition";
+@import "global";

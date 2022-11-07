@@ -1,29 +1,25 @@
 prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent) {
-    renderer = Neos.Fusion:Tag {
-        attributes.class = 'custom-block'
-        tagName = 'div'
-        content = Neos.DocsNeosIo:Component.Notice {
-            id = Neos.DocsNeosIo:Helper.StringToHash {
-                value = ${q(node).property('noticeTitle') || node.identifier}
-            }
-            title = Neos.Neos:Editable {
-                property = 'noticeTitle'
+    renderer = Neos.DocsNeosIo:Component.Notice {
+        id = Neos.DocsNeosIo:Helper.StringToHash {
+            value = ${q(node).property('noticeTitle') || node.identifier}
+        }
+        title = Neos.Neos:Editable {
+            property = 'noticeTitle'
+            block = false
+            @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
+        }
+        content = Neos.Fusion:Component {
+            text = Neos.Neos:Editable {
+                property = 'noticeText'
                 block = false
                 @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
             }
-            content = Neos.Fusion:Component {
-                text = Neos.Neos:Editable {
-                    property = 'noticeText'
-                    block = false
-                    @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
-                }
-                collection = Neos.Neos:ContentCollection
-                renderer = afx`
-                    <p @if={props.text}>{props.text}</p>
-                    {props.collection}
-                `
-            }
-            type = ${q(node).property('noticeType')}
+            collection = Neos.Neos:ContentCollection
+            renderer = afx`
+                <p @if={props.text}>{props.text}</p>
+                {props.collection}
+            `
         }
+        type = ${q(node).property('noticeType')}
     }
 }

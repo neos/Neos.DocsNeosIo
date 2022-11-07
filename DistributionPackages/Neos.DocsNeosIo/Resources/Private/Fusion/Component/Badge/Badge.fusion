@@ -1,0 +1,8 @@
+prototype(Neos.DocsNeosIo:Component.Badge) < prototype(Neos.Fusion:Component) {
+
+    itemStatus = null
+
+    renderer = afx`
+        <span class={'badge new status-' + props.itemStatus}>{props.itemStatus}</span>
+    `
+}

@@ -25,7 +25,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
         <li class="sidebar-link" >
             <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={props.itemLinkClass} backendLink={true}>
                 {props.itemTitle}
-                <span @if.has={props.itemStatus} class={'badge new status-' + props.itemStatus}>{props.itemStatus}</span>
+                <Neos.DocsNeosIo:Component.Badge @if.has={props.itemStatus} itemStatus={props.itemStatus} />
             </Carbon.Link:Link>
             <ul @if.hasNextLevel={props.renderNextLevel} class={props.navigationClass}>
                 {props.navigationItems}
