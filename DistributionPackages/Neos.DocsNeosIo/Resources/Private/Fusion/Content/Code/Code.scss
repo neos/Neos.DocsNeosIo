@@ -1,8 +1,8 @@
 @use "../../../../public/Frontend/scss/screen";
+@use "../../../../public/Frontend/scss/helpers";
 
 code {
     margin: 0;
-    border-radius: 3px;
     padding: .25rem .5rem;
     font-family: var(--code-font-family);
     font-size: .85em;
@@ -31,7 +31,6 @@ div[class*=language-] {
 }
 
 li>div[class*=language-] {
-    border-radius: 6px 0 0 6px;
     margin: 1rem -1.5rem 1rem -1.25rem;
     line-height: initial
 }
@@ -96,12 +95,12 @@ li>div[class*=language-] {
 @include screen.xs {
     div[class*=language-] {
         margin:1rem 0;
-        border-radius: 6px
+        @include helpers.neos-borders(12px);
     }
 
     li>div[class*=language-] {
-        margin: 1rem 0 1rem 0rem;
-        border-radius: 6px
+        margin: 1rem 0 1rem 0;
+        @include helpers.neos-borders(12px);
     }
 }
 
@@ -269,4 +268,28 @@ div[class~=language-dockerfile]:before {
 
 div[class~=language-vue]:before {
     content: "vue"
+}
+
+.preview {
+    display: block;
+    position: relative;
+    margin: 1rem 0;
+    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.07)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.07));
+}
+
+.preview__inner {
+    @include helpers.neos-borders(12px);
+    border: 1px solid #eee;
+    background: white;
+    padding: 1.25rem 1.5rem;
+}
+
+.preview:before {
+    content: "preview";
+    position: absolute;
+    top: .6em;
+    right: 1em;
+    z-index: 2;
+    font-size: .8rem;
+    color: #888
 }

@@ -3,7 +3,7 @@ span.badge {
     display: inline-block;
     padding: 0 4px;
     font-weight: 400;
-    border-radius: 2px;
+    clip-path: polygon(4px 0, 0 4px, 0 100%, calc(100% - 4px) 100%, 100% calc(100% - 4px), 100% 0);
 }
 
 span.badge.new {

@@ -6,15 +6,17 @@ prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Compo
     tags = ${q(node).property('tags')}
 
     renderer = afx`
-        <div class="card">
-            <Carbon.Link:Link node={node} backendLink={true} additionalClass="card__header" content={props.title} />
-            <div class="card__content">
-                <p @if={props.subtitle}>{props.subtitle}</p>
-            </div>
-            <div class="card__footer">
+        <div class="card__wrapper">
+            <div class="card">
+                <Carbon.Link:Link node={node} backendLink={true} additionalClass="card__header" content={props.title} />
+                <div class="card__content">
+                    <p @if={props.subtitle}>{props.subtitle}</p>
+                </div>
+                <div class="card__footer">
 
-                <time datetime={Date.format(props.publishingDate,'c')}>{props.formattedPublishingDate}</time>
-                <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
+                    <time datetime={Date.format(props.publishingDate,'c')}>{props.formattedPublishingDate}</time>
+                    <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
+                </div>
             </div>
         </div>
     `

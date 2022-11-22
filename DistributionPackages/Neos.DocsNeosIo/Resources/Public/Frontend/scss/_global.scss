@@ -1,4 +1,5 @@
 @use "screen";
+@use "helpers";
 
 :root {
     --c-white: #ffffff;
@@ -549,8 +550,8 @@ a[href="#"]:after {
     background: var(--c-brand);
     color: #fff;
     cursor: pointer;
-    border-radius: 6px;
-    transition: box-shadow .2s ease
+    text-decoration: none;
+    @include helpers.neos-borders;
 }
 
 .btn.secondary {
@@ -559,25 +560,14 @@ a[href="#"]:after {
 
 .btn:hover {
     text-decoration: none;
-    box-shadow: 0 2px 7px #0000002e
 }
 
-.preview {
-    display: block;
-    position: relative;
-    margin: 1rem 0;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid #eee;
-    border-radius: 6px;
-    box-shadow: 0 3px 12px #00000012,0 1px 4px #00000012
+.btn__wrapper {
+    display: inline-grid;
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.18));
+    transition: filter .2s ease;
 }
 
-.preview:before {
-    content: "preview";
-    position: absolute;
-    top: .6em;
-    right: 1em;
-    z-index: 2;
-    font-size: .8rem;
-    color: #888
+.btn__wrapper:hover {
+    filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.18));
 }

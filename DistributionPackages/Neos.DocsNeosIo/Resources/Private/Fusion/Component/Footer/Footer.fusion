@@ -9,12 +9,14 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                             you
                             want
                             to help extending this documentation?</p>
-                        <a class="btn btn--solidPrimary"
-                           href="mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards">
-                            <div class="btn__content">
-                                Support Us
-                            </div>
-                        </a>
+                        <div class="btn__wrapper">
+                            <a class="btn btn--solidPrimary"
+                               href="mailto:roland@neos.io?subject=Contributing%20to%20Neos%20Docs&body=Hello%2C%0A%0Aplease%20create%20a%20Neos%20Docs%20account%20for%20myself%2C%20so%20I%20can%20improve%20the%20documentation.%0A%0ABest%20regards">
+                                <div class="btn__content">
+                                    Support Us
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <div>
                         <h5>Join the Discussion</h5>
@@ -25,11 +27,13 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                             else
                             you
                             can think of.</p>
-                        <a class="btn btn--solidPrimary" target="_blank" href="https://slack.neos.io/">
-                            <div class="btn__content">
-                                Chat
-                            </div>
-                        </a>
+                        <div class="btn__wrapper">
+                            <a class="btn btn--solidPrimary" target="_blank" href="https://slack.neos.io/">
+                                <div class="btn__content">
+                                    Chat
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -58,8 +62,9 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                                                            data-property="length">100</span> contributors around the
                         world.<br />
                         Website hosted by <a href="https://www.flownative.com" target="_blank"
-                                             rel="noopener">Flownative</a> · <a target="_blank" rel="noopener" href="https://stats.uptimerobot.com/275vWHgGq">System
-                            status</a> · <a href="https://www.neos.io/footer-content/imprint.html">Imprint</a>
+                                             rel="noopener">Flownative</a> · <a target="_blank" rel="noopener"
+                                                                                href="https://stats.uptimerobot.com/275vWHgGq">System
+                        status</a> · <a href="https://www.neos.io/footer-content/imprint.html">Imprint</a>
                     </p>
                 </div>
             </div>

@@ -10,13 +10,15 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemDialog) < prototype(Neos.Fusion:Co
                 <span class="button-arrow" />
             </button>
 
-            <ul class="dialog">
-                <Neos.Fusion:Collection collection={props.navigationItems} itemName="node">
-                    <li class="dialog-item">
-                        <Neos.DocsNeosIo:Component.NavBarItemDialogItem node={node} />
-                    </li>
-                </Neos.Fusion:Collection>
-            </ul>
+            <div class="dialog">
+                <ul>
+                    <Neos.Fusion:Collection collection={props.navigationItems} itemName="node">
+                        <li class="dialog-item">
+                            <Neos.DocsNeosIo:Component.NavBarItemDialogItem node={node} />
+                        </li>
+                    </Neos.Fusion:Collection>
+                </ul>
+            </div>
         </div>
     `
 }

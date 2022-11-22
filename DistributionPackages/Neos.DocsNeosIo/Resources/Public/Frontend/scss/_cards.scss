@@ -1,3 +1,4 @@
+@use "helpers";
 
 .cards {
     display: grid;
@@ -8,13 +9,18 @@
     justify-content: center;
 }
 
+.card__wrapper {
+    display: grid;
+    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .07)) drop-shadow(0 1px 4px rgba(0, 0, 0, .07));
+}
+
 .card {
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
     gap: 1rem;
     border: 1px solid var(--c-divider-light);
-    box-shadow: 0 3px 12px rgb(0 0 0 / 7%), 0 1px 4px rgb(0 0 0 / 7%);
+    background: white;
+    @include helpers.neos-borders(12px);
 }
 
 .card--padding {
@@ -68,12 +74,12 @@
 
 .chip {
     display: inline-block;
-    border-radius: 100px;
+    @include helpers.neos-borders(6px);
     padding: 5px 10px;
 }
 
 .notice-type-info {
-    background: #f3f5f7;
+    background: #e9eef1;
 }
 
 .simple {

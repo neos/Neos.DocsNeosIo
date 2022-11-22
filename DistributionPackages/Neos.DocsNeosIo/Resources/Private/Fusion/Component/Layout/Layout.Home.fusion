@@ -49,8 +49,8 @@ prototype(Neos.DocsNeosIo:Component.Layout.Home) < prototype(Neos.Neos:ContentCo
                 <img src={props.logo} width="400" height="110" alt="Neos" />
                 <h1 style="font-size: 2rem">Developer Documentation</h1>
                 <div style="margin-top: 20px;display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
-                    <Carbon.Link:Link link="/guide/getting-started" additionalClass="btn secondary">Get started</Carbon.Link:Link>
-                    <Carbon.Link:Link link="/guide/installation-development-setup" additionalClass="btn secondary">Install</Carbon.Link:Link>
+                    <div class="btn__wrapper"><Carbon.Link:Link link="/guide/getting-started" additionalClass="btn secondary">Get started</Carbon.Link:Link></div>
+                    <div class="btn__wrapper"><Carbon.Link:Link link="/guide/installation-development-setup" additionalClass="btn secondary">Install</Carbon.Link:Link></div>
                 </div>
             </div>
 

@@ -8325,13 +8325,19 @@ html {
   justify-content: center;
 }
 
+.card__wrapper {
+  display: grid;
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.07)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.07));
+}
+
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 4px;
   gap: 1rem;
   border: 1px solid var(--c-divider-light);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(0, 0, 0, 0.07);
+  background: white;
+  -webkit-clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+          clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
 }
 
 .card--padding {
@@ -8382,12 +8388,13 @@ html {
 
 .chip {
   display: inline-block;
-  border-radius: 100px;
+  -webkit-clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
+          clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
   padding: 5px 10px;
 }
 
 .notice-type-info {
-  background: #f3f5f7;
+  background: #e9eef1;
 }
 
 .simple {
@@ -8398,7 +8405,6 @@ html {
 .collection {
   margin: 0.5rem 0 1rem 0;
   border: 1px solid #e0e0e0;
-  border-radius: 2px;
   position: relative;
 }
 .collection .collection-item {
@@ -8607,8 +8613,9 @@ html {
   display: block;
   background-color: var(--c-text);
   color: white;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 5px 10px;
+  -webkit-clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
+          clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
 }
 
 .banner {
@@ -9040,7 +9047,7 @@ a.sidebar-link-item.active {
     transform: rotate(0);
   }
 }
-.nav-dropdown-link .dialog {
+.nav-dropdown-link .dialog ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -9052,11 +9059,14 @@ a.sidebar-link-item.active {
     position: absolute;
     top: 26px;
     right: -8px;
-    border-radius: 6px;
-    padding: 12px 0;
     min-width: 128px;
+    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.1)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  }
+  .nav-dropdown-link .dialog ul {
+    padding: 12px 0;
     background-color: var(--c-bg);
-    box-shadow: var(--shadow-3);
+    -webkit-clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+            clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
   }
 }
 .nav-links {
@@ -9088,7 +9098,8 @@ a.sidebar-link-item.active {
   display: none;
   padding: 0.6rem;
   cursor: pointer;
-  border-radius: 4px;
+  -webkit-clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
+          clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
 }
 
 .sidebar-button:focus, .sidebar-button.active {
@@ -9275,7 +9286,6 @@ a.sidebar-link-item.active {
 .custom-block.details {
   position: relative;
   display: block;
-  border-radius: 2px;
   margin: 1.6em 0;
   padding: 1.6em;
   background-color: #eee;
@@ -9310,7 +9320,8 @@ span.badge {
   display: inline-block;
   padding: 0 4px;
   font-weight: 400;
-  border-radius: 2px;
+  -webkit-clip-path: polygon(4px 0, 0 4px, 0 100%, calc(100% - 4px) 100%, 100% calc(100% - 4px), 100% 0);
+          clip-path: polygon(4px 0, 0 4px, 0 100%, calc(100% - 4px) 100%, 100% calc(100% - 4px), 100% 0);
 }
 
 span.badge.new {
@@ -9329,14 +9340,14 @@ span.badge.new {
   justify-content: space-between;
   gap: 10px;
 }
-.buttons .btn {
+.buttons .btn__wrapper {
   margin-bottom: 16px;
   text-transform: none;
 }
-.buttons .btn:not(:last-child) {
+.buttons .btn__wrapper:not(:last-child) {
   margin-right: 16px;
 }
-.buttons .btn .inline-icon {
+.buttons .btn__wrapper .inline-icon {
   font-size: 1em;
 }
 .buttons [data-neos-placeholder]:before {
@@ -9346,7 +9357,6 @@ span.badge.new {
 
 code {
   margin: 0;
-  border-radius: 3px;
   padding: 0.25rem 0.5rem;
   font-family: var(--code-font-family);
   font-size: 0.85em;
@@ -9375,7 +9385,6 @@ div[class*=language-] {
 }
 
 li > div[class*=language-] {
-  border-radius: 6px 0 0 6px;
   margin: 1rem -1.5rem 1rem -1.25rem;
   line-height: initial;
 }
@@ -9439,12 +9448,14 @@ li > div[class*=language-] {
 @media (min-width: 420px) {
   div[class*=language-] {
     margin: 1rem 0;
-    border-radius: 6px;
+    -webkit-clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+            clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
   }
 
   li > div[class*=language-] {
-    margin: 1rem 0 1rem 0rem;
-    border-radius: 6px;
+    margin: 1rem 0 1rem 0;
+    -webkit-clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+            clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
   }
 }
 [class*=language-] pre, [class*=language-] code {
@@ -9613,6 +9624,31 @@ div[class~=language-dockerfile]:before {
 
 div[class~=language-vue]:before {
   content: "vue";
+}
+
+.preview {
+  display: block;
+  position: relative;
+  margin: 1rem 0;
+  filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.07)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.07));
+}
+
+.preview__inner {
+  -webkit-clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+          clip-path: polygon(12px 0, 0 12px, 0 100%, calc(100% - 12px) 100%, 100% calc(100% - 12px), 100% 0);
+  border: 1px solid #eee;
+  background: white;
+  padding: 1.25rem 1.5rem;
+}
+
+.preview:before {
+  content: "preview";
+  position: absolute;
+  top: 0.6em;
+  right: 1em;
+  z-index: 2;
+  font-size: 0.8rem;
+  color: #888;
 }
 
 .link-list {
@@ -10377,8 +10413,9 @@ a[href="#"]:after {
   background: var(--c-brand);
   color: #fff;
   cursor: pointer;
-  border-radius: 6px;
-  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+  -webkit-clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
+          clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
 }
 
 .btn.secondary {
@@ -10387,27 +10424,16 @@ a[href="#"]:after {
 
 .btn:hover {
   text-decoration: none;
-  box-shadow: 0 2px 7px #0000002e;
 }
 
-.preview {
-  display: block;
-  position: relative;
-  margin: 1rem 0;
-  padding: 1.25rem 1.5rem;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  box-shadow: 0 3px 12px #00000012, 0 1px 4px #00000012;
+.btn__wrapper {
+  display: inline-grid;
+  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.18));
+  transition: filter 0.2s ease;
 }
 
-.preview:before {
-  content: "preview";
-  position: absolute;
-  top: 0.6em;
-  right: 1em;
-  z-index: 2;
-  font-size: 0.8rem;
-  color: #888;
+.btn__wrapper:hover {
+  filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.18));
 }
 
 /*# sourceMappingURL=app.css.map */
