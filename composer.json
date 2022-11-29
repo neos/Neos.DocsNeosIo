@@ -10,11 +10,10 @@
         }
     },
     "require": {
-        "php": "^7.4",
+        "php": "^8.1",
         "neos/docs-neos-io": "@dev",
 
-        "flownative/google-cloudstorage": "^5.0",
-        "rokka/imagine-vips": "^0.13"
+        "flownative/google-cloudstorage": "^5.3.0"
     },
     "repositories": {
         "distribution": {
