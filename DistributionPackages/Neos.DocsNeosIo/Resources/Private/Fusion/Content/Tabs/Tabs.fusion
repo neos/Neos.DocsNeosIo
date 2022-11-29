@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
     renderer = afx`
         <ul class="tabs">
-            <Neos.Fusion:Collection collection={q(node).children()} iteratorName="iterator" itemName="item">
+            <Neos.Fusion:Loop items={q(node).children()} iteratorName="iterator" itemName="item">
                 <li @path="itemRenderer" class="tab">
                     <Carbon.Link:Link link={'#' + item.identifier} additionalClass={iterator.isFirst ? 'active' : ''} backendLink={true} >
                         <div class="tab-link__inner">
@@ -9,7 +9,7 @@ prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) 
                         </div>
                     </Carbon.Link:Link>
                 </li>
-            </Neos.Fusion:Collection>
+            </Neos.Fusion:Loop>
             <div class="spacer"></div>
         </ul>
         <div class="tabs-content__wrapper">

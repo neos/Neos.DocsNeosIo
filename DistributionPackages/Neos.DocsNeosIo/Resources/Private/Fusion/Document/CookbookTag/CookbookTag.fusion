@@ -3,9 +3,9 @@ prototype(Neos.DocsNeosIo:Document.CookbookTag) < prototype(Neos.DocsNeosIo:Docu
     body {
         fullwidth = true
         showSupportCall2Action = false
-        content = Neos.Fusion:Collection {
+        content = Neos.Fusion:Loop {
             @process.wrap = ${'<div class="cookbooks-overview cards">' + value + '</div>'}
-            collection = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.Cookbook]').filterByReferences('tags', [q(node).property('includedTag')]) || q(node).children()}
+            items = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.Cookbook]').filterByReferences('tags', [q(node).property('includedTag')]) || q(node).children()}
             itemName = 'node'
             itemRenderer = Neos.DocsNeosIo:Document.Cookbook.Short
         }

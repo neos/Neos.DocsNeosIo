@@ -9,7 +9,7 @@ prototype(Neos.DocsNeosIo:Document.Guide.Short) < prototype(Neos.Fusion:Componen
                 <h2>{props.title}</h2>
             </Carbon.Link:Link>
             <p @if.has={props.subtitle}>{props.subtitle}</p>
-            <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
+            <Neos.DocsNeosIo:Component.TagList items={props.tags} />
         </article>
     `
 }

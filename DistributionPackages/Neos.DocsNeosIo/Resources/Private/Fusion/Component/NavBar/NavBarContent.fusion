@@ -14,9 +14,9 @@ prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Compo
         active.@if.isActive = ${node == documentNode || (navBarNodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
     }
     navigationClass = ${'navigation-level navigation-level--level-' + (navBarNodeDepth + 1)}
-    navigationItems = Neos.Fusion:Collection {
-        collection = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
-        @if.notEmpty = ${this.collection.count() > 0}
+    navigationItems = Neos.Fusion:Loop {
+        items = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+        @if.notEmpty = ${this.items.count() > 0}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.NavBarItem
     }

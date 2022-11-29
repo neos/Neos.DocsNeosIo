@@ -1,12 +1,12 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(Neos.Fusion:Component) {
     attributes = Neos.Fusion:Attributes
-    collection = false
+    items = false
 
     # rendering
-    @context.collection = ${this.collection && this.collection.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
+    @context.items = ${this.items && this.items.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
     @context.nodeDepth = ${this.node.depth - startingPoint.depth}
-    items = Neos.Fusion:Collection {
-        collection = ${collection}
+    levelItems = Neos.Fusion:Loop {
+        items = ${items}
         itemName = 'node'
         itemRenderer = Neos.Fusion:Component {
             id = Neos.DocsNeosIo:Helper.StringToHash {
@@ -25,9 +25,9 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(N
         }
     }
     renderer = afx`
-        <h3 class="h4" @if={collection.count() > 0}>On this page</h3>
-        <Neos.Fusion:Tag tagName="ul" attributes={props.attributes} @if.notEmpty={collection.count() > 0}>
-            {props.items}
+        <h3 class="h4" @if={items.count() > 0}>On this page</h3>
+        <Neos.Fusion:Tag tagName="ul" attributes={props.attributes} @if.notEmpty={items.count() > 0}>
+            {props.levelItems}
         </Neos.Fusion:Tag>
     `
 }

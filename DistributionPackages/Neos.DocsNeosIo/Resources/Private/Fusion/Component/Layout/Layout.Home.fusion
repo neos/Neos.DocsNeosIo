@@ -10,8 +10,8 @@ prototype(Neos.DocsNeosIo:Component.Layout.Home) < prototype(Neos.Neos:ContentCo
     showSupportCall2Action = true
 
     @context.tags = ${this.tags}
-    tagNotices = Neos.Fusion:Collection {
-        collection = ${tags}
+    tagNotices = Neos.Fusion:Loop {
+        items = ${tags}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Notice {
             @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}

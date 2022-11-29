@@ -12,9 +12,9 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
         active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
     }
     navigationClass = "sidebar-links"
-    navigationItems = Neos.Fusion:Collection {
-        @if.notEmpty = ${this.collection.count() > 0}
-        collection = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+    navigationItems = Neos.Fusion:Loop {
+        @if.notEmpty = ${this.items.count() > 0}
+        items = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Sidebar.LevelRenderer
     }

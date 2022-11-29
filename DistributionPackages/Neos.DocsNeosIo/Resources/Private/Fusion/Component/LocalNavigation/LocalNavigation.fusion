@@ -1,5 +1,5 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Component) {
-    collection = false
+    items = false
 
     # rendering
     @context {
@@ -9,7 +9,7 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Com
     renderer = afx`
         <div class="local-navigation sm-hidden">
             <aside class="toc">
-                <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer collection={props.collection}/>
+                <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer items={props.collection}/>
                 <div @if.inBackend={node.context.inBackend}>
                     <i>This navigation updates only after a reload.</i>
                 </div>

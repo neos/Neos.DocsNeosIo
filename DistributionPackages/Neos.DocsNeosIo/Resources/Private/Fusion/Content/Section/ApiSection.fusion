@@ -31,7 +31,7 @@ prototype(Neos.DocsNeosIo:Content.ApiSection) < prototype(Neos.Neos:ContentCompo
                 </Neos.Fusion:Tag>
                 <p class="api-name">{props.apiName}</p>
             </div>
-            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
+            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
             <div>{props.content}</div>
         </div>
     `

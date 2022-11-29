@@ -12,11 +12,11 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemDialog) < prototype(Neos.Fusion:Co
 
             <div class="dialog">
                 <ul>
-                    <Neos.Fusion:Collection collection={props.navigationItems} itemName="node">
+                    <Neos.Fusion:Loop items={props.navigationItems} itemName="node">
                         <li class="dialog-item">
                             <Neos.DocsNeosIo:Component.NavBarItemDialogItem node={node} />
                         </li>
-                    </Neos.Fusion:Collection>
+                    </Neos.Fusion:Loop>
                 </ul>
             </div>
         </div>

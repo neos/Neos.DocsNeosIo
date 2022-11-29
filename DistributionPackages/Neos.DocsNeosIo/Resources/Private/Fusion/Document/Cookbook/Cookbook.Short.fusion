@@ -15,7 +15,7 @@ prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Compo
                 <div class="card__footer">
 
                     <time datetime={Date.format(props.publishingDate,'c')}>{props.formattedPublishingDate}</time>
-                    <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
+                    <Neos.DocsNeosIo:Component.TagList items={props.tags} />
                 </div>
             </div>
         </div>

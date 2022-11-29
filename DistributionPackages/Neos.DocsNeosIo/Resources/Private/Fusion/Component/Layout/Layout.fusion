@@ -14,8 +14,8 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
     localNav = true
 
     @context.tags = ${this.tags}
-    tagNotices = Neos.Fusion:Collection {
-        collection = ${tags}
+    tagNotices = Neos.Fusion:Loop {
+        items = ${tags}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Notice {
             @if.hasTitle = ${String.trim(q(node).property('noticeTitle'))}
@@ -54,7 +54,7 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                         <div class="content" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) !=1}>
                             <h1>{props.title}</h1>
                             <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
-                            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags"
+                            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                                filter="" @if.inBackend={node.context.inBackend} />
                         </div>
                         <div class="content" @if.hasOneAuthor={props.authors && Array.length(props.authors)== 1}>
@@ -80,7 +80,7 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                 <div class="main-content">
                     <h1>{props.title}</h1>
                     <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
-                    <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags"
+                    <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                        filter=""
                                                        @if.inBackend={node.context.inBackend} />
                     {props.tagNotices}
@@ -89,7 +89,8 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                     <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
 
                 </div>
-                <Neos.DocsNeosIo:Component.LocalNavigation @if={props.localNav && props.navCollection} collection={props.navCollection} />
+                <Neos.DocsNeosIo:Component.LocalNavigation @if={props.localNav && props.navCollection}
+                                                           items={props.navCollection} />
             </main>
             <Neos.DocsNeosIo:Component.Footer />
         </div>
