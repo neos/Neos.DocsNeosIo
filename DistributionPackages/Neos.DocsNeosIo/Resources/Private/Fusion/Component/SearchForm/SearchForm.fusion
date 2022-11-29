@@ -12,7 +12,7 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
         action = 'search'
         format = 'json'
         absolute = true
-        arguments = Neos.Fusion:RawArray {
+        arguments = Neos.Fusion:DataStructure {
             node = ${documentNode}
         }
     }

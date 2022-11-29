@@ -3,7 +3,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemLink) < prototype(Neos.Fusion:Comp
 
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
 
-    itemClass = Neos.Fusion:RawArray {
+    itemClass = Neos.Fusion:DataStructure {
         base = 'item'
         active = 'active'
         active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}

@@ -5,7 +5,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Compo
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
     itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
     itemStatus = ${q(node).property('status')}
-    itemClass = Neos.Fusion:RawArray {
+    itemClass = Neos.Fusion:DataStructure {
         base = 'navigation-item'
         level = ${'navigation-item--level-' + navBarNodeDepth}
         current = 'current'

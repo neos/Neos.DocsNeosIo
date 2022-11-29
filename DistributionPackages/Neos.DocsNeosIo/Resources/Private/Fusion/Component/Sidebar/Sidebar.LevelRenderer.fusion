@@ -4,7 +4,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
     itemTitle = ${q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
     itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
     itemStatus = ${q(node).property('status')}
-    itemLinkClass = Neos.Fusion:RawArray {
+    itemLinkClass = Neos.Fusion:DataStructure {
         base = 'sidebar-link-item'
         current = 'current'
         current.@if.isCurrent = ${node == documentNode}
