@@ -14,3 +14,23 @@
         reloadIfChanged: true
         inspector:
           group: 'document'
+    firstButtonText:
+      type: string
+      defaultValue: 'Get Started'
+    firstButtonLink:
+      type: reference
+      ui:
+        label: 'First button link'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+    secondButtonText:
+      type: string
+      defaultValue: 'Install'
+    secondButtonLink:
+      type: reference
+      ui:
+        label: 'Second button link'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'

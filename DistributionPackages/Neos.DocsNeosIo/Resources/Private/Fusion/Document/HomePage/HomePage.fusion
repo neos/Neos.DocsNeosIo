@@ -1,15 +1,5 @@
 prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    bodyTag.attributes.class.@process.setNoSidebar = Neos.Fusion:Case {
-        classIsString {
-            condition = ${Type.isString(value)}
-            renderer = ${String.trim(value + ' no-sidebar')}
-        }
-
-        classIsArray {
-            condition = ${Type.isArray(value)}
-            renderer = ${Array.push(value, 'no-sidebar')}
-        }
-    }
+    bodyTag.attributes.class.@process.setNoSidebar = ${Array.push(value, 'no-sidebar')}
     body = Neos.DocsNeosIo:Component.Layout {
         navCollection = ${q(node).find('main').children()}
         showSupportCall2Action = false
@@ -22,13 +12,16 @@ prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Documen
                 path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-light.svg"
             }
 
+            firstButtonLink = ${q(node).property('firstButtonLink')}
+            secondButtonLink = ${q(node).property('secondButtonLink')}
+
             renderer = afx`
                 <div class="banner">
                     <img src={props.logo} width="400" height="110" alt="Neos" />
                     <h1 style="font-size: 2rem">Developer Documentation</h1>
-                    <div style="margin-top: 20px;display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
-                        <div class="btn__wrapper"><Carbon.Link:Link link="/guide/getting-started" additionalClass="btn secondary">Get started</Carbon.Link:Link></div>
-                        <div class="btn__wrapper"><Carbon.Link:Link link="/guide/installation-development-setup" additionalClass="btn secondary">Install</Carbon.Link:Link></div>
+                    <div @if={props.firstButtonLink || props.secondButtonLink} class="cta-buttons">
+                        <Carbon.Link:Link node={props.firstButtonLink} additionalClass="btn__wrapper"><div class="btn secondary"><Neos.Neos:Editable property="firstButtonText" /></div></Carbon.Link:Link>
+                        <Carbon.Link:Link node={props.secondButtonLink} additionalClass="btn__wrapper"><div class="btn secondary"><Neos.Neos:Editable property="secondButtonText" /></div></Carbon.Link:Link>
                     </div>
                 </div>
             `
