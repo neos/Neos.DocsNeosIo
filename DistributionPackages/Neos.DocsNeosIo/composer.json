@@ -5,7 +5,6 @@
     "require": {
         "neos/neos": "~7.3.0",
         "neos/neos-ui": "~7.3.0",
-        "neos/googleanalytics": "^3.3",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
@@ -20,6 +19,7 @@
         "carbon/includeassets": "^5.2",
         "flowpack/cachebuster": "^1.0",
         "flowpack/nodetemplates": "^1.0",
+        "flowpack/neos-matomo": "^3.5",
         "moc/notfound": "^3.1",
         "sitegeist/silhouettes": "^2.0",
 
