@@ -221,6 +221,10 @@ form {
     margin: 0
 }
 
+input {
+    font-family: var(--font-family-base);
+}
+
 .theme.sidebar-open .sidebar-mask {
     display: block
 }

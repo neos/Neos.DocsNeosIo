@@ -25,6 +25,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Compo
         <div class="nav">
             <nav class="nav-links">
                 {props.navigationItems}
+                <Neos.DocsNeosIo:Component.SearchForm class="item search-item" />
             </nav>
         </div>
     `

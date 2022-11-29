@@ -1,0 +1,36 @@
+.search-form {
+    display: flex;
+    border: 1px solid var(--c-divider-dark);
+
+    input {
+        font-size: inherit;
+        flex-grow: 1;
+        border: none;
+        padding: 1rem 1rem 1rem 1.5rem;
+    }
+    button {
+        right: 0;
+        bottom: 0;
+        top: 0;
+        border: none;
+        background: none;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        font-size: inherit;
+        cursor: pointer;
+
+        svg {
+            font-size: 120%;
+        }
+    }
+
+    &:focus-within {
+        outline: 1px solid invert;
+    }
+}
+
+.sidebar .search-form {
+    border: none;
+}

@@ -1,4 +1,7 @@
 prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentComponent) {
+
+    class = null
+
     ajaxTarget = false
 
     # See Flowpack.SearchPlugin:Search.Form
@@ -19,9 +22,17 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
     }
 
     renderer = afx`
-        <form method="GET" action={props.searchResultUri} class="search-form">
-            <input class="search-input" type="search" name="search" placeholder="Search" value={props.searchWord} autocomplete="off" data-ajax-target={props.ajaxTarget} data-ajax-search-uri={props.ajaxSearchUri}/>
-            <button class="btn material-icons" type="submit">Search</button>
-        </form>
+        <div class={["search-form__wrapper", props.class]}>
+            <form method="GET" action={props.searchResultUri} class="search-form">
+                <input class="search-input" type="search" name="search" placeholder="Search" value={props.searchWord}
+                       autocomplete="off" data-ajax-target={props.ajaxTarget}
+                       data-ajax-search-uri={props.ajaxSearchUri} />
+                <button type="submit"><span class="sr-only">Search</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 30 30">
+                        <path d="M20.7 19.3a10 10 0 10-1.4 1.4l6 6a1 1 0 101.4-1.4zm-7.7 1.7a8 8 0 11.01 0" />
+                    </svg>
+                </button>
+            </form>
+        </div>
     `
 }

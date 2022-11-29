@@ -16,7 +16,7 @@
     background-color: var(--c-bg);
 }
 
-@media (min-width: 720px) {
+@include screen.sm {
     .nav-bar {
         padding: 0.7rem 1.5rem;
     }
@@ -38,7 +38,7 @@
         white-space: nowrap
     }
 
-    .item:hover,.item.active {
+    .item:hover, .item.active {
         text-decoration: none;
         color: var(--c-brand)
     }
@@ -50,14 +50,14 @@
 
     @include screen.sm {
         .item {
-            border-bottom:2px solid transparent;
+            border-bottom: 2px solid transparent;
             padding: 0;
             line-height: 24px;
             font-size: .9rem;
             font-weight: 500
         }
 
-        .item:hover,.item.active {
+        .item:hover, .item.active {
             border-bottom-color: var(--c-brand);
             color: var(--c-text)
         }
@@ -97,7 +97,7 @@
 
     @include screen.sm {
         .item {
-            padding:0 24px 0 12px;
+            padding: 0 24px 0 12px;
             line-height: 32px;
             font-size: .85rem;
             font-weight: 500;
@@ -110,7 +110,7 @@
         }
     }
 
-    .item:hover,.item.active {
+    .item:hover, .item.active {
         text-decoration: none;
         color: var(--c-brand)
     }
@@ -122,7 +122,7 @@
 
     @include screen.sm {
         .arrow {
-            display:inline-block;
+            display: inline-block;
             margin-right: 8px;
             border-top: 6px solid #ccc;
             border-right: 4px solid transparent;
@@ -144,7 +144,7 @@
 
 @include screen.sm {
     .nav-dropdown-link {
-        height:auto;
+        height: auto;
         overflow: visible
     }
 
@@ -157,6 +157,7 @@
     height: auto
 }
 
+.nav-links .search-form__wrapper,
 .nav-dropdown-link .button {
     display: block;
     border: 0;
@@ -173,17 +174,53 @@
     cursor: pointer
 }
 
+.nav-links .search-form__wrapper {
+    margin-top: 0.75rem;
+    margin-bottom: -0.75rem;
+    padding: 0;
+    border-top: 1px solid var(--c-divider);
+
+    input {
+        flex-grow: 1;
+        border-radius: 0;
+        appearance: none;
+        font-size: inherit;
+    }
+}
+
 .nav-dropdown-link .button:focus {
     outline: 0
 }
 
 @include screen.sm {
+    .nav-links .search-form__wrapper,
     .nav-dropdown-link .button {
-        border-bottom:2px solid transparent;
+        border-bottom: 2px solid transparent;
         padding: 0;
         line-height: 24px;
         font-size: .9rem;
         font-weight: 500
+    }
+
+    .nav-links {
+        .search-form__wrapper {
+            border: none;
+            margin-top: -0.5rem;
+
+            form {
+                font-size: 0.9rem;
+            }
+
+            input {
+                flex-grow: 0;
+                flex-shrink: 0;
+                padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+
+                &:not(:focus,:active) {
+                    width: 80px;
+                }
+            }
+        }
     }
 }
 
@@ -204,7 +241,7 @@
 
 @include screen.sm {
     .nav-dropdown-link .button-arrow.right {
-        transform:rotate(0)
+        transform: rotate(0)
     }
 }
 
@@ -216,12 +253,13 @@
 
 @include screen.sm {
     .nav-dropdown-link .dialog {
-        display:none;
+        display: none;
         position: absolute;
         top: 26px;
         right: -8px;
         min-width: 128px;
-        filter: drop-shadow( 0 12px 32px rgba(0, 0, 0, .1)) drop-shadow(0 2px 6px rgba(0, 0, 0, .08));
+        filter: drop-shadow(0 12px 32px rgba(0, 0, 0, .1)) drop-shadow(0 2px 6px rgba(0, 0, 0, .08));
+
         ul {
             padding: 12px 0;
             background-color: var(--c-bg);
@@ -237,23 +275,21 @@
 
 @include screen.sm {
     .nav-links {
-        display:flex;
-        padding: 6px 0 0;
-        align-items: center;
+        display: flex;
+        align-items: baseline;
         border-bottom: 0
     }
 
-    :where(.nav-links) .item+.item {
+    :where(.nav-links) .item + .item {
         padding-left: 24px
     }
 }
 
 
-
 .sidebar-button {
     appearance: none;
     border: none;
-    background:none;
+    background: none;
     position: absolute;
     top: .6rem;
     left: 1rem;
@@ -263,7 +299,7 @@
     @include helpers.neos-borders;
 }
 
-.sidebar-button:focus,.sidebar-button.active {
+.sidebar-button:focus, .sidebar-button.active {
     background: #eee;
 }
 
@@ -276,7 +312,7 @@
 
 @media screen and (max-width: #{screen.$sm - 1}) {
     .sidebar-button {
-        display:block
+        display: block
     }
 }
 
@@ -297,7 +333,7 @@
 
 @include screen.sm {
     .nav-bar {
-        padding:.7rem 1.5rem
+        padding: .7rem 1.5rem
     }
 }
 
@@ -311,7 +347,7 @@
 
 @include screen.sm {
     :where(.nav-bar) .nav {
-        display:block
+        display: block
     }
 
     :where(.sidebar) nav {
