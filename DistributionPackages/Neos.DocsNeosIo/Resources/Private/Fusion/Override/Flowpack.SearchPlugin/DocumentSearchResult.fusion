@@ -1,4 +1,4 @@
 prototype(Neos.Neos:DocumentSearchResult) {
     templatePath = 'resource://Neos.DocsNeosIo/Private/Fusion/Override/Flowpack.SearchPlugin/DocumentSearchResult.html'
-    title.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
+    title.@process.hyphenate = Carbon.Hyphen:Text
 }
