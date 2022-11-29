@@ -8625,6 +8625,15 @@ html {
   min-height: 300px;
   background-color: #00adee;
 }
+.banner h1 {
+  font-size: 2.5rem;
+}
+.banner .cta-buttons {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+}
 
 .navigation-item--level-1 {
   padding-top: 1.25rem;
@@ -8676,7 +8685,7 @@ html {
   align-items: center;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .sidebar-only-mobile {
     display: none;
   }
@@ -8695,7 +8704,7 @@ html {
   transition: transform 0.25s ease;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .sidebar {
     transform: translate(0);
   }
@@ -8713,7 +8722,7 @@ html {
   display: block;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   :where(.sidebar) .nav {
     display: none;
   }
@@ -8747,7 +8756,7 @@ a.sidebar-link-item.active {
   padding: 0.75rem 0 5rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .sidebar > .sidebar-links {
     padding: 1.5rem 0;
   }
@@ -8756,7 +8765,7 @@ a.sidebar-link-item.active {
   padding-top: 0.5rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .sidebar > .sidebar-links > .sidebar-link + .sidebar-link {
     padding-top: 1.25rem;
   }
@@ -8873,7 +8882,7 @@ a.sidebar-link-item.active {
   background-color: var(--c-bg);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-bar {
     padding: 0.7rem 1.5rem;
   }
@@ -8899,7 +8908,7 @@ a.sidebar-link-item.active {
   border-bottom-color: transparent;
   color: var(--c-text);
 }
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   :where(.nav-link) .item {
     border-bottom: 2px solid transparent;
     padding: 0;
@@ -8942,7 +8951,7 @@ a.sidebar-link-item.active {
   color: var(--c-text);
   white-space: nowrap;
 }
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   :where(.nav-dropdown-link-item) .item {
     padding: 0 24px 0 12px;
     line-height: 32px;
@@ -8963,7 +8972,7 @@ a.sidebar-link-item.active {
   border-bottom-color: transparent;
   color: var(--c-text);
 }
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   :where(.nav-dropdown-link-item) .arrow {
     display: inline-block;
     margin-right: 8px;
@@ -8984,7 +8993,7 @@ a.sidebar-link-item.active {
   cursor: pointer;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-dropdown-link {
     height: auto;
     overflow: visible;
@@ -8998,6 +9007,7 @@ a.sidebar-link-item.active {
   height: auto;
 }
 
+.nav-links .search-form__wrapper,
 .nav-dropdown-link .button {
   display: block;
   border: 0;
@@ -9014,17 +9024,49 @@ a.sidebar-link-item.active {
   cursor: pointer;
 }
 
+.nav-links .search-form__wrapper {
+  margin-top: 0.75rem;
+  margin-bottom: -0.75rem;
+  padding: 0;
+  border-top: 1px solid var(--c-divider);
+}
+.nav-links .search-form__wrapper input {
+  flex-grow: 1;
+  border-radius: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  font-size: inherit;
+}
+
 .nav-dropdown-link .button:focus {
   outline: 0;
 }
 
-@media (min-width: 720px) {
-  .nav-dropdown-link .button {
+@media (min-width: 768px) {
+  .nav-links .search-form__wrapper,
+.nav-dropdown-link .button {
     border-bottom: 2px solid transparent;
     padding: 0;
     line-height: 24px;
     font-size: 0.9rem;
     font-weight: 500;
+  }
+
+  .nav-links .search-form__wrapper {
+    border: none;
+    margin-top: -0.5rem;
+  }
+  .nav-links .search-form__wrapper form {
+    font-size: 0.9rem;
+  }
+  .nav-links .search-form__wrapper input {
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+  }
+  .nav-links .search-form__wrapper input:not(:focus, :active) {
+    width: 80px;
   }
 }
 .nav-dropdown-link .button-arrow {
@@ -9042,7 +9084,7 @@ a.sidebar-link-item.active {
   transform: rotate(-90deg);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-dropdown-link .button-arrow.right {
     transform: rotate(0);
   }
@@ -9053,7 +9095,7 @@ a.sidebar-link-item.active {
   list-style: none;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-dropdown-link .dialog {
     display: none;
     position: absolute;
@@ -9074,11 +9116,10 @@ a.sidebar-link-item.active {
   border-bottom: 1px solid var(--c-divider);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-links {
     display: flex;
-    padding: 6px 0 0;
-    align-items: center;
+    align-items: baseline;
     border-bottom: 0;
   }
 
@@ -9112,7 +9153,7 @@ a.sidebar-link-item.active {
   height: 1.25rem;
 }
 
-@media screen and (max-width: 719px) {
+@media screen and (max-width: 767px) {
   .sidebar-button {
     display: block;
   }
@@ -9132,7 +9173,7 @@ a.sidebar-link-item.active {
   background-color: var(--c-bg);
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .nav-bar {
     padding: 0.7rem 1.5rem;
   }
@@ -9145,7 +9186,7 @@ a.sidebar-link-item.active {
   display: none;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   :where(.nav-bar) .nav {
     display: block;
   }
@@ -9182,7 +9223,7 @@ a.sidebar-link-item.active {
   gap: 20px;
   margin: 0 auto 20px;
 }
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .footer-grid {
     grid-template-columns: 2fr 3fr;
   }
@@ -9333,6 +9374,42 @@ span.badge.new {
   margin-left: auto;
 }
 
+.search-form {
+  display: flex;
+  border: 1px solid var(--c-divider-dark);
+}
+.search-form input {
+  font-size: inherit;
+  flex-grow: 1;
+  border: none;
+  padding: 1rem 1rem 1rem 1.5rem;
+}
+.search-form button {
+  right: 0;
+  bottom: 0;
+  top: 0;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  font-size: inherit;
+  cursor: pointer;
+}
+.search-form button svg {
+  font-size: 120%;
+}
+.search-form:focus-within {
+  outline: 1px solid invert;
+}
+
+.sidebar .search-form {
+  border: none;
+}
+
 .buttons {
   margin-top: 16px;
   margin-bottom: 16px;
@@ -9343,6 +9420,7 @@ span.badge.new {
 .buttons .btn__wrapper {
   margin-bottom: 16px;
   text-transform: none;
+  text-decoration: none;
 }
 .buttons .btn__wrapper:not(:last-child) {
   margin-right: 16px;
@@ -9807,75 +9885,62 @@ div[class~=language-vue]:before {
 
 .flowpack-searchplugin-search {
   margin-top: 32px;
-  color: #777;
   /* if the list not not rendered via ajax */
 }
 .flowpack-searchplugin-search form {
+  font-size: 1rem;
   display: flex;
-}
-.flowpack-searchplugin-search .search-input {
-  flex: 1;
-  color: #777;
-  display: block;
-  font-size: 16px;
-  font-weight: 300;
-  width: 100%;
-  height: 62px;
-  margin: 0;
-  padding: 0 45px 0 30px;
-  border: 0;
-}
-.flowpack-searchplugin-search .search-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-.flowpack-searchplugin-search .search-button {
-  width: 35px;
-  border: 0;
-  transition: transform 0.2s;
-  cursor: pointer;
-  background: white;
-}
-.flowpack-searchplugin-search .search-button:active, .flowpack-searchplugin-search .search-button:hover, .flowpack-searchplugin-search .search-button:focus {
-  background: none;
-  transform: scale(1.1);
 }
 .flowpack-searchplugin-search .progress {
   margin: 50px 30px;
   width: auto;
 }
+.flowpack-searchplugin-search .search-results {
+  border: none;
+}
 .flowpack-searchplugin-search .search-result {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  font-weight: 400;
 }
 .flowpack-searchplugin-search .search-result:hover, .flowpack-searchplugin-search .search-result.focused {
-  background-color: #eee;
-  outline: none;
-}
-.flowpack-searchplugin-search .search-result a:visited {
-  color: #26224c;
+  background: none;
 }
 .flowpack-searchplugin-search .search-result .title {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 300;
 }
-.flowpack-searchplugin-search .search-result p {
-  margin-top: 5px;
-  margin-bottom: 10px;
+@media (min-width: 768px) {
+  .flowpack-searchplugin-search .search-result .title {
+    font-size: 1.5rem;
+  }
+}
+.flowpack-searchplugin-search .search-result .highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+@media (min-width: 768px) {
+  .flowpack-searchplugin-search .search-result .highlights {
+    font-size: 1rem;
+  }
+}
+.flowpack-searchplugin-search .search-result .highlight {
+  margin: 0;
+}
+.flowpack-searchplugin-search .search-result em {
+  background: var(--c-divider-light);
 }
 .flowpack-searchplugin-search .search-result .breadcrumbs {
   font-size: 0.9rem;
-  font-style: italic;
+}
+.flowpack-searchplugin-search .search-result .breadcrumbs svg {
+  vertical-align: text-bottom;
 }
 .flowpack-searchplugin-search .search-result .breadcrumb {
-  font-size: 0.9rem;
-  color: #26224c;
-}
-.flowpack-searchplugin-search .search-result .breadcrumb:before {
-  margin-left: 0;
-  margin-right: 0;
-  font-size: 0.9rem;
-  color: #26224c;
+  color: var(--c-text);
 }
 .flowpack-searchplugin-search ol {
   list-style: none;
@@ -9888,12 +9953,14 @@ div[class~=language-vue]:before {
 .flowpack-searchplugin-search ol:empty::before {
   display: block;
   content: "No results found.";
-  padding: 10px 20px;
+  padding: 1rem 0;
   font-style: italic;
 }
 .flowpack-searchplugin-search .page-navigation {
-  border-top: 1px solid #e0e0e0;
-  padding-left: 17px;
+  text-align: center;
+}
+.flowpack-searchplugin-search .page-navigation ul {
+  padding-left: 0;
 }
 .flowpack-searchplugin-search .page-navigation li {
   display: inline-block;
@@ -10129,6 +10196,10 @@ form {
   margin: 0;
 }
 
+input {
+  font-family: var(--font-family-base);
+}
+
 .theme.sidebar-open .sidebar-mask {
   display: block;
 }
@@ -10301,7 +10372,7 @@ form {
   flex-direction: column;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   body:not(.no-sidebar) .page {
     margin-left: 16.4rem;
   }
@@ -10471,6 +10542,7 @@ a[href="#"]:after {
 
 .btn__wrapper:hover {
   filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.18));
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=app.css.map */
