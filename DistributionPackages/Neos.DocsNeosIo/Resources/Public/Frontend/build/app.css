@@ -7827,7 +7827,7 @@ div[class*=language-][data-language]:before {
   --c-text-light-3: #90a4b7;
   --c-brand: #00adee;
   --c-brand-light: #00adee;
-  --font-family-base: $brand-font-family;
+  --font-family-base: Work Sans, Work Sans Fallback, Helvetica Neue, Helvetica, Arial, sans-serif;
   --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   --z-index-navbar: 10;
   --z-index-sidebar: 6;
