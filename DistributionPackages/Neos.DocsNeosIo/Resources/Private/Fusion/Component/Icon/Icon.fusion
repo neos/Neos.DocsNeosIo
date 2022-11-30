@@ -6,6 +6,8 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
     # If the link class is empty, we will detect the type from the given uri
     fromLinkTypeUri = false
 
+    ariaLabel = null
+
     # rendering
     @context {
         iconClass = ${this.iconClass}
@@ -35,6 +37,6 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
     iconClassWithoutNamespace = ${String.replace(String.replace(String.replace(this.iconClass, 'fab ', ''), 'fas ', ''), 'fa ', '')}
     iconNameFallback = ${String.firstLetterToUpperCase(String.replace(String.replace(this.iconClassWithoutNamespace, 'fa-', ''), '-', ' '))}
     renderer = afx`
-        <i aria-label={props.iconName ? props.iconName : props.iconNameFallback} class={props.iconClassFinal + ' ' + props.additionalClass}></i>
+        <i role="img" aria-label={props.ariaLabel ? props.ariaLabel : props.iconName ? props.iconName : props.iconNameFallback} class={props.iconClassFinal + ' ' + props.additionalClass}></i>
     `
 }

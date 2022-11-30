@@ -11,7 +11,7 @@ prototype(Neos.DocsNeosIo:Component.PrevNextNavigation) < prototype(Neos.Fusion:
             <div class="buttons" @if.hasSibling={props.prevNode || props.nextNode}>
                 <Carbon.Link:Link node={props.prevNode} additionalClass="btn__wrapper" renderDefaultTagIfNoLink={false}>
                     <div class="btn">
-                        <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" />
+                        <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" ariaLabel="Previous" />
                         <Carbon.Link:Content />
                     </div>
                 </Carbon.Link:Link>

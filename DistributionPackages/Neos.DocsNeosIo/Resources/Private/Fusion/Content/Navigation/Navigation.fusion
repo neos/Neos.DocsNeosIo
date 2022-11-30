@@ -24,10 +24,12 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
             <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
             <ul class="link-list collection">
                 <Neos.Fusion:Loop items={props.collection} itemName="node">
-                    <Carbon.Link:Link node={node} additionalClass="collection-item" renderDefaultTagIfNoLink={true} defaultTagName="li">
-                        {q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
-                        <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" fromLinkTypeUri={node} additionalClass="right inline-icon" />
-                    </Carbon.Link:Link>
+                    <li class="collection-item">
+                        <Carbon.Link:Link node={node} additionalClass="" renderDefaultTagIfNoLink={true} defaultTagName="p">
+                            {q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
+                            <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" fromLinkTypeUri={node} additionalClass="right inline-icon" />
+                        </Carbon.Link:Link>
+                    </li>
                 </Neos.Fusion:Loop>
             </ul>
         </div>

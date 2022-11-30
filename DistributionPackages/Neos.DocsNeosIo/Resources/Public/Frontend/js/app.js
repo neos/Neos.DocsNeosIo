@@ -1,6 +1,4 @@
 
-import './materialize-docs.js';
-
 // prism code highlighting
 import '../node_modules/prismjs/prism.js';
 import '../node_modules/prismjs/components/prism-yaml.js';
@@ -23,8 +21,7 @@ import '../node_modules/prismjs/plugins/autolinker/prism-autolinker.js';
 import "../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js";
 
 // Components
-import '../../../Private/Fusion/Component/LocalNavigation/LocalNavigation.js';
-import '../../../Private/Fusion/Component/SearchForm/SearchForm.js';
+import '../../../Private/Fusion/Component/index.js';
 
 // Content Node Types
-import '../../../Private/Fusion/Content/Code/Code.js';
+import '../../../Private/Fusion/Content/index.js';

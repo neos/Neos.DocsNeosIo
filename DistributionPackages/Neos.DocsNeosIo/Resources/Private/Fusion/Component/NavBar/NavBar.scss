@@ -139,7 +139,10 @@
     position: relative;
     height: 36px;
     overflow: hidden;
-    cursor: pointer
+    cursor: pointer;
+    .dialog {
+        display: none;
+    }
 }
 
 @include screen.sm {
@@ -154,7 +157,10 @@
 }
 
 .nav-dropdown-link.open {
-    height: auto
+    height: auto;
+    .dialog {
+        display: block
+    }
 }
 
 .nav-links .search-form__wrapper,
@@ -185,11 +191,8 @@
         border-radius: 0;
         appearance: none;
         font-size: inherit;
+        width: inherit;
     }
-}
-
-.nav-dropdown-link .button:focus {
-    outline: 0
 }
 
 @include screen.sm {
@@ -294,7 +297,7 @@
     top: .6rem;
     left: 1rem;
     display: none;
-    padding: .6rem;
+    padding: .4rem;
     cursor: pointer;
     @include helpers.neos-borders;
 }
@@ -303,12 +306,22 @@
     background: #eee;
 }
 
-.sidebar-button .icon {
-    display: block;
-    width: 1.25rem;
-    height: 1.25rem
-}
+.sidebar-button {
+    svg {
+        display: block;
+    }
 
+    &[aria-expanded="false"] {
+        .menu-close {
+            display: none;
+        }
+    }
+    &[aria-expanded="true"] {
+        .menu-open {
+            display: none;
+        }
+    }
+}
 
 @media screen and (max-width: #{screen.$sm - 1}) {
     .sidebar-button {

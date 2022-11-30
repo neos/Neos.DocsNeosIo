@@ -7,13 +7,21 @@
     border: 1px solid #e0e0e0;
     position: relative;
 
-    .collection-item {
+    a {
         background-color: #fff;
         line-height: 1.5rem;
         padding: 10px 20px;
         margin: 0;
         border-bottom: 1px solid #e0e0e0;
         outline-offset: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: 580;
+    }
+
+    .collection-item {
+        list-style: none;
 
         // Avatar Collection
         &.avatar {
@@ -32,6 +40,7 @@
                 display: inline-block;
                 vertical-align: middle;
             }
+
             i.circle {
                 font-size: 18px;
                 line-height: 42px;
@@ -57,39 +66,32 @@
 
         }
 
-
-        &:last-child {
+        &:last-child a {
             border-bottom: none;
         }
     }
-    a.collection-item{
-        display: block;
+
+    .collection-item a {
         transition: .25s;
     }
 
 }
 
 .collection {
-	margin-top: 16px;
-	margin-bottom: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 
-	.collection-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        font-weight: 580;
+    .inline-icon {
+        margin-top: 0.2em;
+        float: right;
+    }
 
-		.inline-icon {
-			margin-top: 0.2em;
-            float: right;
-		}
-	}
-    a.collection-item {
+    .collection-item a {
         color: var(--c-brand);
     }
 }
 
-.collection a.collection-item:not(.active):hover {
+.collection .collection-item a:not(.active):hover {
     background-color: #f9f9f9;
     color: var(--c-text);
 }

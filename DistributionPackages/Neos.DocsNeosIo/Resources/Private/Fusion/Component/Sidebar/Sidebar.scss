@@ -235,3 +235,17 @@ a.sidebar-link-item.active {
         padding: .3rem 1.5rem .3rem 4rem
     }
 }
+
+.sidebar-mobile-backdrop {
+    background-color: rgba(0,0,0,0);
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    transition: background-color .2s ease-in-out;
+}
+
+.sidebar.open + .sidebar-mobile-backdrop {
+    background-color: rgba(0,0,0,.1);
+    pointer-events: all;
+}

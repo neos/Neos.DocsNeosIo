@@ -16,5 +16,4 @@ Carbon:
             - app.css
           Body:
             - https://code.jquery.com/jquery-3.2.1.min.js
-            - materialize.js
             - app.js[data-manual]

@@ -1,19 +1,20 @@
 prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
     renderer = afx`
-        <ul class="tabs">
-            <Neos.Fusion:Loop items={q(node).children()} iteratorName="iterator" itemName="item">
-                <li @path="itemRenderer" class="tab">
-                    <Carbon.Link:Link link={'#' + item.identifier} additionalClass={iterator.isFirst ? 'active' : ''} backendLink={true} >
+        <div class="tabs__wrapper">
+            <div class="tabs">
+                <Neos.Fusion:Loop items={q(node).children()} iteratorName="iterator" itemName="item">
+                    <button @path="itemRenderer" class={["tab", iterator.isFirst && 'active']}
+                            aria-controls={item.identifier}>
                         <div class="tab-link__inner">
                             <Neos.Neos:Editable node={item} property="title" />
                         </div>
-                    </Carbon.Link:Link>
-                </li>
-            </Neos.Fusion:Loop>
-            <div class="spacer"></div>
-        </ul>
-        <div class="tabs-content__wrapper">
-            <Neos.Neos:ContentCollection nodePath="" attributes.class="tabs-content" />
+                    </button>
+                </Neos.Fusion:Loop>
+                <div class="spacer"></div>
+            </div>
+            <div class="tabs-content__wrapper">
+                <Neos.Neos:ContentCollection nodePath="" attributes.class="tabs-content" />
+            </div>
         </div>
     `
 }
