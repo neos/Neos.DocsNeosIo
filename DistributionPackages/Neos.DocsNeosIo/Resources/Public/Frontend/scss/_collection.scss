@@ -3,16 +3,16 @@
 
 // Collections
 .collection {
-    margin: $element-top-margin 0 $element-bottom-margin 0;
-    border: 1px solid $collection-border-color;
+    margin: 0.5rem 0 1rem 0;
+    border: 1px solid #e0e0e0;
     position: relative;
 
     .collection-item {
-        background-color: $collection-bg-color;
-        line-height: $collection-line-height;
+        background-color: #fff;
+        line-height: 1.5rem;
         padding: 10px 20px;
         margin: 0;
-        border-bottom: 1px solid $collection-border-color;
+        border-bottom: 1px solid #e0e0e0;
         outline-offset: 3px;
 
         // Avatar Collection
@@ -61,39 +61,10 @@
         &:last-child {
             border-bottom: none;
         }
-
-        &.active {
-            background-color: $collection-active-bg-color;
-            color: $collection-active-color;
-
-            .secondary-content {
-                color: #fff;
-            }
-        }
     }
     a.collection-item{
         display: block;
         transition: .25s;
-        color: $collection-link-color;
-        &:not(.active) {
-            &:hover {
-                background-color: $collection-hover-bg-color;
-            }
-        }
-    }
-
-    &.with-header {
-        .collection-header {
-            background-color: $collection-bg-color;
-            border-bottom: 1px solid $collection-border-color;
-            padding: 10px 20px;
-        }
-        .collection-item {
-            padding-left: 30px;
-        }
-        .collection-item.avatar {
-            padding-left: 72px;
-        }
     }
 
 }

@@ -12,7 +12,7 @@
     --c-text-light-3: #90a4b7;
     --c-brand: #00adee;
     --c-brand-light: #00adee;
-    --font-family-base: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --font-family-base: $brand-font-family;
     --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
     --z-index-navbar: 10;
     --z-index-sidebar: 6;

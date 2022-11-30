@@ -15,15 +15,15 @@
 		}
 
 		&.notice-type-danger {
-			background: $error-color;
+			background: #d50000;
 		}
 
 		&.notice-type-todo {
-			background: $secondary-color;
+			background: #26224c;
 		}
 
 		&.notice-type-tip {
-			background: $success-color;
+			background: #4caf50;
 		}
 
 		&.notice-type-danger,

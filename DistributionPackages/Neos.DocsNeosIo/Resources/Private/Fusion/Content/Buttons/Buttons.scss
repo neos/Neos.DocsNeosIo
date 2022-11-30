@@ -2,21 +2,21 @@
 	margin-top: 16px;
 	margin-bottom: 16px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    gap: 10px;
+    gap: 10px 16px;
 
 	.btn__wrapper {
-		margin-bottom: 16px;
         text-transform: none;
         text-decoration: none;
-
-		&:not(:last-child) {
-			margin-right: 16px;
-		}
 
 		.inline-icon {
 			font-size: 1em;
 		}
+
+        &.right {
+            margin-left: auto;
+        }
 	}
 
 	[data-neos-placeholder]:before {

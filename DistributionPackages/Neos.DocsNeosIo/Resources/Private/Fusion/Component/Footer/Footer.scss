@@ -17,17 +17,6 @@
 		font-style: italic;
 	}
 
-	a {
-		//@extend .grey-text.text-darken-2;
-
-		&:active,
-		&:hover,
-		&:focus {
-			color: map-get($brand-colors, primary) !important;
-		}
-	}
-
-
     &.page-footer {
         padding-top: 40px;
     }
