@@ -94,7 +94,7 @@
 .tabs .tab {
     &:focus,
     &:active,
-    &.active {
+    &[aria-selected="true"] {
         &:before {
             content: "";
             width: 18px;
@@ -112,6 +112,7 @@
     color: var(--c-brand);
 
     .tab-link__inner {
+        pointer-events: none;
         display: grid;
 
         border: 1px solid transparent;
@@ -126,7 +127,7 @@
         }
     }
 
-    &.active {
+    &[aria-selected="true"] {
         .tab-link__inner {
             background-color: rgba(242, 242, 242, 0.5);
             border: 1px solid #e7e7e8;
@@ -136,7 +137,7 @@
         color: var(--c-text-light-1);
     }
 
-    &:focus, &:active, &:focus.active {
+    &:focus, &:active, &:focus[aria-selected="true"] {
         &::before {
             border-top-color: var(--c-text-light-1);
         }
@@ -148,10 +149,6 @@
             border-top-color: var(--c-text-light-1);
         }
     }
-}
-
-.tabs__wrapper .tab-item:not(.active) {
-    display: none;
 }
 
 .tabs .spacer {

@@ -4,7 +4,7 @@ prototype(Neos.DocsNeosIo:Content.Tabs.Item) < prototype(Neos.Neos:ContentCompon
     }
 
     renderer = afx`
-        <div id={node.identifier} class="tab-item">
+        <div id={'panel-' + node.identifier} class="tab-item" role="tabpanel" tabindex="0" aria-labelledby={'tab-' + node.identifier}>
             {props.content}
         </div>
     `

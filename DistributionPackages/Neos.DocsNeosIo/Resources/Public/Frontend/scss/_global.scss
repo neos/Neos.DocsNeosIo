@@ -182,6 +182,10 @@ li>ul,li>ol {
     margin: 0
 }
 
+[hidden] {
+    display: none!important
+}
+
 .table {
     overflow-x: auto
 }

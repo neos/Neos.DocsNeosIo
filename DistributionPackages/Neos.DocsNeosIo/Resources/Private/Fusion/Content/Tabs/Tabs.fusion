@@ -1,10 +1,17 @@
 prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
     renderer = afx`
         <div class="tabs__wrapper">
-            <div class="tabs">
+            <div class="tabs" role="tablist">
                 <Neos.Fusion:Loop items={q(node).children()} iteratorName="iterator" itemName="item">
-                    <button @path="itemRenderer" class={["tab", iterator.isFirst && 'active']}
-                            aria-controls={item.identifier}>
+                    <button
+                        @path="itemRenderer"
+                        class={["tab", iterator.isFirst && 'active']}
+                        role="tab"
+                        aria-selected={iterator.isFirst ? "true" : "false"}
+                        tabindex={iterator.isFirst ? "0" : "-1"}
+                        id={'tab-' + item.identifier}
+                        aria-controls={'panel-' + item.identifier}
+                    >
                         <div class="tab-link__inner">
                             <Neos.Neos:Editable node={item} property="title" />
                         </div>
