@@ -12,16 +12,16 @@ prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Documen
                 path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-light.svg"
             }
 
-            firstButtonLink = ${q(node).property('firstButtonLink')}
-            secondButtonLink = ${q(node).property('secondButtonLink')}
+            getStartedLink = ${q(node).property('getStartedLink')}
+            installLink = ${q(node).property('installLink')}
 
             renderer = afx`
                 <div class="banner">
                     <img src={props.logo} width="400" height="110" alt="Neos" />
-                    <h1 style="font-size: 2rem">Developer Documentation</h1>
-                    <div @if={props.firstButtonLink || props.secondButtonLink} class="cta-buttons">
-                        <Carbon.Link:Link node={props.firstButtonLink} additionalClass="btn__wrapper"><div class="btn secondary"><Neos.Neos:Editable property="firstButtonText" /></div></Carbon.Link:Link>
-                        <Carbon.Link:Link node={props.secondButtonLink} additionalClass="btn__wrapper"><div class="btn secondary"><Neos.Neos:Editable property="secondButtonText" /></div></Carbon.Link:Link>
+                    <h1>Developer Documentation</h1>
+                    <div @if={props.getStartedLink || props.installLink} class="cta-buttons">
+                        <Carbon.Link:Link node={props.getStartedLink} additionalClass="btn__wrapper"><div class="btn secondary">Get started</div></Carbon.Link:Link>
+                        <Carbon.Link:Link node={props.installLink} additionalClass="btn__wrapper"><div class="btn secondary">Install</div></Carbon.Link:Link>
                     </div>
                 </div>
             `
