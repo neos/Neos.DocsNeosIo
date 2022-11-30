@@ -14,7 +14,8 @@
         "neos/docs-neos-io": "@dev",
 
         "flownative/google-cloudstorage": "^5.3.0",
-        "rokka/imagine-vips": "^0.31.0"
+        "rokka/imagine-vips": "^0.31.0",
+        "shel/neos-terminal": "^0.7.2"
     },
     "repositories": {
         "distribution": {

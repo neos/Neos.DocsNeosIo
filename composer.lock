@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "91cac8897018bbc57bf887c83f2f06b8",
+    "content-hash": "e0b51edd9892474017178c1b99092bb1",
     "packages": [
         {
             "name": "aertmann/history",
@@ -9270,6 +9270,55 @@
                 "source": "https://github.com/Seldaek/signal-handler/tree/2.0.1"
             },
             "time": "2022-07-20T18:31:45+00:00"
+        },
+        {
+            "name": "shel/neos-terminal",
+            "version": "0.7.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sebobo/Shel.Neos.Terminal.git",
+                "reference": "667850bd06eaeb53641f966d3cb1ca1c523a84fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sebobo/Shel.Neos.Terminal/zipball/667850bd06eaeb53641f966d3cb1ca1c523a84fc",
+                "reference": "667850bd06eaeb53641f966d3cb1ca1c523a84fc",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "^4.3 || ^5.2 || ^7.0 || ^8.0 || dev-master",
+                "neos/neos-ui": "^4.0 || ^5.2 || ^7.0 || ^8.0 || dev-master",
+                "php": ">=7.2",
+                "symfony/console": "^4.2 || ^5.1"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "neos": {
+                    "package-key": "Shel.Neos.Terminal"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shel\\Neos\\Terminal\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Neos CMS Ui terminal for running Eel expressions and other commands",
+            "keywords": [
+                "console",
+                "eel",
+                "flow",
+                "neoscms",
+                "terminal"
+            ],
+            "support": {
+                "issues": "https://github.com/Sebobo/Shel.Neos.Terminal/issues",
+                "source": "https://github.com/Sebobo/Shel.Neos.Terminal/tree/0.7.2"
+            },
+            "time": "2022-04-06T11:31:50+00:00"
         },
         {
             "name": "sitegeist/silhouettes",
