@@ -15,8 +15,8 @@ import '../node_modules/prismjs/components/prism-jsx.js';
 import '../node_modules/prismjs/components/prism-sql.js';
 import '../node_modules/prismjs/components/prism-markdown.js';
 import '../node_modules/prismjs/components/prism-docker.js';
-import './prism-afx.js';
-import './prism-fusion.js';
+import '../node_modules/prismjs/components/prism-docker.js';
+import '../node_modules/prism-neos/index.js';
 import '../node_modules/prismjs/plugins/autolinker/prism-autolinker.js';
 import "../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js";
 

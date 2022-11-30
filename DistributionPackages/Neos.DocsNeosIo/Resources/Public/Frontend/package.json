@@ -3,7 +3,9 @@
   "description": "Frontend templates for docs.neos.io",
   "author": "Roland Schütz",
   "license": "GPL-3.0-or-later",
-  "dependencies": {},
+  "dependencies": {
+    "prism-neos": "^0.0.1"
+  },
   "engine": "node >= 0.10",
   "devDependencies": {
     "@babel/core": "^7.1.5",
