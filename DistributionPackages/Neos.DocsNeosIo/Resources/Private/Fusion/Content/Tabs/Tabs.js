@@ -1,3 +1,7 @@
+/**
+ * Adapted code from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role#example
+ */
+
 window.addEventListener("DOMContentLoaded", () => {
 	const allTabs = document.querySelectorAll('.tabs__wrapper');
 	allTabs.forEach((tabwrapper) => {
