@@ -6231,7 +6231,7 @@ readers do not read off random characters that represent icons */
   border: 1px solid #e0e0e0;
   position: relative;
 }
-.collection a {
+.collection .collection-item__link {
   background-color: #fff;
   line-height: 1.5rem;
   padding: 10px 20px;
@@ -6279,11 +6279,11 @@ readers do not read off random characters that represent icons */
   top: 16px;
   right: 16px;
 }
-.collection .collection-item:last-child a {
+.collection .collection-item:last-child .collection-item__link {
   border-bottom: none;
 }
-.collection .collection-item a {
-  transition: 0.25s;
+.collection .collection-item .collection-item__link {
+  transition: background-color 0.25s, color 0.25s;
 }
 
 .collection {
@@ -6294,11 +6294,11 @@ readers do not read off random characters that represent icons */
   margin-top: 0.2em;
   float: right;
 }
-.collection .collection-item a {
+.collection .collection-item .collection-item__link {
   color: var(--c-brand);
 }
 
-.collection .collection-item a:not(.active):hover {
+.collection .collection-item .collection-item__link:not(.active):hover {
   background-color: #f9f9f9;
   color: var(--c-text);
 }

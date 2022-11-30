@@ -25,7 +25,7 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
             <ul class="link-list collection">
                 <Neos.Fusion:Loop items={props.collection} itemName="node">
                     <li class="collection-item">
-                        <Carbon.Link:Link node={node} additionalClass="" renderDefaultTagIfNoLink={true} defaultTagName="p">
+                        <Carbon.Link:Link node={node} additionalClass="collection-item__link" renderDefaultTagIfNoLink={true} defaultTagName="p">
                             {q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
                             <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" fromLinkTypeUri={node} additionalClass="right inline-icon" />
                         </Carbon.Link:Link>
