@@ -5,7 +5,7 @@ prototype(Neos.DocsNeosIo:Component.PrevNextNavigation) < prototype(Neos.Fusion:
 
     renderer = afx`
         <div class="prev-next-navigation">
-            <Carbon.Notification:Backend @if.show={props.showBackendNotice} @if.hasNoSibling={!props.prevNode && !props.nextNode}>
+            <Carbon.Notification:Backend @if={props.showBackendNotice} @if.hasNoSibling={!props.prevNode && !props.nextNode}>
                 This page currently has no sibling and therefore renders no sibling navigation.
             </Carbon.Notification:Backend>
             <div class="buttons" @if.hasSibling={props.prevNode || props.nextNode}>

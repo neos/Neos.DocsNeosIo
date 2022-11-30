@@ -48,18 +48,18 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
         />
         <div class="page">
             {props.banner}
-            <main class="fullwidth-layout" @if.is={props.fullwidth}>
+            <main class="fullwidth-layout" @if={props.fullwidth}>
                 <div class="fullwidth-header">
                     <div class="container-wrapper">
                         <div class="content" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) !=1}>
                             <h1>{props.title}</h1>
-                            <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                            <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                             <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                                filter="" @if.inBackend={node.context.inBackend} />
                         </div>
                         <div class="content" @if.hasOneAuthor={props.authors && Array.length(props.authors)== 1}>
                             <h1 class="header">{props.title}</h1>
-                            <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                            <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                             <div class="image-container">
                                 <img src={Array.first(props.authors).gravatar} class="profile-image"
                                      style="margin-top: 16px;" /><br />
@@ -76,10 +76,10 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                 <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
             </main>
 
-            <main class={["main-container", props.localNav && "has-local-navigation"]} @if.isNot={!props.fullwidth}>
+            <main class={["main-container", props.localNav && "has-local-navigation"]} @if={!props.fullwidth}>
                 <div class="main-content">
                     <h1>{props.title}</h1>
-                    <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                     <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                        filter=""
                                                        @if.inBackend={node.context.inBackend} />

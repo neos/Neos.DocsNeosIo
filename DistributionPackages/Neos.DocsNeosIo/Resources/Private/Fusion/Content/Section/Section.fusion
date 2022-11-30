@@ -18,7 +18,7 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
 
     renderer = afx`
         <div class="content-section" id={props.id}>
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} attributes.class="docs-section-header" attributes.tabindex="-1">
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} attributes.class="docs-section-header" attributes.tabindex="-1">
                 <a href={'#' + props.id} class="header-anchor" aria-hidden="true">#</a>
                 <a @if={props.titleLink} href={props.titleLink}>{props.title}</a>
                 <Neos.Fusion:Fragment @if={!props.titleLink}>{props.title}</Neos.Fusion:Fragment>

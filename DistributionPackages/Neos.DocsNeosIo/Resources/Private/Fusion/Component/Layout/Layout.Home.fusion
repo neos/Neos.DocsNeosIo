@@ -54,13 +54,13 @@ prototype(Neos.DocsNeosIo:Component.Layout.Home) < prototype(Neos.Neos:ContentCo
                 </div>
             </div>
 
-            <div class="container fullwidth-layout" @if.is={props.fullwidth}>
+            <div class="container fullwidth-layout" @if={props.fullwidth}>
                 {props.tagNotices}
                 {props.content}
 
                 <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
             </div>
-            <div class="spacing-wrapper" @if.isNot={!props.fullwidth}>
+            <div class="spacing-wrapper" @if={!props.fullwidth}>
                 {props.tagNotices}
                 {props.content}
                 {props.prevNextNavigation}

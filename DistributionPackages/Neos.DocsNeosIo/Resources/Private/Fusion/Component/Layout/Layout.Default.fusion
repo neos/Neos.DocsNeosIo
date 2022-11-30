@@ -45,17 +45,17 @@ prototype(Neos.DocsNeosIo:Component.Layout.Default) < prototype(Neos.Neos:Conten
             sidebarOnlyMobile={props.sidebarOnlyMobile}
         />
         <div class="page">
-            <main class="container-wrapper" @if.is={props.fullwidth}>
+            <main class="container-wrapper" @if={props.fullwidth}>
                 <h1 style="color:red">main a</h1>
                 <div class="content" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) !=1}>
                     <h1>{props.title}</h1>
-                    <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                     <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                        filter="" @if.inBackend={node.context.inBackend} />
                 </div>
                 <div class="content" @if.hasOneAuthor={props.authors && Array.length(props.authors)== 1}>
                     <h1 class="header">{props.title}</h1>
-                    <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                     <div class="image-container">
                         <img src={Array.first(props.authors).gravatar} class="profile-image"
                              style="margin-top: 16px;" /><br />
@@ -65,18 +65,18 @@ prototype(Neos.DocsNeosIo:Component.Layout.Default) < prototype(Neos.Neos:Conten
                 </div>
             </main>
 
-            <main class="container fullwidth-layout" @if.is={props.fullwidth}>
+            <main class="container fullwidth-layout" @if={props.fullwidth}>
                 <h1 style="color:red">main b</h1>
                 {props.tagNotices}
                 {props.content}
 
                 <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
             </main>
-            <main class="main-container" @if.isNot={!props.fullwidth}>
+            <main class="main-container" @if={!props.fullwidth}>
                 <h1 style="color:red">main c</h1>
                 <div class="main-content">
                     <h1>{props.title}</h1>
-                    <p class="lead" @if.has={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
                     <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
                                                        filter=""
                                                        @if.inBackend={node.context.inBackend} />

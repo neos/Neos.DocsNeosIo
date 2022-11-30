@@ -21,7 +21,7 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
 
     renderer = afx`
         <div id={props.id} class="content-navigation">
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
             <ul class="link-list collection">
                 <Neos.Fusion:Loop items={props.collection} itemName="node">
                     <li class="collection-item">

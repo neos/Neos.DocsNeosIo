@@ -16,7 +16,7 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(N
             children = ${q(node).children()}
             renderer = afx`
                 <li>
-                    <a @if.has={props.title} href={'#' + props.id}>
+                    <a @if={props.title} href={'#' + props.id}>
                         {props.title}
                     </a>
                 </li>
