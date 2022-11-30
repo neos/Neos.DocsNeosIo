@@ -16,12 +16,10 @@ import '../node_modules/prismjs/components/prism-typescript.js';
 import '../node_modules/prismjs/components/prism-jsx.js';
 import '../node_modules/prismjs/components/prism-sql.js';
 import '../node_modules/prismjs/components/prism-markdown.js';
+import '../node_modules/prismjs/components/prism-docker.js';
 import './prism-afx.js';
 import './prism-fusion.js';
 import '../node_modules/prismjs/plugins/autolinker/prism-autolinker.js';
-// import '../node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js';
-// import '../node_modules/prismjs/plugins/toolbar/prism-toolbar.js';
-// import '../node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.js';
 import "../node_modules/@fortawesome/fontawesome-free/js/fontawesome.js";
 
 // Components

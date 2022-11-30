@@ -270,6 +270,18 @@ div[class~=language-vue]:before {
     content: "vue"
 }
 
+.language-directory {
+    line-height: normal!important;
+}
+
+div[class~=language-directory]:before {
+    content: "Directory structure"
+}
+
+div[class*=language-][data-language]:before {
+    content: attr(data-language)!important;
+}
+
 .preview {
     display: block;
     position: relative;

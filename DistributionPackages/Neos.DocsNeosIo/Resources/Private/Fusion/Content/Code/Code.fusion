@@ -1,92 +1,16 @@
 prototype(Neos.DocsNeosIo:Content.Code) < prototype(Neos.Neos:ContentComponent) {
     language = ${q(node).property('language')}
-    title = Neos.Fusion:Case {
-        hasTitle {
-            condition = ${q(node).property('title')}
-            renderer = ${q(node).property('title')}
-        }
-        none {
-            condition = ${q(node).property('language') == 'none'}
-            renderer = false
-        }
-        yaml {
-            condition = ${q(node).property('language') == 'yaml'}
-            renderer = 'YAML'
-        }
-        fusion {
-            condition = ${q(node).property('language') == 'fusion'}
-            renderer = 'Fusion'
-        }
-        afx {
-            condition = ${q(node).property('language') == 'afx'}
-            renderer = 'AFX'
-        }
-        fluid {
-            condition = ${q(node).property('language') == 'fluid'}
-            renderer = 'Fluid'
-        }
-        php {
-            condition = ${q(node).property('language') == 'php'}
-            renderer = 'PHP'
-        }
-        json {
-            condition = ${q(node).property('language') == 'json'}
-            renderer = 'JSON'
-        }
-        bash {
-            condition = ${q(node).property('language') == 'bash'}
-            renderer = 'Bash'
-        }
-        apacheconf {
-            condition = ${q(node).property('language') == 'apacheconf'}
-            renderer = 'Apache Configuration'
-        }
-        directory {
-            condition = ${q(node).property('language') == 'directory'}
-            renderer = 'Directory structure'
-        }
-        css {
-            condition = ${q(node).property('language') == 'css'}
-            renderer = 'CSS'
-        }
-        html {
-            condition = ${q(node).property('language') == 'html'}
-            renderer = 'HTML'
-        }
-        scss {
-            condition = ${q(node).property('language') == 'scss'}
-            renderer = 'SCSS'
-        }
-        sass {
-            condition = ${q(node).property('language') == 'sass'}
-            renderer = 'SASS'
-        }
-        javascript {
-            condition = ${q(node).property('language') == 'javascript'}
-            renderer = 'JavaScript'
-        }
-        typescript {
-            condition = ${q(node).property('language') == 'typescript'}
-            renderer = 'Typescript (JS)'
-        }
-        sql {
-            condition = ${q(node).property('language') == 'sql'}
-            renderer = 'SQL'
-        }
-        markdown {
-            condition = ${q(node).property('language') == 'markdown'}
-            renderer = 'Markdown'
-        }
-        xml {
-            condition = ${q(node).property('language') == 'xml'}
-            renderer = 'XML'
-        }
-    }
     class = ${'code language-' + (this.language=='directory' ? 'directory language-markup' : (this.language=='fluid' ? 'markup' : (this.language=='fusion' ? 'neosfusion' : this.language)))}
     code = ${String.htmlSpecialChars(q(node).property('code'))}
 
+    data = Neos.Fusion:DataStructure {
+        data-language = ${q(node).property('title')}
+        data-language.@if.hasTitle = ${q(node).property('title')}
+    }
+
     renderer = afx`
-        <div class={props.class}>
+        <div class={props.class} {...props.data}>
+            <span class="sr-only">{q(node).property('title') || props.language}</span>
             <pre>
                 <code>{props.code}</code>
             </pre>

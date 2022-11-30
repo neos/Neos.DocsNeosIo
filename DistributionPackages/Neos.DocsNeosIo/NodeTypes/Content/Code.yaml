@@ -64,6 +64,8 @@
                 label: 'Markdown'
               xml:
                 label: 'XML'
+              docker:
+                label: 'Docker'
     code:
       type: string
       defaultValue: 'Enter code here...'
