@@ -3,9 +3,8 @@ Neos:
   Flow:
     mvc:
       routes:
-        'Neos.Neos':
+        Neos.Neos:
           variables:
-            # We prefer URLs without the ".html" suffix
             defaultUriSuffix: ''
     error:
       exceptionHandler:
@@ -13,10 +12,11 @@ Neos:
           notFoundExceptions:
             options:
               variables:
-                path: '404' # skip suffix in notfound as well
+                path: '404'
+              viewOptions: {  }
   Fusion:
     defaultContext:
-      DocsNeosIo.UserData: 'Neos\DocsNeosIo\Eel\Helper\UserDataHelper'
+      DocsNeosIo.UserData: Neos\DocsNeosIo\Eel\Helper\UserDataHelper
   Neos:
     eventLog:
       enabled: true
@@ -28,17 +28,10 @@ Neos:
     fusion:
       autoInclude:
         Neos.DocsNeosIo: true
-    # nodeTypes:
-    #   groups:
-    #     contentBlocks:
-    #       position: 110
-    #       label: 'Content Blocks'
-
     Ui:
       frontendConfiguration:
-        defaultInlineEditor: 'ckeditor5'
         hotkeys: ~
       resources:
         javascript:
           'Neos.DocsNeosIo:CKEConfig':
-            resource: resource://Neos.DocsNeosIo/Public/JavaScript/CKEConfig/Plugin.js
+            resource: 'resource://Neos.DocsNeosIo/Public/JavaScript/CKEConfig/Plugin.js'
