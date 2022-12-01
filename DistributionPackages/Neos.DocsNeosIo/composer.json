@@ -3,8 +3,8 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~8.1.0",
-        "neos/neos-ui": "~8.1.0",
+        "neos/neos": "~8.2.0",
+        "neos/neos-ui": "~8.2.0",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
