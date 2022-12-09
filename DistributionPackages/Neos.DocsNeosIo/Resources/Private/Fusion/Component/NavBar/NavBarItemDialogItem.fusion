@@ -15,8 +15,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemDialogItem) < prototype(Neos.Fusio
             <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={props.itemClass} backendLink={true}>
                 <span class="arrow"></span>
                 <span class="text">{ props.itemTitle }</span>
-                <span class="icon"><Neos.DocsNeosIo:Component.OutboundLinkIcon @if={props.isExternal}/>
-                </span>
+                <i class="external-icon fas fa-external-link-alt fa-xs"></i>
             </Carbon.Link:Link>
         </div>
     `

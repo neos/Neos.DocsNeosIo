@@ -17,7 +17,7 @@ prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Documen
 
             renderer = afx`
                 <div class="banner">
-                    <img src={props.logo} width="400" height="110" alt="Neos" />
+                    <img class="home-logo" src={props.logo} width="400" height="110" alt="Neos" />
                     <h1>Developer Documentation</h1>
                     <div @if={props.getStartedLink || props.installLink} class="cta-buttons">
                         <Carbon.Link:Link node={props.getStartedLink} additionalClass="btn__wrapper"><div class="btn secondary">Get started</div></Carbon.Link:Link>

@@ -6143,7 +6143,7 @@ readers do not read off random characters that represent icons */
 .cards {
   display: grid;
   margin: 20px;
-  grid-template-columns: repeat(auto-fill, min(100%, 540px));
+  grid-template-columns: repeat(auto-fill, min(100%, 468px));
   grid-auto-rows: 1fr;
   gap: 1rem;
   justify-content: center;
@@ -6227,21 +6227,37 @@ readers do not read off random characters that represent icons */
 }
 
 .collection {
-  margin: 0.5rem 0 1rem 0;
-  border: 1px solid #e0e0e0;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: grid;
   position: relative;
 }
 .collection .collection-item__link {
-  background-color: #fff;
+  color: var(--c-accent);
+  background-color: transparent;
+  transition: background-color 0.2s ease;
   line-height: 1.5rem;
-  padding: 10px 20px;
-  margin: 0;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 0.6rem;
+  margin: 0 -0.6rem;
   outline-offset: 3px;
   display: flex;
-  justify-content: space-between;
+  gap: 0.75rem;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
   align-items: baseline;
-  font-weight: 580;
+}
+.collection .inline-icon {
+  transition: color 0.2s ease-in-out;
+  color: var(--c-accent);
+  font-size: 110%;
+}
+.collection .collection-item .collection-item__link:not(.active):is(:hover,:focus) {
+  color: var(--c-brand-dark);
+  background-color: var(--c-brand-light-3);
+  text-decoration: none;
+}
+.collection .collection-item .collection-item__link:not(.active):is(:hover,:focus) .inline-icon {
+  color: var(--c-brand);
 }
 .collection .collection-item {
   list-style: none;
@@ -6284,23 +6300,6 @@ readers do not read off random characters that represent icons */
 }
 .collection .collection-item .collection-item__link {
   transition: background-color 0.25s, color 0.25s;
-}
-
-.collection {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
-.collection .inline-icon {
-  margin-top: 0.2em;
-  float: right;
-}
-.collection .collection-item .collection-item__link {
-  color: var(--c-brand);
-}
-
-.collection .collection-item .collection-item__link:not(.active):hover {
-  background-color: #f9f9f9;
-  color: var(--c-text);
 }
 
 .backend-tags::before {
@@ -6397,10 +6396,23 @@ readers do not read off random characters that represent icons */
 }
 
 .spacing-wrapper {
-  margin: auto;
-  max-width: 1000px;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  max-width: 760px;
+  padding: 0 25px;
+  margin: 0 auto;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .spacing-wrapper {
+    padding: 0 60px;
+  }
+}
+@media (min-width: 1400px) {
+  .spacing-wrapper {
+    margin: auto;
+    max-width: 1000px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
 .lead {
@@ -6720,10 +6732,6 @@ a.sidebar-link-item.active {
   text-decoration: none;
   color: var(--c-brand);
 }
-:where(.nav-link) .item.external:hover {
-  border-bottom-color: transparent;
-  color: var(--c-text);
-}
 @media (min-width: 768px) {
   :where(.nav-link) .item {
     border-bottom: 2px solid transparent;
@@ -6732,22 +6740,27 @@ a.sidebar-link-item.active {
     font-size: 0.9rem;
     font-weight: 500;
   }
-  :where(.nav-link) .item:hover, :where(.nav-link) .item.active {
+  :where(.nav-link) .item:hover,
+:where(.nav-link) .item.active {
+    color: var(--c-brand);
     border-bottom-color: var(--c-brand);
-    color: var(--c-text);
+  }
+  :where(.nav-link) .item.active {
+    font-weight: 520;
   }
 }
 
 .nav-bar-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--c-text);
+  color: var(--c-accent);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .nav-bar-title:hover {
+  color: var(--c-accent-dark);
   text-decoration: none;
 }
 
@@ -6920,8 +6933,10 @@ a.sidebar-link-item.active {
     position: absolute;
     top: 26px;
     right: -8px;
+    width: -moz-max-content;
+    width: max-content;
     min-width: 128px;
-    filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.1)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+    filter: drop-shadow(0 12px 32px rgba(12, 6, 48, 0.16)) drop-shadow(0 2px 6px rgba(12, 6, 48, 0.16));
   }
   .nav-dropdown-link .dialog ul {
     padding: 12px 0;
@@ -7018,6 +7033,18 @@ a.sidebar-link-item.active {
     display: none;
   }
 }
+.nav-links .external-icon {
+  display: none;
+  line-height: 32px;
+}
+
+.nav-links a.link-external .external-icon {
+  display: inline;
+  color: var(--c-divider-dark);
+  float: right;
+  margin-left: 0.5rem;
+}
+
 .main-footer {
   background-color: #f9fcff;
   border-top: 1px solid var(--c-divider-light);
@@ -7028,6 +7055,9 @@ a.sidebar-link-item.active {
   color: var(--c-text-light);
   font-size: 1rem;
 }
+.main-footer p {
+  color: var(--c-text-light);
+}
 .main-footer .footer-copyright {
   color: var(--c-text-light);
   background-color: transparent;
@@ -7035,15 +7065,16 @@ a.sidebar-link-item.active {
 }
 .main-footer.page-footer {
   padding-top: 40px;
+  padding-bottom: 20px;
 }
 
 .footer-grid {
   display: grid;
   place-content: center;
-  gap: 20px;
-  margin: 0 auto 20px;
+  gap: 40px;
+  margin: 0 auto 40px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1400px) {
   .footer-grid {
     grid-template-columns: 2fr 3fr;
   }
@@ -7053,13 +7084,17 @@ a.sidebar-link-item.active {
   display: flex;
   list-style: none;
   padding-left: 0;
-  gap: 10px 20px;
+  margin-bottom: 30px;
+  gap: 1.5rem 2rem;
   flex-wrap: wrap;
 }
 .socials li a {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.socials li a:hover {
+  text-decoration: none;
 }
 
 .local-navigation {
@@ -7086,10 +7121,10 @@ a.sidebar-link-item.active {
   display: block;
   padding: 0.5rem 0 0.5rem 0.5rem;
   border-left: 2px solid #eee;
-  color: rgba(0, 0, 0, 0.55);
+  color: var(--c-accent);
 }
 .local-navigation .toc a.active {
-  color: rgba(0, 0, 0, 0.8);
+  color: var(--c-accent-dark);
 }
 .local-navigation .toc a.active, .local-navigation .toc a:not(.active):hover {
   border-left: 2px solid var(--c-brand);
@@ -7109,7 +7144,7 @@ a.sidebar-link-item.active {
 
 .custom-block.info {
   background-color: #f3f5f7;
-  border-color: var(--c-text-light-2);
+  border-color: #476582;
 }
 
 .custom-block:is(.warning,.backend) {
@@ -7672,9 +7707,10 @@ div[class*=language-][data-language]:before {
   width: 18px;
   border-top: 1px solid #e7e7e8;
   position: absolute;
-  left: -6px;
+  left: -7px;
   transform-origin: right top;
   transform: rotateZ(-45deg);
+  z-index: 1;
 }
 
 .tabs .tab {
@@ -7695,7 +7731,7 @@ div[class*=language-][data-language]:before {
   color: #ccc;
 }
 .tabs .tab[aria-selected=true] {
-  color: var(--c-text-light-1);
+  color: var(--c-accent);
 }
 .tabs .tab[aria-selected=true] .tab-link__inner {
   background-color: rgba(242, 242, 242, 0.5);
@@ -7703,13 +7739,13 @@ div[class*=language-][data-language]:before {
   border-bottom: none;
 }
 .tabs .tab:focus::before, .tabs .tab:active::before, .tabs .tab:focus[aria-selected=true]::before {
-  border-top-color: var(--c-text-light-1);
+  border-top-color: var(--c-accent);
 }
 .tabs .tab:focus .tab-link__inner, .tabs .tab:active .tab-link__inner, .tabs .tab:focus[aria-selected=true] .tab-link__inner {
   background-color: rgba(242, 242, 242, 0.5);
-  border-left-color: var(--c-text-light-1);
-  border-right-color: var(--c-text-light-1);
-  border-top-color: var(--c-text-light-1);
+  border-left-color: var(--c-accent);
+  border-right-color: var(--c-accent);
+  border-top-color: var(--c-accent);
 }
 
 .tabs .spacer {
@@ -7816,17 +7852,48 @@ div[class*=language-][data-language]:before {
   height: auto;
 }
 
+/**
+Initial styling by Vitepress. Adapted by Manuel Meister
+
+Copyright (c) 2019-present, Yuxi (Evan) You
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ */
 :root {
   --c-white: #ffffff;
   --c-white-dark: #f8f8f8;
   --c-black: #000000;
   --c-divider-light: rgba(60, 60, 67, .12);
   --c-divider-dark: rgba(84, 84, 88, .48);
-  --c-text-light-1: #26224c;
-  --c-text-light-2: #476582;
+  --c-text-light-2: #345072;
   --c-text-light-3: #90a4b7;
+  --c-brand-light-3: #e6f8ff;
+  --c-brand-light-2: #d9f4ff;
+  --c-brand-light-1: #80daff;
   --c-brand: #00adee;
-  --c-brand-light: #00adee;
+  --c-brand-dark: #0088bf;
+  --c-accent-light-4: #fdfbff;
+  --c-accent-light-3: #f3eafa;
+  --c-accent-light-2: #a99ed3;
+  --c-accent-light-1: #403966;
+  --c-accent: #26224c;
+  --c-accent-dark: #0c0630;
   --font-family-base: Work Sans, Work Sans Fallback, Helvetica Neue, Helvetica, Arial, sans-serif;
   --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   --z-index-navbar: 10;
@@ -7841,7 +7908,7 @@ div[class*=language-][data-language]:before {
 
 :root {
   --c-divider: var(--c-divider-light);
-  --c-text: var(--c-text-light-1);
+  --c-text: var(--c-accent);
   --c-text-light: var(--c-text-light-2);
   --c-text-lighter: var(--c-text-light-3);
   --c-bg: var(--c-white);
@@ -7895,7 +7962,7 @@ h1, h2, h3, h4, h5, h6, strong, b {
   font-weight: bold;
 }
 
-h1:hover .header-anchor, h1:focus .header-anchor, h2:hover .header-anchor, h2:focus .header-anchor, h3:hover .header-anchor, h3:focus .header-anchor, h4:hover .header-anchor, h4:focus .header-anchor, h5:hover .header-anchor, h5:focus .header-anchor, h6:hover .header-anchor, h6:focus .header-anchor {
+:is(h1,h2,h3,h4,h5,h6):is(:hover,:focus, :focus-within) .header-anchor {
   opacity: 1;
 }
 
@@ -7960,12 +8027,16 @@ a, area, button, [role=button], input, label, select, summary, textarea {
 }
 
 a {
-  text-decoration: none;
+  text-decoration-color: transparent;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  text-underline-offset: 0.15em;
   color: var(--c-brand);
 }
 
 a:hover {
   text-decoration: underline;
+  color: var(--c-brand-dark);
+  text-decoration-color: currentColor;
 }
 
 a.header-anchor {
@@ -8086,6 +8157,11 @@ input, button {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+.home-logo {
+  width: 100%;
+  height: auto;
 }
 
 :where(.edit-link) .link {
@@ -8291,43 +8367,13 @@ blockquote {
   color: #757575;
 }
 
-/*
-a[href="#"] {
-    opacity: .5
-}
-
-a[href="#"]:after {
-    content: " \1f4ad"
-}
-*/
 .page a, .link {
-  font-weight: 540 !important;
+  font-weight: 520 !important;
 }
 
 .lead {
   font-size: 1.2rem;
   font-weight: 380;
-}
-
-.api-object {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-top: 2rem;
-  flex-wrap: wrap-reverse;
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  border-bottom: 2px solid var(--c-brand);
-}
-.api-object h3 {
-  margin-top: 0;
-}
-
-.api-name {
-  margin: 0;
-  font-family: var(--code-font-family);
-  font-size: var(--code-font-size);
-  color: var(--c-text-light);
 }
 
 @media (min-width: 420px) {
@@ -8367,10 +8413,18 @@ a[href="#"]:after {
   text-decoration: none;
   -webkit-clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
           clip-path: polygon(6px 0, 0 6px, 0 100%, calc(100% - 6px) 100%, 100% calc(100% - 6px), 100% 0);
+  transition: background 0.2s ease;
+}
+.btn:hover {
+  color: #fff;
+  background: var(--c-brand-dark);
 }
 
 .btn.secondary {
-  background: var(--c-text);
+  background: var(--c-accent);
+}
+.btn.secondary:hover {
+  background: var(--c-accent-dark);
 }
 
 .btn:hover {
@@ -8379,12 +8433,10 @@ a[href="#"]:after {
 
 .btn__wrapper {
   display: inline-grid;
-  filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.18));
   transition: filter 0.2s ease;
 }
 
 .btn__wrapper:hover {
-  filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.18));
   text-decoration: none;
 }
 

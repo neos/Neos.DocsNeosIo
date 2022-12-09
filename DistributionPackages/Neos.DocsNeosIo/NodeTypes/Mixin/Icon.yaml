@@ -52,7 +52,7 @@
                 icon: 'fas fa-link'
               'fas fa-external-link-alt':
                 label: 'External Link'
-                icon: 'fas fa-external-link-alt'
+                icon: 'fas fa-external-link-square-alt'
               'fas fa-book':
                 label: 'Documentation'
                 icon: 'fas fa-book'

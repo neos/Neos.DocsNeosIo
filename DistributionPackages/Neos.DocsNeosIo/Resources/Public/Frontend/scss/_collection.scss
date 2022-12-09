@@ -1,23 +1,38 @@
-@charset "utf-8";
-
-
 // Collections
 .collection {
-    margin: 0.5rem 0 1rem 0;
-    border: 1px solid #e0e0e0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
     position: relative;
 
     .collection-item__link {
-        background-color: #fff;
+        color: var(--c-accent);
+        background-color: transparent;
+        transition: background-color 0.2s ease;
         line-height: 1.5rem;
-        padding: 10px 20px;
-        margin: 0;
-        border-bottom: 1px solid #e0e0e0;
+        padding: .6rem;
+        margin: 0 -0.6rem;
         outline-offset: 3px;
         display: flex;
-        justify-content: space-between;
+        gap: 0.75rem;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
         align-items: baseline;
-        font-weight: 580;
+    }
+
+    .inline-icon {
+        transition: color 0.2s ease-in-out;
+        color: var(--c-accent);
+        font-size: 110%;
+    }
+
+    .collection-item .collection-item__link:not(.active):is(:hover,:focus) {
+        color: var(--c-brand-dark);
+        background-color: var(--c-brand-light-3);
+        text-decoration: none;
+        .inline-icon {
+            color: var(--c-brand);
+        }
     }
 
     .collection-item {
@@ -75,23 +90,4 @@
         transition: background-color .25s, color .25s;
     }
 
-}
-
-.collection {
-    margin-top: 16px;
-    margin-bottom: 16px;
-
-    .inline-icon {
-        margin-top: 0.2em;
-        float: right;
-    }
-
-    .collection-item .collection-item__link {
-        color: var(--c-brand);
-    }
-}
-
-.collection .collection-item .collection-item__link:not(.active):hover {
-    background-color: #f9f9f9;
-    color: var(--c-text);
 }

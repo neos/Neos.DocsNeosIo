@@ -31,11 +31,19 @@ SOFTWARE.
     --c-black: #000000;
     --c-divider-light: rgba(60, 60, 67, .12);
     --c-divider-dark: rgba(84, 84, 88, .48);
-    --c-text-light-1: #26224c;
-    --c-text-light-2: #476582;
+    --c-text-light-2: #345072;
     --c-text-light-3: #90a4b7;
+    --c-brand-light-3: #e6f8ff;
+    --c-brand-light-2: #d9f4ff;
+    --c-brand-light-1: #80daff;
     --c-brand: #00adee;
-    --c-brand-light: #00adee;
+    --c-brand-dark: #0088bf;
+    --c-accent-light-4: #fdfbff;
+    --c-accent-light-3: #f3eafa;
+    --c-accent-light-2: #a99ed3;
+    --c-accent-light-1: #403966;
+    --c-accent: #26224c;
+    --c-accent-dark: #0c0630;
     --font-family-base: #{$brand-font-family};
     --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
     --z-index-navbar: 10;
@@ -50,7 +58,7 @@ SOFTWARE.
 
 :root {
     --c-divider: var(--c-divider-light);
-    --c-text: var(--c-text-light-1);
+    --c-text: var(--c-accent);
     --c-text-light: var(--c-text-light-2);
     --c-text-lighter: var(--c-text-light-3);
     --c-bg: var(--c-white);
@@ -104,8 +112,8 @@ h1,h2,h3,h4,h5,h6,strong,b {
     font-weight: bold
 }
 
-h1:hover .header-anchor,h1:focus .header-anchor,h2:hover .header-anchor,h2:focus .header-anchor,h3:hover .header-anchor,h3:focus .header-anchor,h4:hover .header-anchor,h4:focus .header-anchor,h5:hover .header-anchor,h5:focus .header-anchor,h6:hover .header-anchor,h6:focus .header-anchor {
-    opacity: 1
+:is(h1,h2,h3,h4,h5,h6):is(:hover,:focus, :focus-within) .header-anchor{
+    opacity: 1;
 }
 
 h1 {
@@ -169,12 +177,16 @@ a,area,button,[role=button],input,label,select,summary,textarea {
 }
 
 a {
-    text-decoration: none;
+    text-decoration-color: transparent;
+    transition: color .2s ease, text-decoration-color .2s ease;
+    text-underline-offset: .15em;
     color: var(--c-brand)
 }
 
 a:hover {
-    text-decoration: underline
+    text-decoration: underline;
+    color: var(--c-brand-dark);
+    text-decoration-color: currentColor;
 }
 
 a.header-anchor {
@@ -296,6 +308,11 @@ input, button {
     max-width: 960px;
     margin: 0 auto;
     padding: 0 1.5rem
+}
+
+.home-logo {
+    width: 100%;
+    height: auto;
 }
 
 :where(.edit-link) .link {
@@ -508,43 +525,14 @@ body {
 blockquote {
     color: #757575
 }
-/*
-a[href="#"] {
-    opacity: .5
-}
 
-a[href="#"]:after {
-    content: " \1f4ad"
-}
-*/
 .page a,.link {
-    font-weight: 540!important
+    font-weight: 520!important
 }
 
 .lead {
     font-size: 1.2rem;
     font-weight: 380
-}
-
-.api-object {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-top: 2rem;
-    flex-wrap: wrap-reverse;
-    column-gap: 1rem;
-    border-bottom: 2px solid var(--c-brand);
-
-    h3 {
-        margin-top: 0;
-    }
-}
-
-.api-name {
-    margin: 0;
-    font-family: var(--code-font-family);
-    font-size: var(--code-font-size);
-    color: var(--c-text-light);
 }
 
 @include screen.xs {
@@ -584,10 +572,19 @@ a[href="#"]:after {
     cursor: pointer;
     text-decoration: none;
     @include helpers.neos-borders;
+    transition: background .2s ease;
+
+    &:hover {
+        color: #fff;
+        background: var(--c-brand-dark);
+    }
 }
 
 .btn.secondary {
-    background: var(--c-text);
+    background: var(--c-accent);
+    &:hover {
+        background: var(--c-accent-dark);
+    }
 }
 
 .btn:hover {
@@ -596,11 +593,9 @@ a[href="#"]:after {
 
 .btn__wrapper {
     display: inline-grid;
-    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.18));
     transition: filter .2s ease;
 }
 
 .btn__wrapper:hover {
-    filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.18));
     text-decoration: none;
 }

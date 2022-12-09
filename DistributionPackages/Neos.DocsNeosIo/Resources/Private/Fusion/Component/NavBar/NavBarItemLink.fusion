@@ -12,7 +12,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemLink) < prototype(Neos.Fusion:Comp
     renderer = afx`
         <div class="nav-link">
             <Carbon.Link:Link title={props.itemTitle} node={props.node} additionalClass={props.itemClass} backendLink={true}>
-                { props.itemTitle } <Neos.DocsNeosIo:Component.OutboundLinkIcon @if={props.isExternal} />
+                { props.itemTitle } <i class="external-icon fas fa-external-link-alt fa-xs"></i>
             </Carbon.Link:Link>
         </div>
     `

@@ -20,7 +20,7 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
                 <Neos.DocsNeosIo:Component.Icon
                     iconClass={props.iconClass}
                     fromLinkTypeUri={props.link}
-                    additionalClass="right inline-icon"
+                    additionalClass="right inline-icon fa-fw"
                 />
             </Carbon.Link:Link>
         </li>

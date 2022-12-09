@@ -61,10 +61,19 @@
 }
 
 .spacing-wrapper {
-    margin: auto;
-    max-width: 1000px;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    max-width: 760px;
+    padding: 0 25px;
+    @include screen.lg {
+        padding: 0 60px;
+    }
+    margin: 0 auto;
+    width: 100%;
+    @include screen.xl {
+        margin: auto;
+        max-width: 1000px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }
 
 .lead {

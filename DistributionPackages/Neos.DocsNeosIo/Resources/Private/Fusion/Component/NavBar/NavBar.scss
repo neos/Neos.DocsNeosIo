@@ -40,12 +40,7 @@
 
     .item:hover, .item.active {
         text-decoration: none;
-        color: var(--c-brand)
-    }
-
-    .item.external:hover {
-        border-bottom-color: transparent;
-        color: var(--c-text)
+        color: var(--c-brand);
     }
 
     @include screen.sm {
@@ -54,12 +49,17 @@
             padding: 0;
             line-height: 24px;
             font-size: .9rem;
-            font-weight: 500
+            font-weight: 500;
         }
 
-        .item:hover, .item.active {
+        .item:hover,
+        .item.active {
+            color: var(--c-brand);
             border-bottom-color: var(--c-brand);
-            color: var(--c-text)
+        }
+
+        .item.active {
+            font-weight: 520;
         }
     }
 }
@@ -67,13 +67,14 @@
 .nav-bar-title {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--c-text);
+    color: var(--c-accent);
     display: flex;
     justify-content: center;
     align-items: center
 }
 
 .nav-bar-title:hover {
+    color: var(--c-accent-dark);
     text-decoration: none
 }
 
@@ -260,8 +261,9 @@
         position: absolute;
         top: 26px;
         right: -8px;
+        width: max-content;
         min-width: 128px;
-        filter: drop-shadow(0 12px 32px rgba(0, 0, 0, .1)) drop-shadow(0 2px 6px rgba(0, 0, 0, .08));
+        filter: drop-shadow(0 12px 32px rgba(12, 6, 48, 0.16)) drop-shadow(0 2px 6px rgba(12, 6, 48, 0.16));
 
         ul {
             padding: 12px 0;
@@ -366,4 +368,16 @@
     :where(.sidebar) nav {
         display: none;
     }
+}
+
+.nav-links .external-icon {
+    display: none;
+    line-height: 32px;
+}
+
+.nav-links a.link-external .external-icon {
+    display: inline;
+    color: var(--c-divider-dark);
+    float: right;
+    margin-left: 0.5rem;
 }

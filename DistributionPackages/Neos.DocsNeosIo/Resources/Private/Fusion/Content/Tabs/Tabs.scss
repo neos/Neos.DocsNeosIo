@@ -101,9 +101,10 @@
             width: 18px;
             border-top: 1px solid #e7e7e8;
             position: absolute;
-            left: -6px;
+            left: -7px;
             transform-origin: right top;
             transform: rotateZ(-45deg);
+            z-index: 1;
         }
     }
 }
@@ -135,19 +136,19 @@
             border-bottom: none;
         }
 
-        color: var(--c-text-light-1);
+        color: var(--c-accent);
     }
 
     &:focus, &:active, &:focus[aria-selected="true"] {
         &::before {
-            border-top-color: var(--c-text-light-1);
+            border-top-color: var(--c-accent);
         }
 
         .tab-link__inner {
             background-color: rgba(242, 242, 242, 0.5);
-            border-left-color: var(--c-text-light-1);
-            border-right-color: var(--c-text-light-1);
-            border-top-color: var(--c-text-light-1);
+            border-left-color: var(--c-accent);
+            border-right-color: var(--c-accent);
+            border-top-color: var(--c-accent);
         }
     }
 }

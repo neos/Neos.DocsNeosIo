@@ -14,23 +14,31 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
         fromLinkTypeUri = ${this.fromLinkTypeUri}
     }
     iconClassFinal = Neos.Fusion:Case {
+        overrideExternalLinkIcon {
+            condition = ${iconClass && iconClass == 'fas fa-external-link-alt'}
+            renderer = 'fas fa-external-link-square-alt'
+        }
         hasClass {
             condition = ${iconClass && iconClass != ''}
             renderer = ${iconClass}
         }
         linkIsGithub {
-            condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com')}
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com/')}
             renderer = ${'fab fa-github'}
         }
+        linkIsYoutube {
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://www.youtube.com/')}
+            renderer = ${'fab fa-youtube'}
+        }
         linkIsDiscuss {
-            condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io')}
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io/')}
             renderer = ${'fas fa-comments'}
         }
         fallbackByLinkType {
             condition = ${fromLinkTypeUri}
             renderer = Carbon.Link:Type {
                 link = ${fromLinkTypeUri}
-                @process.convert = ${value=='external' ? 'fas fa-external-link-alt' : (value=='node' ? 'fas fa-link' : false)}
+                @process.convert = ${value=='external' ? 'fas fa-external-link-square-alt' : (value=='node' ? 'fas fa-link' : false)}
             }
         }
     }

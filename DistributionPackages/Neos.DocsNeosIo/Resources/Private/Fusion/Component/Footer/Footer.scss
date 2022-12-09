@@ -11,6 +11,10 @@
         font-size: 1rem;
     }
 
+    p {
+        color: var(--c-text-light);
+    }
+
 	.footer-copyright {
 		color: var(--c-text-light);
 		background-color: transparent;
@@ -19,29 +23,34 @@
 
     &.page-footer {
         padding-top: 40px;
+        padding-bottom: 20px;
     }
 }
 
 .footer-grid {
     display: grid;
     place-content: center;
-    gap: 20px;
-    @include screen.sm {
+    gap: 40px;
+    @include screen.xl {
         grid-template-columns: 2fr 3fr;
     }
-    margin: 0 auto 20px;
+    margin: 0 auto 40px;
 }
 
 .socials {
     display: flex;
     list-style: none;
     padding-left: 0;
-    gap: 10px 20px;
+    margin-bottom: 30px;
+    gap: 1.5rem 2rem;
     flex-wrap: wrap;
 
     li a {
         display: flex;
         align-items: center;
         gap: 10px;
+        &:hover {
+            text-decoration: none;
+        }
     }
 }
