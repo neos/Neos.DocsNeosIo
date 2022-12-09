@@ -22,7 +22,7 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
     renderer = afx`
         <div id={props.id} class="content-navigation">
             <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} class="header">
-                <a href={'#' + props.id} class="header-anchor" aria-hidden="true">#</a>
+                <a href={'#' + props.id} class="header-anchor" aria-label={props.title}>#</a>
                 {props.title}
             </Neos.Fusion:Tag>
             <ul class="link-list collection">

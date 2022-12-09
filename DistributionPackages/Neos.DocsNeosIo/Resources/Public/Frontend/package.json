@@ -4,6 +4,7 @@
   "author": "Roland Schütz",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "cssnano": "^5.1.14",
     "prism-neos": "^0.0.2"
   },
   "engine": "node >= 0.10",
@@ -49,7 +50,7 @@
     "css-copy": "cp -R node_modules/@fortawesome/fontawesome-free/webfonts build/fontawesome && cp -R fonts/WorkSansVariable/work-sans-variable.woff2 build/work-sans-variable.woff2",
     "css-deploy": "yarn run css-build && yarn run css-postcss",
     "css-build": "sass scss/app.scss build/app.css",
-    "css-postcss": "postcss --use autoprefixer --map --output build/app.css build/app.css",
+    "css-postcss": "postcss --use autoprefixer --use cssnano --map --output build/app.css build/app.css",
     "css-watch": "yarn run css-build && yarn run css-build --watch --load-path=../../../Private/Fusion",
     "js-build": "rollup --config",
     "js-watch": "yarn run js-build -- --watch",
