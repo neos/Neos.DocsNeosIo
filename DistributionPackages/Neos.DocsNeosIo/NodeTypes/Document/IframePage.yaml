@@ -10,7 +10,7 @@
   ui:
     label: 'IFrame Page'
     help:
-      message: 'Manuals to describe the principals, ideas and mechanics behind Neos '
+      message: 'Embed an iframe as a page'
     icon: icon-file-o
     position: 100
   properties:
