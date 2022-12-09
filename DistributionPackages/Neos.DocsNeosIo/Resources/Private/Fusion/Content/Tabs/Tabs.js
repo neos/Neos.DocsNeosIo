@@ -1,8 +1,7 @@
 /**
  * Adapted code from https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tab_role#example
  */
-
-window.addEventListener("DOMContentLoaded", () => {
+(() => {
 	const allTabs = document.querySelectorAll('.tabs__wrapper');
 	allTabs.forEach((tabwrapper) => {
 
@@ -48,15 +47,4 @@ window.addEventListener("DOMContentLoaded", () => {
 			}
 		});
 	});
-});
-
-function changeTabs(tab, tabs, tabPanels) {
-	// Remove all current selected tabs
-	tabs
-		.forEach((t) => t.setAttribute("aria-selected", t !== tab ? 'false' : 'true'));
-
-	const controls = tab.getAttribute("aria-controls");
-
-	tabPanels
-		.forEach((panel) => panel.toggleAttribute("hidden", panel.id === controls));
-}
+})();

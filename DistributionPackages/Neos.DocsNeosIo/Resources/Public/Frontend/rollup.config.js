@@ -3,10 +3,12 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
-    input: 'js/app.js',
+    input: {
+		app: 'js/app.js',
+		prism: 'js/prism.js',
+	},
     output: {
-        file: 'build/app.js',
-        format: 'iife', // immediately-invoked function expression — suitable for <script> tags
+        dir: 'build',
         sourcemap: true
     },
     watch: {
