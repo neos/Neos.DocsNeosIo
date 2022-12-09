@@ -28,6 +28,10 @@
 
 
 :where(.nav-link) {
+    a {
+        text-decoration: none;
+    }
+
     .item {
         display: block;
         padding: 0 1.5rem;

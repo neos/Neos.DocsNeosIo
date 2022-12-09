@@ -177,6 +177,7 @@ a,area,button,[role=button],input,label,select,summary,textarea {
 }
 
 a {
+    text-decoration: none;
     text-decoration-color: transparent;
     transition: color .2s ease, text-decoration-color .2s ease;
     text-underline-offset: .15em;
