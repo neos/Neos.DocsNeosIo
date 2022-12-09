@@ -15,5 +15,4 @@ Carbon:
           Head:
             - app.css
           Body:
-            - https://code.jquery.com/jquery-3.2.1.min.js
             - app.js[data-manual]
