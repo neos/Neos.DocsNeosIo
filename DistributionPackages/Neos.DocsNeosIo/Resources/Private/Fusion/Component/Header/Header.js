@@ -2,20 +2,18 @@ const sidebar = document.querySelector('.sidebar');
 const sidebarButton = document.querySelector('.sidebar-button');
 const sidebarBackdrop = document.querySelector('.sidebar-mobile-backdrop');
 
-function toggleSidebar() {
-	sidebar.classList.toggle('open');
-	const isExpanded = sidebarButton.getAttribute('aria-expanded') === 'true';
-	sidebarButton.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
-	sidebarButton.setAttribute('aria-label', isExpanded ? 'open menu' : 'close menu');
-	if (!isExpanded) {
+function toggleSidebar(open = undefined) {
+	sidebar.classList.toggle('open', open);
+	const expand = open ?? sidebarButton.getAttribute('aria-expanded') !== 'true';
+	sidebarButton.setAttribute('aria-expanded', expand ? 'true' : 'false');
+	sidebarButton.setAttribute('aria-label', expand ? 'close menu' : 'open menu');
+	if (expand) {
 		sidebar.focus();
 	}
 }
 
-sidebarButton.addEventListener('click', function () {
-	toggleSidebar();
-})
+document.body.addEventListener('keydown', event => event.key === 'Escape' && toggleSidebar(false));
 
-sidebarBackdrop.addEventListener('click', function () {
-	toggleSidebar();
-})
+sidebarButton.addEventListener('click', () => toggleSidebar());
+
+sidebarBackdrop.addEventListener('click', () => toggleSidebar(false))

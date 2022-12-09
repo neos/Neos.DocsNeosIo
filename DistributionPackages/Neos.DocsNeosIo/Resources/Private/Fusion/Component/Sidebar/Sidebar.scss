@@ -243,6 +243,10 @@ a.sidebar-link-item.active {
     z-index: 1;
     pointer-events: none;
     transition: background-color .2s ease-in-out;
+
+    @include screen.sm {
+        display: none;
+    }
 }
 
 .sidebar.open + .sidebar-mobile-backdrop {

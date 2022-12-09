@@ -6689,6 +6689,11 @@ a.sidebar-link-item.active {
   pointer-events: none;
   transition: background-color 0.2s ease-in-out;
 }
+@media (min-width: 768px) {
+  .sidebar-mobile-backdrop {
+    display: none;
+  }
+}
 
 .sidebar.open + .sidebar-mobile-backdrop {
   background-color: rgba(0, 0, 0, 0.1);
@@ -6719,6 +6724,9 @@ a.sidebar-link-item.active {
   flex-grow: 1;
 }
 
+:where(.nav-link) a {
+  text-decoration: none;
+}
 :where(.nav-link) .item {
   display: block;
   padding: 0 1.5rem;
@@ -8027,6 +8035,7 @@ a, area, button, [role=button], input, label, select, summary, textarea {
 }
 
 a {
+  text-decoration: none;
   text-decoration-color: transparent;
   transition: color 0.2s ease, text-decoration-color 0.2s ease;
   text-underline-offset: 0.15em;
