@@ -17,13 +17,13 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
         @cache.entryIdentifier.node = ${node}
     }
 
-    collection = ${q(navRoot).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+    navItems = ${q(navRoot).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
 
     renderer = afx`
         <div id={props.id} class="content-navigation">
             <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} class="header">{props.title}</Neos.Fusion:Tag>
             <ul class="link-list collection">
-                <Neos.Fusion:Loop items={props.collection} itemName="node">
+                <Neos.Fusion:Loop items={props.navItems} itemName="node">
                     <li class="collection-item">
                         <Carbon.Link:Link node={node} additionalClass="collection-item__link" renderDefaultTagIfNoLink={true} defaultTagName="p">
                             {q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}

@@ -4,7 +4,7 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
     # any fizzle expression to filter for (we do this here to abstract the default usage)
     additionalClass = false
 
-    @context.collection = ${q(this.items).filter(this.filter)}
+    @context.items = ${q(this.items).filter(this.filter)}
     tags = Neos.Fusion:Loop {
         items = ${items}
         itemName = 'node'

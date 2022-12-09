@@ -14,10 +14,10 @@ prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent
                 block = false
                 @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
             }
-            collection = Neos.Neos:ContentCollection
+            contentCollection = Neos.Neos:ContentCollection
             renderer = afx`
                 <p @if={props.text}>{props.text}</p>
-                {props.collection}
+                {props.contentCollection}
             `
         }
         type = ${q(node).property('noticeType')}
