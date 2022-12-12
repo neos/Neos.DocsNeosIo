@@ -600,3 +600,12 @@ blockquote {
 .btn__wrapper:hover {
     text-decoration: none;
 }
+
+.icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+
+    &:before {
+        content: '\200B';
+    }
+}

@@ -3819,10 +3819,10 @@ pretty-hrtime@^1.0.3:
   resolved "https://registry.yarnpkg.com/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz#b7e3ea42435a4c9b2759d99e0f201eb195802ee1"
   integrity sha512-66hKPCr+72mlfiSjlEB1+45IjXSqvVAIy6mocupoww4tBFE9R9IhwwUGoI4G++Tc9Aq+2rxOt0RFU6gPcrte0A==
 
-prism-neos@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/prism-neos/-/prism-neos-0.0.2.tgz#778196e37a973a86ce471e49fb44535d6c4549b8"
-  integrity sha512-plzp+UVKnyMj1Emrpnum1dqV0LALs0dd5gIFg0K5Lii07U30Qvi4StVnBpz3g6AuoH88pE5Nhz1wlDi4RLiULQ==
+prism-neos@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/prism-neos/-/prism-neos-0.1.1.tgz#57e568b0712550dc5978865691e7a855acd60556"
+  integrity sha512-ZKs5XbBvGwV+0VqihN88IAX5RV5pW5NPxYrVwUK+cnk7vPFJ1kRMpuNj/cXc21ZnmfRHveKiX/Z/z+0GpbnQQQ==
 
 prismjs@^1.27.0:
   version "1.29.0"

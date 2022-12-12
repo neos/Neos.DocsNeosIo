@@ -15,5 +15,5 @@ Carbon:
           Head:
             - app.css
           Body:
-            - app.js[data-manual]
             - prism.js
+            - app.js[data-manual]

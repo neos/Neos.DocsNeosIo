@@ -16,12 +16,15 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
                 additionalClass="collection-item__link"
                 defaultTagName="div"
             >
-                {props.title}
-                <Neos.DocsNeosIo:Component.Icon
-                    iconClass={props.iconClass}
-                    fromLinkTypeUri={props.link}
-                    additionalClass="right inline-icon fa-fw"
-                />
+                <span class="icon-wrapper">
+                    <Neos.DocsNeosIo:Component.Icon
+                        iconClass={props.iconClass}
+                        fromLinkTypeUri={props.link}
+                        additionalClass="right inline-icon fa-fw"
+                    />
+                </span>
+                <span class="collection-item__text">{props.title}</span>
+                <span class="icon-wrapper"><span class="inline-icon fas fa-chevron-right"></span></span>
             </Carbon.Link:Link>
         </li>
     `

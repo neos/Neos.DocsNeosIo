@@ -15,7 +15,6 @@
         outline-offset: 3px;
         display: flex;
         gap: 0.75rem;
-        flex-direction: row-reverse;
         justify-content: flex-end;
         align-items: baseline;
     }
@@ -23,7 +22,15 @@
     .inline-icon {
         transition: color 0.2s ease-in-out;
         color: var(--c-accent);
-        font-size: 110%;
+        font-size: 120%;
+    }
+
+    .collection-item__link .inline-icon.fa-chevron-right {
+        color: var(--c-divider-dark);
+    }
+
+    .collection-item__link .inline-icon.fa-level-up-alt {
+        transform: rotate(90deg);
     }
 
     .collection-item .collection-item__link:not(.active):is(:hover,:focus) {
@@ -90,4 +97,7 @@
         transition: background-color .25s, color .25s;
     }
 
+    .collection-item__text {
+        flex-grow: 1;
+    }
 }
