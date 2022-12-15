@@ -3,7 +3,6 @@ prototype(Neos.DocsNeosIo:Document.Cookbook) < prototype(Neos.DocsNeosIo:Documen
         authors = ${q(node).property('authors') ? DocsNeosIo.UserData.getData(q(node).property('authors')) : ''}
         navCollection = ${q(node).find('main').children()}
         fullwidth = ${q(node).property('fullwidth')}
-        showSupportCall2Action = false
         title = Neos.Fusion:Component {
             title = Neos.Neos:Editable {
                 property = 'title'

@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Component.Iframe) < prototype(Neos.Neos:ContentComponent) {
+prototype(Neos.DocsNeosIo:Component.IframeLayout) < prototype(Neos.Neos:ContentComponent) {
     authors = false
     title = false
     subtitle = false
@@ -8,7 +8,6 @@ prototype(Neos.DocsNeosIo:Component.Iframe) < prototype(Neos.Neos:ContentCompone
     tags = false
     navbarRoot = false
     sidebarRoot = false
-    showSupportCall2Action = true
 
     sidebarOnlyMobile = false
     localNav = true

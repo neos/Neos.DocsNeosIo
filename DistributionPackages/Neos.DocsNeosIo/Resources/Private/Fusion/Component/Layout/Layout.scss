@@ -91,3 +91,22 @@
     padding: 5px 10px;
     @include helpers.neos-borders;
 }
+
+.banner {
+    display: grid;
+    place-content: center;
+    padding: 40px 1.5rem;
+    min-height: 300px;
+    background-color: #00adee;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-buttons {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+        gap: 20px;
+    }
+}

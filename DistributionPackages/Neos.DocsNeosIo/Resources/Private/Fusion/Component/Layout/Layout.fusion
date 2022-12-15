@@ -8,7 +8,6 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
     tags = false
     navbarRoot = false
     sidebarRoot = false
-    showSupportCall2Action = true
 
     sidebarOnlyMobile = false
     localNav = true

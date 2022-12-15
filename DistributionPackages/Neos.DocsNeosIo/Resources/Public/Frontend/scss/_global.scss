@@ -609,3 +609,8 @@ blockquote {
         content: '\200B';
     }
 }
+
+.iframe-page iframe {
+    flex-grow: 1;
+    height: calc(100vh - var(--header-height))
+}

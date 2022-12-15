@@ -3,7 +3,6 @@ prototype(Neos.DocsNeosIo:Document.Guide) < prototype(Neos.DocsNeosIo:Document.A
         authors = ${q(node).property('authors') ? DocsNeosIo.UserData.getData(q(node).property('authors')) : ''}
         navCollection = ${q(node).find('main').children()}
         fullwidth = ${q(node).property('fullwidth')}
-        showSupportCall2Action = false
         content = Neos.Fusion:Component {
             main = Neos.Neos:ContentCollection {
                 nodePath = 'main'
