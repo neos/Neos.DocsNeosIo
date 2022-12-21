@@ -1,4 +1,4 @@
-.custom-block:is(.tip,.info,.warning,.danger,.backend) {
+.custom-block:is(.tip,.info,.warning,.danger,.backend,.todo) {
     margin: 1rem 0;
     border-left: .5rem solid;
     padding: .1rem 1.5rem;
@@ -15,17 +15,17 @@
     border-color: #476582;
 }
 
-.custom-block:is(.warning,.backend) {
+.custom-block:is(.warning,.backend,.todo) {
     border-color: #e7c000;
     color: #6b5900;
     background-color: #ffe5644d
 }
 
-.custom-block:is(.warning,.backend) .custom-block-title {
+.custom-block:is(.warning,.backend,.todo) .custom-block-title {
     color: #b29400
 }
 
-.custom-block:is(.warning,.backend) a {
+.custom-block:is(.warning,.backend,.todo) a {
     color: var(--c-text)
 }
 

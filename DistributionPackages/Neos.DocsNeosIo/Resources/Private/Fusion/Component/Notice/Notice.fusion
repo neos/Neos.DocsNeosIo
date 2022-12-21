@@ -10,6 +10,7 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
         warning = ${value == 'warning' ? 'fas fa-exclamation-circle' : value}
         danger = ${value == 'danger' ? 'fas fa-exclamation-triangle' : value}
         tip = ${value == 'tip' ? 'fas fa-lightbulb' : value}
+        todo = ${value == 'todo' ? 'fas fa-list' : value}
         backend = ${value == 'backend' ? 'fas fa-edit' : value}
     }
     renderer = afx`
