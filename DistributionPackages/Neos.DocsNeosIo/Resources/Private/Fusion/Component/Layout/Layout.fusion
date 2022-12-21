@@ -5,6 +5,7 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
     content = ''
     navCollection = false
     fullwidth = false
+    fullContent = false
     tags = false
     navbarRoot = false
     sidebarRoot = false
@@ -49,23 +50,14 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
             {props.banner}
             <main class="fullwidth-layout" @if={props.fullwidth}>
                 <div class="fullwidth-header">
-                    <div class="container-wrapper">
-                        <div class="content" @if.withoutOneAuthor={!props.authors || Array.length(props.authors) !=1}>
-                            <h1>{props.title}</h1>
-                            <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
-                            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
-                                                               filter="" @if.inBackend={node.context.inBackend} />
-                        </div>
-                        <div class="content" @if.hasOneAuthor={props.authors && Array.length(props.authors)== 1}>
-                            <h1 class="header">{props.title}</h1>
-                            <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
-                            <div class="image-container">
-                                <img src={Array.first(props.authors).gravatar} class="profile-image"
-                                     style="margin-top: 16px;" /><br />
-                                <i>Written by</i><br />
-                                {Array.first(props.authors).label}
-                            </div>
-                        </div>
+                    <div class={props.flexheader ? "container-wrapper" : "main-content"}>
+                        <h1>{props.title}</h1>
+                        <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                        <Neos.DocsNeosIo:Component.TagList
+                            @if.inBackend={node.context.inBackend}
+                            items={props.tags}
+                            additionalClass="backend-tags"
+                            filter="" />
                     </div>
                 </div>
 
@@ -79,17 +71,20 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                 <div class="main-content">
                     <h1>{props.title}</h1>
                     <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
-                    <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags"
-                                                       filter=""
-                                                       @if.inBackend={node.context.inBackend} />
+                    <Neos.DocsNeosIo:Component.TagList
+                        @if.inBackend={node.context.inBackend}
+                        items={props.tags}
+                        additionalClass="backend-tags"
+                        filter="" />
                     {props.tagNotices}
                     {props.content}
                     {props.prevNextNavigation}
                     <Neos.DocsNeosIo:Component.Authors authors={props.authors} />
 
                 </div>
-                <Neos.DocsNeosIo:Component.LocalNavigation @if={props.localNav && props.navCollection}
-                                                           items={props.navCollection} />
+                <Neos.DocsNeosIo:Component.LocalNavigation
+                    @if={props.localNav && props.navCollection}
+                    items={props.navCollection} />
             </main>
             <Neos.DocsNeosIo:Component.Footer />
         </div>

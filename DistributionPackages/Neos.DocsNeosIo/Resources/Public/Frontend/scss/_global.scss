@@ -70,6 +70,24 @@ SOFTWARE.
     --code-bg-color: #282c34
 }
 
+:root {
+    --content-padding-x: 1rem;
+    @include screen.xs {
+        --content-padding-x: 1.5rem
+    }
+    @include screen.lg {
+        --content-padding-x: 3.75rem
+    }
+
+    --content-width: 760px;
+    --spacing-container-padding-x: var(--content-padding-x);
+    --spacing-container-width: var(--content-width);
+    @include screen.xl {
+        --spacing-container-width: 1080px;
+        --spacing-container-padding-x: 1.5rem;
+    }
+}
+
 *,:before,:after {
     box-sizing: border-box
 }

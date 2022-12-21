@@ -2,6 +2,7 @@ prototype(Neos.DocsNeosIo:Document.CookbooksOverview) < prototype(Neos.DocsNeosI
 
     body {
         fullwidth = true
+        flexheader = true
         content = Neos.Fusion:Loop {
             @process.wrap = ${'<div class="cookbooks-overview cards">' + value + '</div>'}
             items = ${q(node).children('[!instanceof Neos.DocsNeosIo:Document.CookbookTag][!instanceof Neos.Neos:Shortcut]')}

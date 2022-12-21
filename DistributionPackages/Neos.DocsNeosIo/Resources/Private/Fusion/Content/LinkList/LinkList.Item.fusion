@@ -8,7 +8,7 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
     iconClass = ${q(node).property('iconCustom') || q(node).property('icon')}
 
     renderer = afx`
-        <li class="collection-item">
+        <li class={["collection-item", String.indexOf(props.title, '<strong>') != -1 && 'collection-item--contains-strong']}>
             <Carbon.Link:Link
                 @if={props.title}
                 link={props.link}

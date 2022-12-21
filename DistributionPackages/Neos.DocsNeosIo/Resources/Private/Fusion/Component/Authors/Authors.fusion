@@ -2,36 +2,13 @@ prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentCompon
     authors = false
 
     renderer = afx`
-        <div class="authors authors-multiple" @if.hasMultiple={props.authors && Array.length(props.authors) > 1}>
-            <strong><i>Written by</i></strong>
-            <h4>
+        <p @if={props.authors} class={["authors", Array.length(props.authors) == 1 ? "authors-single" : "authors-multiple"]}>
+            <i>Written by</i> <span>
                 <Neos.Fusion:Loop items={props.authors} itemName="author" iterationName="iteration" @children="itemRenderer">
-                    {iteration.isFirst ? '' : ', '}
-                    <span itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{author.label}</span></span>
+                    {iteration.index == 0 ? '' : iteration.isLast ? ' & ' :', '}
+                    <strong itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{author.label}</span></strong>
                 </Neos.Fusion:Loop>
-            </h4>
-            <div class="row">
-                <Neos.Fusion:Loop items={props.authors} itemName="author" iterationName="iteration" @children="itemRenderer">
-                    <div class="col s6 m3 profile-image-col">
-                        <div class="image-container">
-                            <img src={author.gravatar} class="profile-image" />
-                        </div>
-                    </div>
-                </Neos.Fusion:Loop>
-            </div>
-        </div>
-        <div class="authors authors-single" @if.hasOne={props.authors && Array.length(props.authors) == 1}>
-            <div class="row hide-on-small-only">
-              <div class="col s12 m3 center-on-small-only profile-image-col">
-                <div class="image-container">
-                  <img src={Array.first(props.authors).gravatar} class="profile-image round" />
-                </div>
-              </div>
-              <div class="col s12 m9">
-                <strong><i>Written by</i></strong>
-                <h4><span itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{Array.first(props.authors).label}</span></span></h4>
-              </div>
-            </div>
-        </div>
+            </span>
+        </p>
     `
 }

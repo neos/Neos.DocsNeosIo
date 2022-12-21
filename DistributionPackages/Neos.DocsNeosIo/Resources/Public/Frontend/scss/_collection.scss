@@ -42,6 +42,10 @@
         }
     }
 
+    .collection-item--contains-strong .collection-item__text {
+        font-weight: 380;
+    }
+
     .collection-item {
         list-style: none;
 

@@ -13,11 +13,14 @@
 	.neos-contentcollection > *:not(.docs-youtube):not(.docs-section):not(.full):not(.jonnitto-prettyembed-wrapper),
 	.authors,
 	.docs-section > *:first-child { // spacing for the headline
-		max-width: 960px;
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
+		max-width: var(--content-width);
+        padding: 0 var(--content-padding-x);
         margin: auto;
 	}
+
+    .authors {
+        margin: 1rem auto;
+    }
 
 	.docs-youtube {
 		&:first-child {
@@ -28,8 +31,8 @@
 		}
 	}
 	.docs-section .docs-youtube {
-		margin-top: 16px;
-		margin-bottom: 16px;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
 	}
 
     .fullwidth-header {
@@ -51,28 +54,19 @@
 }
 
 .main-content {
-    max-width: 760px;
-    padding: 0 25px;
-    @include screen.lg {
-        padding: 0 60px;
-    }
+    max-width: var(--content-width);
+    padding: 0 var(--content-padding-x);
     margin: 0 auto;
     width: 100%;
 }
 
 .spacing-wrapper {
-    max-width: 760px;
-    padding: 0 25px;
-    @include screen.lg {
-        padding: 0 60px;
-    }
+    max-width: var(--spacing-container-width);
+    padding: 0 var(--content-padding-x);
     margin: 0 auto;
     width: 100%;
     @include screen.xl {
         margin: auto;
-        max-width: 1000px;
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
     }
 }
 
