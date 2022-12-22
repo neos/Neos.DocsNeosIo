@@ -1,11 +1,6 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Component) {
     items = false
 
-    # rendering
-    @context {
-        startingPoint = ${this.startingPoint}
-    }
-
     renderer = afx`
         <div class="local-navigation sm-hidden">
             <aside class="toc">
