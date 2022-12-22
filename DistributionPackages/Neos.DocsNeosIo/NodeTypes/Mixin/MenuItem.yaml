@@ -1,0 +1,34 @@
+'Neos.DocsNeosIo:Mixin.MenuItem':
+  abstract: true
+  properties:
+    hideFromMainMenu:
+      type: boolean
+      ui:
+        label: i18n
+        reloadPageIfChanged: true
+        inspector:
+          group: visibility
+    mainMenuTitle:
+      type: string
+      ui:
+        label: 'Menu title override'
+        reloadPageIfChanged: true
+        inspector:
+          group: document
+    status:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'Menu status flag'
+        reloadPageIfChanged: true
+        inspector:
+          group: 'document'
+          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
+          editorOptions:
+            allowEmpty: true
+            placeholder: 'None'
+            values:
+              'new':
+                label: 'New'
+              'updated':
+                label: 'Updated'
