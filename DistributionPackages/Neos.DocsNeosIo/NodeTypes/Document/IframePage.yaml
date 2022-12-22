@@ -2,16 +2,12 @@
   superTypes:
     'Neos.Neos:Document': true
   childNodes:
-    main:
-      type: 'Neos.Neos:ContentCollection'
-      constraints:
-        nodeTypes:
-          '*': false
+    main: ~
   ui:
     label: 'IFrame Page'
     help:
       message: 'Embed an iframe as a page'
-    icon: icon-file-o
+    icon: fas fa-file-code
     position: 100
   properties:
     url:
