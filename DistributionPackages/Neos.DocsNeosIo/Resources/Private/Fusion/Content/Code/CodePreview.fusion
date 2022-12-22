@@ -1,0 +1,5 @@
+prototype(Neos.DocsNeosIo:Content.CodePreview) < prototype(Neos.Neos:ContentComponent) {
+    code = ${q(node).property('code')}
+
+    renderer = afx`<div class="preview__wrapper"><section class="preview" aria-label="output">{props.code}</section></div>`
+}

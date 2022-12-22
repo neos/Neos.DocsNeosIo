@@ -282,22 +282,42 @@ div[class*=language-][data-language]:before {
     content: attr(data-language)!important;
 }
 
-.preview {
-    display: block;
+.preview__wrapper {
     position: relative;
     margin: 1rem 0;
-    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.07)) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.07));
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,.05)) drop-shadow(0 1px 3px rgba(0,0,0,.05));
 }
 
-.preview__inner {
+.preview {
+    display: flow-root;
     @include helpers.neos-borders(12px);
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     background: white;
     padding: 1.25rem 1.5rem;
+
+    &:before,&:after {
+        content: "";
+        width: 17px;
+        height: 1px;
+        position: absolute;
+        background: #ddd;
+        transform: rotate(-45deg);
+    }
+
+    &:before {
+        left: -5px;
+        top: 0;
+        transform-origin: right center;
+    }
+    &:after {
+        bottom: 0;
+        right: -5px;
+        transform-origin: left center;
+    }
 }
 
-.preview:before {
-    content: "preview";
+.preview__wrapper:before {
+    content: "output";
     position: absolute;
     top: .6em;
     right: 1em;
