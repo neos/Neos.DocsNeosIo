@@ -17,6 +17,9 @@
         "rokka/imagine-vips": "^0.31.0",
         "shel/neos-terminal": "^0.7.2"
     },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
     "repositories": {
         "distribution": {
             "type": "path",
