@@ -7,11 +7,11 @@
 		});
 	}, {
 		threshold: .1,
-		rootMargin: '58px 0px 0px'
+		rootMargin: '-58px 0px 0px'
 	});
 
 	// Track all sections that have an `id` applied
-	document.querySelectorAll('.content-section[id]').forEach((section) => {
+	document.querySelectorAll('.content-section[id],.content-navigation[id]').forEach((section) => {
 		observer.observe(section);
 	});
 })()
