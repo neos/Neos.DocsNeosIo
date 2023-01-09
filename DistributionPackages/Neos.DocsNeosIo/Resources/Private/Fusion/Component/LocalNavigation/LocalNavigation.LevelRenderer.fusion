@@ -1,33 +1,22 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(Neos.Fusion:Component) {
-    attributes = Neos.Fusion:Attributes
     items = false
 
     # rendering
-    renderer = Neos.Fusion:Component {
-        levelItems = Neos.Fusion:Loop {
-            items = ${props.items && props.items.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
-            itemName = 'node'
-            itemRenderer = Neos.Fusion:Component {
-                id = Neos.DocsNeosIo:Helper.StringToHash {
-                    value = ${q(node).property('title') || node.identifier}
-                }
-                title = ${q(node).property('title')}
-                children = ${q(node).children()}
-                renderer = afx`
-                    <li>
-                        <a @if={props.title} href={'#' + props.id}>
-                            {props.title}
-                        </a>
-                    </li>
-                `
-                @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
-            }
-        }
-        renderer = afx`
-            <h3 class="h4" @if={items.count() > 0}>On this page</h3>
-            <Neos.Fusion:Tag tagName="ul" attributes={props.attributes} @if.notEmpty={items.count() > 0}>
-                {props.levelItems}
-            </Neos.Fusion:Tag>
-        `
-    }
+    filteredItems = ${props.items && props.items.filter('[instanceof Neos.DocsNeosIo:Constraint.Content.LocalNavigation.Item]')}
+    renderer = afx`
+        <h3 class="h4" @if={props.filteredItems.count() > 0}>On this page</h3>
+        <ul @if={props.filteredItems.count() > 0}>
+            <Neos.Fusion:Loop items={props.filteredItems} itemName="node">
+                <li>
+                    <a>
+                        <Neos.DocsNeosIo:Helper.StringToHash
+                            @path="attributes.href"
+                            value={q(node).property('title') || node.identifier}
+                            @process={'#' + value}/>
+                        {q(node).property('title')}
+                    </a>
+                </li>
+            </Neos.Fusion:Loop>
+        </ul>
+    `
 }
