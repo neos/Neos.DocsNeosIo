@@ -101,26 +101,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _command = __webpack_require__(/*! @ckeditor/ckeditor5-core/src/command */ "./node_modules/@ckeditor/ckeditor5-core/src/command.js");
 
 var _command2 = _interopRequireDefault(_command);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * For licensing, see LICENSE.md.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-/**
- * @module basic-styles/attributecommand
- */
 
 /**
  * An extension of the base {@link module:core/command~Command} class, which provides utilities for a command
@@ -134,15 +119,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
  *
  * @extends module:core/command~Command
  */
-var AttributeCommand = function (_Command) {
-	_inherits(AttributeCommand, _Command);
-
+var AttributeCommand = class AttributeCommand extends _command2.default {
 	/**
   * @param {module:core/editor/editor~Editor} editor
   * @param {String} attributeKey Attribute that will be set by the command.
   */
-	function AttributeCommand(editor, attributeKey) {
-		_classCallCheck(this, AttributeCommand);
+	constructor(editor, attributeKey) {
+		super(editor);
 
 		/**
    * The attribute that will be set by the command.
@@ -150,9 +133,7 @@ var AttributeCommand = function (_Command) {
    * @readonly
    * @member {String}
    */
-		var _this = _possibleConstructorReturn(this, (AttributeCommand.__proto__ || Object.getPrototypeOf(AttributeCommand)).call(this, editor));
-
-		_this.attributeKey = attributeKey;
+		this.attributeKey = attributeKey;
 
 		/**
    * Flag indicating whether the command is active. The command is active when the
@@ -166,173 +147,166 @@ var AttributeCommand = function (_Command) {
    * @readonly
    * @member {Boolean} #value
    */
-		return _this;
 	}
 
 	/**
   * Updates the command's {@link #value} and {@link #isEnabled} based on the current selection.
   */
+	refresh() {
+		var model = this.editor.model;
+		var doc = model.document;
 
+		this.value = this._getValueFromFirstAllowedNode();
+		this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, this.attributeKey);
+	}
 
-	_createClass(AttributeCommand, [{
-		key: 'refresh',
-		value: function refresh() {
-			var model = this.editor.model;
-			var doc = model.document;
+	/**
+  * Executes the command &mdash; applies the attribute to the selection or removes it from the selection.
+  *
+  * If the command is active (`value == true`), it will remove attributes. Otherwise, it will set attributes.
+  *
+  * The execution result differs, depending on the {@link module:engine/model/document~Document#selection}:
+  *
+  * * If the selection is on a range, the command applies the attribute to all nodes in that range
+  * (if they are allowed to have this attribute by the {@link module:engine/model/schema~Schema schema}).
+  * * If the selection is collapsed in a non-empty node, the command applies the attribute to the
+  * {@link module:engine/model/document~Document#selection} itself (note that typed characters copy attributes from the selection).
+  * * If the selection is collapsed in an empty node, the command applies the attribute to the parent node of the selection (note
+  * that the selection inherits all attributes from a node if it is in an empty node).
+  *
+  * @fires execute
+  * @param {Object} [options] Command options.
+  * @param {Boolean} [options.forceValue] If set, it will force the command behavior. If `true`, the command will apply the attribute,
+  * otherwise the command will remove the attribute.
+  * If not set, the command will look for its current value to decide what it should do.
+  */
+	execute() {
+		var _this = this;
 
-			this.value = this._getValueFromFirstAllowedNode();
-			this.isEnabled = model.schema.checkAttributeInSelection(doc.selection, this.attributeKey);
-		}
+		var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-		/**
-   * Executes the command &mdash; applies the attribute to the selection or removes it from the selection.
-   *
-   * If the command is active (`value == true`), it will remove attributes. Otherwise, it will set attributes.
-   *
-   * The execution result differs, depending on the {@link module:engine/model/document~Document#selection}:
-   *
-   * * If the selection is on a range, the command applies the attribute to all nodes in that range
-   * (if they are allowed to have this attribute by the {@link module:engine/model/schema~Schema schema}).
-   * * If the selection is collapsed in a non-empty node, the command applies the attribute to the
-   * {@link module:engine/model/document~Document#selection} itself (note that typed characters copy attributes from the selection).
-   * * If the selection is collapsed in an empty node, the command applies the attribute to the parent node of the selection (note
-   * that the selection inherits all attributes from a node if it is in an empty node).
-   *
-   * @fires execute
-   * @param {Object} [options] Command options.
-   * @param {Boolean} [options.forceValue] If set, it will force the command behavior. If `true`, the command will apply the attribute,
-   * otherwise the command will remove the attribute.
-   * If not set, the command will look for its current value to decide what it should do.
-   */
+		var model = this.editor.model;
+		var doc = model.document;
+		var selection = doc.selection;
+		var value = options.forceValue === undefined ? !this.value : options.forceValue;
 
-	}, {
-		key: 'execute',
-		value: function execute() {
-			var _this2 = this;
-
-			var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-			var model = this.editor.model;
-			var doc = model.document;
-			var selection = doc.selection;
-			var value = options.forceValue === undefined ? !this.value : options.forceValue;
-
-			model.change(function (writer) {
-				if (selection.isCollapsed) {
-					if (value) {
-						writer.setSelectionAttribute(_this2.attributeKey, true);
-					} else {
-						writer.removeSelectionAttribute(_this2.attributeKey);
-					}
-				} else {
-					var ranges = model.schema.getValidRanges(selection.getRanges(), _this2.attributeKey);
-
-					var _iteratorNormalCompletion = true;
-					var _didIteratorError = false;
-					var _iteratorError = undefined;
-
-					try {
-						for (var _iterator = ranges[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-							var range = _step.value;
-
-							if (value) {
-								writer.setAttribute(_this2.attributeKey, value, range);
-							} else {
-								writer.removeAttribute(_this2.attributeKey, range);
-							}
-						}
-					} catch (err) {
-						_didIteratorError = true;
-						_iteratorError = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion && _iterator.return) {
-								_iterator.return();
-							}
-						} finally {
-							if (_didIteratorError) {
-								throw _iteratorError;
-							}
-						}
-					}
-				}
-			});
-		}
-
-		/**
-   * Checks the attribute value of the first node in the selection that allows the attribute.
-   * For the collapsed selection returns the selection attribute.
-   *
-   * @private
-   * @returns {Boolean} The attribute value.
-   */
-
-	}, {
-		key: '_getValueFromFirstAllowedNode',
-		value: function _getValueFromFirstAllowedNode() {
-			var model = this.editor.model;
-			var schema = model.schema;
-			var selection = model.document.selection;
-
+		model.change(function (writer) {
 			if (selection.isCollapsed) {
-				return selection.hasAttribute(this.attributeKey);
-			}
-
-			var _iteratorNormalCompletion2 = true;
-			var _didIteratorError2 = false;
-			var _iteratorError2 = undefined;
-
-			try {
-				for (var _iterator2 = selection.getRanges()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-					var range = _step2.value;
-					var _iteratorNormalCompletion3 = true;
-					var _didIteratorError3 = false;
-					var _iteratorError3 = undefined;
-
-					try {
-						for (var _iterator3 = range.getItems()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
-							var item = _step3.value;
-
-							if (schema.checkAttribute(item, this.attributeKey)) {
-								return item.hasAttribute(this.attributeKey);
-							}
-						}
-					} catch (err) {
-						_didIteratorError3 = true;
-						_iteratorError3 = err;
-					} finally {
-						try {
-							if (!_iteratorNormalCompletion3 && _iterator3.return) {
-								_iterator3.return();
-							}
-						} finally {
-							if (_didIteratorError3) {
-								throw _iteratorError3;
-							}
-						}
-					}
+				if (value) {
+					writer.setSelectionAttribute(_this.attributeKey, true);
+				} else {
+					writer.removeSelectionAttribute(_this.attributeKey);
 				}
-			} catch (err) {
-				_didIteratorError2 = true;
-				_iteratorError2 = err;
-			} finally {
+			} else {
+				var ranges = model.schema.getValidRanges(selection.getRanges(), _this.attributeKey);
+
+				var _iteratorNormalCompletion = true;
+				var _didIteratorError = false;
+				var _iteratorError = undefined;
+
 				try {
-					if (!_iteratorNormalCompletion2 && _iterator2.return) {
-						_iterator2.return();
+					for (var _iterator = ranges[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+						var range = _step.value;
+
+						if (value) {
+							writer.setAttribute(_this.attributeKey, value, range);
+						} else {
+							writer.removeAttribute(_this.attributeKey, range);
+						}
 					}
+				} catch (err) {
+					_didIteratorError = true;
+					_iteratorError = err;
 				} finally {
-					if (_didIteratorError2) {
-						throw _iteratorError2;
+					try {
+						if (!_iteratorNormalCompletion && _iterator.return) {
+							_iterator.return();
+						}
+					} finally {
+						if (_didIteratorError) {
+							throw _iteratorError;
+						}
 					}
 				}
 			}
+		});
+	}
 
-			return false;
+	/**
+  * Checks the attribute value of the first node in the selection that allows the attribute.
+  * For the collapsed selection returns the selection attribute.
+  *
+  * @private
+  * @returns {Boolean} The attribute value.
+  */
+	_getValueFromFirstAllowedNode() {
+		var model = this.editor.model;
+		var schema = model.schema;
+		var selection = model.document.selection;
+
+		if (selection.isCollapsed) {
+			return selection.hasAttribute(this.attributeKey);
 		}
-	}]);
 
-	return AttributeCommand;
-}(_command2.default);
+		var _iteratorNormalCompletion2 = true;
+		var _didIteratorError2 = false;
+		var _iteratorError2 = undefined;
+
+		try {
+			for (var _iterator2 = selection.getRanges()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+				var range = _step2.value;
+				var _iteratorNormalCompletion3 = true;
+				var _didIteratorError3 = false;
+				var _iteratorError3 = undefined;
+
+				try {
+					for (var _iterator3 = range.getItems()[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+						var item = _step3.value;
+
+						if (schema.checkAttribute(item, this.attributeKey)) {
+							return item.hasAttribute(this.attributeKey);
+						}
+					}
+				} catch (err) {
+					_didIteratorError3 = true;
+					_iteratorError3 = err;
+				} finally {
+					try {
+						if (!_iteratorNormalCompletion3 && _iterator3.return) {
+							_iterator3.return();
+						}
+					} finally {
+						if (_didIteratorError3) {
+							throw _iteratorError3;
+						}
+					}
+				}
+			}
+		} catch (err) {
+			_didIteratorError2 = true;
+			_iteratorError2 = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion2 && _iterator2.return) {
+					_iterator2.return();
+				}
+			} finally {
+				if (_didIteratorError2) {
+					throw _iteratorError2;
+				}
+			}
+		}
+
+		return false;
+	}
+}; /**
+    * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+    * For licensing, see LICENSE.md.
+    */
+
+/**
+ * @module basic-styles/attributecommand
+ */
 
 exports.default = AttributeCommand;
 
@@ -353,15 +327,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); /**
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * For licensing, see LICENSE.md.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
-
-/**
- * @module core/command
- */
-
 var _observablemixin = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/observablemixin */ "./node_modules/@ckeditor/ckeditor5-utils/src/observablemixin.js");
 
 var _observablemixin2 = _interopRequireDefault(_observablemixin);
@@ -371,8 +336,6 @@ var _mix = __webpack_require__(/*! @ckeditor/ckeditor5-utils/src/mix */ "./node_
 var _mix2 = _interopRequireDefault(_mix);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
  * The base class for CKEditor commands.
@@ -388,16 +351,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @mixes module:utils/observablemixin~ObservableMixin
  */
-var Command = function () {
+/**
+ * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+
+/**
+ * @module core/command
+ */
+
+var Command = class Command {
 	/**
   * Creates a new `Command` instance.
   *
   * @param {module:core/editor/editor~Editor} editor Editor on which this command will be used.
   */
-	function Command(editor) {
+	constructor(editor) {
 		var _this = this;
-
-		_classCallCheck(this, Command);
 
 		/**
    * The editor on which this command will be used.
@@ -496,59 +466,44 @@ var Command = function () {
   * This method is automatically called when
   * {@link module:engine/model/document~Document#event:change any changes are applied to the document}.
   */
+	refresh() {
+		this.isEnabled = true;
+	}
 
+	/**
+  * Executes the command.
+  *
+  * A command may accept parameters. They will be passed from {@link module:core/editor/editor~Editor#execute `editor.execute()`}
+  * to the command.
+  *
+  * The `execute()` method will automatically abort when the command is disabled ({@link #isEnabled} is `false`).
+  * This behavior is implemented by a high priority listener to the {@link #event:execute} event.
+  *
+  * In order to see how to disable a command from "outside" see the {@link #isEnabled} documentation.
+  *
+  * @fires execute
+  */
+	execute() {}
 
-	_createClass(Command, [{
-		key: 'refresh',
-		value: function refresh() {
-			this.isEnabled = true;
-		}
+	/**
+  * Destroys the command.
+  */
+	destroy() {
+		this.stopListening();
+	}
 
-		/**
-   * Executes the command.
-   *
-   * A command may accept parameters. They will be passed from {@link module:core/editor/editor~Editor#execute `editor.execute()`}
-   * to the command.
-   *
-   * The `execute()` method will automatically abort when the command is disabled ({@link #isEnabled} is `false`).
-   * This behavior is implemented by a high priority listener to the {@link #event:execute} event.
-   *
-   * In order to see how to disable a command from "outside" see the {@link #isEnabled} documentation.
-   *
-   * @fires execute
-   */
-
-	}, {
-		key: 'execute',
-		value: function execute() {}
-
-		/**
-   * Destroys the command.
-   */
-
-	}, {
-		key: 'destroy',
-		value: function destroy() {
-			this.stopListening();
-		}
-
-		/**
-   * Event fired by the {@link #execute} method. The command action is a listener to this event so it's
-   * possible to change/cancel the behavior of the command by listening to this event.
-   *
-   * See {@link module:utils/observablemixin~ObservableMixin.decorate} for more information and samples.
-   *
-   * **Note:** This event is fired even if command is disabled. However, it is automatically blocked
-   * by a high priority listener in order to prevent command execution.
-   *
-   * @event execute
-   */
-
-	}]);
-
-	return Command;
-}();
-
+	/**
+  * Event fired by the {@link #execute} method. The command action is a listener to this event so it's
+  * possible to change/cancel the behavior of the command by listening to this event.
+  *
+  * See {@link module:utils/observablemixin~ObservableMixin.decorate} for more information and samples.
+  *
+  * **Note:** This event is fired even if command is disabled. However, it is automatically blocked
+  * by a high priority listener in order to prevent command execution.
+  *
+  * @event execute
+  */
+};
 exports.default = Command;
 
 
@@ -575,17 +530,7 @@ function forceDisable(evt) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 exports.attachLinkToDocumentation = attachLinkToDocumentation;
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 /**
  * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md.
@@ -610,10 +555,7 @@ var DOCUMENTATION_URL = exports.DOCUMENTATION_URL = 'https://ckeditor.com/docs/c
  *
  * @extends Error
  */
-
-var CKEditorError = function (_Error) {
-	_inherits(CKEditorError, _Error);
-
+var CKEditorError = class CKEditorError extends Error {
 	/**
   * Creates an instance of the CKEditorError class.
   *
@@ -626,29 +568,26 @@ var CKEditorError = function (_Error) {
   * will be appended to the error message, so the data are quickly visible in the console. The original
   * data object will also be later available under the {@link #data} property.
   */
-	function CKEditorError(message, data) {
-		_classCallCheck(this, CKEditorError);
-
+	constructor(message, data) {
 		message = attachLinkToDocumentation(message);
 
 		if (data) {
 			message += ' ' + JSON.stringify(data);
 		}
 
+		super(message);
+
 		/**
    * @member {String}
    */
-		var _this = _possibleConstructorReturn(this, (CKEditorError.__proto__ || Object.getPrototypeOf(CKEditorError)).call(this, message));
-
-		_this.name = 'CKEditorError';
+		this.name = 'CKEditorError';
 
 		/**
    * The additional error data passed to the constructor. Undefined if none was passed.
    *
    * @member {Object|undefined}
    */
-		_this.data = data;
-		return _this;
+		this.data = data;
 	}
 
 	/**
@@ -657,17 +596,10 @@ var CKEditorError = function (_Error) {
   * @param {Object} error Object to check.
   * @returns {Boolean}
   */
-
-
-	_createClass(CKEditorError, null, [{
-		key: 'isCKEditorError',
-		value: function isCKEditorError(error) {
-			return error instanceof CKEditorError;
-		}
-	}]);
-
-	return CKEditorError;
-}(Error);
+	static isCKEditorError(error) {
+		return error instanceof CKEditorError;
+	}
+};
 
 /**
  * Attaches link to the documentation at the end of the error message.
@@ -675,7 +607,6 @@ var CKEditorError = function (_Error) {
  * @param {String} message Message to be logged.
  * @returns {String}
  */
-
 
 exports.default = CKEditorError;
 function attachLinkToDocumentation(message) {
@@ -1520,84 +1451,81 @@ var _spy2 = _interopRequireDefault(_spy);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } /**
-                                                                                                                                                           * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
-                                                                                                                                                           * For licensing, see LICENSE.md.
-                                                                                                                                                           */
-
-/**
- * @module utils/eventinfo
- */
-
 /**
  * The event object passed to event callbacks. It is used to provide information about the event as well as a tool to
  * manipulate it.
  */
-var EventInfo =
+var EventInfo = class EventInfo {
+	/**
+  * @param {Object} source The emitter.
+  * @param {String} name The event name.
+  */
+	constructor(source, name) {
+		/**
+   * The object that fired the event.
+   *
+   * @readonly
+   * @member {Object}
+   */
+		this.source = source;
+
+		/**
+   * The event name.
+   *
+   * @readonly
+   * @member {String}
+   */
+		this.name = name;
+
+		/**
+   * Path this event has followed. See {@link module:utils/emittermixin~EmitterMixin#delegate}.
+   *
+   * @readonly
+   * @member {Array.<Object>}
+   */
+		this.path = [];
+
+		// The following methods are defined in the constructor because they must be re-created per instance.
+
+		/**
+   * Stops the event emitter to call further callbacks for this event interaction.
+   *
+   * @method #stop
+   */
+		this.stop = (0, _spy2.default)();
+
+		/**
+   * Removes the current callback from future interactions of this event.
+   *
+   * @method #off
+   */
+		this.off = (0, _spy2.default)();
+
+		/**
+   * The value which will be returned by {@link module:utils/emittermixin~EmitterMixin#fire}.
+   *
+   * It's `undefined` by default and can be changed by an event listener:
+   *
+   *		dataController.fire( 'getSelectedContent', ( evt ) => {
+   *			// This listener will make `dataController.fire( 'getSelectedContent' )`
+   *			// always return an empty DocumentFragment.
+   *			evt.return = new DocumentFragment();
+   *
+   *			// Make sure no other listeners are executed.
+   *			evt.stop();
+   *		} );
+   *
+   * @member #return
+   */
+	}
+}; /**
+    * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
+    * For licensing, see LICENSE.md.
+    */
+
 /**
- * @param {Object} source The emitter.
- * @param {String} name The event name.
+ * @module utils/eventinfo
  */
-function EventInfo(source, name) {
-	_classCallCheck(this, EventInfo);
-
-	/**
-  * The object that fired the event.
-  *
-  * @readonly
-  * @member {Object}
-  */
-	this.source = source;
-
-	/**
-  * The event name.
-  *
-  * @readonly
-  * @member {String}
-  */
-	this.name = name;
-
-	/**
-  * Path this event has followed. See {@link module:utils/emittermixin~EmitterMixin#delegate}.
-  *
-  * @readonly
-  * @member {Array.<Object>}
-  */
-	this.path = [];
-
-	// The following methods are defined in the constructor because they must be re-created per instance.
-
-	/**
-  * Stops the event emitter to call further callbacks for this event interaction.
-  *
-  * @method #stop
-  */
-	this.stop = (0, _spy2.default)();
-
-	/**
-  * Removes the current callback from future interactions of this event.
-  *
-  * @method #off
-  */
-	this.off = (0, _spy2.default)();
-
-	/**
-  * The value which will be returned by {@link module:utils/emittermixin~EmitterMixin#fire}.
-  *
-  * It's `undefined` by default and can be changed by an event listener:
-  *
-  *		dataController.fire( 'getSelectedContent', ( evt ) => {
-  *			// This listener will make `dataController.fire( 'getSelectedContent' )`
-  *			// always return an empty DocumentFragment.
-  *			evt.return = new DocumentFragment();
-  *
-  *			// Make sure no other listeners are executed.
-  *			evt.stop();
-  *		} );
-  *
-  * @member #return
-  */
-};
 
 exports.default = EventInfo;
 
@@ -2750,9 +2678,11 @@ function uid() {
 "use strict";
 
 
+var __importDefault = undefined && undefined.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-var manifest_1 = tslib_1.__importDefault(__webpack_require__(/*! ./manifest */ "./node_modules/@neos-project/neos-ui-extensibility/dist/manifest.js"));
+var manifest_1 = __importDefault(__webpack_require__(/*! ./manifest */ "./node_modules/@neos-project/neos-ui-extensibility/dist/manifest.js"));
 var createReadOnlyValue = function createReadOnlyValue(value) {
     return {
         value: value,
@@ -2766,7 +2696,7 @@ function createConsumerApi(manifests, exposureMap) {
     Object.keys(exposureMap).forEach(function (key) {
         Object.defineProperty(api, key, createReadOnlyValue(exposureMap[key]));
     });
-    Object.defineProperty(api, '@manifest', createReadOnlyValue(manifest_1["default"](manifests)));
+    Object.defineProperty(api, '@manifest', createReadOnlyValue((0, manifest_1["default"])(manifests)));
     Object.defineProperty(window, '@Neos:HostPluginAPI', createReadOnlyValue(api));
 }
 exports["default"] = createConsumerApi;
@@ -2784,16 +2714,19 @@ exports["default"] = createConsumerApi;
 "use strict";
 
 
+var __importDefault = undefined && undefined.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-var createConsumerApi_1 = tslib_1.__importDefault(__webpack_require__(/*! ./createConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/createConsumerApi.js"));
+exports.SynchronousMetaRegistry = exports.SynchronousRegistry = exports.readFromConsumerApi = exports.createConsumerApi = void 0;
+var createConsumerApi_1 = __importDefault(__webpack_require__(/*! ./createConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/createConsumerApi.js"));
 exports.createConsumerApi = createConsumerApi_1["default"];
-var readFromConsumerApi_1 = tslib_1.__importDefault(__webpack_require__(/*! ./readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js"));
+var readFromConsumerApi_1 = __importDefault(__webpack_require__(/*! ./readFromConsumerApi */ "./node_modules/@neos-project/neos-ui-extensibility/dist/readFromConsumerApi.js"));
 exports.readFromConsumerApi = readFromConsumerApi_1["default"];
 var index_1 = __webpack_require__(/*! ./registry/index */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/index.js");
 exports.SynchronousRegistry = index_1.SynchronousRegistry;
 exports.SynchronousMetaRegistry = index_1.SynchronousMetaRegistry;
-exports["default"] = readFromConsumerApi_1["default"]('manifest');
+exports["default"] = (0, readFromConsumerApi_1["default"])('manifest');
 //# sourceMappingURL=index.js.map
 
 /***/ }),
@@ -2832,8 +2765,38 @@ exports["default"] = function (manifests) {
 "use strict";
 
 
+var __read = undefined && undefined.__read || function (o, n) {
+    var m = typeof Symbol === "function" && o[Symbol.iterator];
+    if (!m) return o;
+    var i = m.call(o),
+        r,
+        ar = [],
+        e;
+    try {
+        while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+            ar.push(r.value);
+        }
+    } catch (error) {
+        e = { error: error };
+    } finally {
+        try {
+            if (r && !r.done && (m = i["return"])) m.call(i);
+        } finally {
+            if (e) throw e.error;
+        }
+    }
+    return ar;
+};
+var __spreadArray = undefined && undefined.__spreadArray || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 function readFromConsumerApi(key) {
     return function () {
         var _a;
@@ -2841,10 +2804,10 @@ function readFromConsumerApi(key) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        if (window['@Neos:HostPluginAPI'] && window['@Neos:HostPluginAPI']["@" + key]) {
-            return (_a = window['@Neos:HostPluginAPI'])["@" + key].apply(_a, tslib_1.__spread(args));
+        if (window['@Neos:HostPluginAPI'] && window['@Neos:HostPluginAPI']["@".concat(key)]) {
+            return (_a = window['@Neos:HostPluginAPI'])["@".concat(key)].apply(_a, __spreadArray([], __read(args), false));
         }
-        throw new Error("You are trying to read from a consumer api that hasn't been initialized yet!");
+        throw new Error('You are trying to read from a consumer api that hasn\'t been initialized yet!');
     };
 }
 exports["default"] = readFromConsumerApi;
@@ -2885,11 +2848,33 @@ exports["default"] = AbstractRegistry;
 "use strict";
 
 
+var __extends = undefined && undefined.__extends || function () {
+    var _extendStatics = function extendStatics(d, b) {
+        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) {
+                if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+            }
+        };
+        return _extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        _extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var __importDefault = undefined && undefined.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-var SynchronousRegistry_1 = tslib_1.__importDefault(__webpack_require__(/*! ./SynchronousRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousRegistry.js"));
+var SynchronousRegistry_1 = __importDefault(__webpack_require__(/*! ./SynchronousRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousRegistry.js"));
 var SynchronousMetaRegistry = function (_super) {
-    tslib_1.__extends(SynchronousMetaRegistry, _super);
+    __extends(SynchronousMetaRegistry, _super);
     function SynchronousMetaRegistry() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -2916,12 +2901,34 @@ exports["default"] = SynchronousMetaRegistry;
 "use strict";
 
 
+var __extends = undefined && undefined.__extends || function () {
+    var _extendStatics = function extendStatics(d, b) {
+        _extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function (d, b) {
+            d.__proto__ = b;
+        } || function (d, b) {
+            for (var p in b) {
+                if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+            }
+        };
+        return _extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        _extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+var __importDefault = undefined && undefined.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-var AbstractRegistry_1 = tslib_1.__importDefault(__webpack_require__(/*! ./AbstractRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/AbstractRegistry.js"));
-var positional_array_sorter_1 = tslib_1.__importDefault(__webpack_require__(/*! @neos-project/positional-array-sorter */ "./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js"));
+var AbstractRegistry_1 = __importDefault(__webpack_require__(/*! ./AbstractRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/AbstractRegistry.js"));
+var positional_array_sorter_1 = __importDefault(__webpack_require__(/*! @neos-project/positional-array-sorter */ "./node_modules/@neos-project/positional-array-sorter/dist/positionalArraySorter.js"));
 var SynchronousRegistry = function (_super) {
-    tslib_1.__extends(SynchronousRegistry, _super);
+    __extends(SynchronousRegistry, _super);
     function SynchronousRegistry(description) {
         var _this = _super.call(this, description) || this;
         _this._registry = [];
@@ -2965,7 +2972,7 @@ var SynchronousRegistry = function (_super) {
         var unsortedChildren = this._registry.filter(function (item) {
             return item.key.indexOf(searchKey + '/') === 0;
         });
-        return positional_array_sorter_1["default"](unsortedChildren);
+        return (0, positional_array_sorter_1["default"])(unsortedChildren);
     };
     SynchronousRegistry.prototype.getChildrenAsObject = function (searchKey) {
         var result = {};
@@ -2989,7 +2996,7 @@ var SynchronousRegistry = function (_super) {
         }));
     };
     SynchronousRegistry.prototype._getAllWrapped = function () {
-        return positional_array_sorter_1["default"](this._registry);
+        return (0, positional_array_sorter_1["default"])(this._registry);
     };
     SynchronousRegistry.prototype.getAllAsObject = function () {
         var result = {};
@@ -3020,11 +3027,14 @@ exports["default"] = SynchronousRegistry;
 "use strict";
 
 
+var __importDefault = undefined && undefined.__importDefault || function (mod) {
+    return mod && mod.__esModule ? mod : { "default": mod };
+};
 exports.__esModule = true;
-var tslib_1 = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-var SynchronousRegistry_1 = tslib_1.__importDefault(__webpack_require__(/*! ./SynchronousRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousRegistry.js"));
+exports.SynchronousMetaRegistry = exports.SynchronousRegistry = void 0;
+var SynchronousRegistry_1 = __importDefault(__webpack_require__(/*! ./SynchronousRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousRegistry.js"));
 exports.SynchronousRegistry = SynchronousRegistry_1["default"];
-var SynchronousMetaRegistry_1 = tslib_1.__importDefault(__webpack_require__(/*! ./SynchronousMetaRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousMetaRegistry.js"));
+var SynchronousMetaRegistry_1 = __importDefault(__webpack_require__(/*! ./SynchronousMetaRegistry */ "./node_modules/@neos-project/neos-ui-extensibility/dist/registry/SynchronousMetaRegistry.js"));
 exports.SynchronousMetaRegistry = SynchronousMetaRegistry_1["default"];
 //# sourceMappingURL=index.js.map
 
@@ -37061,8 +37071,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = undefined;
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _ckeditor5Exports = __webpack_require__(/*! ckeditor5-exports */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/ckeditor5-exports/index.js");
 
 var _attributecommand = __webpack_require__(/*! @ckeditor/ckeditor5-basic-styles/src/attributecommand */ "./node_modules/@ckeditor/ckeditor5-basic-styles/src/attributecommand.js");
@@ -37071,43 +37079,21 @@ var _attributecommand2 = _interopRequireDefault(_attributecommand);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var CODE = 'code';
 
-var CodeFormating = function (_Plugin) {
-    _inherits(CodeFormating, _Plugin);
-
-    function CodeFormating() {
-        _classCallCheck(this, CodeFormating);
-
-        return _possibleConstructorReturn(this, (CodeFormating.__proto__ || Object.getPrototypeOf(CodeFormating)).apply(this, arguments));
+var CodeFormating = class CodeFormating extends _ckeditor5Exports.Plugin {
+    static get pluginName() {
+        return 'CodeFormating';
     }
-
-    _createClass(CodeFormating, [{
-        key: 'init',
-        value: function init() {
-            this.editor.model.schema.extend('$text', { allowAttributes: CODE });
-            this.editor.conversion.attributeToElement({
-                model: CODE,
-                view: CODE
-            });
-            this.editor.commands.add(CODE, new _attributecommand2.default(this.editor, CODE));
-        }
-    }], [{
-        key: 'pluginName',
-        get: function get() {
-            return 'CodeFormating';
-        }
-    }]);
-
-    return CodeFormating;
-}(_ckeditor5Exports.Plugin);
-
+    init() {
+        this.editor.model.schema.extend('$text', { allowAttributes: CODE });
+        this.editor.conversion.attributeToElement({
+            model: CODE,
+            view: CODE
+        });
+        this.editor.commands.add(CODE, new _attributecommand2.default(this.editor, CODE));
+    }
+};
 exports.default = CodeFormating;
 
 /***/ }),
@@ -37138,8 +37124,6 @@ __webpack_require__(/*! ./manifest */ "./src/manifest.js");
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(/*! react */ "./node_modules/@neos-project/neos-ui-extensibility/src/shims/vendor/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -37160,38 +37144,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var IconButtonComponent = class IconButtonComponent extends _react.PureComponent {
+    render() {
+        var _props = this.props,
+            formattingRule = _props.formattingRule,
+            inlineEditorOptions = _props.inlineEditorOptions,
+            i18nRegistry = _props.i18nRegistry,
+            tooltip = _props.tooltip,
+            isActive = _props.isActive,
+            finalProps = _objectWithoutProperties(_props, ['formattingRule', 'inlineEditorOptions', 'i18nRegistry', 'tooltip', 'isActive']);
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var IconButtonComponent = function (_PureComponent) {
-    _inherits(IconButtonComponent, _PureComponent);
-
-    function IconButtonComponent() {
-        _classCallCheck(this, IconButtonComponent);
-
-        return _possibleConstructorReturn(this, (IconButtonComponent.__proto__ || Object.getPrototypeOf(IconButtonComponent)).apply(this, arguments));
+        return _react2.default.createElement(_reactUiComponents.IconButton, _extends({}, finalProps, { isActive: Boolean(isActive), title: tooltip }));
     }
+};
 
-    _createClass(IconButtonComponent, [{
-        key: 'render',
-        value: function render() {
-            var _props = this.props,
-                formattingRule = _props.formattingRule,
-                inlineEditorOptions = _props.inlineEditorOptions,
-                i18nRegistry = _props.i18nRegistry,
-                tooltip = _props.tooltip,
-                isActive = _props.isActive,
-                finalProps = _objectWithoutProperties(_props, ['formattingRule', 'inlineEditorOptions', 'i18nRegistry', 'tooltip', 'isActive']);
-
-            return _react2.default.createElement(_reactUiComponents.IconButton, _extends({}, finalProps, { isActive: Boolean(isActive), title: tooltip }));
-        }
-    }]);
-
-    return IconButtonComponent;
-}(_react.PureComponent);
 
 var addPlugin = function addPlugin(Plugin, isEnabled) {
     return function (ckEditorConfiguration, options) {
