@@ -3,7 +3,6 @@ prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Compo
     @context.navBarNodeDepth = ${this.node.depth - this.startingPoint.depth}
     node = ${node}
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
-    itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
     itemStatus = ${q(node).property('status')}
     itemClass = Neos.Fusion:DataStructure {
         base = 'navigation-item'

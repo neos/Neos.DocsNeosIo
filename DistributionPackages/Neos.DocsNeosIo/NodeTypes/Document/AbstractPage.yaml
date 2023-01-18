@@ -19,6 +19,11 @@
       'Neos.DocsNeosIo:Document.HomePage': false
       'Neos.DocsNeosIo:Constraint.Document.Restricted': false
   properties:
+    title:
+      ui:
+        inline:
+          editorOptions:
+            hyphens: true
     subtitle:
       ui:
         inline:

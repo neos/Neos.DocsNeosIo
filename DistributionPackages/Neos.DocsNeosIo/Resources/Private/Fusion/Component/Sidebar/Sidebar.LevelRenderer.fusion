@@ -2,7 +2,6 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
     @context.nodeDepth = ${this.node.depth - startingPoint.depth}
     node = ${node}
     itemTitle = ${q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
-    itemTitle.@process.replaceShy = Carbon.Hyphen:Shy.AlwaysReplace
     itemStatus = ${q(node).property('status')}
     itemLinkClass = Neos.Fusion:DataStructure {
         base = 'sidebar-link-item'
