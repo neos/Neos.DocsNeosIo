@@ -12,6 +12,7 @@ Sitegeist:
                 editorOptions:
                   placeholder: 'Enter headline here...'
                   autoparagraph: false
+                  hyphens: true
           free:
             type: string
             defaultValue: ''
@@ -21,6 +22,7 @@ Sitegeist:
                 editorOptions:
                   placeholder: '<p>Enter text here...</p>'
                   autoparagraph: true
+                  hyphens: true
                   formatting:
                     strong: true
                     sub: true
