@@ -9,7 +9,7 @@
 				<f:comment> Bug workaround for https://github.com/Flowpack/Flowpack.SearchPlugin/issues/48 </f:comment>
 				<f:if condition="{fragmentIterator.isLast}">
 					<f:else>
-						{f:if(condition: fragmentIterator.isFirst, else: '...')}
+						{f:if(condition: fragmentIterator.isFirst, else: '…')}
 						{fragment -> f:format.raw()}
 					</f:else>
 				</f:if>
