@@ -5,26 +5,28 @@
     "require": {
         "neos/neos": "~8.2.0",
         "neos/neos-ui": "~8.2.0",
+        "neos/nodetypes-contentreferences": "~8.2.0",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
         "neos/seo": "^3.3.0",
         "aertmann/history": "^2.0",
+        "codeq/publishnotifier": "^2.4",
+        "codeq/htmlwidget" : "^1.3",
         "carbon/compression": "^4.0",
-        "carbon/hyphen": "^3.1",
         "carbon/link": "^1.9.0",
         "carbon/includeassets": "^5.5.0",
         "flowpack/cachebuster": "^1.2.0",
         "flowpack/nodetemplates": "^1.0",
         "flowpack/neos-matomo": "^3.5",
-        "moc/notfound": "^3.1",
-        "sitegeist/silhouettes": "^2.0",
         "flowpack/searchplugin": "^5.3",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
-        "neos/nodetypes-contentreferences": "*",
+        "moc/notfound": "^3.1",
+        "sitegeist/silhouettes": "^2.0",
         "sandstorm/mxgraph": "^2.0",
         "yoast/yoast-seo-for-neos": "^1.3",
-        "jonnitto/prettyembedvideoplatforms": "^2.1.0"
+        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
+        "shel/neos-hyphens": "^1.3"
     },
     "autoload": {
         "psr-4": {
