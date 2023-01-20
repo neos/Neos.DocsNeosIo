@@ -1,0 +1,14 @@
+up:
+  comments: 'Migrates existing hyphens based on pipes to soft hyphens.'
+  migration:
+    -
+      filters:
+        -
+          type: 'PropertyNotEmpty'
+          settings:
+            propertyName: 'title'
+      transformations:
+        - type: 'Neos\DocsNeosIo\ContentRepository\Transformations\UpdateHyphenTransformation'
+          settings: []
+down:
+  warnings: 'No down migration available'
