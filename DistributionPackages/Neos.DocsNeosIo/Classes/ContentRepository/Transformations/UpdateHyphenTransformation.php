@@ -11,12 +11,29 @@ use Neos\ContentRepository\Migration\Transformations\AbstractTransformation;
 class UpdateHyphenTransformation extends AbstractTransformation
 {
     /**
+     * @var string
+     */
+    protected $propertyName;
+    private $setProperty;
+
+    /**
+     * Sets the new name for the node to change.
+     *
+     * @param string $propertyName
+     * @return void
+     */
+    public function setPropertyName($propertyName)
+    {
+        $this->propertyName = $propertyName;
+    }
+
+    /**
      * @param NodeData $node
      * @return boolean
      */
     public function isTransformable(NodeData $node)
     {
-        $text = $node->getProperty('title');
+        $text = $node->getProperty($this->propertyName);
         return str_contains($text, '||');
     }
 
@@ -28,8 +45,8 @@ class UpdateHyphenTransformation extends AbstractTransformation
      */
     public function execute(NodeData $node)
     {
-        $text = $node->getProperty('title');
+        $text = $node->getProperty($this->propertyName);
         $softHyphen = json_decode('"\u00AD"', true);
-        $node->setProperty('title', str_replace('||', $softHyphen, $text));
+        $this->setProperty = $node->setProperty($this->propertyName, str_replace('||', $softHyphen, $text));
     }
 }

@@ -9,6 +9,7 @@ up:
             propertyName: 'title'
       transformations:
         - type: 'Neos\DocsNeosIo\ContentRepository\Transformations\UpdateHyphenTransformation'
-          settings: []
+          settings:
+            propertyName: 'title'
 down:
   warnings: 'No down migration available'
