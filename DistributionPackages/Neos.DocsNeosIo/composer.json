@@ -3,34 +3,30 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~7.3.0",
-        "neos/neos-ui": "~7.3.0",
-        "neos/googleanalytics": "^3.3",
+        "neos/neos": "~8.2.0",
+        "neos/neos-ui": "~8.2.0",
+        "neos/nodetypes-contentreferences": "~8.2.0",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
-        "neos/seo": "^3.0",
-
+        "neos/seo": "^3.3.0",
         "aertmann/history": "^2.0",
-        "codeq/publishnotifier": "^2.2",
-
-        "carbon/compression": "^2.0",
-        "carbon/hyphen": "^1.1",
-        "carbon/link": "^1.0",
-        "carbon/includeassets": "^5.2",
-        "flowpack/cachebuster": "^1.0",
+        "codeq/publishnotifier": "^2.4",
+        "codeq/htmlwidget" : "^1.3",
+        "carbon/compression": "^4.0",
+        "carbon/link": "^1.9.0",
+        "carbon/includeassets": "^5.5.0",
+        "flowpack/cachebuster": "^1.2.0",
         "flowpack/nodetemplates": "^1.0",
+        "flowpack/neos-matomo": "^3.5",
+        "flowpack/searchplugin": "^5.3",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
         "moc/notfound": "^3.1",
         "sitegeist/silhouettes": "^2.0",
-
-        "flowpack/searchplugin": "^5.0",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "^8.0",
-
-        "codeq/htmlwidget" : "^1.2",
-        "neos/nodetypes-contentreferences": "*",
         "sandstorm/mxgraph": "^2.0",
-        "yoast/yoast-seo-for-neos": "^1.1",
-        "jonnitto/prettyembedvideoplatforms": "^1.1"
+        "yoast/yoast-seo-for-neos": "^1.3",
+        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
+        "shel/neos-hyphens": "^1.3"
     },
     "autoload": {
         "psr-4": {
@@ -108,7 +104,20 @@
             "Neos.Flow-20170127183102",
             "Neos.Fusion-20180211175500",
             "Neos.Fusion-20180211184832",
-            "Neos.Flow-20180415105700"
+            "Neos.Flow-20180415105700",
+            "Neos.ContentRepository.Search-20161210231100",
+            "Neos.Neos-20180907103800",
+            "Neos.Neos.Ui-20190319094900",
+            "Neos.Flow-20190425144900",
+            "Neos.Flow-20190515215000",
+            "Neos.Flow-20200813181400",
+            "Neos.Flow-20201003165200",
+            "Neos.Flow-20201109224100",
+            "Neos.Flow-20201205172733",
+            "Neos.Flow-20201207104500",
+            "Neos.Neos-20220318111600",
+            "Neos.Flow-20220318174300",
+            "Neos.Fusion-20220326120900"
         ]
     }
 }

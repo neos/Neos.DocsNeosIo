@@ -4,4 +4,4 @@
 /application/flow resource:publish --collection='static'
 
 # generate a new Elasticsearch index every time, since node types might have changed
-./flow nodeindex:build --workspace="live"
+#./flow nodeindex:build --workspace="live"
