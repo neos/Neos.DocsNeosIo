@@ -93,12 +93,16 @@
 :where(.nav-dropdown-link-item) {
     .item {
         display: block;
-        padding: 0 1.5rem 0 2.5rem;
-        line-height: 32px;
+        padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+        line-height: normal;
+        @include screen.sm {
+            padding: 0 1.5rem 0 2.5rem;
+            line-height: 32px;
+            white-space: nowrap;
+        }
         font-size: .9rem;
         font-weight: 500;
         color: var(--c-text);
-        white-space: nowrap
     }
 
     @include screen.sm {
@@ -143,7 +147,9 @@
 
 .nav-dropdown-link {
     position: relative;
-    height: 36px;
+    @include screen.sm {
+        height: 36px;
+    }
     overflow: hidden;
     cursor: pointer;
     .dialog {
@@ -173,15 +179,19 @@
 .nav-dropdown-link .button {
     display: block;
     border: 0;
-    padding: 0 1.5rem;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    line-height: normal;
+    @include screen.sm {
+        padding: 0 1.5rem;
+        line-height: 36px;
+        white-space: nowrap;
+    }
     width: 100%;
     text-align: left;
-    line-height: 36px;
     font-family: var(--font-family-base);
     font-size: 1rem;
     font-weight: 600;
     color: var(--c-text);
-    white-space: nowrap;
     background-color: transparent;
     cursor: pointer
 }
