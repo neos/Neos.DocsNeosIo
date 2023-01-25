@@ -1,22 +1,6 @@
-prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentComponent) {
-
+prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Fusion:Component) {
     class = null
-
-    ajaxTarget = false
-
-    # See Flowpack.SearchPlugin:Search.Form
-    searchWord = ${request.arguments.search}
-    ajaxSearchUri = Neos.Fusion:UriBuilder {
-        package = 'Flowpack.SearchPlugin'
-        controller = 'AjaxSearch'
-        action = 'search'
-        format = 'json'
-        absolute = true
-        arguments = Neos.Fusion:DataStructure {
-            node = ${documentNode}
-        }
-    }
-
+    searchWord = ''
     searchResultUri = Neos.Neos:NodeUri {
         node = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.SearchResultsPage]').get(0)}
     }
@@ -24,9 +8,14 @@ prototype(Neos.DocsNeosIo:Component.SearchForm) < prototype(Neos.Neos:ContentCom
     renderer = afx`
         <div class={["search-form__wrapper", props.class]}>
             <form method="GET" action={props.searchResultUri} class="search-form">
-                <input class="search-input" type="search" name="search" placeholder="Search" value={props.searchWord}
-                       autocomplete="off" data-ajax-target={props.ajaxTarget}
-                       data-ajax-search-uri={props.ajaxSearchUri} />
+                <input
+                    class="search-input"
+                    type="search"
+                    name="search"
+                    placeholder="Search"
+                    value={props.searchWord}
+                    autocomplete="off"
+                />
                 <button type="submit"><span class="sr-only">Search</span>
                     <i class="fas fa-search fa-fw"></i>
                 </button>
