@@ -18,7 +18,8 @@
         "shel/neos-terminal": "^1.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "t3n/neos-debug": "^2.0"
     },
     "repositories": {
         "distribution": {

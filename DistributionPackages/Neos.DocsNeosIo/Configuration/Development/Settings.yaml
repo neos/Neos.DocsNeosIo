@@ -1,4 +1,8 @@
-
 Neos:
   GoogleAnalytics:
     enableTracking: false
+
+t3n:
+  Neos:
+    Debug:
+      enabled: true

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4841b81f4b383b7d5a7367b56b73d846",
+    "content-hash": "3a125072ccc988b277225c2a8443ffae",
     "packages": [
         {
             "name": "aertmann/history",
@@ -13106,6 +13106,50 @@
                 }
             ],
             "time": "2023-01-25T03:04:12+00:00"
+        },
+        {
+            "name": "t3n/neos-debug",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t3n/neos-debug.git",
+                "reference": "84ccee39a95a7e364f1b4748a53b42c212772ddd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t3n/neos-debug/zipball/84ccee39a95a7e364f1b4748a53b42c212772ddd",
+                "reference": "84ccee39a95a7e364f1b4748a53b42c212772ddd",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "^7.0 || ^8.0"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "t3n.Neos.Debug",
+                    "loading-order": {
+                        "after": [
+                            "neos/neos"
+                        ]
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "t3n\\Neos\\Debug\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Helper package to visualize debug inforamations for neos including fusion content cache",
+            "support": {
+                "issues": "https://github.com/t3n/neos-debug/issues",
+                "source": "https://github.com/t3n/neos-debug/tree/2.0.4"
+            },
+            "time": "2022-04-07T07:21:00+00:00"
         }
     ],
     "aliases": [],
