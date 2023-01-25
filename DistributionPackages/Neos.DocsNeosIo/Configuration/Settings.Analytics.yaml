@@ -4,4 +4,4 @@ Flowpack:
       host: 'analytics.neos.io'
       token_auth: '%env:MATOMO_TOKEN_AUTH%'
       idSite: 9
-      containerId: ''
+      containerId: '%env:MATOMO_CONTAINER_ID%'
