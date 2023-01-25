@@ -35,3 +35,11 @@ Neos:
         javascript:
           'Neos.DocsNeosIo:CKEConfig':
             resource: 'resource://Neos.DocsNeosIo/Public/JavaScript/CKEConfig/Plugin.js'
+
+    userInterface:
+      navigateComponent:
+        nodeTree:
+          loadingDepth: 2
+
+        structureTree:
+          loadingDepth: 3
