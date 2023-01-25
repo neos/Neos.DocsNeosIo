@@ -1,0 +1,4 @@
+Neos:
+  ContentRepository:
+    Search:
+      indexAllWorkspaces: false
