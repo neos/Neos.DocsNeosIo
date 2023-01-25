@@ -2978,6 +2978,58 @@
             "time": "2022-07-21T09:47:48+00:00"
         },
         {
+            "name": "flowpack/media-ui",
+            "version": "0.12.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowpack/media-ui.git",
+                "reference": "b8b8924aba218a6fb535f2810e45c25519af5087"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowpack/media-ui/zipball/b8b8924aba218a6fb535f2810e45c25519af5087",
+                "reference": "b8b8924aba218a6fb535f2810e45c25519af5087",
+                "shasum": ""
+            },
+            "require": {
+                "neos/media": "^5.2 || ~7.0 || ~8.0 || dev-master",
+                "neos/neos": "^5.2 || ~7.0 || ~8.0 || dev-master",
+                "neos/neos-ui": "^5.2 || ~7.0 || ~8.0 || dev-master",
+                "t3n/graphql": "^2.1 || ^3.0.2",
+                "t3n/graphql-upload": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "suggest": {
+                "flowpack/entity-usage-databasestorage": "Required for the asset usage features",
+                "flowpack/neos-asset-usage": "Allows filtering unused assets and other related features",
+                "phpstan/phpstan": "For running code quality checks"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Flowpack\\Media\\Ui\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "This module allows managing media assets including pictures, videos, audio and documents.",
+            "support": {
+                "issues": "https://github.com/Flowpack/media-ui/issues",
+                "source": "https://github.com/Flowpack/media-ui/tree/0.12.0"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/onetime-badges/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-01-23T14:16:43+00:00"
+        },
+        {
             "name": "flowpack/neos-matomo",
             "version": "3.5.0",
             "source": {
@@ -5324,7 +5376,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "a300211b9860454f7c8aab167bf4b45d926e2146"
+                "reference": "36efce7536adb4e6c313c79632de5cd05cfeabe0"
             },
             "require": {
                 "aertmann/history": "^2.0",
@@ -5335,6 +5387,7 @@
                 "codeq/publishnotifier": "^2.4",
                 "flowpack/cachebuster": "^1.2.0",
                 "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
+                "flowpack/media-ui": "^0.12",
                 "flowpack/neos-matomo": "^3.5",
                 "flowpack/nodetemplates": "^1.0",
                 "flowpack/searchplugin": "^5.3",
@@ -11365,6 +11418,143 @@
             "time": "2023-01-10T18:51:14+00:00"
         },
         {
+            "name": "t3n/graphql",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t3n/graphql.git",
+                "reference": "f8aafc967eec7820395145e33152ded1071cddec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t3n/graphql/zipball/f8aafc967eec7820395145e33152ded1071cddec",
+                "reference": "f8aafc967eec7820395145e33152ded1071cddec",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "neos/flow": "~7.0 || ^8.0 || dev-master",
+                "php": ">=7.2",
+                "t3n/graphql-tools": "~1.0.2"
+            },
+            "require-dev": {
+                "t3n/coding-standard": "~1.1.0"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "t3n.GraphQL"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "t3n\\GraphQL\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Neos Flow adapter for graphql",
+            "support": {
+                "issues": "https://github.com/t3n/graphql/issues",
+                "source": "https://github.com/t3n/graphql/tree/3.1.0"
+            },
+            "time": "2022-05-05T10:16:21+00:00"
+        },
+        {
+            "name": "t3n/graphql-tools",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t3n/graphql-tools.git",
+                "reference": "1943d4eb14799da76582529cda4de0659d2576fc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t3n/graphql-tools/zipball/1943d4eb14799da76582529cda4de0659d2576fc",
+                "reference": "1943d4eb14799da76582529cda4de0659d2576fc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.2",
+                "webonyx/graphql-php": "~0.13"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^5.0",
+                "phpstan/phpstan": "^0.10.5",
+                "phpstan/phpstan-phpunit": "^0.10.0",
+                "phpstan/phpstan-strict-rules": "^0.10.1",
+                "phpunit/phpunit": "^7.3",
+                "react/promise": "^2.7",
+                "squizlabs/php_codesniffer": "3.3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GraphQLTools\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Torsten Blindert",
+                    "email": "info@by-torsten.com"
+                }
+            ],
+            "description": "A PHP port of apollo graphQL-tools",
+            "homepage": "https://github.com/t3n/graphql-tools",
+            "keywords": [
+                "graphql",
+                "graphql-tools"
+            ],
+            "support": {
+                "issues": "https://github.com/t3n/graphql-tools/issues",
+                "source": "https://github.com/t3n/graphql-tools/tree/master"
+            },
+            "time": "2019-03-18T08:50:46+00:00"
+        },
+        {
+            "name": "t3n/graphql-upload",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/t3n/graphql-upload.git",
+                "reference": "c29c9006f04f69237bdc5fc7055596697d3490f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/t3n/graphql-upload/zipball/c29c9006f04f69237bdc5fc7055596697d3490f8",
+                "reference": "c29c9006f04f69237bdc5fc7055596697d3490f8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "neos/flow": "^7.0 || ^8.0 || dev-master",
+                "php": ">=7.3",
+                "t3n/graphql": "^3.0"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "t3n.GraphQL.Upload"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "t3n\\GraphQL\\Upload\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Extension for t3n/graphql that implements upload-handling",
+            "support": {
+                "issues": "https://github.com/t3n/graphql-upload/issues",
+                "source": "https://github.com/t3n/graphql-upload/tree/2.1.0"
+            },
+            "time": "2022-04-05T12:17:20+00:00"
+        },
+        {
             "name": "tedivm/jshrink",
             "version": "v1.4.0",
             "source": {
@@ -11812,6 +12002,68 @@
                 }
             ],
             "time": "2022-12-22T13:55:49+00:00"
+        },
+        {
+            "name": "webonyx/graphql-php",
+            "version": "v0.13.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webonyx/graphql-php.git",
+                "reference": "d9a94fddcad0a35d4bced212b8a44ad1bc59bdf3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webonyx/graphql-php/zipball/d9a94fddcad0a35d4bced212b8a44ad1bc59bdf3",
+                "reference": "d9a94fddcad0a35d4bced212b8a44ad1bc59bdf3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": "^7.1||^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0",
+                "phpbench/phpbench": "^0.14.0",
+                "phpstan/phpstan": "^0.11.4",
+                "phpstan/phpstan-phpunit": "^0.11.0",
+                "phpstan/phpstan-strict-rules": "^0.11.0",
+                "phpunit/phpcov": "^5.0",
+                "phpunit/phpunit": "^7.2",
+                "psr/http-message": "^1.0",
+                "react/promise": "2.*"
+            },
+            "suggest": {
+                "psr/http-message": "To use standard GraphQL server",
+                "react/promise": "To leverage async resolving on React PHP platform"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GraphQL\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A PHP port of GraphQL reference implementation",
+            "homepage": "https://github.com/webonyx/graphql-php",
+            "keywords": [
+                "api",
+                "graphql"
+            ],
+            "support": {
+                "issues": "https://github.com/webonyx/graphql-php/issues",
+                "source": "https://github.com/webonyx/graphql-php/tree/0.13.x"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/webonyx-graphql-php",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2020-07-02T05:49:25+00:00"
         },
         {
             "name": "websharks/css-minifier",

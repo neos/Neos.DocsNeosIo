@@ -20,6 +20,7 @@
         "flowpack/nodetemplates": "^1.0",
         "flowpack/neos-matomo": "^3.5",
         "flowpack/searchplugin": "^5.3",
+        "flowpack/media-ui": "^0.12",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
         "moc/notfound": "^3.1",
         "sitegeist/silhouettes": "^2.0",
