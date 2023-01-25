@@ -1,18 +1,27 @@
 prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
     renderer = afx`
-        <div class="row">
-            <div class="col s12">
-                <ul class="tabs">
-                    <Neos.Fusion:Collection collection={q(node).children()} iteratorName="iterator" itemName="item">
-                        <li @path="itemRenderer" class="tab col s3">
-                            <Carbon.Link:Link link={'#' + item.identifier} additionalClass={iterator.isFirst ? 'active' : ''} backendLink={true} >
-                                <Neos.Neos:Editable node={item} property="title" />
-                            </Carbon.Link:Link>
-                        </li>
-                    </Neos.Fusion:Collection>
-                </ul>
+        <div class="tabs__wrapper">
+            <div class="tabs" role="tablist">
+                <Neos.Fusion:Loop items={q(node).children()} iteratorName="iterator" itemName="item">
+                    <button
+                        @path="itemRenderer"
+                        class={["tab", iterator.isFirst && 'active']}
+                        role="tab"
+                        aria-selected={iterator.isFirst ? "true" : "false"}
+                        tabindex={iterator.isFirst ? "0" : "-1"}
+                        id={'tab-' + item.identifier}
+                        aria-controls={'panel-' + item.identifier}
+                    >
+                        <div class="tab-link__inner">
+                            <Neos.Neos:Editable node={item} property="title" />
+                        </div>
+                    </button>
+                </Neos.Fusion:Loop>
+                <div class="spacer"></div>
             </div>
-            <Neos.Neos:ContentCollection nodePath="" attributes.class="tabs-content col s12" />
+            <div class="tabs-content__wrapper">
+                <Neos.Neos:ContentCollection nodePath="" attributes.class="tabs-content" />
+            </div>
         </div>
     `
 }

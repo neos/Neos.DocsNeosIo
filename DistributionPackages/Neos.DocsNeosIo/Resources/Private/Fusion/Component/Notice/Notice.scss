@@ -1,45 +1,80 @@
-.notice {
-	margin-bottom: 32px;
+.custom-block:is(.tip,.info,.warning,.danger,.backend,.todo) {
+    margin: 1rem 0;
+    border-left: .5rem solid;
+    padding: .1rem 1.5rem;
+    overflow-x: auto
+}
 
-	&.type-info {
-		background: #ffd54f;
-	}
-	&.type-warning,
-	&.type-backend {
-		background: #ff6f00;
-	}
-	&.type-danger {
-		background: $error-color;
-	}
-	&.type-todo {
-		background: $secondary-color;
-	}
-	&.type-tip {
-		background: $success-color;
-	}
+.custom-block.tip {
+    background-color: #f3f5f7;
+    border-color: var(--c-brand)
+}
 
-	.header {
-		font-size: 2rem;
-		margin: 0;
-	}
+.custom-block.info {
+    background-color: #f3f5f7;
+    border-color: #476582;
+}
 
-	.inline-icon {
-		margin-top: 0.3rem;
-		margin-right: 0.5rem;
-		font-size: 1.6rem;
-	}
+.custom-block:is(.warning,.backend,.todo) {
+    border-color: #e7c000;
+    color: #6b5900;
+    background-color: #ffe5644d
+}
 
-	&.type-danger,
-	&.type-todo,
-	&.type-tip {
-		&,
-		.header,
-		a {
-			color: white;
-		}
+.custom-block:is(.warning,.backend,.todo) .custom-block-title {
+    color: #b29400
+}
 
-		a {
-			text-decoration: underline;
-		}
-	}
+.custom-block:is(.warning,.backend,.todo) a {
+    color: var(--c-text)
+}
+
+.custom-block.danger {
+    border-color: #c00;
+    color: #4d0000;
+    background-color: #ffe6e6
+}
+
+.custom-block.danger .custom-block-title {
+    color: #900
+}
+
+.custom-block.danger a {
+    color: var(--c-text)
+}
+
+.custom-block .custom-block-icon {
+    padding-right: 10px;
+}
+
+.custom-block.details {
+    position: relative;
+    display: block;
+    margin: 1.6em 0;
+    padding: 1.6em;
+    background-color: #eee
+}
+
+.custom-block.details h4 {
+    margin-top: 0
+}
+
+.custom-block.details figure:last-child,.custom-block.details p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0
+}
+
+.custom-block.details summary {
+    outline: none;
+    cursor: pointer
+}
+
+.custom-block-title {
+    margin-bottom: -.4rem;
+    font-weight: 600
+}
+
+.custom-block.details {
+    margin-top: 1rem;
+    margin-bottom: 1rem
 }

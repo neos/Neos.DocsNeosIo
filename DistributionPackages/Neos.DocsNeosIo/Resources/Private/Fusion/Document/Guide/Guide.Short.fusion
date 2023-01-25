@@ -4,18 +4,12 @@ prototype(Neos.DocsNeosIo:Document.Guide.Short) < prototype(Neos.Fusion:Componen
     tags = ${q(node).property('tags')}
 
     renderer = afx`
-        <Carbon.Link:Link node={node} backendLink={true} additionalClass="guide-short card hoverable">
-            <div class="card-content white-text">
-                <span class="new badge" data-badge-caption="NEW"></span>
-                <div class="card-title">{props.title}</div>
-                <div class="card-text">
-                    <p>{props.subtitle}</p>
-                </div>
-                <Neos.DocsNeosIo:Component.TagList collection={props.tags} />
-            </div>
-            <div class="card-action white-text">
-                Learn more
-            </div>
-        </Carbon.Link:Link>
+        <article class="card card--padding">
+            <Carbon.Link:Link node={node} backendLink={true} additionalClass="secondary-link">
+                <h2>{props.title}</h2>
+            </Carbon.Link:Link>
+            <p @if={props.subtitle}>{props.subtitle}</p>
+            <Neos.DocsNeosIo:Component.TagList items={props.tags} />
+        </article>
     `
 }

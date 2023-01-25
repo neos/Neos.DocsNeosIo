@@ -8,9 +8,24 @@ prototype(Neos.DocsNeosIo:Content.LinkList.Item) < prototype(Neos.Neos:ContentCo
     iconClass = ${q(node).property('iconCustom') || q(node).property('icon')}
 
     renderer = afx`
-        <Carbon.Link:Link link={props.link} additionalClass="collection-item" renderDefaultTagIfNoLink={true} defaultTagName="div" @if.has={props.title}>
-            {props.title}
-            <Neos.DocsNeosIo:Component.Icon iconClass={props.iconClass} fromLinkTypeUri={props.link} additionalClass="right inline-icon" />
-        </Carbon.Link:Link>
+        <li class={["collection-item", String.indexOf(props.title, '<strong>') != -1 && 'collection-item--contains-strong']}>
+            <Carbon.Link:Link
+                @if={props.title}
+                link={props.link}
+                renderDefaultTagIfNoLink={true}
+                additionalClass="collection-item__link"
+                defaultTagName="div"
+            >
+                <span class="icon-wrapper">
+                    <Neos.DocsNeosIo:Component.Icon
+                        iconClass={props.iconClass}
+                        fromLinkTypeUri={props.link}
+                        additionalClass="right inline-icon fa-fw"
+                    />
+                </span>
+                <span class="collection-item__text">{props.title}</span>
+                <span class="icon-wrapper"><span class="inline-icon fas fa-chevron-right"></span></span>
+            </Carbon.Link:Link>
+        </li>
     `
 }

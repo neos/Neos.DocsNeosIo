@@ -1,27 +1,31 @@
 {namespace neos=Neos\Neos\ViewHelpers}
-
+{console -> f:format.raw()}
 <div class="search-result collection-item">
-	<neos:link.node node="{node}" class="title">{title -> f:format.raw()}</neos:link.node>
+    <neos:link.node node="{node}" class="title">{title -> f:format.raw()}</neos:link.node>
 
-	<f:if condition="{highlight}">
-		<p class="highlight">
-			<f:for each="{highlight}" as="fragment" iteration="fragmentIterator">
-				<f:comment> Bug workaround for https://github.com/Flowpack/Flowpack.SearchPlugin/issues/48 </f:comment>
-				<f:if condition="{fragmentIterator.isLast}">
-					<f:else>
-						{f:if(condition: fragmentIterator.isFirst, else: '…')}
-						{fragment -> f:format.raw()}
-					</f:else>
-				</f:if>
-			</f:for>
-		</p>
+    <f:if condition="{highlight}">
+        <div class="highlights">
+            <f:for each="{highlight}" as="fragment" iteration="fragmentIterator">
+                <p class="highlight">
+                    <f:comment> Bug workaround for https://github.com/Flowpack/Flowpack.SearchPlugin/issues/48
+                    </f:comment>
+                    <f:if condition="!{fragmentIterator.isLast} && fragment">
+                        …{fragment -> f:format.raw()} …
+                    </f:if>
+                </p>
+            </f:for>
+        </div>
+    </f:if>
 
-		<div class="breadcrumbs">
-			<span>{f:translate(id: 'path', package: 'Flowpack.SearchPlugin')}:</span>
-			<f:for each="{parents}" as="parent">
-				<neos:link.node node="{parent}" class="breadcrumb" />
-			</f:for>
-			<neos:link.node node="{node}" class="breadcrumb" />
-		</div>
-	</f:if>
+    <div class="breadcrumbs">
+        <f:for each="{parents}" as="parent" iteration="parentIterator">
+            <neos:link.node node="{parent}" class="breadcrumb" />
+            <f:if condition="!{parentIterator.isLast}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 30 30">
+                    <path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m10 5 10 10-10 10" />
+                </svg>
+            </f:if>
+        </f:for>
+    </div>
 </div>

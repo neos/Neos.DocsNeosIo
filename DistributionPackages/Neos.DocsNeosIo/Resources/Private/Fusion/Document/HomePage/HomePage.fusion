@@ -1,13 +1,39 @@
 prototype(Neos.DocsNeosIo:Document.HomePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
-    body.navCollection = ${q(node).find('main').children()}
-    body.showSupportCall2Action = false
-    body.content = Neos.Fusion:Component {
-        main = Neos.Neos:ContentCollection {
-            nodePath = 'main'
+    bodyTag.attributes.class.@process.setNoSidebar = ${Array.push(value, 'no-sidebar')}
+    body = Neos.DocsNeosIo:Component.Layout {
+        navCollection = ${q(node).find('main').children()}
+
+        sidebarOnlyMobile = true
+        localNav = false
+
+        banner = Neos.Fusion:Component {
+            logo = Neos.Fusion:ResourceUri {
+                path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-light.svg"
+            }
+
+            getStartedLink = ${q(node).property('getStartedLink')}
+            installLink = ${q(node).property('installLink')}
+
+            renderer = afx`
+                <div class="banner">
+                    <img class="home-logo" src={props.logo} width="400" height="110" alt="Neos" />
+                    <h1>Developer Documentation</h1>
+                    <div @if={props.getStartedLink || props.installLink} class="cta-buttons">
+                        <Carbon.Link:Link node={props.getStartedLink} additionalClass="btn__wrapper"><div class="btn secondary">Get started</div></Carbon.Link:Link>
+                        <Carbon.Link:Link node={props.installLink} additionalClass="btn__wrapper"><div class="btn secondary">Install</div></Carbon.Link:Link>
+                    </div>
+                </div>
+            `
         }
 
-        renderer = afx`
-            {props.main}
-        `
+        content = Neos.Fusion:Component {
+            main = Neos.Neos:ContentCollection {
+                nodePath = 'main'
+            }
+
+            renderer = afx`
+                {props.main}
+            `
+        }
     }
 }

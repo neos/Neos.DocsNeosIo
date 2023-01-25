@@ -1,0 +1,25 @@
+'Neos.DocsNeosIo:Content.CodePreview':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
+  ui:
+    label: Code preview
+    help:
+      message: "Renders html output of a code example inside a preview container"
+    icon: fas fa-laptop-code
+    position: 250
+    inlineEditable: true
+  properties:
+    code:
+      type: string
+      defaultValue: 'Enter exact output of example'
+      ui:
+        label: 'Edit code'
+        reloadIfChanged: true
+        inspector:
+          group: 'general'
+          editor: 'Neos.Neos/Inspector/Editors/CodeEditor'
+          editorOptions:
+            buttonLabel: 'Edit preview code'
+      search:
+        fulltextExtractor: '${Indexing.extractInto("code", value)}'

@@ -1,0 +1,31 @@
+prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Component) {
+
+    @context.navBarNodeDepth = ${this.node.depth - this.startingPoint.depth}
+    node = ${node}
+    itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
+    itemStatus = ${q(node).property('status')}
+    itemClass = Neos.Fusion:DataStructure {
+        base = 'navigation-item'
+        level = ${'navigation-item--level-' + navBarNodeDepth}
+        current = 'current'
+        current.@if.isCurrent = ${node == documentNode}
+        active = 'active'
+        active.@if.isActive = ${node == documentNode || (navBarNodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
+    }
+    navigationClass = ${'navigation-level navigation-level--level-' + (navBarNodeDepth + 1)}
+    navigationItems = Neos.Fusion:Loop {
+        items = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+        @if.notEmpty = ${this.items.count() > 0}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Component.NavBarItem
+    }
+
+    renderer = afx`
+        <div class="nav">
+            <nav class="nav-links">
+                {props.navigationItems}
+                <Neos.DocsNeosIo:Component.SearchForm class="item search-item" />
+            </nav>
+        </div>
+    `
+}

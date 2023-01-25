@@ -1,0 +1,3 @@
+'Neos.Neos:Shortcut':
+  superTypes:
+    'Neos.DocsNeosIo:Mixin.MenuItem': true

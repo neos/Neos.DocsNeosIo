@@ -14,3 +14,17 @@
         reloadIfChanged: true
         inspector:
           group: 'document'
+    getStartedLink:
+      type: reference
+      ui:
+        label: 'Get started link'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'
+    installLink:
+      type: reference
+      ui:
+        label: 'Install link'
+        reloadIfChanged: true
+        inspector:
+          group: 'document'

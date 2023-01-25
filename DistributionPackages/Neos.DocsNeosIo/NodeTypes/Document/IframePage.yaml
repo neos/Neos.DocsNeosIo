@@ -1,0 +1,21 @@
+'Neos.DocsNeosIo:Document.IframePage':
+  superTypes:
+    'Neos.Neos:Document': true
+  childNodes:
+    main: ~
+  ui:
+    label: 'IFrame Page'
+    help:
+      message: 'Embed an iframe as a page'
+    icon: fas fa-file-code
+    position: 100
+  properties:
+    url:
+      type: string
+      defaultValue: ''
+      ui:
+        label: 'URL'
+        reloadIfChanged: true
+        inspector:
+          group: document
+          position: 'after status'

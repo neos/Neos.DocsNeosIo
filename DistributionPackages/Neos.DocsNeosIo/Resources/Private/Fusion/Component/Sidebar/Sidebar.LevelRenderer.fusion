@@ -1,0 +1,34 @@
+prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusion:Component) {
+    @context.nodeDepth = ${this.node.depth - startingPoint.depth}
+    node = ${node}
+    itemTitle = ${q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
+    itemStatus = ${q(node).property('status')}
+    itemLinkClass = Neos.Fusion:DataStructure {
+        base = 'sidebar-link-item'
+        current = 'current'
+        current.@if.isCurrent = ${node == documentNode}
+        active = 'active'
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
+    }
+    navigationClass = "sidebar-links"
+    navigationItems = Neos.Fusion:Loop {
+        @if.notEmpty = ${this.items.count() > 0}
+        items = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+        itemName = 'node'
+        itemRenderer = Neos.DocsNeosIo:Component.Sidebar.LevelRenderer
+    }
+
+    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0))) && this.navigationItems}
+
+    renderer = afx`
+        <li class="sidebar-link" >
+            <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={props.itemLinkClass} backendLink={true}>
+                {props.itemTitle}
+                <Neos.DocsNeosIo:Component.Badge @if={props.itemStatus} itemStatus={props.itemStatus} />
+            </Carbon.Link:Link>
+            <ul @if.hasNextLevel={props.renderNextLevel} class={props.navigationClass}>
+                {props.navigationItems}
+            </ul>
+        </li>
+    `
+}

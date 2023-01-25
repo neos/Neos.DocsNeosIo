@@ -4,18 +4,22 @@ prototype(Neos.DocsNeosIo:Component.PrevNextNavigation) < prototype(Neos.Fusion:
     showBackendNotice = false
 
     renderer = afx`
-        <div class="prev-next-navigation row">
-            <Carbon.Notification:Backend @if.show={props.showBackendNotice} @if.hasNoSibling={!props.prevNode && !props.nextNode}>
+        <div class="prev-next-navigation">
+            <Carbon.Notification:Backend @if={props.showBackendNotice} @if.hasNoSibling={!props.prevNode && !props.nextNode}>
                 This page currently has no sibling and therefore renders no sibling navigation.
             </Carbon.Notification:Backend>
-            <div class="col s12 buttons" @if.hasSibling={props.prevNode || props.nextNode}>
-                <Carbon.Link:Link node={props.prevNode} additionalClass="btn" renderDefaultTagIfNoLink={false}>
-                    <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" />
-                    <Carbon.Link:Content />
+            <div class="buttons" @if.hasSibling={props.prevNode || props.nextNode}>
+                <Carbon.Link:Link node={props.prevNode} additionalClass="btn__wrapper" renderDefaultTagIfNoLink={false}>
+                    <div class="btn">
+                        <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-left" additionalClass="left inline-icon" ariaLabel="Previous" />
+                        <Carbon.Link:Content />
+                    </div>
                 </Carbon.Link:Link>
-                <Carbon.Link:Link node={props.nextNode} additionalClass="btn right" renderDefaultTagIfNoLink={false}>
-                    <Carbon.Link:Content />
-                    <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" additionalClass="right inline-icon" />
+                <Carbon.Link:Link node={props.nextNode} additionalClass="btn__wrapper right" renderDefaultTagIfNoLink={false}>
+                    <div class="btn">
+                        <Carbon.Link:Content />
+                        <Neos.DocsNeosIo:Component.Icon iconClass="fas fa-arrow-right" additionalClass="right inline-icon" />
+                    </div>
                 </Carbon.Link:Link>
             </div>
         </div>

@@ -4,6 +4,7 @@
   superTypes:
     'Neos.Neos:Document': true
     'Neos.DocsNeosIo:Mixin.Taggable': true
+    'Neos.DocsNeosIo:Mixin.MenuItem': true
   search:
     fulltext:
       isRoot: true
@@ -36,27 +37,3 @@
       ui:
         inspector:
           group: 'document'
-    status:
-      type: string
-      defaultValue: ''
-      ui:
-        label: 'Menu status flag'
-        reloadPageIfChanged: true
-        inspector:
-          group: 'document'
-          editor: 'Neos.Neos/Inspector/Editors/SelectBoxEditor'
-          editorOptions:
-            allowEmpty: true
-            placeholder: 'None'
-            values:
-              'new':
-                label: 'New'
-              'updated':
-                label: 'Updated'
-    hideFromMainMenu:
-      type: boolean
-      ui:
-        label: i18n
-        reloadPageIfChanged: true
-        inspector:
-          group: visibility

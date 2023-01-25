@@ -1,0 +1,20 @@
+prototype(Neos.DocsNeosIo:Document.CookbookTag) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+
+    body {
+        fullwidth = true
+        flexheader = true
+        content = Neos.Fusion:Loop {
+            @process.wrap = ${'<div class="cookbooks-overview cards">' + value + '</div>'}
+            items = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.Cookbook]').filterByReferences('tags', [q(node).property('includedTag')]) || q(node).children()}
+            itemName = 'node'
+            itemRenderer = Neos.DocsNeosIo:Document.Cookbook.Short
+        }
+    }
+
+    @cache {
+        entryTags {
+            1 = ${Neos.Caching.nodeTypeTag('Neos.DocsNeosIo:Document.Cookbook', documentNode)}
+        }
+    }
+}
+

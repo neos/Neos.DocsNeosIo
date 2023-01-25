@@ -1,19 +1,21 @@
-(function($) {
-	let header = document.querySelector('.main-header');
-	if(!header) {
-		return;
-	}
+(() => {
+	const sidebar = document.querySelector('.sidebar');
+	const sidebarButton = document.querySelector('.sidebar-button');
+	const sidebarBackdrop = document.querySelector('.sidebar-mobile-backdrop');
 
-	// Detect touch screen and enable scrollbar if necessary
-	function is_touch_device() {
-		try {
-			document.createEvent('TouchEvent');
-			return true;
-		} catch (e) {
-			return false;
+	function toggleSidebar(open = undefined) {
+		sidebar.classList.toggle('open', open);
+		const expand = open ?? sidebarButton.getAttribute('aria-expanded') !== 'true';
+		sidebarButton.setAttribute('aria-expanded', expand ? 'true' : 'false');
+		sidebarButton.setAttribute('aria-label', expand ? 'close menu' : 'open menu');
+		if (expand) {
+			sidebar.focus();
 		}
 	}
-	if (is_touch_device()) {
-		$('.main-header #nav-mobile').css({ overflow: 'auto' });
-	}
-})(jQuery);
+
+	document.body.addEventListener('keydown', event => event.key === 'Escape' && toggleSidebar(false));
+
+	sidebarButton.addEventListener('click', () => toggleSidebar());
+
+	sidebarBackdrop.addEventListener('click', () => toggleSidebar(false))
+})()

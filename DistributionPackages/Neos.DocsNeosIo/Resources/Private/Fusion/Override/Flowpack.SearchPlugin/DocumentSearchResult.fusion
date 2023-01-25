@@ -1,3 +1,7 @@
 prototype(Neos.Neos:DocumentSearchResult) {
     templatePath = 'resource://Neos.DocsNeosIo/Private/Fusion/Override/Flowpack.SearchPlugin/DocumentSearchResult.html'
+
+    highlight.@process.removeNonMatches = ${Array.filter(value, item => String.indexOf(item, '<em>') != -1)}
+
+    parents = ${Array.reverse(q(node).parentsUntil('site[instanceof Neos.Neos:Document]', ['[instanceof Neos.Neos:Document]']).get())}
 }

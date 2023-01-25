@@ -8,18 +8,13 @@
     label: Tutorial
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
-    icon: icon-book-open
+    icon: icon-graduation-cap
     position: 500
   constraints:
     nodeTypes:
       'Neos.Neos:Document': false
       'Neos.DocsNeosIo:Document.Cookbook': true
   properties:
-    hideFromMainMenu:
-      defaultValue: true
-      ui:
-        inspector:
-          group: null
     publishingDate:
       type: DateTime
       defaultValue: now

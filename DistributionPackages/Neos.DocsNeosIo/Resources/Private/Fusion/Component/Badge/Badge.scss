@@ -1,0 +1,16 @@
+span.badge {
+    font-size: 0.8em;
+    display: inline-block;
+    padding: 0 4px;
+    font-weight: 400;
+    clip-path: polygon(4px 0, 0 4px, 0 100%, calc(100% - 4px) 100%, 100% calc(100% - 4px), 100% 0);
+}
+
+span.badge.new {
+    color: #26224c;
+    background-color: #eceafa;
+}
+
+.sidebar-link-item .badge {
+    margin-left: auto;
+}

@@ -1,0 +1,22 @@
+prototype(Neos.DocsNeosIo:Component.NavBarItemDialogItem) < prototype(Neos.Fusion:Component) {
+    node = ${node}
+
+    itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
+
+    itemClass = Neos.Fusion:DataStructure {
+        base = 'item'
+        active = 'active'
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
+    }
+
+    isExternal = false
+    renderer = afx`
+        <div class="nav-dropdown-link-item">
+            <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={props.itemClass} backendLink={true}>
+                <span class="arrow"></span>
+                <span class="text">{ props.itemTitle }</span>
+                <i class="external-icon fas fa-external-link-alt fa-xs"></i>
+            </Carbon.Link:Link>
+        </div>
+    `
+}

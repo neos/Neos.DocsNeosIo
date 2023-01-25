@@ -1,0 +1,12 @@
+prototype(Neos.DocsNeosIo:Document.IframePage) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    bodyTag.attributes.class.@process.setIframePage = ${Array.push(value, 'iframe-page')}
+    body = Neos.DocsNeosIo:Component.IframeLayout {
+        navCollection = ${q(node).find('main').children()}
+        content = Neos.Fusion:Component {
+            url = ${q(node).property('url')}
+            renderer = afx`
+                <iframe src={props.url} frameborder="0" width="100%" height="100%"></iframe>
+            `
+        }
+    }
+}

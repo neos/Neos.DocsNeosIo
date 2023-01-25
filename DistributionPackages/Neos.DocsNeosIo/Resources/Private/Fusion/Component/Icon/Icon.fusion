@@ -6,35 +6,45 @@ prototype(Neos.DocsNeosIo:Component.Icon) < prototype(Neos.Fusion:Component) {
     # If the link class is empty, we will detect the type from the given uri
     fromLinkTypeUri = false
 
+    ariaLabel = null
+
     # rendering
     @context {
         iconClass = ${this.iconClass}
         fromLinkTypeUri = ${this.fromLinkTypeUri}
     }
     iconClassFinal = Neos.Fusion:Case {
+        overrideExternalLinkIcon {
+            condition = ${iconClass && iconClass == 'fas fa-external-link-alt'}
+            renderer = 'fas fa-external-link-square-alt'
+        }
         hasClass {
             condition = ${iconClass && iconClass != ''}
             renderer = ${iconClass}
         }
         linkIsGithub {
-            condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com')}
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://github.com/')}
             renderer = ${'fab fa-github'}
         }
+        linkIsYoutube {
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://www.youtube.com/')}
+            renderer = ${'fab fa-youtube'}
+        }
         linkIsDiscuss {
-            condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io')}
+            condition = ${String.startsWith(fromLinkTypeUri, 'https://discuss.neos.io/')}
             renderer = ${'fas fa-comments'}
         }
         fallbackByLinkType {
             condition = ${fromLinkTypeUri}
             renderer = Carbon.Link:Type {
                 link = ${fromLinkTypeUri}
-                @process.convert = ${value=='external' ? 'fas fa-external-link-alt' : (value=='node' ? 'fas fa-link' : false)}
+                @process.convert = ${value=='external' ? 'fas fa-external-link-square-alt' : (value=='node' ? 'fas fa-link' : false)}
             }
         }
     }
     iconClassWithoutNamespace = ${String.replace(String.replace(String.replace(this.iconClass, 'fab ', ''), 'fas ', ''), 'fa ', '')}
     iconNameFallback = ${String.firstLetterToUpperCase(String.replace(String.replace(this.iconClassWithoutNamespace, 'fa-', ''), '-', ' '))}
     renderer = afx`
-        <i aria-label={props.iconName ? props.iconName : props.iconNameFallback} class={props.iconClassFinal + ' ' + props.additionalClass}></i>
+        <i role="img" aria-label={props.ariaLabel ? props.ariaLabel : props.iconName ? props.iconName : props.iconNameFallback} class={props.iconClassFinal + ' ' + props.additionalClass}></i>
     `
 }

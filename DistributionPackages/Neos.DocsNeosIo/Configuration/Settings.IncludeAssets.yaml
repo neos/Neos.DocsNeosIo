@@ -1,7 +1,6 @@
 
 Carbon:
   IncludeAssets:
-    GoogleFonts: Material+Icons|Work+Sans:300,200,200italic,300italic,400,400italic
     Packages:
       aa_Theme:
         Path:
@@ -16,6 +15,5 @@ Carbon:
           Head:
             - app.css
           Body:
-            - https://code.jquery.com/jquery-3.2.1.min.js
-            - materialize.js
+            - prism.js
             - app.js[data-manual]

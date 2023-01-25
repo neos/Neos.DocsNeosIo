@@ -1,0 +1,396 @@
+@use "../../../../public/Frontend/scss/screen";
+@use "../../../../public/Frontend/scss/helpers";
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--z-index-navbar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--c-divider);
+    padding: 0.7rem 1.5rem 0.7rem 4rem;
+    height: var(--header-height);
+    background-color: var(--c-bg);
+}
+
+@include screen.sm {
+    .nav-bar {
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
+
+
+:where(.nav-link) {
+    a {
+        text-decoration: none;
+    }
+
+    .item {
+        display: block;
+        padding: 0 1.5rem;
+        line-height: 36px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--c-text);
+        white-space: nowrap
+    }
+
+    .item:hover, .item.active {
+        text-decoration: none;
+        color: var(--c-brand);
+    }
+
+    @include screen.sm {
+        .item {
+            border-bottom: 2px solid transparent;
+            padding: 0;
+            line-height: 24px;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+
+        .item:hover,
+        .item.active {
+            color: var(--c-brand);
+            border-bottom-color: var(--c-brand);
+        }
+
+        .item.active {
+            font-weight: 520;
+        }
+    }
+}
+
+.nav-bar-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--c-accent);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+}
+
+.nav-bar-title:hover {
+    color: var(--c-accent-dark);
+    text-decoration: none
+}
+
+:where(.nav-bar) .logo {
+    margin-right: .75rem;
+    height: 1.3rem;
+    width: 1.3rem;
+    vertical-align: bottom
+}
+
+:where(.nav-dropdown-link-item) {
+    .item {
+        display: block;
+        padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+        line-height: normal;
+        @include screen.sm {
+            padding: 0 1.5rem 0 2.5rem;
+            line-height: 32px;
+            white-space: nowrap;
+        }
+        font-size: .9rem;
+        font-weight: 500;
+        color: var(--c-text);
+    }
+
+    @include screen.sm {
+        .item {
+            padding: 0 24px 0 12px;
+            line-height: 32px;
+            font-size: .85rem;
+            font-weight: 500;
+            color: var(--c-text);
+            white-space: nowrap
+        }
+
+        .item.active .arrow {
+            opacity: 1
+        }
+    }
+
+    .item:hover, .item.active {
+        text-decoration: none;
+        color: var(--c-brand)
+    }
+
+    .item.external:hover {
+        border-bottom-color: transparent;
+        color: var(--c-text)
+    }
+
+    @include screen.sm {
+        .arrow {
+            display: inline-block;
+            margin-right: 8px;
+            border-top: 6px solid #ccc;
+            border-right: 4px solid transparent;
+            border-bottom: 0;
+            border-left: 4px solid transparent;
+            vertical-align: middle;
+            opacity: 0;
+            transform: translateY(-2px) rotate(-90deg)
+        }
+    }
+}
+
+.nav-dropdown-link {
+    position: relative;
+    @include screen.sm {
+        height: 36px;
+    }
+    overflow: hidden;
+    cursor: pointer;
+    .dialog {
+        display: none;
+    }
+}
+
+@include screen.sm {
+    .nav-dropdown-link {
+        height: auto;
+        overflow: visible
+    }
+
+    .nav-dropdown-link:hover .dialog {
+        display: block
+    }
+}
+
+.nav-dropdown-link.open {
+    height: auto;
+    .dialog {
+        display: block
+    }
+}
+
+.nav-links .search-form__wrapper,
+.nav-dropdown-link .button {
+    display: block;
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    line-height: normal;
+    @include screen.sm {
+        padding: 0 1.5rem;
+        line-height: 36px;
+        white-space: nowrap;
+    }
+    width: 100%;
+    text-align: left;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-text);
+    background-color: transparent;
+    cursor: pointer
+}
+
+.nav-links .search-form__wrapper {
+    margin-top: 0.75rem;
+    margin-bottom: -0.75rem;
+    padding: 0;
+    border-top: 1px solid var(--c-divider);
+
+    input {
+        flex-grow: 1;
+        border-radius: 0;
+        appearance: none;
+        font-size: inherit;
+        width: inherit;
+    }
+}
+
+@include screen.sm {
+    .nav-links .search-form__wrapper,
+    .nav-dropdown-link .button {
+        border-bottom: 2px solid transparent;
+        padding: 0;
+        line-height: 24px;
+        font-size: .9rem;
+        font-weight: 500
+    }
+
+    .nav-links {
+        .search-form__wrapper {
+            border: none;
+            margin-top: -0.5rem;
+
+            form {
+                font-size: 0.9rem;
+            }
+
+            input {
+                flex-grow: 0;
+                flex-shrink: 0;
+                padding: 0.75rem 0.25rem 0.75rem 0.75rem;
+
+                &:not(:focus,:active) {
+                    width: 80px;
+                }
+            }
+        }
+    }
+}
+
+.nav-dropdown-link .button-arrow {
+    display: inline-block;
+    margin-top: -1px;
+    margin-left: 8px;
+    border-top: 6px solid #ccc;
+    border-right: 4px solid transparent;
+    border-bottom: 0;
+    border-left: 4px solid transparent;
+    vertical-align: middle
+}
+
+.nav-dropdown-link .button-arrow.right {
+    transform: rotate(-90deg)
+}
+
+@include screen.sm {
+    .nav-dropdown-link .button-arrow.right {
+        transform: rotate(0)
+    }
+}
+
+.nav-dropdown-link .dialog ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+@include screen.sm {
+    .nav-dropdown-link .dialog {
+        display: none;
+        position: absolute;
+        top: 26px;
+        right: -8px;
+        width: max-content;
+        min-width: 128px;
+        filter: drop-shadow(0 12px 32px rgba(12, 6, 48, 0.16)) drop-shadow(0 2px 6px rgba(12, 6, 48, 0.16));
+
+        ul {
+            padding: 12px 0;
+            background-color: var(--c-bg);
+            @include helpers.neos-borders(12px);
+        }
+    }
+}
+
+.nav-links {
+    padding: .75rem 0;
+    border-bottom: 1px solid var(--c-divider)
+}
+
+@include screen.sm {
+    .nav-links {
+        display: flex;
+        align-items: baseline;
+        border-bottom: 0
+    }
+
+    :where(.nav-links) .item + .item {
+        padding-left: 24px
+    }
+}
+
+
+.sidebar-button {
+    appearance: none;
+    border: none;
+    background: none;
+    display: none;
+    padding: .4rem;
+    cursor: pointer;
+    @include helpers.neos-borders;
+}
+
+.sidebar-button:focus, .sidebar-button.active {
+    background: #eee;
+}
+
+.sidebar-button {
+    svg {
+        display: block;
+    }
+
+    &[aria-expanded="false"] {
+        .menu-close {
+            display: none;
+        }
+    }
+    &[aria-expanded="true"] {
+        .menu-open {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: #{screen.$sm - 1}) {
+    .sidebar-button {
+        display: block
+    }
+}
+
+.nav-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: var(--z-index-navbar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--c-divider);
+    padding: .7rem 1rem;
+    gap: 0.5rem;
+    height: var(--header-height);
+    background-color: var(--c-bg)
+}
+
+@include screen.sm {
+    .nav-bar {
+        padding: .7rem 1.5rem
+    }
+}
+
+.flex-grow {
+    flex-grow: 1
+}
+
+:where(.nav-bar) .nav {
+    display: none
+}
+
+@include screen.sm {
+    :where(.nav-bar) .nav {
+        display: block
+    }
+
+    :where(.sidebar) nav {
+        display: none;
+    }
+}
+
+.nav-links .external-icon {
+    display: none;
+    line-height: 32px;
+}
+
+.nav-links a.link-external .external-icon {
+    display: inline;
+    color: var(--c-divider-dark);
+    float: right;
+    margin-left: 0.5rem;
+}

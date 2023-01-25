@@ -1,0 +1,10 @@
+prototype(Neos.DocsNeosIo:Component.NavBarItem) < prototype(Neos.Fusion:Component) {
+    node = ${node}
+
+    renderer = afx`
+        <div class="item">
+            <Neos.DocsNeosIo:Component.NavBarItemDialog @if={q(node).children().count() > 0} node={props.node} />
+            <Neos.DocsNeosIo:Component.NavBarItemLink @if={q(node).children().count() == 0} node={props.node} />
+        </div>
+    `
+}

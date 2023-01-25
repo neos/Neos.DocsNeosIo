@@ -5,7 +5,7 @@
     label: 'Tutorials Overview'
     help:
       message: 'Task-oriented step-by-step description of a solution, can be opinionated'
-    icon: icon-book-open
+    icon: icon-book
     position: 500
   childNodes:
     main: ~
@@ -13,3 +13,5 @@
     nodeTypes:
       'Neos.Neos:Document': false
       'Neos.DocsNeosIo:Document.Cookbook': true
+      'Neos.DocsNeosIo:Document.CookbookTag': true
+      'Neos.Neos:Shortcut': true

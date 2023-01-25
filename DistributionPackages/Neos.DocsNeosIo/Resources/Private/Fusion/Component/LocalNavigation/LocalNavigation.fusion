@@ -1,12 +1,14 @@
 prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Component) {
-    collection = false
+    items = false
 
     renderer = afx`
-        <div class="local-navigation" style="height: 1px;" @if.has={props.collection}>
-            <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer collection={props.collection} attributes.class="section table-of-contents" />
-            <div @if.inBackend={node.context.inBackend}>
-                <i>This navigation updates only after a reload.</i>
-            </div>
+        <div class="local-navigation sm-hidden">
+            <aside class="toc">
+                <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer items={props.items}/>
+                <div @if.inBackend={node.context.inBackend}>
+                    <i>This navigation updates only after a reload.</i>
+                </div>
+            </aside>
         </div>
     `
 }

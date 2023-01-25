@@ -1,43 +1,11 @@
+@use "../../../../public/Frontend/scss/screen";
 
 .flowpack-searchplugin-search {
 	margin-top: 32px;
-	color: #777;
 
 	form {
+        font-size: 1rem;
 		display: flex;
-	}
-
-	.search-input {
-		flex: 1;
-		color: #777;
-		display: block;
-		font-size: 16px;
-		font-weight: 300;
-		width: 100%;
-		height: 62px;
-		margin: 0;
-		padding: 0 45px 0 30px;
-		border: 0;
-
-		&:focus {
-			outline: none;
-			box-shadow: none;
-		}
-	}
-
-	.search-button {
-		width: 35px;
-		border: 0;
-		transition: transform 0.2s;
-		cursor: pointer;
-		background: white;
-
-		&:active,
-		&:hover,
-		&:focus {
-			background: none;
-			transform: scale(1.1);
-		}
 	}
 
 	.progress {
@@ -45,46 +13,58 @@
 		width: auto;
 	}
 
+    .search-results {
+        border: none;
+    }
+
 	.search-result {
-		padding-top: 15px;
-		padding-bottom: 15px;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        font-weight: 400;
 
 		&:hover,
 		&.focused {
-			background-color: #eee;
-			outline: none;
-		}
-
-		a:visited {
-			color: $secondary-color;
+			background: none;
 		}
 
 		.title {
-			font-size: 1.5rem;
+            font-size: 1.2rem;
+            @include screen.sm {
+                font-size: 1.5rem;
+            }
 			font-weight: 300;
 		}
 
-		p {
-			margin-top: 5px;
-			margin-bottom: 10px;
-		}
+        .highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            @include screen.sm {
+                font-size: 1rem;
+            }
+        }
+
+        .highlight {
+            margin: 0;
+        }
+
+        em {
+            background: var(--c-divider-light);
+        }
 
 		.breadcrumbs {
 			font-size: 0.9rem;
-			font-style: italic;
+
+            svg {
+                vertical-align: text-bottom;
+            }
 		}
 
-		.breadcrumb {
-			font-size: 0.9rem;
-			color: $secondary-color;
-
-			&:before {
-				margin-left: 0;
-				margin-right: 0;
-				font-size: 0.9rem;
-				color: $secondary-color;
-			}
-		}
+        .breadcrumb {
+            color: var(--c-text);
+        }
 	}
 
 	/* if the list not not rendered via ajax */
@@ -95,21 +75,24 @@
 
 		li {
 			&:not(:last-child) {
-				border-bottom: 1px solid $collection-border-color;
+				border-bottom: 1px solid #e0e0e0;
 			}
 		}
 
 		&:empty::before {
 			display: block;
 			content: 'No results found.';
-			padding: 10px 20px;
+			padding: 1rem 0;
 			font-style: italic;
 		}
 	}
 
 	.page-navigation {
-		border-top: 1px solid $collection-border-color;
-		padding-left: 17px;
+        text-align: center;
+
+        ul {
+            padding-left: 0;
+        }
 
 		li {
 			display: inline-block;

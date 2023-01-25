@@ -1,0 +1,28 @@
+prototype(Neos.DocsNeosIo:Component.IframeLayout) < prototype(Neos.Neos:ContentComponent) {
+    authors = false
+    title = false
+    subtitle = false
+    content = ''
+    navCollection = false
+    fullwidth = false
+    tags = false
+    navbarRoot = false
+    sidebarRoot = false
+
+    sidebarOnlyMobile = false
+    localNav = true
+
+    renderer = afx`
+        <Neos.DocsNeosIo:Component.Header
+            navigationRoot={props.sidebarRoot}
+            startingPoint={props.navbarRoot}
+            node={props.navbarRoot}
+            renderCurrentPath={true}
+            sidebarOnlyMobile={props.sidebarOnlyMobile}
+        />
+        <div class="page">
+            {props.content}
+            <Neos.DocsNeosIo:Component.Footer />
+        </div>
+    `
+}

@@ -1,5 +1,6 @@
 prototype(Neos.DocsNeosIo:Content.LinkList) < prototype(Neos.Neos:ContentComponent) {
     renderer = Neos.Neos:ContentCollection {
+        tagName = 'ul'
         attributes.class = 'link-list collection'
         nodePath = ''
     }

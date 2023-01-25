@@ -7,7 +7,7 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             `
         }
     }
-    body = Neos.DocsNeosIo:Component.Layout.Default {
+    body = Neos.DocsNeosIo:Component.Layout {
         title = Neos.Neos:Editable {
             property = 'title'
             block = false
@@ -17,8 +17,8 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             block = false
         }
         tags = ${q(node).property('tags')}
-        navigationRoot = ${q(site).property('navReference') || site}
-        //@process.normalize = CodeQ.UnicodeNormalizer:Normalizer
+        sidebarRoot = ${q(documentNode).parentsUntil('[instanceof Neos.DocsNeosIo:Document.HomePage]').last().get(0) || documentNode}
+        navbarRoot = ${q(site).property('navReference') || site}
     }
 
 	@cache {

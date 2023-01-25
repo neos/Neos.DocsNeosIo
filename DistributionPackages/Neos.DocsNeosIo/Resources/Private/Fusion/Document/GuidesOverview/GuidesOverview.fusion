@@ -1,10 +1,9 @@
 prototype(Neos.DocsNeosIo:Document.GuidesOverview) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
     body {
         fullwidth = true
-        showSupportCall2Action = false
-        content = Neos.Fusion:Collection {
+        content = Neos.Fusion:Loop {
             @process.wrap = ${'<div class="guides-overview cards">' + value + '</div>'}
-            collection = ${q(node).children()}
+            items = ${q(node).children()}
             itemName = 'node'
             itemRenderer = Neos.DocsNeosIo:Document.Guide.Short
         }

@@ -1,0 +1,24 @@
+prototype(Neos.DocsNeosIo:Component.NavBarItemDialog) < prototype(Neos.Fusion:Component) {
+    node = ${node}
+    itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
+    navigationItems = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+
+    renderer = afx`
+        <div class="nav-dropdown-link">
+            <button class="button" onclick="this.parentElement.classList.toggle('open')">
+                <span class="button-text">{ props.itemTitle }</span>
+                <span class="button-arrow" />
+            </button>
+
+            <div class="dialog">
+                <ul>
+                    <Neos.Fusion:Loop items={props.navigationItems} itemName="node">
+                        <li class="dialog-item">
+                            <Neos.DocsNeosIo:Component.NavBarItemDialogItem node={node} />
+                        </li>
+                    </Neos.Fusion:Loop>
+                </ul>
+            </div>
+        </div>
+    `
+}

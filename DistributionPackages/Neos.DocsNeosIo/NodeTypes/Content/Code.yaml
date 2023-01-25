@@ -3,8 +3,8 @@
     'Neos.Neos:Content': true
     'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
   ui:
-    label: Code
-    icon: icon-code
+    label: Code example
+    icon: fas fa-code
     position: 250
     inlineEditable: true
   properties:
@@ -32,6 +32,8 @@
                 label: 'YAML'
               fusion:
                 label: 'Fusion'
+              afx:
+                label: 'AFX'
               fluid:
                 label: 'Fluid'
               php:
@@ -62,6 +64,8 @@
                 label: 'Markdown'
               xml:
                 label: 'XML'
+              docker:
+                label: 'Docker'
     code:
       type: string
       defaultValue: 'Enter code here...'

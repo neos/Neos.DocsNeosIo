@@ -1,21 +1,107 @@
-@charset "utf-8";
-
+// Collections
 .collection {
-	margin-top: 16px;
-	margin-bottom: 16px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    position: relative;
 
-	a.collection-item {
-		color: map-get($brand-colors, primary);
+    .collection-item__link {
+        color: var(--c-accent);
+        background-color: transparent;
+        transition: background-color 0.2s ease;
+        line-height: 1.5rem;
+        padding: .6rem;
+        margin: 0 -0.6rem;
+        outline-offset: 3px;
+        display: flex;
+        gap: 0.75rem;
+        justify-content: flex-end;
+        align-items: baseline;
+    }
 
-		.inline-icon {
-			margin-top: 0.2em;
-		}
+    .inline-icon {
+        transition: color 0.2s ease-in-out;
+        color: var(--c-accent);
+        font-size: 120%;
+    }
 
-        // Clear floating icons
-        &:after {
-            content: "";
-            display: table;
-            clear: both;
+    .collection-item__link .inline-icon.fa-chevron-right {
+        color: var(--c-divider-dark);
+    }
+
+    .collection-item__link .inline-icon.fa-level-up-alt {
+        transform: rotate(90deg);
+    }
+
+    .collection-item .collection-item__link:not(.active):is(:hover,:focus) {
+        color: var(--c-brand-dark);
+        background-color: var(--c-brand-light-3);
+        text-decoration: none;
+        .inline-icon {
+            color: var(--c-brand);
         }
-	}
+    }
+
+    .collection-item--contains-strong .collection-item__text {
+        font-weight: 380;
+    }
+
+    .collection-item {
+        list-style: none;
+
+        // Avatar Collection
+        &.avatar {
+            min-height: 84px;
+            padding-left: 72px;
+            position: relative;
+
+            // Don't style circles inside preloader classes.
+            &:not(.circle-clipper) > .circle,
+            :not(.circle-clipper) > .circle {
+                position: absolute;
+                width: 42px;
+                height: 42px;
+                overflow: hidden;
+                left: 15px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            i.circle {
+                font-size: 18px;
+                line-height: 42px;
+                color: #fff;
+                background-color: #999;
+                text-align: center;
+            }
+
+
+            .title {
+                font-size: 16px;
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .secondary-content {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+            }
+
+        }
+
+        &:last-child .collection-item__link {
+            border-bottom: none;
+        }
+    }
+
+    .collection-item .collection-item__link {
+        transition: background-color .25s, color .25s;
+    }
+
+    .collection-item__text {
+        flex-grow: 1;
+    }
 }

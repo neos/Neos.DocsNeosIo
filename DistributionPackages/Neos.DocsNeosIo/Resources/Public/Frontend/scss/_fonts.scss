@@ -1,3 +1,9 @@
 @charset "utf-8";
 
-$brand-font-family: 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+@import "../fonts/WorkSansVariable/worksans";
+
+$brand-font-family: 'Work Sans', 'Work Sans Fallback', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+
+html,body {
+    font-family: $brand-font-family!important;
+}

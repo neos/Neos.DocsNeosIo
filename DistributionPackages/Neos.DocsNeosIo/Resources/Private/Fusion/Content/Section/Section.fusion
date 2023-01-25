@@ -7,6 +7,9 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
         block = false
         @process.icons = Neos.DocsNeosIo:Helper.IconProcessor
     }
+
+    titleLink = ${q(node).property('titleLink')}
+
     headlineSize = ${q(node).property('headlineSize')}
     content = Neos.Neos:ContentCollection {
         nodePath = '.'
@@ -14,9 +17,13 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
     tags = ${q(node).property('tags')}
 
     renderer = afx`
-        <div id={props.id} class="docs-section section scrollspy">
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if.has={props.title || node.context.inBackend} attributes.class="docs-section-header">{props.title} <a href={'#' + props.id} class="docs-section-link"><i class="fa fa-solid fa-link"></i></a></Neos.Fusion:Tag>
-            <Neos.DocsNeosIo:Component.TagList collection={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
+        <div class="content-section" id={props.id}>
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} attributes.class="docs-section-header" attributes.tabindex="-1">
+                <a href={'#' + props.id} class="header-anchor" aria-label={props.title}>#</a>
+                <a @if={props.titleLink} href={props.titleLink}>{props.title}<i class="fas fa-external-link-alt"></i></a>
+                <Neos.Fusion:Fragment @if={!props.titleLink}>{props.title}</Neos.Fusion:Fragment>
+            </Neos.Fusion:Tag>
+            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
             <div>{props.content}</div>
         </div>
     `

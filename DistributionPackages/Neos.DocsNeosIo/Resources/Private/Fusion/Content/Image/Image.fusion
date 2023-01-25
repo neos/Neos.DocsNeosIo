@@ -23,7 +23,7 @@ prototype(Neos.DocsNeosIo:Content.Image) < prototype(Neos.Neos:ContentComponent)
     renderer = afx`
         <figure class="docs-image">
             <img src={props.src} alt={props.alternativeText} style={props.imgStyles} />
-            <figcaption @if.has={props.text}>{props.text}</figcaption>
+            <figcaption @if={props.text}>{props.text}</figcaption>
         </figure>
     `
 }

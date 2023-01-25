@@ -1,39 +1,98 @@
-@charset "utf-8";
+@use "helpers";
+@use "screen";
 
 .cards {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	padding-top: 1.5rem;
-	padding-left: 1.5rem;
-	padding-bottom: 1.5rem;
+    display: grid;
+    margin: 20px;
+    grid-template-columns: repeat(auto-fill, min(100%, 472px));
+    grid-auto-rows: auto;
+    @include screen.lg {
+        grid-auto-rows: 1fr;
+    }
+    gap: 1rem;
+    justify-content: center;
+}
+
+.card__wrapper {
+    display: grid;
+    filter: drop-shadow(0 3px 12px rgba(0, 0, 0, .07)) drop-shadow(0 1px 4px rgba(0, 0, 0, .07));
 }
 
 .card {
-	width: 100%;
-	margin: 0 1.5rem 1.5rem 0;
-	display: flex;
-	flex-direction: column;
-	background: map-get($brand-colors, secondary);
-	transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid var(--c-divider-light);
+    background: white;
+    @include helpers.neos-borders(12px);
+}
 
-	@media #{$medium-and-up} {
-		flex: 0 1 calc(50% - 1.5rem);
-	}
-	@media #{$extra-large-and-up} {
-		flex: 0 1 calc(33% - 1.5rem);
-	}
+.card--padding {
+    padding: 1rem;
 
-	.card-content {
-		background: map-get($brand-colors, primary);
-		flex-grow: 1;
-	}
+    h2 {
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
 
-	.tags {
-		margin-top: 20px;
-	}
+    p {
+        margin: 0;
+    }
+}
 
-	.card-action {
-		display: block;
-	}
+.card__header {
+    padding: 0.6rem 1rem;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    background: var(--c-text);
+    color: white;
+    margin: -1px -1px 0;
+    font-size: 1.5rem;
+}
+
+a.card__header:hover {
+    background: var(--c-brand-dark);
+    color: #fff;
+    text-decoration: none;
+}
+
+.card__content {
+    flex-grow: 1;
+    padding: 0 1rem;
+
+    p {
+        margin: 0;
+    }
+}
+
+.card__footer {
+    padding: 0 1rem 1rem;
+    gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.tags-container {
+    display: inline-flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    display: inline-block;
+    @include helpers.neos-borders(6px);
+    padding: 5px 10px;
+}
+
+.notice-type-info {
+    background: #e9eef1;
+}
+
+.simple {
+    color: var(--c-text);
+    text-decoration: none;
 }

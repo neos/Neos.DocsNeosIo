@@ -1,4 +1,4 @@
-prototype(Neos.DocsNeosIo:Component.Navigation) < prototype(Neos.DocsNeosIo:Component.Navigation.LevelRenderer) {
+prototype(Neos.DocsNeosIo:Component.Sidebar) < prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) {
     startingPoint = false
     renderCurrentPath = false
 

@@ -14,8 +14,8 @@
   properties:
     title:
       type: string
-      reloadIfChanged: true
       ui:
         label: 'Tab Title'
+        reloadIfChanged: true
         inspector:
           group: 'general'
