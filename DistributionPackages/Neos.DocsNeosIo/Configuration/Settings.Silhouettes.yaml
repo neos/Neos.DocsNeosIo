@@ -41,3 +41,11 @@ Sitegeist:
                     ul: true
                     a: true
                     code: true
+                  linking:
+                    anchor: true
+                    targetBlank: true
+                    nodes: true
+                    assets: true
+                    title: true
+                    relNoFollow: true
+
