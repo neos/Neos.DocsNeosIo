@@ -20,13 +20,12 @@ prototype(Neos.DocsNeosIo:Document.Tags) < prototype(Neos.Fusion:Case) {
         }
     }
     default {
-        condition = ${true}
-        renderer = Neos.Fusion:Http.Message {
+        condition = true
+        renderer = Neos.DocsNeosIo:Document.Page {
             httpResponseHead.statusCode = 404
-            content = Neos.Fusion:Template {
-                templatePath = 'resource://MOC.NotFound/Private/Templates/404.html'
-                path = '404'
-            }
+            documentNode = ${q(site).children('[uriPathSegment = "404"]').get(0)}
+            @context.documentNode = ${this.documentNode}
+            @context.node = ${this.documentNode}
         }
     }
 }

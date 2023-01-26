@@ -1,0 +1,9 @@
+Neos:
+  Flow:
+    error:
+      exceptionHandler:
+        renderingGroups:
+          notFoundExceptions:
+            options:
+              variables:
+                path: '404'

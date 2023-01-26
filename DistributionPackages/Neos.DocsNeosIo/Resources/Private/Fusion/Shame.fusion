@@ -2,3 +2,6 @@
 # Hacky or otherwise shamefull code goes here.
 # This makes later debugging and refactoring easier.
 ##
+
+// Due to https://github.com/neos/neos-development-collection/issues/3995 we need to include the error fusion manually until the next Neos release
+include: resource://Neos.Neos/Private/Fusion/Error/Root.fusion
