@@ -1,6 +1,7 @@
 Neos:
-  GoogleAnalytics:
-    enableTracking: false
+  Flow:
+    session:
+      inactivityTimeout: 0
 
 t3n:
   Neos:
