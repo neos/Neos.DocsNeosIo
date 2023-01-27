@@ -97,7 +97,8 @@
 .sidebar-links {
     margin: 0;
     padding: 0;
-    list-style: none
+    list-style: none;
+    font-feature-settings: "tnum";
 }
 
 .sidebar-link-item {
