@@ -23,7 +23,7 @@
         "flowpack/media-ui": "^0.12",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
         "sitegeist/silhouettes": "^2.0",
-        "sandstorm/mxgraph": "^2.0",
+        "sandstorm/mxgraph": "^3.0",
         "yoast/yoast-seo-for-neos": "^1.3",
         "jonnitto/prettyembedvideoplatforms": "^2.1.0",
         "shel/neos-hyphens": "^1.3",
