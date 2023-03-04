@@ -16,7 +16,8 @@
 
         "flownative/google-cloudstorage": "^5.3.0",
         "rokka/imagine-vips": "^0.31.0",
-        "shel/neos-terminal": "^1.0"
+        "shel/neos-terminal": "^1.0",
+        "jcupitt/vips": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
