@@ -3,6 +3,9 @@
     "description": "docs.neos.io website distribution",
     "license": "GPL-3.0-or-later",
     "config": {
+        "platform": {
+            "php": "8.2"
+        },
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
         "allow-plugins": {
@@ -11,22 +14,47 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "neos/docs-neos-io": "@dev",
+        "neos/neos-development-collection": "9.0.x-dev",
+        "neos/flow-development-collection": "8.3.x-dev",
+        "neos/neos-ui": "9.0.x-dev",
+        "neos/neos-ui-compiled": "9.0.x-dev",
+        "neos/eventstore": "@dev",
+        "neos/eventstore-doctrineadapter": "@dev",
 
         "flownative/google-cloudstorage": "^5.3.0",
         "rokka/imagine-vips": "^0.31.0",
-        "shel/neos-terminal": "^1.0",
-        "jcupitt/vips": "^1.0"
+        "jcupitt/vips": "^1.0",
+        "carbon/includeassets": "dev-master as 5.5.0",
+        "carbon/link": "dev-master as 1.9.0",
+        "jonnitto/prettyembedhelper": "dev-master as 4.1.0",
+        "carbon/notification": "dev-master as 2.4.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "t3n/neos-debug": "^2.0"
+        "neos/rector": "dev-main"
     },
     "repositories": {
         "distribution": {
             "type": "path",
             "url": "./DistributionPackages/*"
+        },
+        "Carbon.IncludeAssets": {
+            "type": "vcs",
+            "url": "https://github.com/skurfuerst/Carbon.IncludeAssets"
+        },
+        "Carbon.Link": {
+            "type": "vcs",
+            "url": "https://github.com/skurfuerst/Carbon.Link"
+        },
+        "Carbon.Notification": {
+            "type": "vcs",
+            "url": "https://github.com/skurfuerst/Carbon.Notification"
+        },
+        "Jonnitto.PrettyEmbedHelper": {
+            "type": "vcs",
+            "url": "https://github.com/skurfuerst/Jonnitto.PrettyEmbedHelper"
         }
     },
     "scripts": {
