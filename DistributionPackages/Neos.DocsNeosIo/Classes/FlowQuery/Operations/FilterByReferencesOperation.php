@@ -49,7 +49,7 @@ class FilterByReferencesOperation extends AbstractOperation
      */
     public function getReferenceFilter(string $propertyName, array $references)
     {
-        return function (NodeInterface $node) use ($propertyName, $references) {
+        return function (\Neos\ContentRepository\Core\Projection\ContentGraph\Node $node) use ($propertyName, $references) {
             $nodeReferences = $node->getProperty($propertyName);
 
             if ($nodeReferences === null) {

@@ -1,3 +1,4 @@
+// TODO 9.0 migration: Line 21: You may need to rewrite "VARIABLE.parent" to Neos.NodeAccess.findParent(VARIABLE). We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
     head {
         headTags = Neos.Fusion:Component {

@@ -5,10 +5,8 @@ namespace Neos\DocsNeosIo\ContentRepository\Transformations;
 use Neos\ContentRepository\Domain\Model\NodeData;
 use Neos\ContentRepository\Migration\Transformations\AbstractTransformation;
 
-/**
- * Transformation to migrate existing title properties to use the soft hyphen instead of ||
- */
-class UpdateHyphenTransformation extends AbstractTransformation
+// TODO 9.0 migration: You need to convert your AbstractTransformation to an implementation of Neos\ContentRepository\NodeMigration\Transformation\TransformationFactoryInterface
+class UpdateHyphenTransformation
 {
     /**
      * @var string

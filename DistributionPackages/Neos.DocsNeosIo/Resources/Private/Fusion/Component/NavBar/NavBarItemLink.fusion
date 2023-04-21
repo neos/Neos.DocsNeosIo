@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemLink) < prototype(Neos.Fusion:Comp
     itemClass = Neos.Fusion:DataStructure {
         base = 'item'
         active = 'active'
-        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.nodeAggregateId.value) > -1}
     }
 
     renderer = afx`
