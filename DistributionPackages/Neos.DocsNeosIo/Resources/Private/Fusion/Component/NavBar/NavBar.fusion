@@ -12,7 +12,7 @@ prototype(Neos.DocsNeosIo:Component.NavBar) < prototype(Neos.Fusion:Component) {
         renderCurrentPath = ${this.renderCurrentPath}
     }
 
-    @context.navBarNodeDepth = ${Neos.Node.depth(this.node) - this.startingPoint.depth}
+    @context.navBarNodeDepth = ${Neos.Node.depth(this.node) - Neos.Node.depth(this.startingPoint)}
     node = ${node}
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
     itemStatus = ${q(node).property('status')}

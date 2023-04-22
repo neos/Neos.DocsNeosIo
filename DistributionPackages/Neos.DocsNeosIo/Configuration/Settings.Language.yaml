@@ -10,8 +10,6 @@ Neos:
           Neos.DocsNeosIo:
             - Main
             - 'NodeTypes/*'
-Neos:
-  Neos:
     sites:
       '*':
         contentDimensions:

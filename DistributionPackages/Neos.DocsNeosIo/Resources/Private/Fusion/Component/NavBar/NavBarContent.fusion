@@ -2,7 +2,7 @@
 // TODO 9.0 migration: Line 4: You may need to rewrite "VARIABLE.depth" to Neos.Node.depth(VARIABLE). We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Neos.DocsNeosIo:Component.NavBarContent) < prototype(Neos.Fusion:Component) {
 
-    @context.navBarNodeDepth = ${Neos.Node.depth(this.node) - this.startingPoint.depth}
+    @context.navBarNodeDepth = ${Neos.Node.depth(this.node) - Neos.Node.depth(this.startingPoint)}
     node = ${node}
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
     itemStatus = ${q(node).property('status')}
