@@ -19,7 +19,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
         itemRenderer = Neos.DocsNeosIo:Component.Sidebar.LevelRenderer
     }
 
-    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.nodeAggregateId.value + '"]').count() > 0))) && this.navigationItems}
+    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.nodeAggregateId.value + '"]').count() > 0)))}
 
     renderer = afx`
         <li class="sidebar-link" >
