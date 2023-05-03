@@ -64,7 +64,7 @@
       ui:
         label: 'ClientEval:node.properties.iconCustom ? "Font Awesome icon" : "oder ein beliebiges Font Awesome icon"'
         help:
-          message: 'We support all [FontAwesome Icons](https://fontawesome.com/icons), in the form `fab fa-neos`'
+          message: 'We support all [FontAwesome 5 Icons](https://fontawesome.com/v5/search), in the form `fab fa-neos` or `fas fa-code`'
         reloadIfChanged: true
         inspector:
           hidden: 'ClientEval:node.properties.icon ? true : false'
