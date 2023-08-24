@@ -3,9 +3,9 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "~8.2.0",
-        "neos/neos-ui": "~8.2.0",
-        "neos/nodetypes-contentreferences": "~8.2.0",
+        "neos/neos": "~8.3.0",
+        "neos/neos-ui": "~8.3.0",
+        "neos/nodetypes-contentreferences": "~8.3.0",
         "neos/redirecthandler-ui": "^2.4",
         "neos/redirecthandler-neosadapter": "^4.3",
         "neos/redirecthandler-databasestorage": "^5.0",
@@ -120,5 +120,10 @@
             "Neos.Flow-20220318174300",
             "Neos.Fusion-20220326120900"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
     }
 }
