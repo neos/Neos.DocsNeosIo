@@ -1,0 +1,11 @@
+prototype(Neos.DocsNeosIo:Document.404) < prototype(Neos.DocsNeosIo:Document.AbstractPage) {
+    body.navCollection = ${q(node).find('main').children()}
+    body.content = Neos.Fusion:Component {
+        main = Neos.Neos:ContentCollection {
+            nodePath = 'main'
+        }
+        renderer = afx`
+            {props.main}
+        `
+    }
+}
