@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import manifest from '@neos-project/neos-ui-extensibility';
-import {$get, $add} from 'plow-js';
 import CodeFormating from './codePlugin';
 import {IconButton} from '@neos-project/react-ui-components';
 
@@ -12,20 +11,23 @@ class IconButtonComponent extends PureComponent {
 }
 
 const addPlugin = (Plugin, isEnabled) => (ckEditorConfiguration, options) => {
-    // we duplicate editorOptions here so it would be possible to write smth like `$get('formatting.sup')`
     if (!isEnabled || isEnabled(options.editorOptions, options)) {
-        ckEditorConfiguration.plugins = ckEditorConfiguration.plugins || [];
-        return $add('plugins', Plugin, ckEditorConfiguration);
+        return {
+            ...ckEditorConfiguration,
+            plugins: [
+                ...(ckEditorConfiguration.plugins || []),
+                Plugin
+            ]
+        };
     }
     return ckEditorConfiguration;
 };
 
 manifest("main", {}, globalRegistry => {
-    const ckEditorRegistry = globalRegistry.get("ckEditor5");
-    const richtextToolbar = ckEditorRegistry.get("richtextToolbar");
-    const config = ckEditorRegistry.get("config");
+    const richtextToolbar = globalRegistry.get('ckEditor5')?.get('richtextToolbar')
+    const config = globalRegistry.get('ckEditor5')?.get('config')
 
-    config.set('code', addPlugin(CodeFormating, $get('formatting.code')));
+    config.set('code', addPlugin(CodeFormating, editorOptions => editorOptions?.formatting?.code));
 
     richtextToolbar.set('code', {
         commandName: 'code',
@@ -34,7 +36,7 @@ manifest("main", {}, globalRegistry => {
         icon: 'code',
         hoverStyle: 'brand',
         tooltip: 'Code',
-        isVisible: $get('formatting.code'),
-        isActive: $get('code')
+        isVisible: editorOptions => editorOptions?.formatting?.code,
+        isActive: formattingUnderCursor => formattingUnderCursor?.code
     });
 });
