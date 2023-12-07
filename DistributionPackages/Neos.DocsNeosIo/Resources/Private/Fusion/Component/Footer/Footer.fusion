@@ -35,10 +35,6 @@ prototype(Neos.DocsNeosIo:Component.Footer) < prototype(Neos.Fusion:Component) {
                             class="fab fa-github"></i>
                             GitHub</a></li>
                         <li><a rel="me noopener" target="_blank" href="https://neos.social/@team"><i class="fab fa-mastodon"></i> Mastodon</a></li>
-                        <li><a target="_blank" rel="noopener" href="https://twitter.com/NeosCMS"><i
-                            class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a target="_blank" rel="noopener" href="https://www.facebook.com/NeosCMS"><i
-                            class="fab fa-facebook"></i> Facebook</a></li>
                         <li><a target="_blank" rel="noopener" href="https://youtube.com/c/NeosCMS"><i
                             class="fab fa-youtube"></i> YouTube</a></li>
                     </ul>
