@@ -4,7 +4,7 @@
   "author": "Roland Schütz",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "cssnano": "^5.1.14",
+    "cssnano": "^6.0.0",
     "prism-neos": "^0.1.0"
   },
   "engine": "node >= 0.10",
