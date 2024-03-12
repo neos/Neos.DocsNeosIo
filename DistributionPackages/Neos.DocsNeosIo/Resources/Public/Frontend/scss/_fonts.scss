@@ -2,7 +2,7 @@
 
 @import "../fonts/WorkSansVariable/worksans";
 
-$brand-font-family: 'Work Sans', 'Work Sans Fallback', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$brand-font-family: 'Work Sans', 'Work Sans Fallback', 'Helvetica Neue', Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif!default;
 
 html,body {
     font-family: $brand-font-family!important;
