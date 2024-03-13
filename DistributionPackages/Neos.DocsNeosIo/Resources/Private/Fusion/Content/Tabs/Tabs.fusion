@@ -1,3 +1,5 @@
+// TODO 9.0 migration: Line 14: You may need to rewrite "VARIABLE.identifier" to VARIABLE.nodeAggregateId.value. We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
+// TODO 9.0 migration: Line 15: You may need to rewrite "VARIABLE.identifier" to VARIABLE.nodeAggregateId.value. We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) {
     renderer = afx`
         <div class="tabs__wrapper">
@@ -12,9 +14,9 @@ prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) 
                         id={'tab-' + item.identifier}
                         aria-controls={'panel-' + item.identifier}
                     >
-                        <div class="tab-link__inner">
+                        <span class="tab-link__inner">
                             <Neos.Neos:Editable node={item} property="title" />
-                        </div>
+                        </span>
                     </button>
                 </Neos.Fusion:Loop>
                 <div class="spacer"></div>

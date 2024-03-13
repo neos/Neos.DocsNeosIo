@@ -17,11 +17,13 @@
         "neos/neos-setup": "^4.0.x-dev",
         "neos/docs-neos-io": "@dev",
 
-        "jcupitt/vips": "^1.0"
+        "jcupitt/vips": "^1.0",
+        "neos/contentrepository-nodemigration": "^9.0@beta"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "flowpack/neos-debug": "dev-main"
+        "flowpack/neos-debug": "dev-main",
+        "neos/rector": "dev-main"
     },
     "notCompatible": {
         "flownative/google-cloudstorage": "v6.0.0-beta.4",

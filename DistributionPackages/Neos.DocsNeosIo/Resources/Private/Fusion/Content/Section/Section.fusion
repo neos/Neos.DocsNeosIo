@@ -1,6 +1,6 @@
 prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponent) {
     id = Neos.DocsNeosIo:Helper.StringToHash {
-        value = ${q(node).property('title') || node.identifier}
+        value = ${q(node).property('title') || node.nodeAggregateId.value}
     }
     title = Neos.Neos:Editable {
         property = 'title'
@@ -18,12 +18,12 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
 
     renderer = afx`
         <div class="content-section" id={props.id}>
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} attributes.class="docs-section-header" attributes.tabindex="-1">
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || renderingMode.isEdit} attributes.class="docs-section-header" attributes.tabindex="-1">
                 <a href={'#' + props.id} class="header-anchor" aria-label={props.title}>#</a>
                 <a @if={props.titleLink} href={props.titleLink}>{props.title}<i class="fas fa-external-link-alt"></i></a>
                 <Neos.Fusion:Fragment @if={!props.titleLink}>{props.title}</Neos.Fusion:Fragment>
             </Neos.Fusion:Tag>
-            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={node.context.inBackend} />
+            <Neos.DocsNeosIo:Component.TagList items={props.tags} additionalClass="backend-tags" filter="" @if.inBackend={renderingMode.isEdit} />
             <div>{props.content}</div>
         </div>
     `

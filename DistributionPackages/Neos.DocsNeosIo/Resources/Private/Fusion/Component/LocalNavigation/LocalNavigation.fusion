@@ -5,7 +5,7 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation) < prototype(Neos.Fusion:Com
         <div class="local-navigation sm-hidden">
             <aside class="toc">
                 <Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer items={props.items}/>
-                <div @if.inBackend={node.context.inBackend}>
+                <div @if.inBackend={renderingMode.isEdit}>
                     <i>This navigation updates only after a reload.</i>
                 </div>
             </aside>

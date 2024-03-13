@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Content.Notice) < prototype(Neos.Neos:ContentComponent) {
     renderer = Neos.DocsNeosIo:Component.Notice {
         id = Neos.DocsNeosIo:Helper.StringToHash {
-            value = ${q(node).property('noticeTitle') || node.identifier}
+            value = ${q(node).property('noticeTitle') || node.nodeAggregateId.value}
         }
         title = Neos.Neos:Editable {
             property = 'noticeTitle'

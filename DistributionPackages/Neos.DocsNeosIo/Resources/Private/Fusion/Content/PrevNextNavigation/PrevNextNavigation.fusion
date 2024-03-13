@@ -7,7 +7,7 @@ prototype(Neos.DocsNeosIo:Content.PrevNextNavigation) < prototype(Neos.Neos:Cont
 
     @cache {
         mode = 'cached'
-        entryIdentifier.node = ${documentNode}
+        entryIdentifier.node = ${Neos.Caching.entryIdentifierForNode(documentNode)}
         entryTags {
             1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
         }

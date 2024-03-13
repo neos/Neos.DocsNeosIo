@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Document.Tags) >
 prototype(Neos.DocsNeosIo:Document.Tags) < prototype(Neos.Fusion:Case) {
     inBackend {
-        condition = ${node.context.inBackend}
+        condition = ${renderingMode.isEdit}
         renderer = Neos.DocsNeosIo:Document.AbstractPage {
             body = Neos.Fusion:Component {
                 renderer = afx`

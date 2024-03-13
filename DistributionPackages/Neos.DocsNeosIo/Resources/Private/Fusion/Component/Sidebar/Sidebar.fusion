@@ -16,7 +16,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar) < prototype(Neos.DocsNeosIo:Compone
 
     @cache {
         mode = 'cached'
-        entryIdentifier.node = ${documentNode}
+        entryIdentifier.node = ${Neos.Caching.entryIdentifierForNode(documentNode)}
         entryTags {
             1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
         }

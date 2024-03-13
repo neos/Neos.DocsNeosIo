@@ -1,3 +1,4 @@
+// TODO 9.0 migration: Line 14: You may need to rewrite "VARIABLE.depth" to Neos.Node.depth(VARIABLE). We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Neos.DocsNeosIo:Component.NavBar) < prototype(Neos.Fusion:Component) {
     logo = Neos.Fusion:ResourceUri {
         path = "resource://Neos.DocsNeosIo/Public/Frontend/img/neos-logo-small.svg"
@@ -10,7 +11,7 @@ prototype(Neos.DocsNeosIo:Component.NavBar) < prototype(Neos.Fusion:Component) {
         renderCurrentPath = ${this.renderCurrentPath}
     }
 
-    @context.navBarNodeDepth = ${this.node.depth - this.startingPoint.depth}
+    @context.navBarNodeDepth = ${Neos.Node.depth(this.node) - this.startingPoint.depth}
     node = ${node}
     itemTitle = ${q(node).property('titleOverride') || q(node).property('title')}
     itemStatus = ${q(node).property('status')}
@@ -20,7 +21,7 @@ prototype(Neos.DocsNeosIo:Component.NavBar) < prototype(Neos.Fusion:Component) {
         current = 'current'
         current.@if.isCurrent = ${node == documentNode}
         active = 'active'
-        active.@if.isActive = ${node == documentNode || (navBarNodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.identifier + '"]').count() > 0))}
+        active.@if.isActive = ${node == documentNode || (navBarNodeDepth != 1 && (q(documentNode).parents('[_identifier = "' + node.nodeAggregateId.value + '"]').count() > 0))}
     }
     navigationClass = ${'navigation-level navigation-level--level-' + (navBarNodeDepth + 1)}
     navigationItems = Neos.Fusion:Loop {
