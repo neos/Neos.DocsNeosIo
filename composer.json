@@ -22,7 +22,6 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "flowpack/neos-debug": "dev-main",
         "neos/rector": "dev-main"
     },
     "notCompatible": {

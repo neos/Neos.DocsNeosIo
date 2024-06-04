@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ab2a35ccb6c52e464e6b44f8678420f",
+    "content-hash": "92ee89b4ce6f5ea219488a4ece99bbef",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2393,46 +2393,6 @@
             "time": "2024-02-14T17:34:36+00:00"
         },
         {
-            "name": "flowpack/cachebuster",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Flowpack/Flowpack.CacheBuster.git",
-                "reference": "c3ee8fd8913b4d9e25be310bc1ae86ffe3f5aad6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.CacheBuster/zipball/c3ee8fd8913b4d9e25be310bc1ae86ffe3f5aad6",
-                "reference": "c3ee8fd8913b4d9e25be310bc1ae86ffe3f5aad6",
-                "shasum": ""
-            },
-            "require": {
-                "neos/flow": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
-            },
-            "type": "neos-package",
-            "autoload": {
-                "psr-4": {
-                    "Flowpack\\CacheBuster\\": "Classes"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Sebastian Helzle",
-                    "email": "sebastian@helzle.it"
-                }
-            ],
-            "description": "Cache buster for static resources in Neos",
-            "support": {
-                "issues": "https://github.com/Flowpack/Flowpack.CacheBuster/issues",
-                "source": "https://github.com/Flowpack/Flowpack.CacheBuster/tree/1.3.0"
-            },
-            "time": "2023-06-02T06:22:35+00:00"
-        },
-        {
             "name": "friendsofphp/proxy-manager-lts",
             "version": "1.x-dev",
             "source": {
@@ -4633,13 +4593,12 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "8d6118429965c98956af29b3d934b4c5d286eda6"
+                "reference": "012bed5b96fc49968b4a2c0322811fd7a19705ed"
             },
             "require": {
                 "carbon/includeassets": "^6.0",
                 "carbon/link": "^2.0",
                 "codeq/publishnotifier": "dev-neos_9",
-                "flowpack/cachebuster": "^1.3",
                 "neos/contentrepositoryregistry-doctrinedbalclient": "~9.0.0",
                 "neos/neos": "9.0.0-beta7",
                 "neos/neos-ui": "9.0.0-beta3",
@@ -11257,51 +11216,6 @@
     ],
     "packages-dev": [
         {
-            "name": "flowpack/neos-debug",
-            "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Flowpack/neos-debug.git",
-                "reference": "22c67d4ede9c129885e34d2c3d394ebdbca42bc3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/neos-debug/zipball/22c67d4ede9c129885e34d2c3d394ebdbca42bc3",
-                "reference": "22c67d4ede9c129885e34d2c3d394ebdbca42bc3",
-                "shasum": ""
-            },
-            "require": {
-                "neos/flow": "^8.3.8 || ^9.0",
-                "neos/neos": "^8.3 || ^9.0",
-                "php": "^8.1"
-            },
-            "replace": {
-                "t3n/neos-debug": "*"
-            },
-            "default-branch": true,
-            "type": "neos-plugin",
-            "extra": {
-                "neos": {
-                    "package-key": "Flowpack.Neos.Debug"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Flowpack\\Neos\\Debug\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Neos CMS helper package to visualize debug information for page rendering",
-            "support": {
-                "issues": "https://github.com/Flowpack/neos-debug/issues",
-                "source": "https://github.com/Flowpack/neos-debug/tree/main"
-            },
-            "time": "2024-02-24T10:12:57+00:00"
-        },
-        {
             "name": "neos/rector",
             "version": "dev-main",
             "source": {
@@ -12218,7 +12132,6 @@
         "neos/docs-neos-io": 20,
         "neos/contentrepository-nodemigration": 10,
         "roave/security-advisories": 20,
-        "flowpack/neos-debug": 20,
         "neos/rector": 20
     },
     "prefer-stable": false,
