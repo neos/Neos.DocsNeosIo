@@ -6,7 +6,7 @@
   superTypes:
     'Neos.DocsNeosIo:Mixin.HideSeo': true
     'Neos.GoogleAnalytics:StatsTabMixin': false
-    'Neos.Seo:NoindexMixin': true
+#    'Neos.Seo:NoindexMixin': true
   properties:
     _hiddenInIndex:
       defaultValue: true
