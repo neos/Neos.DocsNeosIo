@@ -6,7 +6,9 @@
         "neos/neos": "9.0.0-beta10",
         "neos/neos-ui": "9.0.0-beta10",
         "neos/contentrepositoryregistry-doctrinedbalclient": "9.0.0-beta10",
-        "neos/nodetypes-contentreferences": "9.0.0-beta10"
+        "neos/nodetypes-contentreferences": "9.0.0-beta10",
+        "carbon/includeassets": "dev-master",
+        "neos/seo": "^4.1"
     },
     "notCompatible": {
         "carbon/compression": "^4.0",
@@ -21,7 +23,6 @@
         "neos/redirecthandler-ui": "^3.0",
         "neos/redirecthandler-neosadapter": "^5.0",
         "neos/redirecthandler-databasestorage": "^6.0",
-        "neos/seo": "^4.1",
         "sandstorm/mxgraph": "^3.0",
         "shel/neos-hyphens": "dev-main",
         "carbon/link": "^2.0"
