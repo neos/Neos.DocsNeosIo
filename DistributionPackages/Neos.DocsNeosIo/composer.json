@@ -3,12 +3,14 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
-        "neos/neos": "9.0.0-beta10",
-        "neos/neos-ui": "9.0.0-beta10",
-        "neos/contentrepositoryregistry-doctrinedbalclient": "9.0.0-beta10",
-        "neos/nodetypes-contentreferences": "9.0.0-beta10",
+        "neos/neos": "9.0.x-dev",
+        "neos/neos-ui": "9.0.x-dev",
+        "neos/contentgraph-doctrinedbaladapter": "9.0.x-dev",
+        "neos/nodetypes-contentreferences": "9.0.x-dev",
+        "neos/seo": "@dev",
+
         "carbon/includeassets": "dev-task/neos-9-compatibility",
-        "neos/seo": "^4.1"
+        "carbon/link": "^2.0"
     },
     "notCompatible": {
         "carbon/compression": "^4.0",

@@ -15,11 +15,11 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2",
-        "neos/neos-setup": "^4.0.x-dev",
+        "neos/setup": "@dev",
         "neos/docs-neos-io": "@dev",
 
         "jcupitt/vips": "^1.0",
-        "neos/contentrepository-nodemigration": "^9.0@beta"
+        "neos/contentrepository-nodemigration": "9.0.x-dev"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -39,9 +39,21 @@
             "type": "git",
             "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
         },
+        "queo/carbonEel": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Carbon.Eel.git"
+        },
         "queo/carbonIncludeAssets": {
             "type": "git",
             "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
+        },
+        "so-grimm/carbonLink": {
+            "type": "git",
+            "url": "https://github.com/so-grimm/Carbon.Link.git"
+        },
+        "so-grimm/carbonNotification": {
+            "type": "git",
+            "url": "https://github.com/so-grimm/Carbon.Notification.git"
         }
     },
     "scripts": {
