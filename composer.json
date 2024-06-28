@@ -38,6 +38,10 @@
         "Jan3k3y/neos-publishnotifier": {
             "type": "git",
             "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
+        },
+        "queo/carbonIncludeAssets": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
         }
     },
     "scripts": {

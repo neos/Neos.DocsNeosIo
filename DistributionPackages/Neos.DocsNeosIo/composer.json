@@ -7,7 +7,7 @@
         "neos/neos-ui": "9.0.0-beta10",
         "neos/contentrepositoryregistry-doctrinedbalclient": "9.0.0-beta10",
         "neos/nodetypes-contentreferences": "9.0.0-beta10",
-        "carbon/includeassets": "dev-master",
+        "carbon/includeassets": "dev-task/neos-9-compatibility",
         "neos/seo": "^4.1"
     },
     "notCompatible": {
@@ -26,20 +26,6 @@
         "sandstorm/mxgraph": "^3.0",
         "shel/neos-hyphens": "dev-main",
         "carbon/link": "^2.0"
-    },
-    "repositories": {
-        "so-grimm/carbonLink": {
-            "type": "git",
-            "url": "https://github.com/so-grimm/Carbon.Link.git"
-        },
-        "queo/carbonEel": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Carbon.Eel.git"
-        },
-        "queo/carbonIncludeAssets": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
-        }
     },
     "autoload": {
         "psr-4": {
