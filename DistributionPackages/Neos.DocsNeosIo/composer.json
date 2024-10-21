@@ -7,27 +7,28 @@
         "neos/neos-ui": "9.0.x-dev",
         "neos/contentgraph-doctrinedbaladapter": "9.0.x-dev",
         "neos/nodetypes-contentreferences": "9.0.x-dev",
-        "neos/seo": "@dev",
+        "neos/seo": "^4.1",
+        "neos/redirecthandler-ui": "dev-neos9",
+        "neos/redirecthandler-databasestorage": "^6.0",
+        "neos/redirecthandler-neosadapter": "^5.0",
 
         "carbon/includeassets": "dev-task/neos-9-compatibility",
-        "carbon/link": "^2.0"
+        "carbon/link": "dev-task/neos9-compatibility",
+        "flowpack/nodetemplates": "dev-neos9",
+        "shel/neos-hyphens": "dev-main",
+        "yoast/yoast-seo-for-neos": "dev-task/neos-9-compatibility"
     },
     "notCompatible": {
-        "carbon/compression": "^4.0",
         "flowpack/neos-matomo": "^3.5",
-        "flowpack/nodetemplates": "dev-neos9",
         "flowpack/searchplugin": "^5.3",
+        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
+        "sandstorm/mxgraph": "^3.0"
+    },
+    "maybeKicked": {
+        "carbon/compression": "^4.0",
         "flowpack/media-ui": "^0.12",
         "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
-        "yoast/yoast-seo-for-neos": "^1.3",
-        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
-        "shel/neos-workspace-module": "^0.2",
-        "neos/redirecthandler-ui": "^3.0",
-        "neos/redirecthandler-neosadapter": "^5.0",
-        "neos/redirecthandler-databasestorage": "^6.0",
-        "sandstorm/mxgraph": "^3.0",
-        "shel/neos-hyphens": "dev-main",
-        "carbon/link": "^2.0"
+        "shel/neos-workspace-module": "^0.2"
     },
     "autoload": {
         "psr-4": {

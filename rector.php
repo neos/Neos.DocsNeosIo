@@ -12,6 +12,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->paths([
         // TODO: Start adding your paths here, like so:
-        __DIR__ . '/DistributionPackages/'
+//        __DIR__ . '/DistributionPackages/',
+        __DIR__ . '/Packages/Plugins/Yoast.YoastSeoForNeos',
     ]);
 };

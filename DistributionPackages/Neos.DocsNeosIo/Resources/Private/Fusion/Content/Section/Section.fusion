@@ -1,6 +1,6 @@
 prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponent) {
     id = Neos.DocsNeosIo:Helper.StringToHash {
-        value = ${q(node).property('title') || node.nodeAggregateId.value}
+        value = ${q(node).property('title') || node.aggregateId}
     }
     title = Neos.Neos:Editable {
         property = 'title'

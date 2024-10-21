@@ -11,7 +11,7 @@ prototype(Neos.DocsNeosIo:Component.LocalNavigation.LevelRenderer) < prototype(N
                     <a>
                         <Neos.DocsNeosIo:Helper.StringToHash
                             @path="attributes.href"
-                            value={q(node).property('title') || node.nodeAggregateId.value}
+                            value={q(node).property('title') || node.aggregateId}
                             @process={'#' + value}/>
                         {q(node).property('title')}
                     </a>

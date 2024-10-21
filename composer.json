@@ -15,7 +15,6 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.2",
-        "neos/setup": "@dev",
         "neos/docs-neos-io": "@dev",
 
         "jcupitt/vips": "^1.0",
@@ -46,6 +45,10 @@
         "queo/carbonIncludeAssets": {
             "type": "git",
             "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
+        },
+        "queo/yoastSEOForNeos": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git"
         },
         "so-grimm/carbonLink": {
             "type": "git",

@@ -1,6 +1,5 @@
-// TODO 9.0 migration: Line 3: You may need to rewrite "VARIABLE.depth" to Neos.Node.depth(VARIABLE). We did not auto-apply this migration because we cannot be sure whether the variable is a Node.
 prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusion:Component) {
-    @context.nodeDepth = ${Neos.Node.depth(this.node) - startingPoint.depth}
+    @context.nodeDepth = ${Neos.Node.depth(this.node) - Neos.Node.depth(startingPoint)}
     node = ${node}
     itemTitle = ${q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
     itemStatus = ${q(node).property('status')}
@@ -9,7 +8,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
         current = 'current'
         current.@if.isCurrent = ${node == documentNode}
         active = 'active'
-        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.nodeAggregateId.value) > -1}
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.aggregateId) > -1}
     }
     navigationClass = "sidebar-links"
     navigationItems = Neos.Fusion:Loop {
@@ -19,7 +18,7 @@ prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusi
         itemRenderer = Neos.DocsNeosIo:Component.Sidebar.LevelRenderer
     }
 
-    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.nodeAggregateId.value + '"]').count() > 0))) && this.navigationItems}
+    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.aggregateId + '"]').count() > 0))) && this.navigationItems}
 
     renderer = afx`
         <li class="sidebar-link" >

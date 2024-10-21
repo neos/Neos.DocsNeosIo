@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Component.NavBarItemDialogItem) < prototype(Neos.Fusio
     itemClass = Neos.Fusion:DataStructure {
         base = 'item'
         active = 'active'
-        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.nodeAggregateId.value) > -1}
+        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.aggregateId) > -1}
     }
 
     isExternal = false
