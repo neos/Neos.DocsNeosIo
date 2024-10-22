@@ -14,15 +14,15 @@
 
         "carbon/includeassets": "dev-task/neos-9-compatibility",
         "carbon/link": "dev-task/neos9-compatibility",
+        "flowpack/neos-matomo": "dev-neos_9",
         "flowpack/nodetemplates": "dev-neos9",
+        "sandstorm/mxgraph": "dev-neos9",
         "shel/neos-hyphens": "dev-main",
         "yoast/yoast-seo-for-neos": "dev-task/neos-9-compatibility"
     },
     "notCompatible": {
-        "flowpack/neos-matomo": "^3.5",
-        "flowpack/searchplugin": "^5.3",
-        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
-        "sandstorm/mxgraph": "^3.0"
+        "flowpack/searchplugin": "dev-neos9",
+        "jonnitto/prettyembedvideoplatforms": "dev-neos9"
     },
     "maybeKicked": {
         "carbon/compression": "^4.0",

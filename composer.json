@@ -22,7 +22,8 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "neos/rector": "dev-main"
+        "neos/rector": "dev-main",
+        "phpstan/phpstan": "^1.10"
     },
     "notCompatible": {
         "flownative/google-cloudstorage": "v6.0.0-beta.4",
@@ -34,10 +35,6 @@
             "type": "path",
             "url": "./DistributionPackages/*"
         },
-        "Jan3k3y/neos-publishnotifier": {
-            "type": "git",
-            "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
-        },
         "queo/carbonEel": {
             "type": "git",
             "url": "https://github.com/queoGmbH/Carbon.Eel.git"
@@ -46,17 +43,45 @@
             "type": "git",
             "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
         },
-        "queo/yoastSEOForNeos": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git"
-        },
         "so-grimm/carbonLink": {
             "type": "git",
             "url": "https://github.com/so-grimm/Carbon.Link.git"
         },
-        "so-grimm/carbonNotification": {
+        "queo/content-repository-search": {
             "type": "git",
-            "url": "https://github.com/so-grimm/Carbon.Notification.git"
+            "url": "https://github.com/queoGmbH/content-repository-search.git"
+        },
+        "queo/lazydatasource": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/LazyDataSource.git"
+        },
+        "queo/mxgraph": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/MxGraph.git"
+        },
+        "Jan3k3y/neos-matomo": {
+            "type": "git",
+            "url": "https://github.com/Jan3k3y/neos-matomo.git"
+        },
+        "Jan3k3y/neos-publishnotifier": {
+            "type": "git",
+            "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
+        },
+        "queo/prettyembedhelper": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedHelper.git"
+        },
+        "queo/prettyembedvideoplatforms": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedVideoPlatforms.git"
+        },
+        "queo/searchplugin": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Flowpack.SearchPlugin.git"
+        },
+        "queo/yoastSEOForNeos": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git"
         }
     },
     "scripts": {
