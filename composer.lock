@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ad6aaa25dfb2f11174412dd28e2a3fc",
+    "content-hash": "26adb250e57ad55ccc6984fd2beab6c2",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -223,7 +223,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/so-grimm/Carbon.Link.git",
-                "reference": "5603fa45f2a5031480e6756bdd72cec0d405dbec"
+                "reference": "813db6dce9488ab3739b096c2021b51f62a9047c"
             },
             "require": {
                 "carbon/eel": "^1.2 || ^2.0",
@@ -270,7 +270,7 @@
                 "link",
                 "neos"
             ],
-            "time": "2024-03-11T16:27:45+00:00"
+            "time": "2024-10-21T13:18:30+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -3985,7 +3985,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "009430e6c8c7cd662fc01c173ede5ebc82e314be"
+                "reference": "39f8caa76a12a65dc55706a48c18e011f060eec7"
             },
             "require": {
                 "carbon/includeassets": "dev-task/neos-9-compatibility",
@@ -3998,7 +3998,7 @@
                 "neos/nodetypes-contentreferences": "9.0.x-dev",
                 "neos/redirecthandler-databasestorage": "^6.0",
                 "neos/redirecthandler-neosadapter": "^5.0",
-                "neos/redirecthandler-ui": "dev-neos9",
+                "neos/redirecthandler-ui": "^3.0",
                 "neos/seo": "^4.1",
                 "sandstorm/mxgraph": "dev-neos9",
                 "shel/neos-hyphens": "dev-main",
@@ -6233,16 +6233,16 @@
         },
         {
             "name": "neos/redirecthandler-ui",
-            "version": "dev-neos9",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/redirecthandler-ui.git",
-                "reference": "203e234c9813fecaccbbb9cbd2f3d6a9d10bb200"
+                "reference": "9decbe297d8517bda43ff4e27fcf4a64d7af9d20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/redirecthandler-ui/zipball/203e234c9813fecaccbbb9cbd2f3d6a9d10bb200",
-                "reference": "203e234c9813fecaccbbb9cbd2f3d6a9d10bb200",
+                "url": "https://api.github.com/repos/neos/redirecthandler-ui/zipball/9decbe297d8517bda43ff4e27fcf4a64d7af9d20",
+                "reference": "9decbe297d8517bda43ff4e27fcf4a64d7af9d20",
                 "shasum": ""
             },
             "require": {
@@ -6354,7 +6354,7 @@
             "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
             "support": {
                 "issues": "https://github.com/neos/redirecthandler-ui/issues",
-                "source": "https://github.com/neos/redirecthandler-ui/tree/neos9"
+                "source": "https://github.com/neos/redirecthandler-ui/tree/3.0.0"
             },
             "funding": [
                 {
@@ -6362,11 +6362,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2023-10-11T14:53:59+00:00"
+            "time": "2023-10-13T11:24:29+00:00"
         },
         {
             "name": "neos/seo",
-            "version": "4.x-dev",
+            "version": "4.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-seo.git",
@@ -6385,7 +6385,6 @@
             "replace": {
                 "typo3/neos-seo": "self.version"
             },
-            "default-branch": true,
             "type": "neos-package",
             "extra": {
                 "branch-alias": {
@@ -7867,7 +7866,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/queoGmbH/LazyDataSource.git",
-                "reference": "256413b4347130eccb7d51284bce8734b2d994eb"
+                "reference": "df60c4999295a1cda836df2185980333cf7cf306"
             },
             "require": {
                 "neos/neos-ui": "^7.3 || ^8.3 || ^9.0"
@@ -7898,7 +7897,7 @@
                 "issues": "https://github.com/sandstorm/LazyDataSource/issues",
                 "source": "https://github.com/sandstorm/LazyDataSource"
             },
-            "time": "2024-10-22T08:25:13+00:00"
+            "time": "2024-10-22T14:44:20+00:00"
         },
         {
             "name": "sandstorm/mxgraph",
@@ -7906,7 +7905,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/queoGmbH/MxGraph.git",
-                "reference": "5172e72f507f7ef2739c55a1e05068536ec1b7b0"
+                "reference": "36ec4911987ed5f5a0d15345df9b9d6c6f54fe0e"
             },
             "require": {
                 "neos/neos": ">=7.0.0 || dev-master",
@@ -7998,7 +7997,7 @@
                 }
             },
             "description": "Integrate Diagrams.net / Draw.io into Neos as Node Type for creating interactive diagrams and flowcharts",
-            "time": "2024-10-22T08:30:48+00:00"
+            "time": "2024-10-23T17:00:10+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -9966,7 +9965,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git",
-                "reference": "c748535ea3821028f38e1d24d8ee58e6db7f4dff"
+                "reference": "e5b8e5af8c6ec62e70a9527eebbe05b902b5d2b3"
             },
             "require": {
                 "ext-json": "*",
@@ -10012,7 +10011,7 @@
                 "SEO",
                 "Yoast"
             ],
-            "time": "2024-06-28T18:10:04+00:00"
+            "time": "2024-10-21T14:40:02+00:00"
         }
     ],
     "packages-dev": [
@@ -10993,16 +10992,16 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "neos/docs-neos-io": 20,
         "neos/contentrepository-nodemigration": 20,
-        "roave/security-advisories": 20,
-        "neos/rector": 20
+        "neos/docs-neos-io": 20,
+        "neos/rector": 20,
+        "roave/security-advisories": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

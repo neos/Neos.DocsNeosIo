@@ -8,7 +8,7 @@
         "neos/contentgraph-doctrinedbaladapter": "9.0.x-dev",
         "neos/nodetypes-contentreferences": "9.0.x-dev",
         "neos/seo": "^4.1",
-        "neos/redirecthandler-ui": "dev-neos9",
+        "neos/redirecthandler-ui": "^3.0",
         "neos/redirecthandler-databasestorage": "^6.0",
         "neos/redirecthandler-neosadapter": "^5.0",
 
