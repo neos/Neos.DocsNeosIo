@@ -14,7 +14,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "neos/docs-neos-io": "@dev",
 
         "jcupitt/vips": "^1.0",
