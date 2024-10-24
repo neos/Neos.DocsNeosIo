@@ -3,6 +3,7 @@
     "description": "docs.neos.io site package",
     "type": "neos-site",
     "require": {
+        "neos/flow": "9.0.0-beta11",
         "neos/neos": "9.0.0-beta13",
         "neos/neos-ui": "9.0.0-beta13",
         "neos/contentgraph-doctrinedbaladapter": "9.0.0-beta13",
