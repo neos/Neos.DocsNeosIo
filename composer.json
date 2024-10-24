@@ -21,7 +21,8 @@
         "rokka/imagine-vips": "^0.31.0",
 
         "jcupitt/vips": "^1.0",
-        "neos/contentrepository-legacynodemigration": "9.0.0-beta13"
+        "neos/contentrepository-legacynodemigration": "9.0.0-beta13",
+        "cweagans/composer-patches": "^1.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -87,6 +88,14 @@
         "queo/yoastSEOForNeos": {
             "type": "git",
             "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git"
+        }
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "neos/contentrepository-nodeaccess": {
+                "TASK: Reintroduce 8.3 context fq operation": "Patches/5130.patch"
+            }
         }
     },
     "scripts": {
