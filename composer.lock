@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26adb250e57ad55ccc6984fd2beab6c2",
+    "content-hash": "7019a86285bf0709ebfd0a19149294be",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -173,6 +173,58 @@
             "time": "2024-04-17T15:58:53+00:00"
         },
         {
+            "name": "carbon/fileloader",
+            "version": "0.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarbonPackages/Carbon.FileLoader.git",
+                "reference": "0042275a756e26a4720c067755f40844896b8e97"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.FileLoader/zipball/0042275a756e26a4720c067755f40844896b8e97",
+                "reference": "0042275a756e26a4720c067755f40844896b8e97",
+                "shasum": ""
+            },
+            "require": {
+                "neos/fusion": "^7.3 || ^8.0 || ^9.0 || dev-master"
+            },
+            "type": "neos-carbon",
+            "extra": {
+                "neos": {
+                    "package-key": "Carbon.FileLoader"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Carbon\\FileLoader\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "hello@uhlmann.pro",
+                    "homepage": "https://www.uhlmann.pro",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Load files for components in Flow and Neos CMS",
+            "keywords": [
+                "Neos",
+                "flow",
+                "neoscms"
+            ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.FileLoader/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.FileLoader/tree/0.1.6"
+            },
+            "time": "2024-07-04T13:25:59+00:00"
+        },
+        {
             "name": "carbon/includeassets",
             "version": "dev-task/neos-9-compatibility",
             "source": {
@@ -271,6 +323,71 @@
                 "neos"
             ],
             "time": "2024-10-21T13:18:30+00:00"
+        },
+        {
+            "name": "carbon/notification",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/CarbonPackages/Carbon.Notification.git",
+                "reference": "13aa77726f785c8eb1d50d865bed0dc82a68614b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.Notification/zipball/13aa77726f785c8eb1d50d865bed0dc82a68614b",
+                "reference": "13aa77726f785c8eb1d50d865bed0dc82a68614b",
+                "shasum": ""
+            },
+            "require": {
+                "neos/fusion": "^9.0 || dev-master"
+            },
+            "type": "neos-carbon",
+            "extra": {
+                "installer-name": "Carbon.Notification",
+                "neos": {
+                    "package-key": "Carbon.Notification"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Carbon\\Notification\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "hello@uhlmann.pro",
+                    "homepage": "https://www.uhlmann.pro",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package provides a tiny fusion helper for notifications.",
+            "keywords": [
+                "FUSION",
+                "Neos",
+                "carbon",
+                "flow",
+                "helper"
+            ],
+            "support": {
+                "issues": "https://github.com/CarbonPackages/Carbon.Notification/issues",
+                "source": "https://github.com/CarbonPackages/Carbon.Notification/tree/3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/Jonnitto/20eur",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/jonnitto",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-13T08:47:02+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -2160,6 +2277,280 @@
             "time": "2024-02-14T17:34:36+00:00"
         },
         {
+            "name": "firebase/php-jwt",
+            "version": "v6.10.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/firebase/php-jwt.git",
+                "reference": "500501c2ce893c824c801da135d02661199f60c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/firebase/php-jwt/zipball/500501c2ce893c824c801da135d02661199f60c5",
+                "reference": "500501c2ce893c824c801da135d02661199f60c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.4",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.5",
+                "psr/cache": "^2.0||^3.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0"
+            },
+            "suggest": {
+                "ext-sodium": "Support EdDSA (Ed25519) signatures",
+                "paragonie/sodium_compat": "Support EdDSA (Ed25519) signatures when libsodium is not present"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Firebase\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Neuman Vong",
+                    "email": "neuman+pear@twilio.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Anant Narayanan",
+                    "email": "anant@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+            "homepage": "https://github.com/firebase/php-jwt",
+            "keywords": [
+                "jwt",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/firebase/php-jwt/issues",
+                "source": "https://github.com/firebase/php-jwt/tree/v6.10.1"
+            },
+            "time": "2024-05-18T18:05:11+00:00"
+        },
+        {
+            "name": "flownative/google-cloudstorage",
+            "version": "v6.0.0-beta.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/flownative/flow-google-cloudstorage.git",
+                "reference": "b1f6d9395f6af9470e9edf10d86ff214103f588e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/flownative/flow-google-cloudstorage/zipball/b1f6d9395f6af9470e9edf10d86ff214103f588e",
+                "reference": "b1f6d9395f6af9470e9edf10d86ff214103f588e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "ext-zlib": "*",
+                "google/cloud-storage": "^1.1",
+                "neos/flow": "^7.0 || ^8.0 || 9.0.*",
+                "php": "8.0.* || 8.1.* || 8.2.* || 8.3.*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "applied-flow-migrations": [
+                    "TYPO3.FLOW3-201201261636",
+                    "TYPO3.Fluid-201205031303",
+                    "TYPO3.FLOW3-201205292145",
+                    "TYPO3.FLOW3-201206271128",
+                    "TYPO3.FLOW3-201209201112",
+                    "TYPO3.Flow-201209251426",
+                    "TYPO3.Flow-201211151101",
+                    "TYPO3.Flow-201212051340",
+                    "TYPO3.TypoScript-130516234520",
+                    "TYPO3.TypoScript-130516235550",
+                    "TYPO3.TYPO3CR-130523180140",
+                    "TYPO3.Neos.NodeTypes-201309111655",
+                    "TYPO3.Flow-201310031523",
+                    "TYPO3.Flow-201405111147",
+                    "TYPO3.Neos-201407061038",
+                    "TYPO3.Neos-201409071922",
+                    "TYPO3.TYPO3CR-140911160326",
+                    "TYPO3.Neos-201410010000",
+                    "TYPO3.TYPO3CR-141101082142",
+                    "TYPO3.Neos-20141113115300",
+                    "TYPO3.Fluid-20141113120800",
+                    "TYPO3.Flow-20141113121400",
+                    "TYPO3.Fluid-20141121091700",
+                    "TYPO3.Neos-20141218134700",
+                    "TYPO3.Fluid-20150214130800",
+                    "TYPO3.Neos-20150303231600",
+                    "TYPO3.TYPO3CR-20150510103823",
+                    "TYPO3.Flow-20151113161300",
+                    "TYPO3.Flow-20161115140400",
+                    "TYPO3.Flow-20161115140430",
+                    "Neos.Flow-20161124204700",
+                    "Neos.Flow-20161124204701",
+                    "Neos.Flow-20161124224015",
+                    "Neos.Eel-20161124230101",
+                    "Neos.Kickstart-20161124230102",
+                    "Neos.Imagine-20161124231742",
+                    "Neos.Media-20161124233100",
+                    "Neos.Kickstarter-20161125110814",
+                    "TYPO3.Form-20160601101500",
+                    "Neos.Twitter.Bootstrap-20161124204912",
+                    "Neos.Form-20161124205254",
+                    "Neos.Party-20161124225257",
+                    "Neos.SwiftMailer-20161130105617",
+                    "Neos.Seo-20170127154600",
+                    "Neos.Flow-20180415105700",
+                    "Neos.Neos-20180907103800",
+                    "Neos.Neos.Ui-20190319094900",
+                    "Neos.Flow-20190425144900",
+                    "Neos.Flow-20190515215000",
+                    "Neos.NodeTypes-20190917101945",
+                    "Neos.NodeTypes-20200120114136",
+                    "Neos.Flow-20200813181400",
+                    "Neos.Flow-20201003165200",
+                    "Neos.Flow-20201109224100",
+                    "Neos.Flow-20201205172733",
+                    "Neos.Flow-20201207104500"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flownative\\Google\\CloudStorage\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Lemke",
+                    "email": "robert@flownative.com",
+                    "homepage": "https://www.flownative.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This Flow package allows you to store assets (resources) in Google Cloud Storage and publish resources to GCS.",
+            "support": {
+                "issues": "https://github.com/flownative/flow-google-cloudstorage/issues",
+                "source": "https://github.com/flownative/flow-google-cloudstorage/tree/v6.0.0-beta.4"
+            },
+            "time": "2024-01-18T08:50:26+00:00"
+        },
+        {
+            "name": "flowpack/listable",
+            "version": "v2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowpack/Flowpack.Listable.git",
+                "reference": "5f1eafbf1fcb68d0dec2c58eb403fc8d78829059"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.Listable/zipball/5f1eafbf1fcb68d0dec2c58eb403fc8d78829059",
+                "reference": "5f1eafbf1fcb68d0dec2c58eb403fc8d78829059",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/neos": "*"
+            },
+            "replace": {
+                "sfi/listable": "v0.1"
+            },
+            "type": "typo3-flow-package",
+            "extra": {
+                "applied-flow-migrations": [
+                    "TYPO3.FLOW3-201201261636",
+                    "TYPO3.Fluid-201205031303",
+                    "TYPO3.FLOW3-201205292145",
+                    "TYPO3.FLOW3-201206271128",
+                    "TYPO3.FLOW3-201209201112",
+                    "TYPO3.Flow-201209251426",
+                    "TYPO3.Flow-201211151101",
+                    "TYPO3.Flow-201212051340",
+                    "TYPO3.TypoScript-130516234520",
+                    "TYPO3.TypoScript-130516235550",
+                    "TYPO3.TYPO3CR-130523180140",
+                    "TYPO3.Flow-201310031523",
+                    "TYPO3.Flow-201405111147",
+                    "TYPO3.Neos-201407061038",
+                    "TYPO3.Neos-201409071922",
+                    "TYPO3.TYPO3CR-140911160326",
+                    "TYPO3.Neos-201410010000",
+                    "TYPO3.TYPO3CR-141101082142",
+                    "TYPO3.Neos-20141113115300",
+                    "TYPO3.Fluid-20141113120800",
+                    "TYPO3.Flow-20141113121400",
+                    "TYPO3.Fluid-20141121091700",
+                    "TYPO3.Neos-20141218134700",
+                    "TYPO3.Fluid-20150214130800",
+                    "TYPO3.Neos-20150303231600",
+                    "TYPO3.TYPO3CR-20150510103823",
+                    "TYPO3.Flow-20151113161300",
+                    "TYPO3.Form-20160601101500",
+                    "TYPO3.Flow-20161115140400",
+                    "TYPO3.Flow-20161115140430",
+                    "Neos.Flow-20161124204700",
+                    "Neos.Flow-20161124204701",
+                    "Neos.Twitter.Bootstrap-20161124204912",
+                    "Neos.Form-20161124205254",
+                    "Neos.Flow-20161124224015",
+                    "Neos.Party-20161124225257",
+                    "Neos.Eel-20161124230101",
+                    "Neos.Kickstart-20161124230102",
+                    "Neos.Setup-20161124230842",
+                    "Neos.Imagine-20161124231742",
+                    "Neos.Media-20161124233100",
+                    "Neos.SiteKickstarter-20161125002311",
+                    "Neos.Neos-20161125002322",
+                    "Neos.ContentRepository-20161125012000",
+                    "Neos.Fusion-20161125013710",
+                    "Neos.Setup-20161125014759",
+                    "Neos.SiteKickstarter-20161125095901",
+                    "Neos.Fusion-20161125104701",
+                    "Neos.Neos-20161125104802",
+                    "Neos.Kickstarter-20161125110814",
+                    "Neos.Neos-20161125122412",
+                    "Neos.Flow-20161125124112",
+                    "TYPO3.FluidAdaptor-20161130112935",
+                    "Neos.Fusion-20161201202543",
+                    "Neos.Neos-20161201222211",
+                    "Neos.Fusion-20161202215034",
+                    "Neos.Fusion-20161219092345",
+                    "Neos.ContentRepository-20161219093512",
+                    "Neos.Media-20161219094126",
+                    "Neos.Neos-20161219094403",
+                    "Neos.Neos-20161219122512",
+                    "Neos.Fusion-20161219130100",
+                    "Neos.Neos-20161220163741"
+                ]
+            },
+            "autoload": {
+                "psr-0": {
+                    "Flowpack\\Listable": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Tiny extension for listing things",
+            "support": {
+                "issues": "https://github.com/Flowpack/Flowpack.Listable/issues",
+                "source": "https://github.com/Flowpack/Flowpack.Listable/tree/v2.0"
+            },
+            "time": "2016-12-27T12:08:21+00:00"
+        },
+        {
             "name": "flowpack/neos-matomo",
             "version": "dev-neos_9",
             "source": {
@@ -2375,6 +2766,691 @@
                 }
             ],
             "time": "2024-05-21T17:32:42+00:00"
+        },
+        {
+            "name": "google/auth",
+            "version": "v1.42.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-auth-library-php.git",
+                "reference": "0c25599a91530b5847f129b271c536f75a7563f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/0c25599a91530b5847f129b271c536f75a7563f5",
+                "reference": "0c25599a91530b5847f129b271c536f75a7563f5",
+                "shasum": ""
+            },
+            "require": {
+                "firebase/php-jwt": "^6.0",
+                "guzzlehttp/guzzle": "^7.4.5",
+                "guzzlehttp/psr7": "^2.4.5",
+                "php": "^8.0",
+                "psr/cache": "^2.0||^3.0",
+                "psr/http-message": "^1.1||^2.0"
+            },
+            "require-dev": {
+                "guzzlehttp/promises": "^2.0",
+                "kelvinmo/simplejwt": "0.7.1",
+                "phpseclib/phpseclib": "^3.0.35",
+                "phpspec/prophecy-phpunit": "^2.1",
+                "phpunit/phpunit": "^9.6",
+                "sebastian/comparator": ">=1.2.3",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/process": "^6.0||^7.0",
+                "webmozart/assert": "^1.11"
+            },
+            "suggest": {
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings or for token management. Please require version ^2."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Auth\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google Auth Library for PHP",
+            "homepage": "http://github.com/google/google-auth-library-php",
+            "keywords": [
+                "Authentication",
+                "google",
+                "oauth2"
+            ],
+            "support": {
+                "docs": "https://googleapis.github.io/google-auth-library-php/main/",
+                "issues": "https://github.com/googleapis/google-auth-library-php/issues",
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.42.0"
+            },
+            "time": "2024-08-26T18:33:48+00:00"
+        },
+        {
+            "name": "google/cloud-core",
+            "version": "v1.60.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-core.git",
+                "reference": "7d63ba4295b799dc63227b6c9daf9dc207650eb4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-core/zipball/7d63ba4295b799dc63227b6c9daf9dc207650eb4",
+                "reference": "7d63ba4295b799dc63227b6c9daf9dc207650eb4",
+                "shasum": ""
+            },
+            "require": {
+                "google/auth": "^1.34",
+                "google/gax": "^1.34.0",
+                "guzzlehttp/guzzle": "^6.5.8|^7.4.4",
+                "guzzlehttp/promises": "^1.4||^2.0",
+                "guzzlehttp/psr7": "^2.6",
+                "monolog/monolog": "^2.9|^3.0",
+                "php": "^8.0",
+                "psr/http-message": "^1.0|^2.0",
+                "rize/uri-template": "~0.3"
+            },
+            "require-dev": {
+                "erusev/parsedown": "^1.6",
+                "google/cloud-common-protos": "~0.5",
+                "opis/closure": "^3",
+                "phpdocumentor/reflection": "^5.3.3",
+                "phpdocumentor/reflection-docblock": "^5.3",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "opis/closure": "May be used to serialize closures to process jobs in the batch daemon. Please require version ^3.",
+                "symfony/lock": "Required for the Spanner cached based session pool. Please require the following commit: 3.3.x-dev#1ba6ac9"
+            },
+            "bin": [
+                "bin/google-cloud-batch"
+            ],
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "cloud-core",
+                    "target": "googleapis/google-cloud-php-core.git",
+                    "path": "Core",
+                    "entry": "src/ServiceBuilder.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\Core\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google Cloud PHP shared dependency, providing functionality useful to all components.",
+            "support": {
+                "source": "https://github.com/googleapis/google-cloud-php-core/tree/v1.60.0"
+            },
+            "time": "2024-09-28T04:24:22+00:00"
+        },
+        {
+            "name": "google/cloud-storage",
+            "version": "v1.43.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-cloud-php-storage.git",
+                "reference": "e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc",
+                "reference": "e4a071bd5efaecd14fe82b0f4f7748d1acfb1cfc",
+                "shasum": ""
+            },
+            "require": {
+                "google/cloud-core": "^1.55",
+                "php": "^8.0",
+                "ramsey/uuid": "^4.2.3"
+            },
+            "require-dev": {
+                "erusev/parsedown": "^1.6",
+                "google/cloud-pubsub": "^2.0",
+                "phpdocumentor/reflection": "^5.3.3",
+                "phpdocumentor/reflection-docblock": "^5.3",
+                "phpseclib/phpseclib": "^2.0||^3.0",
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "2.*"
+            },
+            "suggest": {
+                "google/cloud-pubsub": "May be used to register a topic to receive bucket notifications.",
+                "phpseclib/phpseclib": "May be used in place of OpenSSL for creating signed Cloud Storage URLs. Please require version ^2."
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "cloud-storage",
+                    "target": "googleapis/google-cloud-php-storage.git",
+                    "path": "Storage",
+                    "entry": "src/StorageClient.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Cloud\\Storage\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Cloud Storage Client for PHP",
+            "support": {
+                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.43.1"
+            },
+            "time": "2024-10-05T04:59:14+00:00"
+        },
+        {
+            "name": "google/common-protos",
+            "version": "4.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/common-protos-php.git",
+                "reference": "38a9a8bb459fa618da797d25d7bf36bb21d1103d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/38a9a8bb459fa618da797d25d7bf36bb21d1103d",
+                "reference": "38a9a8bb459fa618da797d25d7bf36bb21d1103d",
+                "shasum": ""
+            },
+            "require": {
+                "google/protobuf": "^v3.25.3||^4.26.1",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.6"
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "common-protos",
+                    "target": "googleapis/common-protos-php.git",
+                    "path": "CommonProtos",
+                    "entry": "README.md"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\Api\\": "src/Api",
+                    "Google\\Iam\\": "src/Iam",
+                    "Google\\Rpc\\": "src/Rpc",
+                    "Google\\Type\\": "src/Type",
+                    "Google\\Cloud\\": "src/Cloud",
+                    "GPBMetadata\\Google\\Api\\": "metadata/Api",
+                    "GPBMetadata\\Google\\Iam\\": "metadata/Iam",
+                    "GPBMetadata\\Google\\Rpc\\": "metadata/Rpc",
+                    "GPBMetadata\\Google\\Type\\": "metadata/Type",
+                    "GPBMetadata\\Google\\Cloud\\": "metadata/Cloud",
+                    "GPBMetadata\\Google\\Logging\\": "metadata/Logging"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google API Common Protos for PHP",
+            "homepage": "https://github.com/googleapis/common-protos-php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "source": "https://github.com/googleapis/common-protos-php/tree/v4.8.3"
+            },
+            "time": "2024-09-07T01:37:15+00:00"
+        },
+        {
+            "name": "google/gax",
+            "version": "v1.34.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/gax-php.git",
+                "reference": "173f0a97323284f91fd453c4ed7ed8317ecf6cfa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/gax-php/zipball/173f0a97323284f91fd453c4ed7ed8317ecf6cfa",
+                "reference": "173f0a97323284f91fd453c4ed7ed8317ecf6cfa",
+                "shasum": ""
+            },
+            "require": {
+                "google/auth": "^1.34.0",
+                "google/common-protos": "^4.4",
+                "google/grpc-gcp": "^0.4",
+                "google/longrunning": "~0.4",
+                "google/protobuf": "^v3.25.3||^4.26.1",
+                "grpc/grpc": "^1.13",
+                "guzzlehttp/promises": "^2.0",
+                "guzzlehttp/psr7": "^2.0",
+                "php": "^8.0",
+                "ramsey/uuid": "^4.0"
+            },
+            "conflict": {
+                "ext-protobuf": "<3.7.0"
+            },
+            "require-dev": {
+                "phpspec/prophecy-phpunit": "^2.1",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\ApiCore\\": "src",
+                    "GPBMetadata\\ApiCore\\": "metadata/ApiCore"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Google API Core for PHP",
+            "homepage": "https://github.com/googleapis/gax-php",
+            "keywords": [
+                "google"
+            ],
+            "support": {
+                "issues": "https://github.com/googleapis/gax-php/issues",
+                "source": "https://github.com/googleapis/gax-php/tree/v1.34.1"
+            },
+            "time": "2024-08-15T18:00:58+00:00"
+        },
+        {
+            "name": "google/grpc-gcp",
+            "version": "v0.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GoogleCloudPlatform/grpc-gcp-php.git",
+                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GoogleCloudPlatform/grpc-gcp-php/zipball/2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
+                "reference": "2a80dbf690922aa52bb6bb79b9a32a9637a5c2d9",
+                "shasum": ""
+            },
+            "require": {
+                "google/auth": "^1.3",
+                "google/protobuf": "^v3.25.3||^4.26.1",
+                "grpc/grpc": "^v1.13.0",
+                "php": "^8.0",
+                "psr/cache": "^1.0.1||^2.0.0||^3.0.0"
+            },
+            "require-dev": {
+                "google/cloud-spanner": "^1.7",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grpc\\Gcp\\": "src/"
+                },
+                "classmap": [
+                    "src/generated/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "gRPC GCP library for channel management",
+            "support": {
+                "issues": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/issues",
+                "source": "https://github.com/GoogleCloudPlatform/grpc-gcp-php/tree/v0.4.0"
+            },
+            "time": "2024-04-03T16:37:55+00:00"
+        },
+        {
+            "name": "google/longrunning",
+            "version": "0.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/php-longrunning.git",
+                "reference": "ed718a735e407826c3332b7197a44602eb03e608"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/php-longrunning/zipball/ed718a735e407826c3332b7197a44602eb03e608",
+                "reference": "ed718a735e407826c3332b7197a44602eb03e608",
+                "shasum": ""
+            },
+            "require-dev": {
+                "google/gax": "^1.34.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "component": {
+                    "id": "longrunning",
+                    "path": "LongRunning",
+                    "entry": null,
+                    "target": "googleapis/php-longrunning"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Google\\LongRunning\\": "src/LongRunning",
+                    "Google\\ApiCore\\LongRunning\\": "src/ApiCore/LongRunning",
+                    "GPBMetadata\\Google\\Longrunning\\": "metadata/Longrunning"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Google LongRunning Client for PHP",
+            "support": {
+                "source": "https://github.com/googleapis/php-longrunning/tree/v0.4.3"
+            },
+            "time": "2024-06-01T03:14:01+00:00"
+        },
+        {
+            "name": "google/protobuf",
+            "version": "v4.28.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/protocolbuffers/protobuf-php.git",
+                "reference": "c5c311e0f3d89928251ac5a2f0e3db283612c100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/c5c311e0f3d89928251ac5a2f0e3db283612c100",
+                "reference": "c5c311e0f3d89928251ac5a2f0e3db283612c100",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.0.0"
+            },
+            "suggest": {
+                "ext-bcmath": "Need to support JSON deserialization"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Google\\Protobuf\\": "src/Google/Protobuf",
+                    "GPBMetadata\\Google\\Protobuf\\": "src/GPBMetadata/Google/Protobuf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "proto library for PHP",
+            "homepage": "https://developers.google.com/protocol-buffers/",
+            "keywords": [
+                "proto"
+            ],
+            "support": {
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v4.28.3"
+            },
+            "time": "2024-10-22T22:27:17+00:00"
+        },
+        {
+            "name": "grpc/grpc",
+            "version": "1.57.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/grpc/grpc-php.git",
+                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/b610c42022ed3a22f831439cb93802f2a4502fdf",
+                "reference": "b610c42022ed3a22f831439cb93802f2a4502fdf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "google/auth": "^v1.3.0"
+            },
+            "suggest": {
+                "ext-protobuf": "For better performance, install the protobuf C extension.",
+                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Grpc\\": "src/lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "gRPC library for PHP",
+            "homepage": "https://grpc.io",
+            "keywords": [
+                "rpc"
+            ],
+            "support": {
+                "source": "https://github.com/grpc/grpc-php/tree/v1.57.0"
+            },
+            "time": "2023-08-14T23:57:54+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "7.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/41042bc7ab002487b876a0683fc8dce04ddce104",
+                "reference": "41042bc7ab002487b876a0683fc8dce04ddce104",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/promises": "^1.5.3 || ^2.0.1",
+                "guzzlehttp/psr7": "^1.9.1 || ^2.5.1",
+                "php": "^7.2.5 || ^8.0",
+                "psr/http-client": "^1.0",
+                "symfony/deprecation-contracts": "^2.2 || ^3.0"
+            },
+            "provide": {
+                "psr/http-client-implementation": "1.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "ext-curl": "*",
+                "php-http/client-integration-tests": "dev-master#2c025848417c1135031fdf9c728ee53d0a7ceaee as 3.0.999",
+                "php-http/message-factory": "^1.1",
+                "phpunit/phpunit": "^8.5.36 || ^9.6.15",
+                "psr/log": "^1.1 || ^2.0 || ^3.0"
+            },
+            "suggest": {
+                "ext-curl": "Required for CURL handler support",
+                "ext-intl": "Required for Internationalized Domain Name (IDN) support",
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Jeremy Lindblom",
+                    "email": "jeremeamia@gmail.com",
+                    "homepage": "https://github.com/jeremeamia"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "psr-18",
+                "psr-7",
+                "rest",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/7.8.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/guzzle",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-12-03T20:35:24+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8.2",
+                "phpunit/phpunit": "^8.5.39 || ^9.6.20"
+            },
+            "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/2.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/promises",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-10-17T10:06:22+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -2614,6 +3690,115 @@
                 "source": "https://github.com/libvips/php-vips/tree/v1.0.10"
             },
             "time": "2022-12-04T16:21:42+00:00"
+        },
+        {
+            "name": "jonnitto/prettyembedhelper",
+            "version": "dev-neos9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedHelper.git",
+                "reference": "7a73f85b0c5a9323da7c012474ef86dca7e0a921"
+            },
+            "require": {
+                "carbon/eel": "^2.8",
+                "carbon/fileloader": "^0.1",
+                "carbon/notification": "^2.4 || ^3.0",
+                "ext-dom": "*",
+                "ext-json": "*",
+                "neos/fusion-afx": "^7.3 || ^8.0 || ^9.0",
+                "neos/neos": "^7.3 || ^8.0 || ^9.0",
+                "php": "^8.1 || ^8.2",
+                "sitegeist/slipstream": "^2.1.6"
+            },
+            "suggest": {
+                "james-heinrich/getid3": "Get the duration of internal audio and video files. You need to install the 2.0-beta version"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "installer-name": "Jonnitto.PrettyEmbedHelper",
+                "neos": {
+                    "package-key": "Jonnitto.PrettyEmbedHelper"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jonnitto\\PrettyEmbedHelper\\": "Classes"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "hello@uhlmann.pro",
+                    "homepage": "https://www.uhlmann.pro",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Helper mixins, prototypes and frontend resources for the PrettyEmbed Series",
+            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper",
+            "keywords": [
+                "contentelement",
+                "flow",
+                "neos",
+                "video"
+            ],
+            "support": {
+                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper/issues",
+                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper"
+            },
+            "time": "2024-10-23T11:52:24+00:00"
+        },
+        {
+            "name": "jonnitto/prettyembedvideoplatforms",
+            "version": "dev-neos9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedVideoPlatforms.git",
+                "reference": "4669bfdae091cd8d6504ef0a83af2bcbb11cd752"
+            },
+            "require": {
+                "jonnitto/prettyembedhelper": "^6.0 || dev-neos9"
+            },
+            "type": "neos-plugin",
+            "extra": {
+                "installer-name": "Jonnitto.PrettyEmbedVideoPlatforms",
+                "neos": {
+                    "package-key": "Jonnitto.PrettyEmbedVideoPlatforms"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jonnitto\\PrettyEmbedVideoPlatforms\\": "Classes"
+                }
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jon Uhlmann",
+                    "email": "hello@uhlmann.pro",
+                    "homepage": "https://www.uhlmann.pro",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Prettier embeds for your YouTube and Vimeo videos and playlists in Neos CMS - with nice options like high-res preview images, lightbox feature and advanced customization of embed options.",
+            "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms",
+            "keywords": [
+                "contentelement",
+                "flow",
+                "neos",
+                "video",
+                "vimeo",
+                "youtube"
+            ],
+            "support": {
+                "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/issues",
+                "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms"
+            },
+            "time": "2024-10-22T08:17:28+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -3215,6 +4400,107 @@
             "time": "2019-02-05T23:41:09+00:00"
         },
         {
+            "name": "monolog/monolog",
+            "version": "3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Seldaek/monolog.git",
+                "reference": "f4393b648b78a5408747de94fca38beb5f7e9ef8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f4393b648b78a5408747de94fca38beb5f7e9ef8",
+                "reference": "f4393b648b78a5408747de94fca38beb5f7e9ef8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/log": "^2.0 || ^3.0"
+            },
+            "provide": {
+                "psr/log-implementation": "3.0.0"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": "^3.0",
+                "doctrine/couchdb": "~1.0@dev",
+                "elasticsearch/elasticsearch": "^7 || ^8",
+                "ext-json": "*",
+                "graylog2/gelf-php": "^1.4.2 || ^2.0",
+                "guzzlehttp/guzzle": "^7.4.5",
+                "guzzlehttp/psr7": "^2.2",
+                "mongodb/mongodb": "^1.8",
+                "php-amqplib/php-amqplib": "~2.4 || ^3",
+                "phpstan/phpstan": "^1.9",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.4",
+                "phpunit/phpunit": "^10.5.17",
+                "predis/predis": "^1.1 || ^2",
+                "ruflin/elastica": "^7",
+                "symfony/mailer": "^5.4 || ^6",
+                "symfony/mime": "^5.4 || ^6"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+                "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+                "elasticsearch/elasticsearch": "Allow sending log messages to an Elasticsearch server via official client",
+                "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+                "ext-curl": "Required to send log messages using the IFTTTHandler, the LogglyHandler, the SendGridHandler, the SlackWebhookHandler or the TelegramBotHandler",
+                "ext-mbstring": "Allow to work properly with unicode symbols",
+                "ext-mongodb": "Allow sending log messages to a MongoDB server (via driver)",
+                "ext-openssl": "Required to send log messages using SSL",
+                "ext-sockets": "Allow sending log messages to a Syslog server (via UDP driver)",
+                "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+                "mongodb/mongodb": "Allow sending log messages to a MongoDB server (via library)",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+                "rollbar/rollbar": "Allow sending log messages to Rollbar",
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Monolog\\": "src/Monolog"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "https://seld.be"
+                }
+            ],
+            "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+            "homepage": "https://github.com/Seldaek/monolog",
+            "keywords": [
+                "log",
+                "logging",
+                "psr-3"
+            ],
+            "support": {
+                "issues": "https://github.com/Seldaek/monolog/issues",
+                "source": "https://github.com/Seldaek/monolog/tree/3.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Seldaek",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/monolog/monolog",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-06-28T09:40:51+00:00"
+        },
+        {
             "name": "neos/cache",
             "version": "9.0.x-dev",
             "source": {
@@ -3491,6 +4777,55 @@
                 }
             ],
             "time": "2024-10-10T08:13:05+00:00"
+        },
+        {
+            "name": "neos/contentrepository-legacynodemigration",
+            "version": "9.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/contentrepository-legacynodemigration.git",
+                "reference": "5c598373cf3ef34b0b30a50061c5ec87bd927f25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/contentrepository-legacynodemigration/zipball/5c598373cf3ef34b0b30a50061c5ec87bd927f25",
+                "reference": "5c598373cf3ef34b0b30a50061c5ec87bd927f25",
+                "shasum": ""
+            },
+            "require": {
+                "league/flysystem": "^3",
+                "neos/contentrepository-core": "self.version",
+                "neos/contentrepository-export": "self.version",
+                "php": ">=8.2"
+            },
+            "require-dev": {
+                "league/flysystem-memory": "^3",
+                "neos/behat": "*"
+            },
+            "default-branch": true,
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Neos\\ContentRepository\\LegacyNodeMigration\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Migration from the Non-Event-Sourced to the Event-Sourced world",
+            "support": {
+                "docs": "https://docs.neos.io/",
+                "forum": "https://discuss.neos.io/",
+                "source": "https://github.com/neos/contentrepository-legacynodemigration.git"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-10-23T14:38:55+00:00"
         },
         {
             "name": "neos/contentrepository-nodeaccess",
@@ -3985,13 +5320,14 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "39f8caa76a12a65dc55706a48c18e011f060eec7"
+                "reference": "941fc876f1ca6dcaecb093f63436f5f9c6050f51"
             },
             "require": {
                 "carbon/includeassets": "dev-task/neos-9-compatibility",
                 "carbon/link": "dev-task/neos9-compatibility",
                 "flowpack/neos-matomo": "dev-neos_9",
                 "flowpack/nodetemplates": "dev-neos9",
+                "jonnitto/prettyembedvideoplatforms": "dev-neos9",
                 "neos/contentgraph-doctrinedbaladapter": "9.0.x-dev",
                 "neos/neos": "9.0.x-dev",
                 "neos/neos-ui": "9.0.x-dev",
@@ -4000,6 +5336,7 @@
                 "neos/redirecthandler-neosadapter": "^5.0",
                 "neos/redirecthandler-ui": "^3.0",
                 "neos/seo": "^4.1",
+                "sandstorm/lightweightelasticsearch": "dev-neos-9",
                 "sandstorm/mxgraph": "dev-neos9",
                 "shel/neos-hyphens": "dev-main",
                 "yoast/yoast-seo-for-neos": "dev-task/neos-9-compatibility"
@@ -7044,6 +8381,50 @@
             "time": "2024-10-20T18:38:52+00:00"
         },
         {
+            "name": "phenx/php-font-lib",
+            "version": "0.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/php-font-lib.git",
+                "reference": "a1681e9793040740a405ac5b189275059e2a9863"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/a1681e9793040740a405ac5b189275059e2a9863",
+                "reference": "a1681e9793040740a405ac5b189275059e2a9863",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FontLib\\": "src/FontLib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Ménager",
+                    "email": "fabien.menager@gmail.com"
+                }
+            ],
+            "description": "A library to read, parse, export and make subsets of different types of font files.",
+            "homepage": "https://github.com/PhenX/php-font-lib",
+            "support": {
+                "issues": "https://github.com/dompdf/php-font-lib/issues",
+                "source": "https://github.com/dompdf/php-font-lib/tree/0.5.6"
+            },
+            "time": "2024-01-29T14:45:26+00:00"
+        },
+        {
             "name": "psr/cache",
             "version": "3.0.0",
             "source": {
@@ -7861,6 +9242,131 @@
             "time": "2024-05-24T10:39:05+00:00"
         },
         {
+            "name": "rize/uri-template",
+            "version": "0.3.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rize/UriTemplate.git",
+                "reference": "34a5b96d0b65a5dddb7d20f09b6527a43faede24"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rize/UriTemplate/zipball/34a5b96d0b65a5dddb7d20f09b6527a43faede24",
+                "reference": "34a5b96d0b65a5dddb7d20f09b6527a43faede24",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8.36"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rize\\": "src/Rize"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marut K",
+                    "homepage": "http://twitter.com/rezigned"
+                }
+            ],
+            "description": "PHP URI Template (RFC 6570) supports both expansion & extraction",
+            "keywords": [
+                "RFC 6570",
+                "template",
+                "uri"
+            ],
+            "support": {
+                "issues": "https://github.com/rize/UriTemplate/issues",
+                "source": "https://github.com/rize/UriTemplate/tree/0.3.8"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rezigned",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/rezigned",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/rize-uri-template",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-08-30T07:09:40+00:00"
+        },
+        {
+            "name": "rokka/imagine-vips",
+            "version": "0.31.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rokka-io/imagine-vips.git",
+                "reference": "6c86dc4a988fbd51081973abd29cbc38989e2e94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rokka-io/imagine-vips/zipball/6c86dc4a988fbd51081973abd29cbc38989e2e94",
+                "reference": "6c86dc4a988fbd51081973abd29cbc38989e2e94",
+                "shasum": ""
+            },
+            "require": {
+                "imagine/imagine": "^1.0",
+                "jcupitt/vips": "^2.1.0 || ^1.0.3",
+                "phenx/php-font-lib": "^0.5.2",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.8",
+                "phpstan/phpstan": "^1.8",
+                "phpunit/phpunit": "^8 || ^9"
+            },
+            "suggest": {
+                "ext-gd": "to use the GD implementation fallback for saving unsupported file formats",
+                "ext-imagick": "to use the Imagick implementation fallback for saving unsupported file formats"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Imagine": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rokka",
+                    "email": "rokka@rokka.io",
+                    "homepage": "https://rokka.io"
+                }
+            ],
+            "description": "libvips adapter for imagine",
+            "homepage": "https://github.com/rokka-io/imagine-vips",
+            "keywords": [
+                "drawing",
+                "graphics",
+                "image manipulation",
+                "image processing",
+                "libvips",
+                "php-vips",
+                "vips"
+            ],
+            "support": {
+                "issues": "https://github.com/rokka-io/imagine-vips/issues",
+                "source": "https://github.com/rokka-io/imagine-vips/tree/0.31.0"
+            },
+            "time": "2022-10-12T16:32:32+00:00"
+        },
+        {
             "name": "sandstorm/lazydatasource",
             "version": "dev-neos9",
             "source": {
@@ -7898,6 +9404,46 @@
                 "source": "https://github.com/sandstorm/LazyDataSource"
             },
             "time": "2024-10-22T14:44:20+00:00"
+        },
+        {
+            "name": "sandstorm/lightweightelasticsearch",
+            "version": "dev-neos-9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sandstorm/LightweightElasticsearch.git",
+                "reference": "1a7b707f314c879078d1f693af6730be413f84ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandstorm/LightweightElasticsearch/zipball/1a7b707f314c879078d1f693af6730be413f84ad",
+                "reference": "1a7b707f314c879078d1f693af6730be413f84ad",
+                "shasum": ""
+            },
+            "require": {
+                "flowpack/listable": "*",
+                "neos/flow": "*"
+            },
+            "conflict": {
+                "flowpack/elasticsearch-contentrepositoryadaptor": "*",
+                "neos/content-repository-search": "*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "Sandstorm.LightweightElasticsearch"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sandstorm\\LightweightElasticsearch\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/sandstorm/LightweightElasticsearch/issues",
+                "source": "https://github.com/sandstorm/LightweightElasticsearch/tree/neos-9"
+            },
+            "time": "2024-08-20T06:01:05+00:00"
         },
         {
             "name": "sandstorm/mxgraph",
@@ -8233,6 +9779,59 @@
                 }
             ],
             "time": "2024-03-12T08:55:27+00:00"
+        },
+        {
+            "name": "sitegeist/slipstream",
+            "version": "v2.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sitegeist/Sitegeist.Slipstream.git",
+                "reference": "01855197d3ec4a4d2b9d94eb67b6ca1a4a38e84f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sitegeist/Sitegeist.Slipstream/zipball/01855197d3ec4a4d2b9d94eb67b6ca1a4a38e84f",
+                "reference": "01855197d3ec4a4d2b9d94eb67b6ca1a4a38e84f",
+                "shasum": ""
+            },
+            "require": {
+                "neos/flow": "^8.0 || ^9.0 || dev-master"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.8",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "suggest": {
+                "flowpack/fullpagecache": "Cache full Neos page responses",
+                "sitegeist/monocle": "An living-styleguide for Neos that is based on the actual fusion-code"
+            },
+            "type": "neos-package",
+            "extra": {
+                "neos": {
+                    "package-key": "Sitegeist.Slipstream",
+                    "loading-order": {
+                        "after": [
+                            "neos/neos"
+                        ]
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sitegeist\\Slipstream\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Teleport any HTML tag to antoher place of the document. Mostly used for CSS and JS",
+            "support": {
+                "issues": "https://github.com/sitegeist/Sitegeist.Slipstream/issues",
+                "source": "https://github.com/sitegeist/Sitegeist.Slipstream/tree/v2.1.7"
+            },
+            "time": "2024-02-08T15:33:26+00:00"
         },
         {
             "name": "symfony/console",
@@ -10992,16 +12591,16 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "neos/contentrepository-nodemigration": 20,
         "neos/docs-neos-io": 20,
-        "neos/rector": 20,
-        "roave/security-advisories": 20
+        "neos/contentrepository-nodemigration": 20,
+        "roave/security-advisories": 20,
+        "neos/rector": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.3"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
