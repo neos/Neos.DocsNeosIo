@@ -1,4 +1,4 @@
-@use "../../../../public/Frontend/scss/screen";
+@use "../../../../Public/Frontend/scss/screen";
 
 .main-footer {
 	background-color: #f9fcff;
@@ -31,10 +31,11 @@
     display: grid;
     place-content: center;
     gap: 40px;
+    margin: 0 auto 40px;
+
     @include screen.xl {
         grid-template-columns: 2fr 3fr;
     }
-    margin: 0 auto 40px;
 }
 
 .socials {

@@ -6,11 +6,12 @@
     margin: 20px;
     grid-template-columns: repeat(auto-fill, min(100%, 472px));
     grid-auto-rows: auto;
+    gap: 1rem;
+    justify-content: center;
+
     @include screen.lg {
         grid-auto-rows: 1fr;
     }
-    gap: 1rem;
-    justify-content: center;
 }
 
 .card__wrapper {

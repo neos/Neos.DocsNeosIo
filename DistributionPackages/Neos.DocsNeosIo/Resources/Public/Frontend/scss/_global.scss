@@ -1,3 +1,5 @@
+@use "fonts";
+
 @use "screen";
 @use "helpers";
 
@@ -44,7 +46,7 @@ SOFTWARE.
     --c-accent-light-1: #403966;
     --c-accent: #26224c;
     --c-accent-dark: #0c0630;
-    --font-family-base: #{$brand-font-family};
+    --font-family-base: #{fonts.$brand-font-family};
     --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
     --z-index-navbar: 10;
     --z-index-sidebar: 6;
@@ -72,16 +74,16 @@ SOFTWARE.
 
 :root {
     --content-padding-x: 1rem;
+    --content-width: 760px;
+    --spacing-container-padding-x: var(--content-padding-x);
+    --spacing-container-width: var(--content-width);
+
     @include screen.xs {
         --content-padding-x: 1.5rem
     }
     @include screen.lg {
         --content-padding-x: 3.75rem
     }
-
-    --content-width: 760px;
-    --spacing-container-padding-x: var(--content-padding-x);
-    --spacing-container-width: var(--content-width);
     @include screen.xl {
         --spacing-container-width: 1080px;
         --spacing-container-padding-x: 1.5rem;
@@ -534,11 +536,12 @@ body:not(.no-sidebar) {
     display: grid;
     place-content: center;
     padding: 40px 1.5rem;
+    min-height: 300px;
+    background-color: var(--c-brand);
+
     @include screen.xs {
         padding: 80px 1.5rem;
     }
-    min-height: 300px;
-    background-color: var(--c-brand)
 }
 
 body {

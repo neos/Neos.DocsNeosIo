@@ -1,11 +1,12 @@
-@use "../../../../public/Frontend/scss/screen";
+@use "../../../../Public/Frontend/scss/screen";
 
 .local-navigation {
     display: none;
+    height: auto!important;
+
     @include screen.xl {
         display:block;
     }
-    height: auto!important;
 
 	.toc {
         top: calc(var(--header-height) + 32px);

@@ -1,4 +1,4 @@
-@use "../../../../public/Frontend/scss/screen";
+@use "../../../../Public/Frontend/scss/screen";
 
 .flowpack-searchplugin-search {
 	margin-top: 32px;
@@ -30,10 +30,11 @@
 
 		.title {
             font-size: 1.2rem;
+			font-weight: 300;
+
             @include screen.sm {
                 font-size: 1.5rem;
             }
-			font-weight: 300;
 		}
 
         .highlights {
@@ -41,6 +42,7 @@
             flex-direction: column;
             gap: 0.25rem;
             font-size: 0.9rem;
+
             @include screen.sm {
                 font-size: 1rem;
             }

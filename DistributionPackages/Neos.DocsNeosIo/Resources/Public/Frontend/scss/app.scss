@@ -1,18 +1,17 @@
 @charset "utf-8";
 
-@import "fonts";
+@use "fonts";
 
 // font awesome
-$fa-font-path: "../build/fontawesome";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/brands";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid";
+@use "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome" with ($fa-font-path: "../build/fontawesome");
+@use "../node_modules/@fortawesome/fontawesome-free/scss/brands";
+@use "../node_modules/@fortawesome/fontawesome-free/scss/solid";
 
 // Neos design
-@import "cards";
-@import "collection";
-@import "tags";
-@import "../../../Private/Fusion/Component";
-@import "../../../Private/Fusion/Content";
-@import "../../../Private/Fusion/Override";
-@import "global";
+@use "cards";
+@use "collection";
+@use "tags";
+@use "../../../Private/Fusion/Component";
+@use "../../../Private/Fusion/Content";
+@use "../../../Private/Fusion/Override";
+@use "global";
