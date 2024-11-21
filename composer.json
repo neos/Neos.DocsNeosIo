@@ -11,7 +11,7 @@
         }
     },
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "neos/docs-neos-io": "@dev",
 
         "flownative/google-cloudstorage": "^5.3.0",
