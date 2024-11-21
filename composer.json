@@ -16,12 +16,12 @@
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
+        "neos/contentrepository-legacynodemigration": "9.0.*@beta",
 
         "flownative/google-cloudstorage": "v6.0.0-beta.4",
         "rokka/imagine-vips": "^0.31.0",
-
         "jcupitt/vips": "^1.0",
-        "neos/contentrepository-legacynodemigration": "9.0.0-beta13",
+
         "cweagans/composer-patches": "^1.7"
     },
     "require-dev": {
