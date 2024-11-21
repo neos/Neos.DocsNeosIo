@@ -95,14 +95,15 @@
         display: block;
         padding: 0.5rem 0.5rem 0.5rem 2.5rem;
         line-height: normal;
+        font-size: .9rem;
+        font-weight: 500;
+        color: var(--c-text);
+
         @include screen.sm {
             padding: 0 1.5rem 0 2.5rem;
             line-height: 32px;
             white-space: nowrap;
         }
-        font-size: .9rem;
-        font-weight: 500;
-        color: var(--c-text);
     }
 
     @include screen.sm {
@@ -147,11 +148,13 @@
 
 .nav-dropdown-link {
     position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
     @include screen.sm {
         height: 36px;
     }
-    overflow: hidden;
-    cursor: pointer;
+
     .dialog {
         display: none;
     }
@@ -181,11 +184,6 @@
     border: 0;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
     line-height: normal;
-    @include screen.sm {
-        padding: 0 1.5rem;
-        line-height: 36px;
-        white-space: nowrap;
-    }
     width: 100%;
     text-align: left;
     font-family: var(--font-family-base);
@@ -193,7 +191,13 @@
     font-weight: 600;
     color: var(--c-text);
     background-color: transparent;
-    cursor: pointer
+    cursor: pointer;
+
+    @include screen.sm {
+        padding: 0 1.5rem;
+        line-height: 36px;
+        white-space: nowrap;
+    }
 }
 
 .nav-links .search-form__wrapper {
