@@ -23,7 +23,7 @@ class UserDataHelper extends ArrayHelper
 
     /**
      * @param array $userIdentifiers
-     * @return array<User>
+     * @return array<mixed>
      */
     public function getData($userIdentifiers)
     {

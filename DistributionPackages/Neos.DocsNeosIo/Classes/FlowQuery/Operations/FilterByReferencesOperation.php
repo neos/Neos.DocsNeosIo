@@ -2,7 +2,6 @@
 
 namespace Neos\DocsNeosIo\FlowQuery\Operations;
 
-use Neos\ContentRepository\Domain\Model\NodeInterface;
 use Neos\Eel\FlowQuery\FlowQuery;
 use Neos\Eel\FlowQuery\Operations\AbstractOperation;
 use Neos\Eel\FlowQuery\FlowQueryException;
@@ -49,7 +48,7 @@ class FilterByReferencesOperation extends AbstractOperation
      */
     public function getReferenceFilter(string $propertyName, array $references)
     {
-        return function (NodeInterface $node) use ($propertyName, $references) {
+        return function ($node) use ($propertyName, $references) {
             $nodeReferences = $node->getProperty($propertyName);
 
             if ($nodeReferences === null) {

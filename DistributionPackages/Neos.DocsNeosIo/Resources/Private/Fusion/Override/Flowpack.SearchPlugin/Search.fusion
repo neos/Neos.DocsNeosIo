@@ -1,6 +1,0 @@
-prototype(Flowpack.SearchPlugin:Search) {
-    templatePath = 'resource://Neos.DocsNeosIo/Private/Fusion/Override/Flowpack.SearchPlugin/Search.html'
-    searchForm = Neos.DocsNeosIo:Component.SearchForm {
-        searchWord = ${request.arguments.search}
-    }
-}

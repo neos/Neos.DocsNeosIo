@@ -6,7 +6,7 @@ prototype(Neos.DocsNeosIo:Component.Authors) < prototype(Neos.Neos:ContentCompon
             <i>Written by</i> <span>
                 <Neos.Fusion:Loop items={props.authors} itemName="author" iterationName="iteration" @children="itemRenderer">
                     {iteration.index == 0 ? '' : iteration.isLast ? ' & ' :', '}
-                    <strong itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{author.label}</span></strong>
+                    <strong itemprop="author" itemscope="" itemtype="https://schema.org/Person"><span itemprop="name">{Neos.Node.label(author)}</span></strong>
                 </Neos.Fusion:Loop>
             </span>
         </p>
