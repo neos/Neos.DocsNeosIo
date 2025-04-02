@@ -37,30 +37,6 @@
             "type": "path",
             "url": "./DistributionPackages/*"
         },
-        "queo/carbonEel": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Carbon.Eel.git"
-        },
-        "queo/carbonIncludeAssets": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Carbon.IncludeAssets.git"
-        },
-        "so-grimm/carbonLink": {
-            "type": "git",
-            "url": "https://github.com/so-grimm/Carbon.Link.git"
-        },
-        "queo/content-repository-search": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/content-repository-search.git"
-        },
-        "queo/lazydatasource": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/LazyDataSource.git"
-        },
-        "queo/mxgraph": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/MxGraph.git"
-        },
         "Jan3k3y/neos-matomo": {
             "type": "git",
             "url": "https://github.com/Jan3k3y/neos-matomo.git"
@@ -81,9 +57,13 @@
             "type": "git",
             "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedVideoPlatforms.git"
         },
-        "queo/searchplugin": {
+        "queo/lazydatasource": {
             "type": "git",
-            "url": "https://github.com/queoGmbH/Flowpack.SearchPlugin.git"
+            "url": "https://github.com/queoGmbH/LazyDataSource.git"
+        },
+        "queo/mxgraph": {
+            "type": "git",
+            "url": "https://github.com/queoGmbH/MxGraph.git"
         },
         "queo/yoastSEOForNeos": {
             "type": "git",

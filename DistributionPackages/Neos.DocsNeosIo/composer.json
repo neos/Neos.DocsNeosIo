@@ -12,15 +12,18 @@
         "neos/redirecthandler-ui": "^3.0",
         "neos/redirecthandler-databasestorage": "^6.0",
         "neos/redirecthandler-neosadapter": "^5.0",
+        "flowpack/searchplugin": "^6.0",
+        "flowpack/elasticsearch-contentrepositoryadaptor": "^9.0",
+        "neos/content-repository-search": "^5.0",
 
-        "carbon/includeassets": "dev-task/neos-9-compatibility",
-        "carbon/link": "dev-task/neos9-compatibility",
+        "carbon/includeassets": "dev-feature/neos9",
+        "carbon/link": "^2.0.0",
         "flowpack/neos-matomo": "dev-neos_9",
+        "flowpack/listable": "dev-neos-9",
         "flowpack/nodetemplates": "dev-neos9",
         "jonnitto/prettyembedvideoplatforms": "dev-neos9",
-        "sandstorm/lightweightelasticsearch": "dev-neos-9",
         "sandstorm/mxgraph": "dev-neos9",
-        "shel/neos-hyphens": "dev-main",
+        "shel/neos-hyphens": "^1.5.0",
         "yoast/yoast-seo-for-neos": "dev-task/neos-9-compatibility"
     },
     "maybeKicked": {

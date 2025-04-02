@@ -1,0 +1,10 @@
+prototype(Carbon.Link:Content) {
+    value = Neos.Fusion:Case {
+        isNode {
+            renderer = Neos.Fusion:Value {
+                node = ${Neos.Link.convertUriToObject(link, documentNode)}
+                value = ${contentKey == 'title' ? q(this.node).property('title') : Neos.Node.label(this.node)}
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+prototype(Carbon.Link:URI) {
+    value = Neos.Fusion:Case {
+        isNode {
+            renderer = Neos.Neos:NodeUri {
+                section = ${q(this.nodeObject).is(Configuration.setting('Carbon.Link.instanceOfDocument')) ? false : Configuration.setting('Carbon.Link.prependIdentifier') + nodeObject.aggregateId}
+            }
+        }
+    }
+}
