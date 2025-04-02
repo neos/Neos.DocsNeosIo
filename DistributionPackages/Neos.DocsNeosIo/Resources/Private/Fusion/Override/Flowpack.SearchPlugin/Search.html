@@ -1,0 +1,13 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace ts=Neos\Fusion\ViewHelpers}
+{namespace search=Neos\ContentRepository\Search\ViewHelpers}
+
+<div{attributes -> f:format.raw()}>
+    <div class="search-results collection">
+        <f:if condition="{searchQuery}">
+            <search:widget.paginate query="{searchQuery}" as="results" configuration="{configuration}">
+                <ts:render path="searchResultRenderer" context="{searchResults: results}"/>
+            </search:widget.paginate>
+        </f:if>
+    </div>
+</div>

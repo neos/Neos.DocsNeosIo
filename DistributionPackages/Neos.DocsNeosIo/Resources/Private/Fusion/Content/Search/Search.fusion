@@ -1,5 +1,28 @@
 prototype(Neos.DocsNeosIo:Content.Search) < prototype(Neos.Neos:ContentComponent) {
-    renderer = Neos.DocsNeosIo:Component.SearchForm {
-        searchWord = ${request.arguments.search}
+    searchTerm = ${String.toString(request.arguments.search)}
+    results = Flowpack.SearchPlugin:Search
+
+    @private {
+        searchForm = Neos.DocsNeosIo:Component.SearchForm {
+            searchWord = ${props.searchTerm}
+        }
+    }
+
+    renderer = afx`
+        <div class="search flowpack-searchplugin-search">
+            <div class="search__form">
+                {private.searchForm}
+            </div>
+            {props.results}
+        </div>
+    `
+
+    @cache {
+        mode = 'uncached'
+        context {
+            1 = 'site'
+            2 = 'node'
+            3 = 'documentNode'
+        }
     }
 }
