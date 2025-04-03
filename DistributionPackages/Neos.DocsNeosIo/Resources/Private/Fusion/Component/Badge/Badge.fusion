@@ -5,8 +5,8 @@ prototype(Neos.DocsNeosIo:Component.Badge) < prototype(Neos.Fusion:Component) {
     @private.itemStatusName = Neos.Fusion:Match {
         @subject = ${props.itemStatus}
         @default = ${String.firstLetterToUpperCase(props.itemStatus)}
-        'neos8' = 'Neos 8'
-        'neos9' = 'Neos 9'
+        'neos8' = 'Neos&nbsp;8'
+        'neos9' = 'Neos&nbsp;9'
     }
 
     renderer = afx`
