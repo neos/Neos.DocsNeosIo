@@ -1,0 +1,18 @@
+up:
+  comments: 'Changes the NodeType of the Page not found page to the newly introduced 404 document type'
+  migration:
+    -
+      filters:
+        -
+          type: NodeName
+          settings:
+            nodeName: 'Page not found'
+      transformations:
+        -
+          type: ChangeNodeType
+          settings:
+            newType: Neos.DocsNeosIo:Document.404
+
+
+down:
+  comments: 'No down migration available'

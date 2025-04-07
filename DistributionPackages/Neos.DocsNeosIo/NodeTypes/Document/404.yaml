@@ -1,0 +1,25 @@
+'Neos.DocsNeosIo:Document.404':
+  search:
+    fulltext:
+      enable: false
+  childNodes:
+    main:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'Neos.DocsNeosIo:Content.Text': true
+
+  superTypes:
+    'Neos.Neos:Document': true
+    'Neos.Seo:NoindexMixin': true
+    'Neos.DocsNeosIo:Mixin.HideSeo': true
+  ui:
+    label: '404'
+    icon: 'fas fa-exclamation-triangle'
+  properties:
+    _hiddenInIndex:
+      defaultValue: true
+      ui:
+        inspector:
+          group: null
