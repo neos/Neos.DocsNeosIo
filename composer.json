@@ -16,13 +16,12 @@
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
-        "neos/contentrepository-legacynodemigration": "9.0.*@beta",
-
-        "flownative/google-cloudstorage": "v6.0.0-beta.4",
+        "neos/contentrepository-legacynodemigration": "^9.0",
+        "sandstorm/lazydatasource": "dev-feature/neos-9 as 3.0.0",
+        "jonnitto/prettyembedhelper": "dev-neos9 as 7.0.0",
+        "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
-        "jcupitt/vips": "^1.0",
-
-        "cweagans/composer-patches": "^1.7"
+        "jcupitt/vips": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -41,41 +40,25 @@
             "type": "git",
             "url": "https://github.com/Jan3k3y/neos-matomo.git"
         },
-        "queo/neos-terminal": {
+        "markusguenther/lazydatasource": {
             "type": "git",
-            "url": "https://github.com/queoGmbH/Shel.Neos.Terminal.git"
+            "url": "https://github.com/markusguenther/LazyDataSource.git"
+        },
+        "markusguenther/mxgraph": {
+            "type": "git",
+            "url": "https://github.com/markusguenther/MxGraph.git"
         },
         "Jan3k3y/neos-publishnotifier": {
             "type": "git",
             "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
         },
-        "queo/prettyembedhelper": {
+        "markusguenther/prettyembedhelper": {
             "type": "git",
-            "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedHelper.git"
+            "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedHelper.git"
         },
-        "queo/prettyembedvideoplatforms": {
+        "markusguenther/prettyembedvideoplatforms": {
             "type": "git",
-            "url": "https://github.com/queoGmbH/Jonnitto.PrettyEmbedVideoPlatforms.git"
-        },
-        "queo/lazydatasource": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/LazyDataSource.git"
-        },
-        "queo/mxgraph": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/MxGraph.git"
-        },
-        "queo/yoastSEOForNeos": {
-            "type": "git",
-            "url": "https://github.com/queoGmbH/Yoast-SEO-for-Neos.git"
-        }
-    },
-    "extra": {
-        "composer-exit-on-patch-failure": true,
-        "patches": {
-            "neos/contentrepository-nodeaccess": {
-                "TASK: Reintroduce 8.3 context fq operation": "Patches/5130.patch"
-            }
+            "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedVideoPlatforms.git"
         }
     },
     "scripts": {
