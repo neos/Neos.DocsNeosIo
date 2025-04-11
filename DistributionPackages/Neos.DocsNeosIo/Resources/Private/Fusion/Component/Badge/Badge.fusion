@@ -2,7 +2,14 @@ prototype(Neos.DocsNeosIo:Component.Badge) < prototype(Neos.Fusion:Component) {
 
     itemStatus = null
 
+    @private.itemStatusName = Neos.Fusion:Match {
+        @subject = ${props.itemStatus}
+        @default = ${String.firstLetterToUpperCase(props.itemStatus)}
+        'neos8' = 'Neos&nbsp;8'
+        'neos9' = 'Neos&nbsp;9'
+    }
+
     renderer = afx`
-        <span class={'badge new status-' + props.itemStatus}>{props.itemStatus}</span>
+        <span class={'badge new status-' + props.itemStatus}>{private.itemStatusName}</span>
     `
 }
