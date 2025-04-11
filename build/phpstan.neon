@@ -1,0 +1,6 @@
+parameters:
+    level: 5
+    paths:
+        - ../DistributionPackages/Neos.DocsNeosIo/Classes
+        - ../Packages/Plugins/Sandstorm.MxGraph/Classes
+        - ../Packages/Application/Sandstorm.LazyDataSource/Classes

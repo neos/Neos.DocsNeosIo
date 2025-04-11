@@ -1,6 +1,7 @@
 'Neos.DocsNeosIo:Document.HomePage':
   superTypes:
     'Neos.DocsNeosIo:Document.AbstractPage': true
+    'Neos.Neos:Site': true
     'Neos.DocsNeosIo:Constraint.Document.Restricted': true
     'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
   ui:

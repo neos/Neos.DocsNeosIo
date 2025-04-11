@@ -31,7 +31,7 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
 
         @cache {
             mode = 'cached'
-            entryIdentifier.node = ${documentNode}
+            entryIdentifier.node = ${Neos.Caching.entryIdentifierForNode(documentNode)}
             entryTags {
                 1 = ${Neos.Caching.nodeTypeTag('Neos.Neos:Document', documentNode)}
             }
@@ -52,9 +52,9 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
                 <div class="fullwidth-header">
                     <div class={props.flexheader ? "container-wrapper" : "main-content"}>
                         <h1>{props.title}</h1>
-                        <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                        <p class="lead" @if={props.subtitle || renderingMode.isEdit}>{props.subtitle}</p>
                         <Neos.DocsNeosIo:Component.TagList
-                            @if.inBackend={node.context.inBackend}
+                            @if.inBackend={renderingMode.isEdit}
                             items={props.tags}
                             additionalClass="backend-tags"
                             filter="" />
@@ -70,9 +70,9 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
             <main class={["main-container", props.localNav && "has-local-navigation"]} @if={!props.fullwidth}>
                 <div class="main-content">
                     <h1>{props.title}</h1>
-                    <p class="lead" @if={props.subtitle || node.context.inBackend}>{props.subtitle}</p>
+                    <p class="lead" @if={props.subtitle || renderingMode.isEdit}>{props.subtitle}</p>
                     <Neos.DocsNeosIo:Component.TagList
-                        @if.inBackend={node.context.inBackend}
+                        @if.inBackend={renderingMode.isEdit}
                         items={props.tags}
                         additionalClass="backend-tags"
                         filter="" />

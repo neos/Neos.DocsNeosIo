@@ -1,5 +1,5 @@
 prototype(Neos.DocsNeosIo:Content.Buttons.Item) < prototype(Neos.Neos:ContentComponent) {
-    class = ${'btn' + ((!this.link && !node.context.inBackend) ? ' disabled' : '')}
+    class = ${'btn' + ((!this.link && !renderingMode.isEdit) ? ' disabled' : '')}
     title = Neos.Neos:Editable {
         property = 'title'
         block = false
