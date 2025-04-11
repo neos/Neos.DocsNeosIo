@@ -25,7 +25,7 @@
         "sitegeist/silhouettes": "^2.0",
         "sandstorm/mxgraph": "^3.0",
         "yoast/yoast-seo-for-neos": "^1.3",
-        "jonnitto/prettyembedvideoplatforms": "^2.1.0",
+        "jonnitto/prettyembedvideoplatforms": "^6.3.0",
         "shel/neos-hyphens": "^1.3",
         "shel/neos-workspace-module": "^0.2"
     },
