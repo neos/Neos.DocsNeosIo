@@ -25,7 +25,6 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "neos/rector": "dev-main",
         "phpstan/phpstan": "^1.10"
     },
     "notCompatible": {

@@ -24,7 +24,7 @@
         "jonnitto/prettyembedvideoplatforms": "dev-neos9",
         "sandstorm/mxgraph": "dev-neos9",
         "shel/neos-hyphens": "^1.5.0",
-        "yoast/yoast-seo-for-neos": "dev-task/neos-9-compatibility"
+        "yoast/yoast-seo-for-neos": "^2.0"
     },
     "maybeKicked": {
         "carbon/compression": "^4.0",
