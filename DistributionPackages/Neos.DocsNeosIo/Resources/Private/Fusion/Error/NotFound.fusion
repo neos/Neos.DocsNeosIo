@@ -3,7 +3,7 @@
 # for exceptions with 4xx status code
 #
 error {
-    @context.notfoundDocument = ${q(site).children('[uriPathSegment = "404"]').get(0)}
+    @context.notfoundDocument = ${q(site).find('[instanceof Neos.DocsNeosIo:Document.404]').get(0)}
 
     4xx {
         @position = 'start'
