@@ -238,16 +238,16 @@
         },
         {
             "name": "carbon/includeassets",
-            "version": "dev-feature/neos9",
+            "version": "6.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPackages/Carbon.IncludeAssets.git",
-                "reference": "a458a5a4613d402f6b01e632c23766f1f78f43c7"
+                "reference": "4b97ac22c84be75c4e1dd44be09ab3a8d516907b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPackages/Carbon.IncludeAssets/zipball/a458a5a4613d402f6b01e632c23766f1f78f43c7",
-                "reference": "a458a5a4613d402f6b01e632c23766f1f78f43c7",
+                "url": "https://api.github.com/repos/CarbonPackages/Carbon.IncludeAssets/zipball/4b97ac22c84be75c4e1dd44be09ab3a8d516907b",
+                "reference": "4b97ac22c84be75c4e1dd44be09ab3a8d516907b",
                 "shasum": ""
             },
             "require": {
@@ -288,7 +288,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPackages/Carbon.IncludeAssets/issues",
-                "source": "https://github.com/CarbonPackages/Carbon.IncludeAssets/tree/feature/neos9"
+                "source": "https://github.com/CarbonPackages/Carbon.IncludeAssets/tree/6.5.0"
             },
             "funding": [
                 {
@@ -300,7 +300,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-03T14:44:40+00:00"
+            "time": "2025-04-03T14:49:33+00:00"
         },
         {
             "name": "carbon/link",
@@ -5939,10 +5939,10 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "518963e1e559bce4a8ff6ed81f699bab3f2e8cf8"
+                "reference": "0ccfae8d209e29b454946c0d62a8ac75060059a2"
             },
             "require": {
-                "carbon/includeassets": "dev-feature/neos9",
+                "carbon/includeassets": "^6.5",
                 "carbon/link": "^2.0.0",
                 "flowpack/elasticsearch-contentrepositoryadaptor": "^9.0",
                 "flowpack/listable": "^4.0",

@@ -16,7 +16,7 @@
         "flowpack/elasticsearch-contentrepositoryadaptor": "^9.0",
         "neos/content-repository-search": "^5.0",
 
-        "carbon/includeassets": "dev-feature/neos9",
+        "carbon/includeassets": "^6.5",
         "carbon/link": "^2.0.0",
         "flowpack/neos-matomo": "^4.0",
         "flowpack/listable": "^4.0",
@@ -25,12 +25,6 @@
         "sandstorm/mxgraph": "dev-neos9",
         "shel/neos-hyphens": "^1.5.0",
         "yoast/yoast-seo-for-neos": "^2.0"
-    },
-    "maybeKicked": {
-        "carbon/compression": "^4.0",
-        "flowpack/media-ui": "^0.12",
-        "flowpack/elasticsearch-contentrepositoryadaptor": "^8.4",
-        "shel/neos-workspace-module": "^0.2"
     },
     "autoload": {
         "psr-4": {
