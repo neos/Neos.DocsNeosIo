@@ -21,7 +21,7 @@
         "flowpack/neos-matomo": "^4.0",
         "flowpack/listable": "^4.0",
         "flowpack/nodetemplates": "^3.0",
-        "jonnitto/prettyembedvideoplatforms": "dev-neos9",
+        "jonnitto/prettyembedvideoplatforms": "^6.4.0",
         "sandstorm/mxgraph": "dev-neos9",
         "shel/neos-hyphens": "^1.5.0",
         "yoast/yoast-seo-for-neos": "^2.0"

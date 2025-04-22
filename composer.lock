@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a718b435add9b7209b5e67f946fa47e9",
+    "content-hash": "1d7e8b2a59c8ecc4f4344f464c119fed",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -4083,11 +4083,17 @@
         },
         {
             "name": "jonnitto/prettyembedhelper",
-            "version": "dev-neos9",
+            "version": "8.0.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedHelper.git",
-                "reference": "c9f253f5f306b2b71ac1c9120408651592db3fb8"
+                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper.git",
+                "reference": "d93ee2ec50192d466b3a1c0a38033b06b3388f41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedHelper/zipball/d93ee2ec50192d466b3a1c0a38033b06b3388f41",
+                "reference": "d93ee2ec50192d466b3a1c0a38033b06b3388f41",
+                "shasum": ""
             },
             "require": {
                 "carbon/eel": "^2.8",
@@ -4103,16 +4109,17 @@
             },
             "type": "neos-plugin",
             "extra": {
-                "installer-name": "Jonnitto.PrettyEmbedHelper",
                 "neos": {
                     "package-key": "Jonnitto.PrettyEmbedHelper"
-                }
+                },
+                "installer-name": "Jonnitto.PrettyEmbedHelper"
             },
             "autoload": {
                 "psr-4": {
                     "Jonnitto\\PrettyEmbedHelper\\": "Classes"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -4127,40 +4134,57 @@
             "description": "Helper mixins, prototypes and frontend resources for the PrettyEmbed Series",
             "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper",
             "keywords": [
+                "Neos",
                 "contentelement",
                 "flow",
-                "neos",
                 "video"
             ],
             "support": {
                 "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper/issues",
                 "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper"
             },
-            "time": "2025-04-17T19:57:13+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/Jonnitto/20eur",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/jonnitto",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-22T09:39:01+00:00"
         },
         {
             "name": "jonnitto/prettyembedvideoplatforms",
-            "version": "dev-neos9",
+            "version": "6.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedVideoPlatforms.git",
-                "reference": "21e568f4362d552a37b72d07f49153350b495be0"
+                "url": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms.git",
+                "reference": "66d3098e39f01a6b4d49bb50a9a6fe30ebb58bd1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/zipball/66d3098e39f01a6b4d49bb50a9a6fe30ebb58bd1",
+                "reference": "66d3098e39f01a6b4d49bb50a9a6fe30ebb58bd1",
+                "shasum": ""
             },
             "require": {
-                "jonnitto/prettyembedhelper": "^9.0 || dev-master"
+                "jonnitto/prettyembedhelper": "^6.6 || ^8.0 || dev-master"
             },
             "type": "neos-plugin",
             "extra": {
-                "installer-name": "Jonnitto.PrettyEmbedVideoPlatforms",
                 "neos": {
                     "package-key": "Jonnitto.PrettyEmbedVideoPlatforms"
-                }
+                },
+                "installer-name": "Jonnitto.PrettyEmbedVideoPlatforms"
             },
             "autoload": {
                 "psr-4": {
                     "Jonnitto\\PrettyEmbedVideoPlatforms\\": "Classes"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-or-later"
             ],
@@ -4175,9 +4199,9 @@
             "description": "Prettier embeds for your YouTube and Vimeo videos and playlists in Neos CMS - with nice options like high-res preview images, lightbox feature and advanced customization of embed options.",
             "homepage": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms",
             "keywords": [
+                "Neos",
                 "contentelement",
                 "flow",
-                "neos",
                 "video",
                 "vimeo",
                 "youtube"
@@ -4186,7 +4210,17 @@
                 "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/issues",
                 "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms"
             },
-            "time": "2025-04-22T07:36:46+00:00"
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/Jonnitto/20eur",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/jonnitto",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-22T09:21:54+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5905,7 +5939,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "ba8eae27bb9602b033d353d65c0c2c90d443c0c9"
+                "reference": "518963e1e559bce4a8ff6ed81f699bab3f2e8cf8"
             },
             "require": {
                 "carbon/includeassets": "dev-feature/neos9",
@@ -5915,7 +5949,7 @@
                 "flowpack/neos-matomo": "^4.0",
                 "flowpack/nodetemplates": "^3.0",
                 "flowpack/searchplugin": "^6.0",
-                "jonnitto/prettyembedvideoplatforms": "dev-neos9",
+                "jonnitto/prettyembedvideoplatforms": "^6.4.0",
                 "neos/content-repository-search": "^5.0",
                 "neos/contentgraph-doctrinedbaladapter": "^9.0",
                 "neos/flow": "^9.0",
@@ -9856,7 +9890,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/markusguenther/LazyDataSource.git",
-                "reference": "955e2ce4f8ee9250ec06493d729d2e57d68c920b"
+                "reference": "4bf4fb88c98481cd92e8a510747cb735af0e0d2e"
             },
             "require": {
                 "neos/neos-ui": "^9.0"
@@ -9887,7 +9921,7 @@
                 "issues": "https://github.com/sandstorm/LazyDataSource/issues",
                 "source": "https://github.com/sandstorm/LazyDataSource"
             },
-            "time": "2025-04-02T22:58:26+00:00"
+            "time": "2025-04-22T08:53:04+00:00"
         },
         {
             "name": "sandstorm/mxgraph",
@@ -12972,12 +13006,6 @@
     ],
     "aliases": [
         {
-            "package": "jonnitto/prettyembedhelper",
-            "version": "dev-neos9",
-            "alias": "9.0.0",
-            "alias_normalized": "9.0.0.0"
-        },
-        {
             "package": "sandstorm/lazydatasource",
             "version": "dev-feature/neos-9",
             "alias": "3.0.0",
@@ -12986,7 +13014,6 @@
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "jonnitto/prettyembedhelper": 20,
         "neos/docs-neos-io": 20,
         "roave/security-advisories": 20,
         "sandstorm/lazydatasource": 20
