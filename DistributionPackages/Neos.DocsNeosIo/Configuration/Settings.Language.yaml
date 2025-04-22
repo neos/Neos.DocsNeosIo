@@ -10,6 +10,9 @@ Neos:
           Neos.DocsNeosIo:
             - Main
             - 'NodeTypes/*'
+    sitePresets:
+      'default':
+        uriPathSuffix: ''
     sites:
       '*':
         contentDimensions:
