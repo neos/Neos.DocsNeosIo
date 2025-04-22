@@ -5939,7 +5939,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "0ccfae8d209e29b454946c0d62a8ac75060059a2"
+                "reference": "02c706ec285ce5c6ed44604d75e26c2c3a15c675"
             },
             "require": {
                 "carbon/includeassets": "^6.5",
