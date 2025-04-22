@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f1e64e18d968715ecbc66cc7b65aa35",
+    "content-hash": "a718b435add9b7209b5e67f946fa47e9",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2696,16 +2696,16 @@
         },
         {
             "name": "flowpack/listable",
-            "version": "dev-neos-9",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.Listable.git",
-                "reference": "6e1e49d710ebdfda6d05477fa243abbcf2fb29f1"
+                "reference": "412c339fa8c420a30986df58f41fe041d13dfa2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.Listable/zipball/6e1e49d710ebdfda6d05477fa243abbcf2fb29f1",
-                "reference": "6e1e49d710ebdfda6d05477fa243abbcf2fb29f1",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.Listable/zipball/412c339fa8c420a30986df58f41fe041d13dfa2b",
+                "reference": "412c339fa8c420a30986df58f41fe041d13dfa2b",
                 "shasum": ""
             },
             "require": {
@@ -2808,17 +2808,23 @@
             "description": "Tiny extension for listing things",
             "support": {
                 "issues": "https://github.com/Flowpack/Flowpack.Listable/issues",
-                "source": "https://github.com/Flowpack/Flowpack.Listable/tree/neos-9"
+                "source": "https://github.com/Flowpack/Flowpack.Listable/tree/4.0.0"
             },
-            "time": "2025-03-05T11:32:28+00:00"
+            "time": "2025-04-03T13:06:58+00:00"
         },
         {
             "name": "flowpack/neos-matomo",
-            "version": "dev-neos_9",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Jan3k3y/neos-matomo.git",
-                "reference": "faf37dc5e353a94fdcb8b71b35d2d84cfacb7ec1"
+                "url": "https://github.com/Flowpack/neos-matomo.git",
+                "reference": "808c61aeaacc4f21b70f8ab6e492b21bc6b0a1fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowpack/neos-matomo/zipball/808c61aeaacc4f21b70f8ab6e492b21bc6b0a1fe",
+                "reference": "808c61aeaacc4f21b70f8ab6e492b21bc6b0a1fe",
+                "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
@@ -2913,29 +2919,29 @@
                     "Flowpack\\Neos\\Matomo\\": "Classes"
                 }
             },
-            "scripts": {
-                "lint:phpstan": [
-                    "../../../bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0+"
             ],
             "description": "Track visits of your Neos site with the Matomo Open Analytics Platform!",
-            "time": "2025-04-11T20:57:19+00:00"
+            "support": {
+                "issues": "https://github.com/Flowpack/neos-matomo/issues",
+                "source": "https://github.com/Flowpack/neos-matomo/tree/4.0.1"
+            },
+            "time": "2025-04-18T16:52:30+00:00"
         },
         {
             "name": "flowpack/nodetemplates",
-            "version": "dev-neos9",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Flowpack/Flowpack.NodeTemplates.git",
-                "reference": "71a3b0a9a75a326f8b00a2bf95ca6a85db97e0a2"
+                "reference": "137ce72782032756c9f449c2f58da30b59973eab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Flowpack/Flowpack.NodeTemplates/zipball/71a3b0a9a75a326f8b00a2bf95ca6a85db97e0a2",
-                "reference": "71a3b0a9a75a326f8b00a2bf95ca6a85db97e0a2",
+                "url": "https://api.github.com/repos/Flowpack/Flowpack.NodeTemplates/zipball/137ce72782032756c9f449c2f58da30b59973eab",
+                "reference": "137ce72782032756c9f449c2f58da30b59973eab",
                 "shasum": ""
             },
             "require": {
@@ -2958,9 +2964,9 @@
             "description": "Neos package that allows to modify nodes on creation via templates.",
             "support": {
                 "issues": "https://github.com/Flowpack/Flowpack.NodeTemplates/issues",
-                "source": "https://github.com/Flowpack/Flowpack.NodeTemplates/tree/neos9"
+                "source": "https://github.com/Flowpack/Flowpack.NodeTemplates/tree/3.0.0"
             },
-            "time": "2025-04-04T13:25:08+00:00"
+            "time": "2025-04-04T13:38:58+00:00"
         },
         {
             "name": "flowpack/searchplugin",
@@ -3152,16 +3158,16 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.46.0",
+            "version": "v1.47.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "7fafae99a41984cbfb92508174263cf7bf3049b9"
+                "reference": "d6389aae7c009daceaa8da9b7942d8df6969f6d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/7fafae99a41984cbfb92508174263cf7bf3049b9",
-                "reference": "7fafae99a41984cbfb92508174263cf7bf3049b9",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/d6389aae7c009daceaa8da9b7942d8df6969f6d9",
+                "reference": "d6389aae7c009daceaa8da9b7942d8df6969f6d9",
                 "shasum": ""
             },
             "require": {
@@ -3207,9 +3213,9 @@
             "support": {
                 "docs": "https://cloud.google.com/php/docs/reference/auth/latest",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.46.0"
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.47.0"
             },
-            "time": "2025-02-12T22:21:37+00:00"
+            "time": "2025-04-15T21:47:20+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -3279,16 +3285,16 @@
         },
         {
             "name": "google/cloud-storage",
-            "version": "v1.47.0",
+            "version": "v1.48.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-cloud-php-storage.git",
-                "reference": "c8f130fab6a48dad9c486e93a07cd26123d006bb"
+                "reference": "e2d7a59290ab7fb69208c45058efa3946edbb793"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/c8f130fab6a48dad9c486e93a07cd26123d006bb",
-                "reference": "c8f130fab6a48dad9c486e93a07cd26123d006bb",
+                "url": "https://api.github.com/repos/googleapis/google-cloud-php-storage/zipball/e2d7a59290ab7fb69208c45058efa3946edbb793",
+                "reference": "e2d7a59290ab7fb69208c45058efa3946edbb793",
                 "shasum": ""
             },
             "require": {
@@ -3330,22 +3336,22 @@
             ],
             "description": "Cloud Storage Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.47.0"
+                "source": "https://github.com/googleapis/google-cloud-php-storage/tree/v1.48.0"
             },
-            "time": "2025-03-21T22:19:41+00:00"
+            "time": "2025-04-18T20:49:28+00:00"
         },
         {
             "name": "google/common-protos",
-            "version": "4.11.0",
+            "version": "4.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/common-protos-php.git",
-                "reference": "2554ed1f09aa20faae7b71b590e7063df97ff670"
+                "reference": "96f6873c65fb0289fcdb6ac3d5239f9c9e5750b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/2554ed1f09aa20faae7b71b590e7063df97ff670",
-                "reference": "2554ed1f09aa20faae7b71b590e7063df97ff670",
+                "url": "https://api.github.com/repos/googleapis/common-protos-php/zipball/96f6873c65fb0289fcdb6ac3d5239f9c9e5750b0",
+                "reference": "96f6873c65fb0289fcdb6ac3d5239f9c9e5750b0",
                 "shasum": ""
             },
             "require": {
@@ -3389,9 +3395,9 @@
                 "google"
             ],
             "support": {
-                "source": "https://github.com/googleapis/common-protos-php/tree/v4.11.0"
+                "source": "https://github.com/googleapis/common-protos-php/tree/v4.12.0"
             },
-            "time": "2025-02-18T19:46:55+00:00"
+            "time": "2025-04-18T20:49:28+00:00"
         },
         {
             "name": "google/gax",
@@ -4081,17 +4087,15 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedHelper.git",
-                "reference": "2035cd4507bfa6d9fd37cf6cbd68143359187bee"
+                "reference": "c9f253f5f306b2b71ac1c9120408651592db3fb8"
             },
             "require": {
                 "carbon/eel": "^2.8",
                 "carbon/fileloader": "^0.1",
-                "carbon/notification": "^2.4 || ^3.0",
+                "carbon/notification": "^3.0",
                 "ext-dom": "*",
                 "ext-json": "*",
-                "neos/fusion-afx": "^9.0",
                 "neos/neos": "^9.0",
-                "php": "^8.1 || ^8.2",
                 "sitegeist/slipstream": "^2.1.6"
             },
             "suggest": {
@@ -4132,7 +4136,7 @@
                 "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper/issues",
                 "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedHelper"
             },
-            "time": "2024-10-23T11:52:24+00:00"
+            "time": "2025-04-17T19:57:13+00:00"
         },
         {
             "name": "jonnitto/prettyembedvideoplatforms",
@@ -4140,10 +4144,10 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/markusguenther/Jonnitto.PrettyEmbedVideoPlatforms.git",
-                "reference": "a36fd6c30a71eff4cd9c66ff29057ad2fab9cfaf"
+                "reference": "21e568f4362d552a37b72d07f49153350b495be0"
             },
             "require": {
-                "jonnitto/prettyembedhelper": "^7.0 || dev-master"
+                "jonnitto/prettyembedhelper": "^9.0 || dev-master"
             },
             "type": "neos-plugin",
             "extra": {
@@ -4182,7 +4186,7 @@
                 "issues": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms/issues",
                 "source": "https://github.com/jonnitto/Jonnitto.PrettyEmbedVideoPlatforms"
             },
-            "time": "2025-04-11T20:19:02+00:00"
+            "time": "2025-04-22T07:36:46+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5901,23 +5905,23 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "742d7a06bd5e51683acbb3e15b5e8e088de9033a"
+                "reference": "ba8eae27bb9602b033d353d65c0c2c90d443c0c9"
             },
             "require": {
                 "carbon/includeassets": "dev-feature/neos9",
                 "carbon/link": "^2.0.0",
                 "flowpack/elasticsearch-contentrepositoryadaptor": "^9.0",
-                "flowpack/listable": "dev-neos-9",
-                "flowpack/neos-matomo": "dev-neos_9",
-                "flowpack/nodetemplates": "dev-neos9",
+                "flowpack/listable": "^4.0",
+                "flowpack/neos-matomo": "^4.0",
+                "flowpack/nodetemplates": "^3.0",
                 "flowpack/searchplugin": "^6.0",
                 "jonnitto/prettyembedvideoplatforms": "dev-neos9",
                 "neos/content-repository-search": "^5.0",
-                "neos/contentgraph-doctrinedbaladapter": "9.0.*@beta",
-                "neos/flow": "9.0.*@beta",
-                "neos/neos": "9.0.*@beta",
-                "neos/neos-ui": "9.0.*@beta",
-                "neos/nodetypes-contentreferences": "9.0.*@beta",
+                "neos/contentgraph-doctrinedbaladapter": "^9.0",
+                "neos/flow": "^9.0",
+                "neos/neos": "^9.0",
+                "neos/neos-ui": "^9.0",
+                "neos/nodetypes-contentreferences": "^9.0",
                 "neos/redirecthandler-databasestorage": "^6.0",
                 "neos/redirecthandler-neosadapter": "^5.0",
                 "neos/redirecthandler-ui": "^3.0",
@@ -6117,16 +6121,16 @@
         },
         {
             "name": "neos/eventstore",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/eventstore.git",
-                "reference": "5da646044422b83f18a31320e62dc6be76281fa3"
+                "reference": "d20730232be0dcdf571614a101162434237438eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/eventstore/zipball/5da646044422b83f18a31320e62dc6be76281fa3",
-                "reference": "5da646044422b83f18a31320e62dc6be76281fa3",
+                "url": "https://api.github.com/repos/neos/eventstore/zipball/d20730232be0dcdf571614a101162434237438eb",
+                "reference": "d20730232be0dcdf571614a101162434237438eb",
                 "shasum": ""
             },
             "require": {
@@ -6153,7 +6157,7 @@
             "description": "Store for Event-Sourced applications",
             "support": {
                 "issues": "https://github.com/neos/eventstore/issues",
-                "source": "https://github.com/neos/eventstore/tree/1.0.1"
+                "source": "https://github.com/neos/eventstore/tree/1.0.2"
             },
             "funding": [
                 {
@@ -6161,20 +6165,20 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-03-22T15:02:04+00:00"
+            "time": "2025-04-01T15:34:07+00:00"
         },
         {
             "name": "neos/eventstore-doctrineadapter",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/eventstore-doctrineadapter.git",
-                "reference": "e1566324ad1dd935732029824284f621cda59b7b"
+                "reference": "2fe54473707aa975ed5991e030c7970aa9749b8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/eventstore-doctrineadapter/zipball/e1566324ad1dd935732029824284f621cda59b7b",
-                "reference": "e1566324ad1dd935732029824284f621cda59b7b",
+                "url": "https://api.github.com/repos/neos/eventstore-doctrineadapter/zipball/2fe54473707aa975ed5991e030c7970aa9749b8b",
+                "reference": "2fe54473707aa975ed5991e030c7970aa9749b8b",
                 "shasum": ""
             },
             "require": {
@@ -6204,7 +6208,7 @@
             "description": "Doctrine DBAL based implementation for the neos/eventstore",
             "support": {
                 "issues": "https://github.com/neos/eventstore-doctrineadapter/issues",
-                "source": "https://github.com/neos/eventstore-doctrineadapter/tree/2.0.2"
+                "source": "https://github.com/neos/eventstore-doctrineadapter/tree/2.0.3"
             },
             "funding": [
                 {
@@ -6212,7 +6216,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-12-29T18:55:38+00:00"
+            "time": "2025-03-29T17:37:54+00:00"
         },
         {
             "name": "neos/flow",
@@ -6617,16 +6621,16 @@
         },
         {
             "name": "neos/fusion-form",
-            "version": "v2.3.1",
+            "version": "2.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/fusion-form.git",
-                "reference": "7eaa7fa019914f92758f488dea143e28d1a95acb"
+                "reference": "9a8ecd6f4e7a61e4fd833def771db75a7eeb2ff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/fusion-form/zipball/7eaa7fa019914f92758f488dea143e28d1a95acb",
-                "reference": "7eaa7fa019914f92758f488dea143e28d1a95acb",
+                "url": "https://api.github.com/repos/neos/fusion-form/zipball/9a8ecd6f4e7a61e4fd833def771db75a7eeb2ff2",
+                "reference": "9a8ecd6f4e7a61e4fd833def771db75a7eeb2ff2",
                 "shasum": ""
             },
             "require": {
@@ -6659,7 +6663,7 @@
             "description": "Fusion Form",
             "support": {
                 "issues": "https://github.com/neos/fusion-form/issues",
-                "source": "https://github.com/neos/fusion-form/tree/v2.3.1"
+                "source": "https://github.com/neos/fusion-form/tree/2.3.2"
             },
             "funding": [
                 {
@@ -6667,7 +6671,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-03-01T20:09:12+00:00"
+            "time": "2025-03-28T09:04:48+00:00"
         },
         {
             "name": "neos/http-factories",
@@ -11982,16 +11986,16 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.23",
+            "version": "1.12.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "29201e7a743a6ab36f91394eab51889a82631428"
+                "reference": "338b92068f58d9f8035b76aed6cf2b9e5624c025"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/29201e7a743a6ab36f91394eab51889a82631428",
-                "reference": "29201e7a743a6ab36f91394eab51889a82631428",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/338b92068f58d9f8035b76aed6cf2b9e5624c025",
+                "reference": "338b92068f58d9f8035b76aed6cf2b9e5624c025",
                 "shasum": ""
             },
             "require": {
@@ -12036,7 +12040,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-23T14:57:32+00:00"
+            "time": "2025-04-16T13:01:53+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -12044,12 +12048,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "d8ff7cb1d459bcfe8401ea2bc7f22d9c87cf5dca"
+                "reference": "4a535062396cc0a0bb7a6bc72e4dc15e8b2018d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/d8ff7cb1d459bcfe8401ea2bc7f22d9c87cf5dca",
-                "reference": "d8ff7cb1d459bcfe8401ea2bc7f22d9c87cf5dca",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/4a535062396cc0a0bb7a6bc72e4dc15e8b2018d0",
+                "reference": "4a535062396cc0a0bb7a6bc72e4dc15e8b2018d0",
                 "shasum": ""
             },
             "conflict": {
@@ -12096,6 +12100,7 @@
                 "awesome-support/awesome-support": "<=6.0.7",
                 "aws/aws-sdk-php": "<3.288.1",
                 "azuracast/azuracast": "<0.18.3",
+                "b13/seo_basics": "<0.8.2",
                 "backdrop/backdrop": "<1.27.3|>=1.28,<1.28.2",
                 "backpack/crud": "<3.4.9",
                 "backpack/filemanager": "<2.0.2|>=3,<3.0.9",
@@ -12111,6 +12116,7 @@
                 "bbpress/bbpress": "<2.6.5",
                 "bcosca/fatfree": "<3.7.2",
                 "bedita/bedita": "<4",
+                "bednee/cooluri": "<1.0.30",
                 "bigfork/silverstripe-form-capture": ">=3,<3.1.1",
                 "billz/raspap-webgui": "<=3.1.4",
                 "bk2k/bootstrap-package": ">=7.1,<7.1.2|>=8,<8.0.8|>=9,<9.0.4|>=9.1,<9.1.3|>=10,<10.0.10|>=11,<11.0.3",
@@ -12127,6 +12133,7 @@
                 "brotkrueml/typo3-matomo-integration": "<1.3.2",
                 "buddypress/buddypress": "<7.2.1",
                 "bugsnag/bugsnag-laravel": ">=2,<2.0.2",
+                "bvbmedia/multishop": "<2.0.39",
                 "bytefury/crater": "<6.0.2",
                 "cachethq/cachet": "<2.5.1",
                 "cakephp/cakephp": "<3.10.3|>=4,<4.0.10|>=4.1,<4.1.4|>=4.2,<4.2.12|>=4.3,<4.3.11|>=4.4,<4.4.10",
@@ -12145,6 +12152,7 @@
                 "civicrm/civicrm-core": ">=4.2,<4.2.9|>=4.3,<4.3.3",
                 "ckeditor/ckeditor": "<4.25",
                 "clickstorm/cs-seo": ">=6,<6.7|>=7,<7.4|>=8,<8.3|>=9,<9.2",
+                "co-stack/fal_sftp": "<0.2.6",
                 "cockpit-hq/cockpit": "<2.7|==2.7",
                 "codeception/codeception": "<3.1.3|>=4,<4.1.22",
                 "codeigniter/framework": "<3.1.9",
@@ -12152,6 +12160,7 @@
                 "codeigniter4/shield": "<1.0.0.0-beta8",
                 "codiad/codiad": "<=2.8.4",
                 "codingms/additional-tca": ">=1.7,<1.15.17|>=1.16,<1.16.9",
+                "commerceteam/commerce": ">=0.9.6,<0.9.9",
                 "components/jquery": ">=1.0.3,<3.5",
                 "composer/composer": "<1.10.27|>=2,<2.2.24|>=2.3,<2.7.7",
                 "concrete5/concrete5": "<9.4.0.0-RC2-dev",
@@ -12185,6 +12194,8 @@
                 "devgroup/dotplant": "<2020.09.14-dev",
                 "digimix/wp-svg-upload": "<=1",
                 "directmailteam/direct-mail": "<6.0.3|>=7,<7.0.3|>=8,<9.5.2",
+                "dl/yag": "<3.0.1",
+                "dmk/webkitpdf": "<1.1.4",
                 "dnadesign/silverstripe-elemental": "<5.3.12",
                 "doctrine/annotations": "<1.2.7",
                 "doctrine/cache": ">=1,<1.3.2|>=1.4,<1.4.2",
@@ -12269,7 +12280,7 @@
                 "firebase/php-jwt": "<6",
                 "fisharebest/webtrees": "<=2.1.18",
                 "fixpunkt/fp-masterquiz": "<2.2.1|>=3,<3.5.2",
-                "fixpunkt/fp-newsletter": "<1.1.1|>=2,<2.1.2|>=2.2,<3.2.6",
+                "fixpunkt/fp-newsletter": "<1.1.1|>=1.2,<2.1.2|>=2.2,<3.2.6",
                 "flarum/core": "<1.8.10",
                 "flarum/flarum": "<0.1.0.0-beta8",
                 "flarum/framework": "<1.8.10",
@@ -12300,6 +12311,8 @@
                 "funadmin/funadmin": "<=5.0.2",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
+                "georgringer/news": "<1.3.3",
+                "geshi/geshi": "<1.0.8.11-dev",
                 "getformwork/formwork": "<1.13.1|>=2.0.0.0-beta1,<2.0.0.0-beta4",
                 "getgrav/grav": "<1.7.46",
                 "getkirby/cms": "<=3.6.6.5|>=3.7,<=3.7.5.4|>=3.8,<=3.8.4.3|>=3.9,<=3.9.8.1|>=3.10,<=3.10.1|>=4,<=4.3",
@@ -12348,7 +12361,7 @@
                 "illuminate/view": "<6.20.42|>=7,<7.30.6|>=8,<8.75",
                 "imdbphp/imdbphp": "<=5.1.1",
                 "impresscms/impresscms": "<=1.4.5",
-                "impresspages/impresspages": "<=1.0.12",
+                "impresspages/impresspages": "<1.0.13",
                 "in2code/femanager": "<5.5.3|>=6,<6.3.4|>=7,<7.2.3",
                 "in2code/ipandlanguageredirect": "<5.1.2",
                 "in2code/lux": "<17.6.1|>=18,<24.0.2",
@@ -12361,9 +12374,11 @@
                 "islandora/islandora": ">=2,<2.4.1",
                 "ivankristianto/phpwhois": "<=4.3",
                 "jackalope/jackalope-doctrine-dbal": "<1.7.4",
+                "jambagecom/div2007": "<0.10.2",
                 "james-heinrich/getid3": "<1.9.21",
                 "james-heinrich/phpthumb": "<1.7.12",
                 "jasig/phpcas": "<1.3.3",
+                "jbartels/wec-map": "<3.0.3",
                 "jcbrand/converse.js": "<3.3.3",
                 "joelbutcher/socialstream": "<5.6|>=6,<6.2",
                 "johnbillion/wp-crontrol": "<1.16.2",
@@ -12374,7 +12389,7 @@
                 "joomla/filter": "<1.4.4|>=2,<2.0.1",
                 "joomla/framework": "<1.5.7|>=2.5.4,<=3.8.12",
                 "joomla/input": ">=2,<2.0.2",
-                "joomla/joomla-cms": ">=2.5,<3.9.12|>=4,<4.4.13|>=5,<5.2.6",
+                "joomla/joomla-cms": "<3.9.12|>=4,<4.4.13|>=5,<5.2.6",
                 "joomla/joomla-platform": "<1.5.4",
                 "joomla/session": "<1.3.1",
                 "joyqi/hyper-down": "<=2.4.27",
@@ -12439,6 +12454,7 @@
                 "mainwp/mainwp": "<=4.4.3.3",
                 "mantisbt/mantisbt": "<=2.26.3",
                 "marcwillmann/turn": "<0.3.3",
+                "matomo/matomo": "<1.11",
                 "matyhtf/framework": "<3.0.6",
                 "mautic/core": "<5.2.3",
                 "mautic/core-lib": ">=1.0.0.0-beta,<4.4.13|>=5.0.0.0-alpha,<5.1.1",
@@ -12510,6 +12526,7 @@
                 "october/october": "<=3.6.4",
                 "october/rain": "<1.0.472|>=1.1,<1.1.2",
                 "october/system": "<1.0.476|>=1.1,<1.1.12|>=2,<2.2.34|>=3,<3.5.15",
+                "oliverklee/phpunit": "<3.5.15",
                 "omeka/omeka-s": "<4.0.3",
                 "onelogin/php-saml": "<2.10.4",
                 "oneup/uploader-bundle": ">=1,<1.9.3|>=2,<2.1.5",
@@ -12543,6 +12560,7 @@
                 "pear/archive_tar": "<1.4.14",
                 "pear/auth": "<1.2.4",
                 "pear/crypt_gpg": "<1.6.7",
+                "pear/http_request2": "<2.7",
                 "pear/pear": "<=1.10.1",
                 "pegasus/google-for-jobs": "<1.5.1|>=2,<2.1.1",
                 "personnummer/personnummer": "<3.0.2",
@@ -12576,6 +12594,7 @@
                 "pimcore/ecommerce-framework-bundle": "<1.0.10",
                 "pimcore/perspective-editor": "<1.5.1",
                 "pimcore/pimcore": "<11.5.4",
+                "piwik/piwik": "<1.11",
                 "pixelfed/pixelfed": "<0.12.5",
                 "plotly/plotly.js": "<2.25.2",
                 "pocketmine/bedrock-protocol": "<8.0.2",
@@ -12601,6 +12620,7 @@
                 "ptheofan/yii2-statemachine": ">=2.0.0.0-RC1-dev,<=2",
                 "ptrofimov/beanstalk_console": "<1.7.14",
                 "pubnub/pubnub": "<6.1",
+                "punktde/pt_extbase": "<1.5.1",
                 "pusher/pusher-php-server": "<2.2.1",
                 "pwweb/laravel-core": "<=0.3.6.0-beta",
                 "pxlrbt/filament-excel": "<1.1.14|>=2.0.0.0-alpha,<2.3.3",
@@ -12670,8 +12690,9 @@
                 "simplesamlphp/xml-security": "==1.6.11",
                 "simplito/elliptic-php": "<1.0.6",
                 "sitegeist/fluid-components": "<3.5",
-                "sjbr/sr-feuser-register": "<2.5.21",
+                "sjbr/sr-feuser-register": "<2.6.2",
                 "sjbr/sr-freecap": "<2.4.6|>=2.5,<2.5.3",
+                "sjbr/static-info-tables": "<2.3.1",
                 "slim/psr7": "<1.4.1|>=1.5,<1.5.1|>=1.6,<1.6.1",
                 "slim/slim": "<2.6",
                 "slub/slub-events": "<3.0.3",
@@ -12816,6 +12837,7 @@
                 "verbb/image-resizer": "<2.0.9",
                 "verbb/knock-knock": "<1.2.8",
                 "verot/class.upload.php": "<=2.1.6",
+                "vertexvaar/falsftp": "<0.2.6",
                 "villagedefrance/opencart-overclocked": "<=1.11.1",
                 "vova07/yii2-fileapi-widget": "<0.1.9",
                 "vrana/adminer": "<4.8.1",
@@ -12828,6 +12850,7 @@
                 "web-auth/webauthn-framework": ">=3.3,<3.3.4|>=4.5,<4.9",
                 "web-auth/webauthn-lib": ">=4.5,<4.9",
                 "web-feet/coastercms": "==5.5",
+                "web-tp3/wec_map": "<3.0.3",
                 "webbuilders-group/silverstripe-kapost-bridge": "<0.4",
                 "webcoast/deferred-image-processing": "<1.0.2",
                 "webklex/laravel-imap": "<5.3",
@@ -12944,15 +12967,15 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-04-11T20:05:37+00:00"
+            "time": "2025-04-21T23:05:07+00:00"
         }
     ],
     "aliases": [
         {
             "package": "jonnitto/prettyembedhelper",
             "version": "dev-neos9",
-            "alias": "7.0.0",
-            "alias_normalized": "7.0.0.0"
+            "alias": "9.0.0",
+            "alias_normalized": "9.0.0.0"
         },
         {
             "package": "sandstorm/lazydatasource",
