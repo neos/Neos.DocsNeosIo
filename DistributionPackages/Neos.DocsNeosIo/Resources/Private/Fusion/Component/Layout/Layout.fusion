@@ -26,8 +26,8 @@ prototype(Neos.DocsNeosIo:Component.Layout) < prototype(Neos.Neos:ContentCompone
     }
     prevNextNavigation = Neos.DocsNeosIo:Component.PrevNextNavigation {
         @if.showPrevNextNavigation = ${q(node).property('showPrevNextNavigation')}
-        prevNode = ${q(documentNode).prevAll('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]').last().get(0)}
-        nextNode = ${q(documentNode).nextAll('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]').get(0)}
+        prevNode = ${q(documentNode).prevAll('[instanceof Neos.Neos:Document][hiddenInMenu != TRUE][hideFromMainMenu != TRUE]').last().get(0)}
+        nextNode = ${q(documentNode).nextAll('[instanceof Neos.Neos:Document][hiddenInMenu != TRUE][hideFromMainMenu != TRUE]').get(0)}
 
         @cache {
             mode = 'cached'
