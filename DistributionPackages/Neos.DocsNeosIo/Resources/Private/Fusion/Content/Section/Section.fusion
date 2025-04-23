@@ -14,7 +14,7 @@ prototype(Neos.DocsNeosIo:Content.Section) < prototype(Neos.Neos:ContentComponen
     content = Neos.Neos:ContentCollection {
         nodePath = '.'
     }
-    tags = ${q(node).property('tags')}
+    tags = ${q(node).references('tags')}
 
     renderer = afx`
         <div class="content-section" id={props.id}>

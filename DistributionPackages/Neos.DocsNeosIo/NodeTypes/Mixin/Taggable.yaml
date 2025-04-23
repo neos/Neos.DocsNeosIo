@@ -2,9 +2,8 @@
   abstract: true
   superTypes:
     'Neos.DocsNeosIo:Mixin.InspectorGeneral': true
-  properties:
+  references:
     tags:
-      type: references
       ui:
         label: 'Tags'
         reloadIfChanged: true
