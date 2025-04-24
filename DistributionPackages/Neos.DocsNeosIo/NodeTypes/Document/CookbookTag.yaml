@@ -13,9 +13,8 @@
     nodeTypes:
       'Neos.Neos:Document': false
       'Neos.DocsNeosIo:Document.Cookbook': true
-  properties:
+  references:
     includedTag:
-      type: reference
       ui:
         label: 'IncludedTag'
         reloadIfChanged: true

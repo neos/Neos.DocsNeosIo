@@ -8,7 +8,7 @@
     'Neos.GoogleAnalytics:StatsTabMixin': false
     'Neos.Seo:NoindexMixin': true
   properties:
-    _hiddenInIndex:
+    hiddenInMenu:
       defaultValue: true
       ui:
         inspector:

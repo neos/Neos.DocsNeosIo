@@ -14,8 +14,8 @@ prototype(Neos.DocsNeosIo:Component.Notice) < prototype(Neos.Neos:ContentCompone
         backend = ${value == 'backend' ? 'fas fa-edit' : value}
     }
     renderer = afx`
-        <div id={props.id} class={'custom-block ' + props.type} @if.isFrontendNotice={props.type != 'backend' || node.context.inBackend}>
-            <p @if={props.title || node.context.inBackend} class="custom-block-title">
+        <div id={props.id} class={'custom-block ' + props.type} @if.isFrontendNotice={props.type != 'backend' || renderingMode.isEdit}>
+            <p @if={props.title || renderingMode.isEdit} class="custom-block-title">
                 <Neos.DocsNeosIo:Component.Icon iconName={String.firstLetterToUpperCase(props.type)} iconClass={props.iconClass} additionalClass="inline-icon custom-block-icon" />
                 <span @if.backend={props.type == 'backend'}>Backend only: </span>
                 {props.title}

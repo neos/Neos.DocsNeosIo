@@ -3,7 +3,7 @@ prototype(Neos.DocsNeosIo:Document.Cookbook.Short) < prototype(Neos.Fusion:Compo
     subtitle = ${q(node).property('subtitle')}
     publishingDate = ${q(node).property('publishingDate')}
     formattedPublishingDate = ${this.publishingDate ? Date.format(this.publishingDate, 'd. F Y') : ''}
-    tags = ${q(node).property('tags')}
+    tags = ${q(node).referenceNodes('tags').get()}
 
     renderer = afx`
         <div class="card__wrapper">
