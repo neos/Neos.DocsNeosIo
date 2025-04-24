@@ -16,7 +16,7 @@ prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
             property = 'subtitle'
             block = false
         }
-        tags = ${q(node).references('tags')}
+        tags = ${q(node).referenceNodes('tags')}
         sidebarRoot = ${q(documentNode).parentsUntil('[instanceof Neos.DocsNeosIo:Document.HomePage]').last().get(0) || documentNode}
         navbarRoot = ${q(site).property('navReference') || site}
     }
