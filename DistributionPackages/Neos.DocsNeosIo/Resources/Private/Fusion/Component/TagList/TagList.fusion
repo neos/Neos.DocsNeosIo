@@ -5,21 +5,22 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
     additionalClass = false
 
     @private {
+        filteredItems = ${q(props.items).filter(props.filter)}
         tags = Neos.Fusion:Loop {
-            items = ${q(props.items).filter(props.filter)}
+            items = ${private.filteredItems}
             itemName = 'tag'
             itemRenderer = afx`
-                <div class={'chip notice-type-' + q(tag).property('noticeType')}>
+                <li class={'chip notice-type-' + q(tag).property('noticeType')}>
                     {q(tag).property('title')}
-                </div>
+                </li>
             `
         }
     }
     renderer = afx`
         <div class={['tags', props.additionalClass]} @if={Array.length(props.items) > 0}>
-            <object type="owo/uwu" class="tags-container">
+            <ul class="tags-container">
                 {private.tags}
-            </object>
+            </ul>
         </div>
     `
 }
