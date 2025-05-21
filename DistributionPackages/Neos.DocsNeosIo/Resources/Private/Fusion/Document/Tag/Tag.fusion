@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Document.Tag) >
 prototype(Neos.DocsNeosIo:Document.Tag) < prototype(Neos.Fusion:Case) {
     inBackend {
-        condition = ${node.context.inBackend}
+        condition = ${renderingMode.isEdit}
         renderer = Neos.DocsNeosIo:Document.AbstractPage {
             body.subtitle = 'You can define a notice content below. This notice will be displayed on all tagged pages.'
             body.content = Neos.DocsNeosIo:Component.Notice {

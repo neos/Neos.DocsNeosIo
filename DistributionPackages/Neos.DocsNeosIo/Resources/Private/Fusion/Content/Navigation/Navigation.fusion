@@ -1,6 +1,6 @@
 prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentComponent) {
     id = Neos.DocsNeosIo:Helper.StringToHash {
-        value = ${q(node).property('title') || node.identifier}
+        value = ${q(node).property('title') || node.aggregateId}
     }
     title = Neos.Neos:Editable {
         property = 'title'
@@ -14,14 +14,14 @@ prototype(Neos.DocsNeosIo:Content.Navigation) < prototype(Neos.Neos:ContentCompo
     navigation = Neos.DocsNeosIo:Component.Sidebar {
         startingPoint = ${navRoot}
         itemClass.base = 'collection-item'
-        @cache.entryIdentifier.node = ${node}
+        @cache.entryIdentifier.node = ${Neos.Caching.entryIdentifierForNode(node)}
     }
 
-    navItems = ${q(navRoot).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+    navItems = ${q(navRoot).children('[instanceof Neos.Neos:Document][hiddenInMenu != TRUE][hideFromMainMenu != TRUE]')}
 
     renderer = afx`
         <div id={props.id} class="content-navigation">
-            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || node.context.inBackend} class="header">
+            <Neos.Fusion:Tag tagName={props.headlineSize} @if={props.title || renderingMode.isEdit} class="header">
                 <a href={'#' + props.id} class="header-anchor" aria-label={props.title}>#</a>
                 {props.title}
             </Neos.Fusion:Tag>

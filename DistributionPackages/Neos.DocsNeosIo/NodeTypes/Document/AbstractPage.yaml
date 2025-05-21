@@ -18,6 +18,11 @@
     nodeTypes:
       'Neos.DocsNeosIo:Document.HomePage': false
       'Neos.DocsNeosIo:Constraint.Document.Restricted': false
+  references:
+    tags:
+      ui:
+        inspector:
+          group: 'document'
   properties:
     title:
       ui:
@@ -33,7 +38,3 @@
         silhouette: 'neos.text.plain'
       search:
         fulltextExtractor: '${Indexing.extractInto("h2", value)}'
-    tags:
-      ui:
-        inspector:
-          group: 'document'

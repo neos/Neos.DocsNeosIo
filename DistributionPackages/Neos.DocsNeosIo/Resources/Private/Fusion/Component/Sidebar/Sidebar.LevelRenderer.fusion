@@ -1,32 +1,37 @@
 prototype(Neos.DocsNeosIo:Component.Sidebar.LevelRenderer) < prototype(Neos.Fusion:Component) {
-    @context.nodeDepth = ${this.node.depth - startingPoint.depth}
+    @context.nodeDepth = ${Neos.Node.depth(this.node) - Neos.Node.depth(startingPoint)}
     node = ${node}
     itemTitle = ${q(node).property('mainMenuTitle') || q(node).property('titleOverride') || q(node).property('title')}
     itemStatus = ${q(node).property('status')}
-    itemLinkClass = Neos.Fusion:DataStructure {
-        base = 'sidebar-link-item'
-        current = 'current'
-        current.@if.isCurrent = ${node == documentNode}
-        active = 'active'
-        active.@if.isActive = ${node == documentNode || String.indexOf(q(node).property('target'), documentNode.identifier) > -1}
-    }
+    itemTarget = ${q(node).property('target')}
+    parentOfDocumentNode = ${q(documentNode).parent().get(0)}
+    isDocumentNode = ${node.aggregateId.value == documentNode.aggregateId.value}
     navigationClass = "sidebar-links"
     navigationItems = Neos.Fusion:Loop {
         @if.notEmpty = ${this.items.count() > 0}
-        items = ${q(node).children('[instanceof Neos.Neos:Document][_hidden != TRUE][_hiddenInIndex != TRUE][hideFromMainMenu != TRUE]')}
+        items = ${q(node).children('[instanceof Neos.Neos:Document][hiddenInMenu != TRUE][hideFromMainMenu != TRUE]')}
         itemName = 'node'
         itemRenderer = Neos.DocsNeosIo:Component.Sidebar.LevelRenderer
     }
 
-    renderNextLevel = ${nodeDepth < 2 || (node == documentNode || ((q(documentNode).closest('[_identifier = "' + node.identifier + '"]').count() > 0))) && this.navigationItems}
+    @private {
+        itemLinkClass = Neos.Fusion:DataStructure {
+            base = 'sidebar-link-item'
+            current = 'current'
+            current.@if.isCurrent = ${props.isDocumentNode}
+            active = 'active'
+            active.@if.isActive = ${props.isDocumentNode || String.indexOf(props.itemTarget, documentNode.aggregateId) > -1}
+        }
+        renderNextLevel = ${nodeDepth < 2 || (props.isDocumentNode || props.parentOfDocumentNode.aggregateId.value == node.aggregateId.value) && props.navigationItems}
+    }
 
     renderer = afx`
         <li class="sidebar-link" >
-            <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={props.itemLinkClass} backendLink={true}>
+            <Carbon.Link:Link title={props.itemTitle} node={node} additionalClass={private.itemLinkClass} backendLink={true}>
                 {props.itemTitle}
                 <Neos.DocsNeosIo:Component.Badge @if={props.itemStatus} itemStatus={props.itemStatus} />
             </Carbon.Link:Link>
-            <ul @if.hasNextLevel={props.renderNextLevel} class={props.navigationClass}>
+            <ul @if.hasNextLevel={private.renderNextLevel} class={props.navigationClass}>
                 {props.navigationItems}
             </ul>
         </li>

@@ -1,0 +1,8 @@
+'Neos.DocsNeosIo:Content.Search':
+  superTypes:
+    'Neos.Neos:Content': true
+    'Neos.DocsNeosIo:Constraint.Content.Restricted': true
+  ui:
+    label: 'Search'
+    icon: icon-search
+    position: 100
