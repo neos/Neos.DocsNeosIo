@@ -17,7 +17,6 @@
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
         "neos/contentrepository-legacynodemigration": "^9.0",
-        "sandstorm/lazydatasource": "^3.0",
         "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
         "jcupitt/vips": "^1.0"
@@ -30,10 +29,6 @@
         "distribution": {
             "type": "path",
             "url": "./DistributionPackages/*"
-        },
-        "markusguenther/mxgraph": {
-            "type": "git",
-            "url": "https://github.com/markusguenther/MxGraph.git"
         },
         "Jan3k3y/neos-publishnotifier": {
             "type": "git",

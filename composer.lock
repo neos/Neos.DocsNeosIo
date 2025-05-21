@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47d40994bf371fd0935a78f3f15961bd",
+    "content-hash": "3f693125b426fcb423f49392a7a914d1",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5940,7 +5940,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "02c706ec285ce5c6ed44604d75e26c2c3a15c675"
+                "reference": "9a09641143bded0a3b13f4bc522d7ae498146d0d"
             },
             "require": {
                 "carbon/includeassets": "^6.5",
@@ -5961,6 +5961,7 @@
                 "neos/redirecthandler-neosadapter": "^5.0",
                 "neos/redirecthandler-ui": "^3.0",
                 "neos/seo": "^4.1",
+                "sandstorm/lazydatasource": "^3.0",
                 "sandstorm/mxgraph": "dev-neos9",
                 "shel/neos-hyphens": "^1.5.0",
                 "yoast/yoast-seo-for-neos": "^2.0"
@@ -9936,8 +9937,14 @@
             "version": "dev-neos9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/markusguenther/MxGraph.git",
-                "reference": "b8465530158b4701c3f4221a09f912e9edc54ab8"
+                "url": "https://github.com/sandstorm/MxGraph.git",
+                "reference": "dd47ecd174b13dc6802a773f1a24604d7d1e2d48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sandstorm/MxGraph/zipball/dd47ecd174b13dc6802a773f1a24604d7d1e2d48",
+                "reference": "dd47ecd174b13dc6802a773f1a24604d7d1e2d48",
+                "shasum": ""
             },
             "require": {
                 "neos/neos": "^9.0 || dev-master",
@@ -10028,8 +10035,13 @@
                     "Sandstorm\\MxGraph\\": "Classes/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "description": "Integrate Diagrams.net / Draw.io into Neos as Node Type for creating interactive diagrams and flowcharts",
-            "time": "2025-04-03T19:57:28+00:00"
+            "support": {
+                "issues": "https://github.com/sandstorm/MxGraph/issues",
+                "source": "https://github.com/sandstorm/MxGraph/tree/neos9"
+            },
+            "time": "2025-04-30T12:55:26+00:00"
         },
         {
             "name": "seld/jsonlint",
