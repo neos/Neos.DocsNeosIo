@@ -1,3 +1,0 @@
-prototype(Carbon.Link:Link) {
-    link = ${this.node ? 'node://' + this.node.aggregateId : link ? link : false}
-}
