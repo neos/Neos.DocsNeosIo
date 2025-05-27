@@ -1,0 +1,20 @@
+Neos:
+  DocsNeosIo:
+    notify:
+      sharedWorkspace: false
+    slack:
+      enabled: true
+      postTo:
+        neosDocsToGuildDocumentation:
+          webhookUrl: '%env:SLACK_NEOS_DOCUMENTATION_CHANNEL_WEBHOOK_URL%'
+          clientSettings: []
+      message: |+
+        %1$s created documentation changes to be reviewed.
+        Please review the changes and publish to live: https://docs.neos.io%3$s
+  ContentRepositoryRegistry:
+    presets:
+      'default':
+        contentGraphProjection:
+          catchUpHooks:
+            'Neos.DocsNeosIo:WorkspacePublishHook':
+              factoryObjectName: Neos\DocsNeosIo\CatchUpHook\WorkspacePublishHookFactory
