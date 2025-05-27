@@ -29,10 +29,6 @@
         "distribution": {
             "type": "path",
             "url": "./DistributionPackages/*"
-        },
-        "Jan3k3y/neos-publishnotifier": {
-            "type": "git",
-            "url": "https://github.com/Jan3k3y/neos-publishnotifier.git"
         }
     },
     "scripts": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3f693125b426fcb423f49392a7a914d1",
+    "content-hash": "09fcd7456ce13e9b0c4671832e9a4f5c",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -437,16 +437,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.6",
+            "version": "1.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175"
+                "reference": "d665d22c417056996c59019579f1967dfe5c1e82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/f65c239c970e7f072f067ab78646e9f0b2935175",
-                "reference": "f65c239c970e7f072f067ab78646e9f0b2935175",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/d665d22c417056996c59019579f1967dfe5c1e82",
+                "reference": "d665d22c417056996c59019579f1967dfe5c1e82",
                 "shasum": ""
             },
             "require": {
@@ -493,7 +493,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.6"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.7"
             },
             "funding": [
                 {
@@ -509,7 +509,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-03-06T14:30:56+00:00"
+            "time": "2025-05-26T15:08:54+00:00"
         },
         {
             "name": "composer/class-map-generator",
@@ -5125,16 +5125,16 @@
         },
         {
             "name": "neos/content-repository-search",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/content-repository-search.git",
-                "reference": "da52ca386face0c6da753bbbd41943a2a7b983b6"
+                "reference": "8e982a0c22a156dd285c5c604f48bf3be9ed4d94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/content-repository-search/zipball/da52ca386face0c6da753bbbd41943a2a7b983b6",
-                "reference": "da52ca386face0c6da753bbbd41943a2a7b983b6",
+                "url": "https://api.github.com/repos/neos/content-repository-search/zipball/8e982a0c22a156dd285c5c604f48bf3be9ed4d94",
+                "reference": "8e982a0c22a156dd285c5c604f48bf3be9ed4d94",
                 "shasum": ""
             },
             "require": {
@@ -5232,7 +5232,7 @@
             "description": "Common code and interface for a Neos CR search implementation",
             "support": {
                 "issues": "https://github.com/neos/content-repository-search/issues",
-                "source": "https://github.com/neos/content-repository-search/tree/5.0.0"
+                "source": "https://github.com/neos/content-repository-search/tree/5.0.1"
             },
             "funding": [
                 {
@@ -5240,7 +5240,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2025-04-02T17:58:16+00:00"
+            "time": "2025-05-18T19:03:06+00:00"
         },
         {
             "name": "neos/contentgraph-doctrinedbaladapter",
@@ -5940,7 +5940,7 @@
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
-                "reference": "9a09641143bded0a3b13f4bc522d7ae498146d0d"
+                "reference": "099488c48f13f9316438c8da77319afb5570bffb"
             },
             "require": {
                 "carbon/includeassets": "^6.5",
@@ -5962,7 +5962,7 @@
                 "neos/redirecthandler-ui": "^3.0",
                 "neos/seo": "^4.1",
                 "sandstorm/lazydatasource": "^3.0",
-                "sandstorm/mxgraph": "dev-neos9",
+                "sandstorm/mxgraph": "^4.0.0",
                 "shel/neos-hyphens": "^1.5.0",
                 "yoast/yoast-seo-for-neos": "^2.0"
             },
@@ -9934,16 +9934,16 @@
         },
         {
             "name": "sandstorm/mxgraph",
-            "version": "dev-neos9",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sandstorm/MxGraph.git",
-                "reference": "dd47ecd174b13dc6802a773f1a24604d7d1e2d48"
+                "reference": "3dbe7bb3484bf81f92c6bb499ccbf822c8631f2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sandstorm/MxGraph/zipball/dd47ecd174b13dc6802a773f1a24604d7d1e2d48",
-                "reference": "dd47ecd174b13dc6802a773f1a24604d7d1e2d48",
+                "url": "https://api.github.com/repos/sandstorm/MxGraph/zipball/3dbe7bb3484bf81f92c6bb499ccbf822c8631f2e",
+                "reference": "3dbe7bb3484bf81f92c6bb499ccbf822c8631f2e",
                 "shasum": ""
             },
             "require": {
@@ -10039,9 +10039,9 @@
             "description": "Integrate Diagrams.net / Draw.io into Neos as Node Type for creating interactive diagrams and flowcharts",
             "support": {
                 "issues": "https://github.com/sandstorm/MxGraph/issues",
-                "source": "https://github.com/sandstorm/MxGraph/tree/neos9"
+                "source": "https://github.com/sandstorm/MxGraph/tree/4.0.1"
             },
-            "time": "2025-04-30T12:55:26+00:00"
+            "time": "2025-05-21T09:29:48+00:00"
         },
         {
             "name": "seld/jsonlint",
@@ -10426,16 +10426,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.5.1",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6"
+                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
-                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/63afe740e99a13ba87ec199bb07bbdee937a5b62",
+                "reference": "63afe740e99a13ba87ec199bb07bbdee937a5b62",
                 "shasum": ""
             },
             "require": {
@@ -10448,7 +10448,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.5-dev"
+                    "dev-main": "3.6-dev"
                 }
             },
             "autoload": {
@@ -10473,7 +10473,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.1"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.6.0"
             },
             "funding": [
                 {
@@ -10489,7 +10489,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:20:29+00:00"
+            "time": "2024-09-25T14:21:43+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -11408,16 +11408,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.5.1",
+            "version": "v3.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "e53260aabf78fb3d63f8d79d69ece59f80d5eda0"
+                "reference": "f021b05a130d35510bd6b25fe9053c2a8a15d5d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/e53260aabf78fb3d63f8d79d69ece59f80d5eda0",
-                "reference": "e53260aabf78fb3d63f8d79d69ece59f80d5eda0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f021b05a130d35510bd6b25fe9053c2a8a15d5d4",
+                "reference": "f021b05a130d35510bd6b25fe9053c2a8a15d5d4",
                 "shasum": ""
             },
             "require": {
@@ -11435,7 +11435,7 @@
                     "name": "symfony/contracts"
                 },
                 "branch-alias": {
-                    "dev-main": "3.5-dev"
+                    "dev-main": "3.6-dev"
                 }
             },
             "autoload": {
@@ -11471,7 +11471,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/service-contracts/tree/v3.5.1"
+                "source": "https://github.com/symfony/service-contracts/tree/v3.6.0"
             },
             "funding": [
                 {
@@ -11487,7 +11487,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:20:29+00:00"
+            "time": "2025-04-25T09:37:31+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -12040,16 +12040,16 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.26",
+            "version": "1.12.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "84cbf8f018e01834b9b1ac3dacf3b9780e209e53"
+                "reference": "3a6e423c076ab39dfedc307e2ac627ef579db162"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/84cbf8f018e01834b9b1ac3dacf3b9780e209e53",
-                "reference": "84cbf8f018e01834b9b1ac3dacf3b9780e209e53",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3a6e423c076ab39dfedc307e2ac627ef579db162",
+                "reference": "3a6e423c076ab39dfedc307e2ac627ef579db162",
                 "shasum": ""
             },
             "require": {
@@ -12094,7 +12094,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-14T11:08:32+00:00"
+            "time": "2025-05-21T20:51:45+00:00"
         },
         {
             "name": "roave/security-advisories",
