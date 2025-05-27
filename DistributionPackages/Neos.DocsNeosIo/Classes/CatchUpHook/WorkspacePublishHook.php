@@ -19,13 +19,19 @@ class WorkspacePublishHook implements CatchUpHookInterface
     public function __construct(
         private readonly ContentRepositoryId $contentRepositoryId,
         private readonly NotifierService     $notifierService,
+        private readonly bool                $enabledNotifier = true,
     )
     {
     }
 
     public function onBeforeCatchUp(SubscriptionStatus $subscriptionStatus): void
     {
-        // Nothing to do here
+        if ($subscriptionStatus === SubscriptionStatus::ACTIVE && $this->enabledNotifier === true) {
+            $this->handleEvents = true;
+            return;
+        }
+
+        $this->handleEvents = false;
     }
 
     public function onBeforeEvent(EventInterface $eventInstance, EventEnvelope $eventEnvelope): void
@@ -63,9 +69,11 @@ class WorkspacePublishHook implements CatchUpHookInterface
      */
     private function sendNotification(EventInterface $event): void
     {
-        $targetWorkspaceName = $event->getWorkspaceName();
+        if ($this->enabledNotifier === false) {
+            return;
+        }
 
         /** @var WorkspaceWasPublished|WorkspaceWasPartiallyPublished $event */
-        $this->notifierService->notify($targetWorkspaceName, $this->contentRepositoryId);
+        $this->notifierService->notify($event->targetWorkspaceName, $this->contentRepositoryId);
     }
 }

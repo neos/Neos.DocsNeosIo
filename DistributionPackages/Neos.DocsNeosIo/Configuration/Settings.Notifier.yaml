@@ -1,7 +1,8 @@
 Neos:
   DocsNeosIo:
     notify:
-      sharedWorkspace: false
+      enabled: true
+      workspaceNamePattern: '/^To be reviewed \(.+?\)$/'
     slack:
       enabled: true
       postTo:
