@@ -16,7 +16,6 @@
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
-        "neos/contentrepository-legacynodemigration": "^9.0",
         "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
         "jcupitt/vips": "^1.0"
