@@ -1,17 +1,28 @@
 Neos:
   DocsNeosIo:
+    # Settings to notify about changes in the documentation
     notify:
-      enabled: true
-      workspaceNamePattern: '/^To be reviewed \(.+?\)$/'
-    slack:
-      enabled: true
-      postTo:
-        neosDocsToGuildDocumentation:
-          webhookUrl: '%env:SLACK_NEOS_DOCUMENTATION_CHANNEL_WEBHOOK_URL%'
-          clientSettings: []
-      message: |+
-        %1$s created documentation changes to be reviewed.
-        Please review the changes and publish to live: https://docs.neos.io%3$s
+      general:
+        enabled: true
+          # pattern to match the workspace name for which notifications should be sent
+        workspaceNamePattern: '/^to be reviewed \(.+?\)$/'
+      slack:
+        enabled: true
+        postTo:
+          neosDocsToGuildDocumentation:
+            webhookUrl: '%env:SLACK_NEOS_DOCUMENTATION_CHANNEL_WEBHOOK_URL%'
+            clientSettings: []
+        message: |+
+          %1$s created documentation changes to be reviewed.
+          Please review the changes and publish to live: https://docs.neos.io%3$s
+    # Settings to make review handling easier
+    reviewWorkspace:
+        # creates a workspace for the user to review changes
+      createWorkspaceForUser: true
+        # changes the base workspace to the review workspace on login
+      changeBaseWorkspace: true
+        # name of the workspace to be created for the user (should match the pattern from notify.general.workspaceNamePattern)
+      workspaceNameFormat: 'to be reviewed (%s)'
   ContentRepositoryRegistry:
     presets:
       'default':

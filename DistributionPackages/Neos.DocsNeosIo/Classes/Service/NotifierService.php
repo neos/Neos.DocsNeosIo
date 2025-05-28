@@ -6,10 +6,7 @@ namespace Neos\DocsNeosIo\Service;
 
 
 use Neos\ContentRepository\Core\SharedModel\ContentRepository\ContentRepositoryId;
-use Neos\ContentRepository\Core\SharedModel\Exception\WorkspaceDoesNotExist;
-use Neos\ContentRepository\Core\SharedModel\Workspace\Workspace;
 use Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName;
-use Neos\ContentRepositoryRegistry\ContentRepositoryRegistry;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Configuration\Exception\InvalidConfigurationException;
 use Neos\Flow\Http\Client\Browser;
@@ -17,11 +14,7 @@ use Neos\Flow\Http\Client\CurlEngine;
 use Neos\Flow\Log\Utility\LogEnvironment;
 use Neos\Http\Factories\ServerRequestFactory;
 use Neos\Http\Factories\StreamFactory;
-use Neos\Neos\Domain\Model\WorkspaceClassification;
-use Neos\Neos\Domain\Model\WorkspaceRole;
-use Neos\Neos\Domain\Repository\WorkspaceMetadataAndRoleRepository;
 use Neos\Neos\Domain\Service\UserService;
-use Neos\Neos\Domain\Service\WorkspaceService;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Log\LoggerInterface;
 
@@ -34,20 +27,19 @@ class NotifierService
     #[Flow\InjectConfiguration(path: 'http.baseUri', package: 'Neos.Flow')]
     protected ?string $baseUri;
 
-    #[Flow\InjectConfiguration(path: 'notify', package: 'Neos.DocsNeosIo')]
+    #[Flow\InjectConfiguration(path: 'notify.general', package: 'Neos.DocsNeosIo')]
     protected ?array $notifySettings;
 
-    #[Flow\InjectConfiguration(path: 'slack', package: 'Neos.DocsNeosIo')]
+    #[Flow\InjectConfiguration(path: 'notify.slack', package: 'Neos.DocsNeosIo')]
     protected ?array $slackSettings;
 
     protected bool $notificationHasBeenSentInCurrentInstance = false;
 
     public function __construct(
-        private ContentRepositoryRegistry $contentRepositoryRegistry,
-        private WorkspaceService          $workspaceService,
-        private UserService               $userService,
-        private ServerRequestFactory      $serverRequestFactory,
-        private StreamFactory             $streamFactory
+        private WorkspaceService     $workspaceService,
+        private UserService          $userService,
+        private ServerRequestFactory $serverRequestFactory,
+        private StreamFactory        $streamFactory
     )
     {
     }
@@ -121,7 +113,7 @@ class NotifierService
         }
 
         // skip changes to shared workspace that does not target live
-        if ($this->isSharedWorkspace($targetWorkspaceName, $contentRepositoryId) && !$this->isTargetLiveWorkspace($targetWorkspaceName, $contentRepositoryId)) {
+        if ($this->workspaceService->isSharedWorkspace($targetWorkspaceName, $contentRepositoryId) && !$this->workspaceService->isTargetLiveWorkspace($targetWorkspaceName, $contentRepositoryId)) {
             return;
         }
 
@@ -129,58 +121,5 @@ class NotifierService
             $this->sendSlackMessages($targetWorkspaceName);
             $this->notificationHasBeenSentInCurrentInstance = true;
         }
-    }
-
-    /**
-     * Checks if the base workspace is not the live workspace
-     *
-     * @throws WorkspaceDoesNotExist
-     */
-    protected function isTargetLiveWorkspace(WorkspaceName $workspaceName, ContentRepositoryId $contentRepositoryId): bool
-    {
-        $workspace = $this->getWorkspaceByName($contentRepositoryId, $workspaceName);
-        if (!$workspace->baseWorkspaceName->equals(WorkspaceName::forLive())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * Checks if the workspace is a shared workspace
-     *
-     * @throws WorkspaceDoesNotExist
-     */
-    protected function isSharedWorkspace(WorkspaceName $workspaceName, ContentRepositoryId $contentRepositoryId): bool
-    {
-        $workspaceMetadata = $this->workspaceService->getWorkspaceMetadata($contentRepositoryId, $workspaceName);
-        $workspaceRoleAssignments = $this->workspaceService->getWorkspaceRoleAssignments($contentRepositoryId, $workspaceName);
-        $this->systemLogger->debug(sprintf('Checking if workspace "%s" in content repository "%s" is shared', $workspaceName->value, $contentRepositoryId->value), LogEnvironment::fromMethodName(__METHOD__));
-        $this->systemLogger->debug(json_encode($workspaceMetadata, JSON_PRETTY_PRINT), LogEnvironment::fromMethodName(__METHOD__));
-        $isShared = false;
-        if ($workspaceMetadata->classification === WorkspaceClassification::SHARED) {
-            foreach ($workspaceRoleAssignments as $roleAssignment) {
-                if ($roleAssignment->role === WorkspaceRole::COLLABORATOR) {
-                    $isShared = true;
-                }
-            }
-        }
-        return $isShared;
-    }
-
-    /**
-     * Returns workspace by the given name in the given content repository.
-     *
-     * @throws WorkspaceDoesNotExist if the workspace does not exist
-     */
-    protected function getWorkspaceByName(ContentRepositoryId $contentRepositoryId, WorkspaceName $workspaceName): Workspace
-    {
-        $workspace = $this->contentRepositoryRegistry
-            ->get($contentRepositoryId)
-            ->findWorkspaceByName($workspaceName);
-        if ($workspace === null) {
-            throw WorkspaceDoesNotExist::butWasSupposedToInContentRepository($workspaceName, $contentRepositoryId);
-        }
-        return $workspace;
     }
 }
