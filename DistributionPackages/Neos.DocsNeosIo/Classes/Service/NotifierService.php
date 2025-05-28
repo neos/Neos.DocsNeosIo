@@ -108,7 +108,7 @@ class NotifierService
         }
 
         // skip if the workspace name does not match the configured pattern
-        if (preg_match($this->notifySettings['workspaceNamePattern'], $targetWorkspaceName->value)) {
+        if (!preg_match($this->notifySettings['workspaceNamePattern'], $targetWorkspaceName->value)) {
             return;
         }
 
