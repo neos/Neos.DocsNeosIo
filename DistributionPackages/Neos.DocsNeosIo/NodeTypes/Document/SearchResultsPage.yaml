@@ -6,3 +6,8 @@
     label: 'Search Results Page'
     icon: icon-search
     position: 990
+  childNodes:
+    main:
+      constraints:
+        nodeTypes:
+          'Neos.DocsNeosIo:Content.Search': true

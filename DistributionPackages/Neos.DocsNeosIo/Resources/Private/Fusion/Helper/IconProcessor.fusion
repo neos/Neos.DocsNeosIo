@@ -2,7 +2,7 @@
  * This processor replaces Neos UI icon placeholder in the form [icon-XXX] with fontawesome icons.
  */
 prototype(Neos.DocsNeosIo:Helper.IconProcessor) < prototype(Neos.Fusion:Value) {
-    @if.frontendOnly = ${!node.context.inBackend}
+    @if.frontendOnly = ${!renderingMode.isEdit}
 
     value = Neos.NeosIo:Helper.IconReplacer {
         haystack = ${value}

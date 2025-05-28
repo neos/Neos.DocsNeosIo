@@ -9,12 +9,12 @@ prototype(Neos.DocsNeosIo:Content.Tabs) < prototype(Neos.Neos:ContentComponent) 
                         role="tab"
                         aria-selected={iterator.isFirst ? "true" : "false"}
                         tabindex={iterator.isFirst ? "0" : "-1"}
-                        id={'tab-' + item.identifier}
-                        aria-controls={'panel-' + item.identifier}
+                        id={'tab-' + item.aggregateId}
+                        aria-controls={'panel-' + item.aggregateId}
                     >
-                        <div class="tab-link__inner">
+                        <span class="tab-link__inner">
                             <Neos.Neos:Editable node={item} property="title" />
-                        </div>
+                        </span>
                     </button>
                 </Neos.Fusion:Loop>
                 <div class="spacer"></div>

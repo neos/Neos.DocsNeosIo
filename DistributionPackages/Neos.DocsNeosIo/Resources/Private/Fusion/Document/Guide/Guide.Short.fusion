@@ -1,7 +1,7 @@
 prototype(Neos.DocsNeosIo:Document.Guide.Short) < prototype(Neos.Fusion:Component) {
     title = ${q(node).property('title')}
     subtitle = ${q(node).property('subtitle')}
-    tags = ${q(node).property('tags')}
+    tags = ${q(node).referenceNodes('tags')}
 
     renderer = afx`
         <article class="card card--padding">

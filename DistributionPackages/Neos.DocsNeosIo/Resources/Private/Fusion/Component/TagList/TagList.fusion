@@ -4,26 +4,23 @@ prototype(Neos.DocsNeosIo:Component.TagList) < prototype(Neos.Fusion:Component) 
     # any fizzle expression to filter for (we do this here to abstract the default usage)
     additionalClass = false
 
-    @context.items = ${q(this.items).filter(this.filter)}
-    tags = Neos.Fusion:Loop {
-        items = ${items}
-        itemName = 'node'
-        // itemRenderer = Carbon.Link:Link {
-        //     additionalClass = 'chip'
-        //     node = ${node}
-        //     content = ${q(node).property('title')}
-        // }
-        itemRenderer = afx`
-            <div class={'chip notice-type-' + q(node).property('noticeType')}>
-                {q(node).property('title')}
-            </div>
-        `
+    @private {
+        filteredItems = ${q(props.items).filter(props.filter)}
+        tags = Neos.Fusion:Loop {
+            items = ${private.filteredItems}
+            itemName = 'tag'
+            itemRenderer = afx`
+                <li class={'chip notice-type-' + q(tag).property('noticeType')}>
+                    {q(tag).property('title')}
+                </li>
+            `
+        }
     }
     renderer = afx`
-        <div class={['tags', props.additionalClass]} @if={items.count() > 0 && items.get(0)}>
-            <object type="owo/uwu" class="tags-container">
-                {props.tags}
-            </object>
+        <div class={['tags', props.additionalClass]} @if={Array.length(props.items) > 0}>
+            <ul class="tags-container">
+                {private.tags}
+            </ul>
         </div>
     `
 }

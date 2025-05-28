@@ -7,21 +7,23 @@
         "bin-dir": "bin",
         "allow-plugins": {
             "neos/composer-plugin": true,
-            "cweagans/composer-patches": true
+            "cweagans/composer-patches": true,
+            "php-http/discovery": true
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
-
-        "flownative/google-cloudstorage": "^5.3.0",
+        "neos/contentrepository-legacynodemigration": "^9.0",
+        "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
-        "shel/neos-terminal": "^1.0",
         "jcupitt/vips": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "t3n/neos-debug": "^2.0"
+        "phpstan/phpstan": "^1.10"
     },
     "repositories": {
         "distribution": {

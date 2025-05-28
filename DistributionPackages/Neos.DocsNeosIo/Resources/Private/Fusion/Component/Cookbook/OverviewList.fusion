@@ -1,0 +1,17 @@
+prototype(Neos.DocsNeosIo:Component.Cookbook.OverviewList) < prototype(Neos.Fusion:Component) {
+    cookbookTag = null
+    @private {
+        cookbookItems = ${q(props.cookbookTag).backReferenceNodes().filter('[instanceof Neos.DocsNeosIo:Document.Cookbook]')}
+    }
+
+    renderer = afx`
+        <div class="cookbooks-overview cards">
+            <Neos.Fusion:Loop
+                    items={private.cookbookItems}
+                    itemName="node"
+            >
+                <Neos.DocsNeosIo:Document.Cookbook.Short />
+            </Neos.Fusion:Loop>
+        </div>
+    `
+}

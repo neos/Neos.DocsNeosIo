@@ -1,23 +1,7 @@
-
 Neos:
   Flow:
     i18n:
       defaultLocale: en
-  ContentRepository:
-    contentDimensions:
-      language:
-        label: Languages
-        icon: icon-language
-        # The default dimension that is applied when creating nodes without specifying a dimension
-        default: en
-        # The default preset to use if no URI segment was given when resolving languages in the router
-        defaultPreset: en
-        presets:
-          en:
-            label: English
-            values:
-              - en
-            uriSegment: ''
   Neos:
     userInterface:
       defaultLanguage: en
@@ -26,3 +10,31 @@ Neos:
           Neos.DocsNeosIo:
             - Main
             - 'NodeTypes/*'
+    sitePresets:
+      'default':
+        uriPathSuffix: ''
+    sites:
+      '*':
+        contentDimensions:
+          # defaultDimensionSpacePoint is used for the homepage (URL /)
+          defaultDimensionSpacePoint:
+            language: en
+          resolver:
+            factoryClassName: Neos\Neos\FrontendRouting\DimensionResolution\Resolver\UriPathResolverFactory
+            options:
+              segments:
+                -
+                  dimensionIdentifier: language
+                  # dimensionValue => uriPathSegment (empty uriPathSegment allowed)
+                  dimensionValueMapping:
+                    en: ''
+  ContentRepositoryRegistry:
+    contentRepositories:
+      default:
+        contentDimensions:
+          language:
+            label: Languages
+            icon: icon-language
+            values:
+              en:
+                label: English

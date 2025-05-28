@@ -3,6 +3,9 @@ Neos:
   Flow:
     mvc:
       routes:
+        'Flowpack.Listable':
+          variables:
+            defaultUriSuffix: ''
         Neos.Neos:
           variables:
             defaultUriSuffix: ''
