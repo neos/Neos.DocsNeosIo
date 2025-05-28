@@ -24,7 +24,7 @@ class WorkspacePublishHookFactory implements CatchUpHookFactoryInterface
         return new WorkspacePublishHook(
             $dependencies->contentRepositoryId,
             $this->notifierService,
-            $this->configuration['notify']['enabled'] ?? false
+            $this->configuration['notify']['general']['enabled'] ?? false
         );
     }
 }
