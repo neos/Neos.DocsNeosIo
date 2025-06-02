@@ -16,9 +16,11 @@ use Neos\ContentRepository\Core\SharedModel\Workspace\WorkspaceName;
 use Neos\ContentRepositoryRegistry\ContentRepositoryRegistry;
 use Neos\Flow\Log\Utility\LogEnvironment;
 use Neos\Neos\Domain\Model\User;
+use Neos\Neos\Domain\Model\UserId;
 use Neos\Neos\Domain\Model\WorkspaceClassification;
 use Neos\Neos\Domain\Model\WorkspaceDescription;
 use Neos\Neos\Domain\Model\WorkspaceRole;
+use Neos\Neos\Domain\Model\WorkspaceRoleAssignment;
 use Neos\Neos\Domain\Model\WorkspaceRoleAssignments;
 use Neos\Neos\Domain\Model\WorkspaceTitle;
 use Neos\Neos\Domain\Repository\WorkspaceMetadataAndRoleRepository;
@@ -179,7 +181,7 @@ class WorkspaceService
                 $title,
                 WorkspaceDescription::createEmpty(),
                 WorkspaceName::forLive(),
-                WorkspaceRoleAssignments::createForPrivateWorkspace($user->getId())
+                self::createWorkspaceRoleAssignmentForReview($user->getId())
             );
             $this->systemLogger->info(
                 sprintf('Workspace "%s" created for user "%s" in content repository "%s".', $workspaceName->value, $user->getLabel(), $contentRepositoryId->value),
@@ -193,6 +195,26 @@ class WorkspaceService
                 LogEnvironment::fromMethodName(__METHOD__)
             );
         }
+    }
+
+    /**
+     * Regular private workspaces have no manager role assignment for Admins, therfore we need to create a special
+     * workspace role assignment for the review workspace.
+     *
+     * The specified user is manager
+     */
+    protected static function createWorkspaceRoleAssignmentForReview(UserId $userId): WorkspaceRoleAssignments
+    {
+        return WorkspaceRoleAssignments::create(
+            WorkspaceRoleAssignment::createForUser(
+                $userId,
+                WorkspaceRole::MANAGER,
+            ),
+            WorkspaceRoleAssignment::createForGroup(
+                'Neos.Neos:Administrator',
+                WorkspaceRole::MANAGER,
+            )
+        );
     }
 
     /**
