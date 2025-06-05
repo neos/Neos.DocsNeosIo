@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Neos.DocsNeosIo" source-language="en" target-language="de" datatype="plaintext">
+        <body>
+            <trans-unit id="properties.hideFromMainMenu">
+                <source>Hide from main menu</source>
+                <target>Im Hauptmenü verstecken</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
