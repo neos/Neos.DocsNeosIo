@@ -15,7 +15,7 @@
           editorOptions:
             placeholder: 'Enter title here...'
       options:
-        silhouette: 'neos.text.plain'
+        preset: 'neos.text.plain'
       search:
         fulltextExtractor: '${Indexing.extractInto("a", value)}'
     link:

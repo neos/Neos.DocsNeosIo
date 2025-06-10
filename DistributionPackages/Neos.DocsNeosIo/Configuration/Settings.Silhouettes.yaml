@@ -1,51 +1,53 @@
-Sitegeist:
-  Silhouettes:
-    properties:
-      neos:
-        text:
-          plain:
-            type: string
-            defaultValue: ''
-            ui:
-              inlineEditable: true
-              inline:
-                editorOptions:
-                  placeholder: 'Enter headline here...'
-                  autoparagraph: false
-                  hyphens: true
-          free:
-            type: string
-            defaultValue: ''
-            ui:
-              inlineEditable: true
-              inline:
-                editorOptions:
-                  placeholder: '<p>Enter text here...</p>'
-                  autoparagraph: true
-                  hyphens: true
-                  formatting:
-                    strong: true
-                    sub: true
-                    sup: true
-                    em: true
-                    p: true
-                    h1: true
-                    h2: true
-                    h3: true
-                    h4: true
-                    h5: true
-                    h6: true
-                    pre: true
-                    table: true
-                    ol: true
-                    ul: true
-                    a: true
-                    code: true
-                  linking:
-                    anchor: true
-                    targetBlank: true
-                    nodes: true
-                    assets: true
-                    title: true
-                    relNoFollow: true
+Neos:
+  Neos:
+    nodeTypes:
+      presets:
+        properties:
+          neos:
+            text:
+              plain:
+                type: string
+                defaultValue: ''
+                ui:
+                  inlineEditable: true
+                  inline:
+                    editorOptions:
+                      placeholder: 'Enter headline here...'
+                      autoparagraph: false
+                      hyphens: true
+              free:
+                type: string
+                defaultValue: ''
+                ui:
+                  inlineEditable: true
+                  inline:
+                    editorOptions:
+                      placeholder: '<p>Enter text here...</p>'
+                      autoparagraph: true
+                      hyphens: true
+                      formatting:
+                        strong: true
+                        sub: true
+                        sup: true
+                        em: true
+                        p: true
+                        h1: true
+                        h2: true
+                        h3: true
+                        h4: true
+                        h5: true
+                        h6: true
+                        pre: true
+                        table: true
+                        ol: true
+                        ul: true
+                        a: true
+                        code: true
+                      linking:
+                        anchor: true
+                        targetBlank: true
+                        nodes: true
+                        assets: true
+                        title: true
+                        relNoFollow: true
 

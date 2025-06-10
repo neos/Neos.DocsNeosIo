@@ -13,7 +13,7 @@
           editorOptions:
             placeholder: '<p>Enter a caption here...</p>'
       options:
-        silhouette: 'neos.text.free'
+        preset: 'neos.text.free'
       search:
         fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
     width:

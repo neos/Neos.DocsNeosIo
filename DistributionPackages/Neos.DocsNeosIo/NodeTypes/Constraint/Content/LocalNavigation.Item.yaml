@@ -11,6 +11,6 @@
           editorOptions:
             placeholder: 'Enter headline here...'
       options:
-        silhouette: 'neos.text.plain'
+        preset: 'neos.text.plain'
       search:
         fulltextExtractor: '${Indexing.extractInto("h2", value)}'

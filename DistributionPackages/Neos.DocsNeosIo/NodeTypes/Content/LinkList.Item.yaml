@@ -20,7 +20,7 @@
               sup: true
               em: true
       options:
-        silhouette: 'neos.text.plain'
+        preset: 'neos.text.plain'
     link:
       type: string
       ui:

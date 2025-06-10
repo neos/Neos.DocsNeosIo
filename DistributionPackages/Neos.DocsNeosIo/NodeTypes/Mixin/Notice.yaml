@@ -12,7 +12,7 @@
           editorOptions:
             placeholder: 'Enter title here...'
       options:
-        silhouette: 'neos.text.plain'
+        preset: 'neos.text.plain'
       search:
         fulltextExtractor: '${Indexing.extractInto("h3", value)}'
     noticeText:
@@ -21,7 +21,7 @@
           editorOptions:
             placeholder: 'Enter content here...'
       options:
-        silhouette: 'neos.text.free'
+        preset: 'neos.text.free'
       search:
         fulltextExtractor: '${Indexing.extractHtmlTags(value)}'
     noticeType:
