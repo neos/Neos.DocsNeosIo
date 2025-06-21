@@ -9,6 +9,9 @@
             "neos/composer-plugin": true,
             "cweagans/composer-patches": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "ext-vips": "0.1.2"
         }
     },
     "minimum-stability": "dev",
