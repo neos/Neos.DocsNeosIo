@@ -17,7 +17,7 @@ class Package extends BasePackage
     public function boot(Bootstrap $bootstrap)
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
-        $dispatcher->connect(AuthenticationProviderManager::class, 'successfullyAuthenticated', WorkspaceService::class, 'createReviewWorkspaceIfNotExists');
-        $dispatcher->connect(AuthenticationProviderManager::class, 'successfullyAuthenticated', WorkspaceService::class, 'switchToReviewWorkspace');
+        //$dispatcher->connect(AuthenticationProviderManager::class, 'successfullyAuthenticated', WorkspaceService::class, 'createReviewWorkspaceIfNotExists');
+        //$dispatcher->connect(AuthenticationProviderManager::class, 'successfullyAuthenticated', WorkspaceService::class, 'switchToReviewWorkspace');
     }
 }
