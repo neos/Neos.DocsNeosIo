@@ -1,4 +1,5 @@
 prototype(Neos.DocsNeosIo:Document.AbstractPage) < prototype(Neos.Neos:Page) {
+    head.metaRobotsTag.attributes.content.@process.hideFlownativeDefaultDomain = ${String.endsWith(request.httpRequest.uri.host, '.flownative.cloud') ? 'noindex,nofollow' : value}
     head {
         headTags = Neos.Fusion:Component {
             renderer = afx`
