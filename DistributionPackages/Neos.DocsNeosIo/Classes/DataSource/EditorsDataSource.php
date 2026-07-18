@@ -27,8 +27,8 @@ class EditorsDataSource extends AbstractDataSource
     protected $persistenceManager;
 
     /**
-     * @param array $arguments Additional arguments (key / value)
-     * @return array
+     * @param array<string,mixed> $arguments Additional arguments (key / value)
+     * @return array<string,mixed>
      */
     public function getData($node = null, array $arguments = [])
     {

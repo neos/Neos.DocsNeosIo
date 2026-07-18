@@ -31,8 +31,11 @@ use Psr\Log\LoggerInterface;
 #[Flow\Scope("singleton")]
 class WorkspaceService
 {
+    /**
+     * @var array<string,mixed>
+     */
     #[Flow\InjectConfiguration(path: 'reviewWorkspace', package: 'Neos.DocsNeosIo')]
-    protected ?array $workspaceSettings;
+    protected array $workspaceSettings;
 
     #[Flow\Inject]
     protected ContentRepositoryRegistry $contentRepositoryRegistry;

@@ -4,6 +4,7 @@ namespace Neos\DocsNeosIo\Eel\Helper;
 
 use Neos\Eel\Helper\ArrayHelper;
 use Neos\Flow\Annotations as Flow;
+use Neos\Neos\Domain\Model\User;
 use Neos\Neos\Domain\Repository\UserRepository;
 
 class UserDataHelper extends ArrayHelper
@@ -22,15 +23,15 @@ class UserDataHelper extends ArrayHelper
     protected $userRepository;
 
     /**
-     * @param array $userIdentifiers
-     * @return array<mixed>
+     * @param list<string> $userIdentifiers
+     * @return list<array<string,mixed>>
      */
     public function getData($userIdentifiers)
     {
         $users = [];
         foreach ($userIdentifiers as $userIdentifier) {
             $user = $this->userRepository->findByIdentifier($userIdentifier);
-            if ($user) {
+            if ($user instanceof User) {
                 $email = false;
                 foreach ($user->getElectronicAddresses() as $current) {
                     if (!$email && isset($this->availableUsageTypes['Email']) && $current->getType() == $this->availableUsageTypes['Email']) {

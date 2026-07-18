@@ -2,21 +2,27 @@
 
 namespace Neos\DocsNeosIo\CatchUpHook;
 
+use Neos\ContentRepository\Core\Projection\ContentGraph\ContentGraphReadModelInterface;
 use Neos\Flow\Annotations as Flow;
 use Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryDependencies;
 use Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookFactoryInterface;
 use Neos\ContentRepository\Core\Projection\CatchUpHook\CatchUpHookInterface;
 use Neos\DocsNeosIo\Service\NotifierService;
 
+/**
+ * @implements CatchUpHookFactoryInterface<ContentGraphReadModelInterface>
+ */
 class WorkspacePublishHookFactory implements CatchUpHookFactoryInterface
 {
+    /**
+     * @var array<string,mixed>
+     */
     #[Flow\InjectConfiguration()]
     protected array $configuration;
 
     public function __construct(
         private readonly NotifierService $notifierService,
-    )
-    {
+    ) {
     }
 
     public function build(CatchUpHookFactoryDependencies $dependencies): CatchUpHookInterface
