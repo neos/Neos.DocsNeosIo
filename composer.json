@@ -14,8 +14,6 @@
             "ext-vips": "0.1.2"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
