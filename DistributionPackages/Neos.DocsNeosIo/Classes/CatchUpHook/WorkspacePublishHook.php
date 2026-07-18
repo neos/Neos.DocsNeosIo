@@ -18,10 +18,9 @@ class WorkspacePublishHook implements CatchUpHookInterface
 
     public function __construct(
         private readonly ContentRepositoryId $contentRepositoryId,
-        private readonly NotifierService     $notifierService,
-        private readonly bool                $enabledNotifier = true,
-    )
-    {
+        private readonly NotifierService $notifierService,
+        private readonly bool $enabledNotifier = true,
+    ) {
     }
 
     public function onBeforeCatchUp(SubscriptionStatus $subscriptionStatus): void
@@ -47,7 +46,6 @@ class WorkspacePublishHook implements CatchUpHookInterface
 
         match ($eventInstance::class) {
             WorkspaceWasPublished::class => $this->sendNotification($eventInstance),
-            WorkspaceWasPartiallyPublished::class => $this->sendNotification($eventInstance),
             default => null
         };
     }
@@ -64,16 +62,12 @@ class WorkspacePublishHook implements CatchUpHookInterface
         // Nothing to do here
     }
 
-    /**
-     * @throws InvalidConfigurationException
-     */
-    private function sendNotification(EventInterface $event): void
+    private function sendNotification(WorkspaceWasPublished $event): void
     {
         if ($this->enabledNotifier === false) {
             return;
         }
 
-        /** @var WorkspaceWasPublished|WorkspaceWasPartiallyPublished $event */
         $this->notifierService->notify($event->targetWorkspaceName, $this->contentRepositoryId);
     }
 }

@@ -27,21 +27,26 @@ class NotifierService
     #[Flow\InjectConfiguration(path: 'http.baseUri', package: 'Neos.Flow')]
     protected ?string $baseUri;
 
+    /**
+     * @var array<string,mixed>|null
+     */
     #[Flow\InjectConfiguration(path: 'notify.general', package: 'Neos.DocsNeosIo')]
     protected ?array $notifySettings;
 
+    /**
+     * @var array<string,mixed>|null
+     */
     #[Flow\InjectConfiguration(path: 'notify.slack', package: 'Neos.DocsNeosIo')]
     protected ?array $slackSettings;
 
     protected bool $notificationHasBeenSentInCurrentInstance = false;
 
     public function __construct(
-        private WorkspaceService     $workspaceService,
-        private UserService          $userService,
+        private WorkspaceService $workspaceService,
+        private UserService $userService,
         private ServerRequestFactory $serverRequestFactory,
-        private StreamFactory        $streamFactory
-    )
-    {
+        private StreamFactory $streamFactory
+    ) {
     }
 
     /**
@@ -51,7 +56,7 @@ class NotifierService
      */
     protected function sendSlackMessages(WorkspaceName $targetWorkspaceName): void
     {
-        if (!$this->slackSettings['enabled']) {
+        if (!($this->slackSettings['enabled'] ?? false)) {
             return;
         }
 
@@ -60,7 +65,11 @@ class NotifierService
         }
 
         $currentUser = $this->userService->getCurrentUser();
-        $currentUserName = $currentUser?->getLabel() ?: $currentUser->getId();
+        if ($currentUser === null) {
+            // no user might be in CLI?
+            return;
+        }
+        $currentUserName = $currentUser->getLabel() ?: $currentUser->getId()->value;
         $reviewUrl = sprintf('%1$s/neos/management/workspace?moduleArguments[@package]=neos.workspace.ui&moduleArguments[@controller]=workspace&moduleArguments[@action]=review&moduleArguments[@format]=html&moduleArguments[workspace]=%2$s', $this->baseUri, $targetWorkspaceName->jsonSerialize());
         $message = sprintf($this->slackSettings['message'], $currentUserName, $targetWorkspaceName, $reviewUrl);
 
@@ -79,7 +88,7 @@ class NotifierService
 
                 $slackRequest = $this->serverRequestFactory->createServerRequest('POST', $postTo['webhookUrl'])
                     ->withHeader('Content-Type', 'application/json')
-                    ->withBody($this->streamFactory->createStream(json_encode($requestBody)));
+                    ->withBody($this->streamFactory->createStream(json_encode($requestBody, JSON_THROW_ON_ERROR)));
 
                 $browser->sendRequest($slackRequest);
             } catch (ClientExceptionInterface) {
@@ -98,7 +107,7 @@ class NotifierService
      */
     public function notify(WorkspaceName $targetWorkspaceName, ContentRepositoryId $contentRepositoryId): void
     {
-        if (!$this->notifySettings['enabled']) {
+        if (!($this->notifySettings['enabled'] ?? false)) {
             return;
         }
 

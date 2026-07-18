@@ -14,8 +14,6 @@
             "ext-vips": "0.1.2"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": "^8.3",
         "neos/docs-neos-io": "@dev",
@@ -34,6 +32,7 @@
         }
     },
     "scripts": {
+        "lint:phpstan": "phpstan analyse",
         "post-update-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-install-cmd": "Neos\\Flow\\Composer\\InstallerScripts::postUpdateAndInstall",
         "post-package-update": "Neos\\Flow\\Composer\\InstallerScripts::postPackageUpdateAndInstall",
