@@ -56,7 +56,7 @@ class WorkspaceService
      *
      * When the slot is called by the successfullyAuthenticated signal it passes a string as first parameter.
      *
-     * @param User|string|null $user
+     * @param User|string $user
      * @return void
      */
     public function createReviewWorkspaceIfNotExists(User|string $user): void
@@ -98,19 +98,18 @@ class WorkspaceService
             $contentRepositoryId = $this->getContentRepositoryId();
             $title = $this->getReviewWorkspaceTitle($user);
             $reviewWorkspaceName = WorkspaceName::transliterateFromString($title->value);
+            $contentRepository = $this->contentRepositoryRegistry->get($contentRepositoryId);
+            $personalWorkspaceName = $this->metadataAndRoleRepository->findWorkspaceNameByUser($contentRepositoryId, $user->getId());
+            if ($personalWorkspaceName === null) {
+                $this->createPersonalWorkspace($contentRepositoryId, $user, $reviewWorkspaceName);
+                $this->systemLogger->error(
+                    'Personal workspace did not exist yet, so we created one with review workspace as base for user: ' . $user->getLabel(),
+                    LogEnvironment::fromMethodName(__METHOD__)
+                );
+                return;
+            }
+            $personalWorkspace = $this->getWorkspaceByName($contentRepositoryId, $personalWorkspaceName);
             try {
-                $contentRepository = $this->contentRepositoryRegistry->get($contentRepositoryId);
-                $personalWorkspaceName = $this->metadataAndRoleRepository->findWorkspaceNameByUser($contentRepositoryId, $user->getId());
-                if ($personalWorkspaceName === null) {
-                    $this->createPersonalWorkspace($contentRepositoryId, $user, $reviewWorkspaceName);
-                    $this->systemLogger->error(
-                        'Personal workspace did not exist yet, so we created one with review workspace as base for user: ' . $user->getLabel(),
-                        LogEnvironment::fromMethodName(__METHOD__)
-                    );
-                    return;
-                }
-                $personalWorkspace = $this->getWorkspaceByName($contentRepositoryId, $personalWorkspaceName);
-
                 // change base workspace when it is targeting the live workspace
                 if ($personalWorkspace->baseWorkspaceName->equals(WorkspaceName::forLive())) {
                     $contentRepository->handle(
