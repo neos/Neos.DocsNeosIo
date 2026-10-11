@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b173edd798d90a5fb06e71b82d652da5",
+    "content-hash": "fbf021bc02d3c828cc3c84008a8a32f5",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -12451,6 +12451,94 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "neos/neos-setup",
+            "version": "4.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/neos-setup.git",
+                "reference": "a93ed44e32ed5a06b9f8fb2d3bef7709b6347401"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/neos-setup/zipball/a93ed44e32ed5a06b9f8fb2d3bef7709b6347401",
+                "reference": "a93ed44e32ed5a06b9f8fb2d3bef7709b6347401",
+                "shasum": ""
+            },
+            "require": {
+                "neos/imagine": "^3.3.1",
+                "neos/neos": "^9.0",
+                "neos/setup": "^6.0 || dev-main",
+                "php": "^8.0"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Neos\\Neos\\Setup\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Custom neos/setup steps and configuration for Neos CMS",
+            "support": {
+                "issues": "https://github.com/neos/neos-setup/issues",
+                "source": "https://github.com/neos/neos-setup/tree/4.0.4"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2025-12-12T10:39:39+00:00"
+        },
+        {
+            "name": "neos/setup",
+            "version": "6.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/setup.git",
+                "reference": "1474ca573c49885105b2c58ecd7f72c371ac9d0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/setup/zipball/1474ca573c49885105b2c58ecd7f72c371ac9d0a",
+                "reference": "1474ca573c49885105b2c58ecd7f72c371ac9d0a",
+                "shasum": ""
+            },
+            "require": {
+                "neos/flow": "~8.0.12 || ~8.1.8 || ~8.2.6 || ~8.3.4 || ^8.4 || ^9.0",
+                "php": "^8.0"
+            },
+            "replace": {
+                "neos/cli-setup": "*",
+                "typo3/setup": "self.version"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Neos\\Setup\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "An extensible setup tool for Neos Flow based applications",
+            "support": {
+                "issues": "https://github.com/neos/setup/issues",
+                "source": "https://github.com/neos/setup/tree/6.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2025-11-09T11:36:47+00:00"
+        },
         {
             "name": "phpstan/phpstan",
             "version": "1.12.34",

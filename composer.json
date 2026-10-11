@@ -23,6 +23,7 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
+        "neos/neos-setup": "~4.0.0",
         "phpstan/phpstan": "^1.10"
     },
     "repositories": {
