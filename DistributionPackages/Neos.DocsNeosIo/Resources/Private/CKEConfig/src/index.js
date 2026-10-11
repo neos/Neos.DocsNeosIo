@@ -9,6 +9,7 @@ manifest("Neos.DocsNeosIo:CKEConfig", {}, globalRegistry => {
         }
         const {formatting} = editorOptions;
 
+        // TODO once https://github.com/neos/neos-ui/pull/4185 is merged removed this plugin and use the natively supported option
         return {
             ...config,
             codeBlock: {
