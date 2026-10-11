@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "014acf53eb590d7c7400a59601aab432",
+    "content-hash": "e81a2a5129cc39ac6ae530ea48a2abf0",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5404,6 +5404,53 @@
             "time": "2026-07-16T12:00:26+00:00"
         },
         {
+            "name": "neos/contentgraph-doctrinedbaladapter-forward-compatibility",
+            "version": "9.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/contentgraph-doctrinedbaladapter-forward-compatibility.git",
+                "reference": "80ccea14579f358462fbb01cfc5e2a6bcb10f756"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/contentgraph-doctrinedbaladapter-forward-compatibility/zipball/80ccea14579f358462fbb01cfc5e2a6bcb10f756",
+                "reference": "80ccea14579f358462fbb01cfc5e2a6bcb10f756",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.1.4",
+                "doctrine/migrations": "*",
+                "neos/contentrepository-core": "~9.0.0 || ~9.1.0",
+                "neos/contentrepositoryregistry": "~9.0.0 || ~9.1.0",
+                "php": ">= 8.2"
+            },
+            "default-branch": true,
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Neos\\ContentGraph\\DoctrineDbalAdapterForwardCompatibility\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "description": "Forward compatibility layer to allow smooth upgrades to Neos version which provide a new content graph implementation.",
+            "support": {
+                "docs": "https://docs.neos.io/",
+                "forum": "https://discuss.neos.io/",
+                "issues": "https://github.com/neos/contentgraph-doctrinedbaladapter-forward-compatibility/issues",
+                "source": "https://github.com/neos/contentgraph-doctrinedbaladapter-forward-compatibility"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2026-10-11T10:54:37+00:00"
+        },
+        {
             "name": "neos/contentrepository-core",
             "version": "9.0.14",
             "source": {
@@ -6045,7 +6092,7 @@
         },
         {
             "name": "neos/docs-neos-io",
-            "version": "dev-feature/upgrade-to-neos-9.0.14",
+            "version": "dev-task/neos9.2-pre-patch",
             "dist": {
                 "type": "path",
                 "url": "./DistributionPackages/Neos.DocsNeosIo",
@@ -13529,6 +13576,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "neos/contentgraph-doctrinedbaladapter-forward-compatibility": 20,
         "neos/docs-neos-io": 20,
         "roave/security-advisories": 20
     },
