@@ -6,9 +6,9 @@ const isWatch = process.argv.includes('--watch');
 const options = {
     logLevel: "info",
     bundle: true,
+    minify: !isWatch,
     target: "es2020",
     entryPoints: { "Plugin": "src/index.js" },
-    loader: { ".js": "tsx" },
     outdir: "../../Public/JavaScript/CKEConfig",
     alias: extensibilityMap
 }

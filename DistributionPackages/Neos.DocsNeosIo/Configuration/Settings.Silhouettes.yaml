@@ -43,6 +43,10 @@ Neos:
                         ul: true
                         a: true
                         code: true
+                        codeBlockLanguages:
+                          - language: 'plaintext'
+                            label: 'Plain text'
+                            class: ''
                       linking:
                         anchor: true
                         targetBlank: true

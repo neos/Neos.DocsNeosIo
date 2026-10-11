@@ -1,0 +1,32 @@
+From 2b02a955f5d6a45d9f7aaf0346a7610438068f4a Mon Sep 17 00:00:00 2001
+From: Marc Henry Schultz <85400359+mhsdesign@users.noreply.github.com>
+Date: Sun, 11 Oct 2026 10:56:53 +0200
+Subject: [PATCH] BUGFIX: Fix PHP 8.4 deprecation warnings
+
+Relies also on https://github.com/sandstorm/LazyDataSource/pull/9
+---
+ Classes/DiagramIdentifierDataSource.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Classes/DiagramIdentifierDataSource.php b/Classes/DiagramIdentifierDataSource.php
+index f33ea79..c4cf718 100644
+--- a/Classes/DiagramIdentifierDataSource.php
++++ b/Classes/DiagramIdentifierDataSource.php
+@@ -22,7 +22,7 @@ class DiagramIdentifierDataSource extends AbstractDataSource
+     #[Flow\Inject]
+     protected DiagramContentRepositoryService $diagramContentRepositoryService;
+ 
+-    protected function getDataForIdentifiers(array $identifiers, Node $node = null, array $arguments = []): array
++    protected function getDataForIdentifiers(array $identifiers, ?Node $node = null, array $arguments = []): array
+     {
+         // all identifiers will be returned as is (with a label containing usage count)
+         $options = [];
+@@ -37,7 +37,7 @@ protected function getDataForIdentifiers(array $identifiers, Node $node = null,
+     /**
+      * @throws AccessDenied
+      */
+-    protected function searchData(string $searchTerm, Node $node = null, array $arguments = []): array
++    protected function searchData(string $searchTerm, ?Node $node = null, array $arguments = []): array
+     {
+         $options = [];
+         if ($node !== null) {

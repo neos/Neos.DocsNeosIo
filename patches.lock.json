@@ -1,0 +1,29 @@
+{
+    "_hash": "8235f775f15bef3aa2b2f6c1e7422f67f124b73356b8ed048483e517f3faa8b9",
+    "patches": {
+        "sandstorm/lazydatasource": [
+            {
+                "package": "sandstorm/lazydatasource",
+                "description": "BUGFIX: Fix PHP 8.4 deprecation warnings",
+                "url": "Patches/LazyDataSource_PR_9.patch",
+                "sha256": "e76315b46bad4e549e87d5ef941178d3d189ca7e0c4d7eef80531f94d5f9193f",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ],
+        "sandstorm/mxgraph": [
+            {
+                "package": "sandstorm/mxgraph",
+                "description": "BUGFIX: Fix PHP 8.4 deprecation warnings",
+                "url": "Patches/MxGraph_PR_37.patch",
+                "sha256": "b44ce5e9dd5deadbae8f954789c2b71ea5ebc307d94dabc2ea4107b7a97f45f4",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}
