@@ -19,7 +19,8 @@
         "neos/docs-neos-io": "@dev",
         "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
-        "jcupitt/vips": "^1.0"
+        "jcupitt/vips": "^1.0",
+        "neos/contentgraph-doctrinedbaladapter-forward-compatibility": "9.2.x-dev"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
