@@ -1,0 +1,38 @@
+From 396f73062eab9ebb726bd79eb6b4337d2eceed67 Mon Sep 17 00:00:00 2001
+From: Jon Uhlmann <account@uhlmann.pro>
+Date: Tue, 30 Jun 2026 22:20:44 +0200
+Subject: [PATCH] BUGFIX: Fix PHP 8.4 deprecation warnings
+
+---
+ Classes/LazyDataSourceTrait.php | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/Classes/LazyDataSourceTrait.php b/Classes/LazyDataSourceTrait.php
+index a800325..f02e0f4 100644
+--- a/Classes/LazyDataSourceTrait.php
++++ b/Classes/LazyDataSourceTrait.php
+@@ -11,7 +11,7 @@ trait LazyDataSourceTrait
+      * @param array $arguments Additional arguments (key / value)
+      * @return array
+      */
+-    public function getData(Node $node = null, array $arguments = []): array
++    public function getData(?Node $node = null, array $arguments = []): array
+     {
+         if (isset($arguments['identifiers'])) {
+             $identifiers = $arguments['identifiers'];
+@@ -35,7 +35,7 @@ public function getData(Node $node = null, array $arguments = []): array
+      * @param array $arguments
+      * @return mixed
+      */
+-    abstract protected function getDataForIdentifiers(array $identifiers, Node $node = null, array $arguments = []);
++    abstract protected function getDataForIdentifiers(array $identifiers, ?Node $node = null, array $arguments = []);
+ 
+     /**
+      * This method is called when the user specifies a search term.
+@@ -45,5 +45,5 @@ abstract protected function getDataForIdentifiers(array $identifiers, Node $node
+      * @param array $arguments
+      * @return mixed
+      */
+-    abstract protected function searchData(string $searchTerm, Node $node = null, array $arguments = []);
++    abstract protected function searchData(string $searchTerm, ?Node $node = null, array $arguments = []);
+ }

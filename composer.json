@@ -19,7 +19,8 @@
         "neos/docs-neos-io": "@dev",
         "flownative/google-cloudstorage": "^6.1",
         "rokka/imagine-vips": "^0.31.0",
-        "jcupitt/vips": "^1.0"
+        "jcupitt/vips": "^1.0",
+        "cweagans/composer-patches": "^2.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
@@ -30,6 +31,24 @@
         "distribution": {
             "type": "path",
             "url": "./DistributionPackages/*"
+        }
+    },
+    "extra": {
+        "patches": {
+            "sandstorm/lazydatasource": [
+                {
+                    "description": "BUGFIX: Fix PHP 8.4 deprecation warnings",
+                    "issue": "https://github.com/sandstorm/LazyDataSource/pull/9",
+                    "url": "Patches/LazyDataSource_PR_9.patch"
+                }
+            ],
+            "sandstorm/mxgraph": [
+                {
+                    "description": "BUGFIX: Fix PHP 8.4 deprecation warnings",
+                    "issue": "https://github.com/sandstorm/MxGraph/pull/37",
+                    "url": "Patches/MxGraph_PR_37.patch"
+                }
+            ]
         }
     },
     "scripts": {
